@@ -1,0 +1,11 @@
+torch\_models
+=============
+
+.. automodule:: sensai.torch.torch_models
+   :members:
+   :undoc-members:
+
+.. toctree::
+   :glob:
+
+   torch_models/*

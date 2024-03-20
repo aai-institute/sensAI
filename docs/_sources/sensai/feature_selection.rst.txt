@@ -1,0 +1,11 @@
+feature\_selection
+==================
+
+.. automodule:: sensai.feature_selection
+   :members:
+   :undoc-members:
+
+.. toctree::
+   :glob:
+
+   feature_selection/*

@@ -1,0 +1,6 @@
+data
+====
+
+.. automodule:: sensai.data
+   :members:
+   :undoc-members:

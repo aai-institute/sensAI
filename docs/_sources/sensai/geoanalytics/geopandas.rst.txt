@@ -1,0 +1,11 @@
+geopandas
+=========
+
+.. automodule:: sensai.geoanalytics.geopandas
+   :members:
+   :undoc-members:
+
+.. toctree::
+   :glob:
+
+   geopandas/*
