@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>clearml_tracking &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="mlflow_tracking" href="mlflow_tracking.html" />
+    <link rel="prev" title="azure_tracking" href="azure_tracking.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../torch.html">torch</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../tracking.html">tracking</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="azure_tracking.html">azure_tracking</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">clearml_tracking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlflow_tracking.html">mlflow_tracking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tracking_base.html">tracking_base</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../tracking.html">tracking</a></li>
+      <li class="breadcrumb-item active">clearml_tracking</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sensai/tracking/clearml_tracking.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.tracking.clearml_tracking">
+<span id="clearml-tracking"></span><h1>clearml_tracking<a class="headerlink" href="#module-sensai.tracking.clearml_tracking" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.tracking.clearml_tracking.ClearMLTrackingContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClearMLTrackingContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">clearml.Task</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/tracking/clearml_tracking.py#L14"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.tracking.clearml_tracking.ClearMLTrackingContext" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="tracking_base.html#sensai.tracking.tracking_base.TrackingContext" title="sensai.tracking.tracking_base.TrackingContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.tracking.tracking_base.TrackingContext</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tracking.clearml_tracking.ClearMLTrackingContext.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">clearml.Task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tracking.clearml_tracking.ClearMLTrackingContext.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tracking.clearml_tracking.ClearMLTrackingContext.track_figure">
+<span class="sig-name descname"><span class="pre">track_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">matplotlib.figure.Figure</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tracking.clearml_tracking.ClearMLTrackingContext.track_figure" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name of the figure (not a filename, should not include file extension)</p></li>
+<li><p><strong>fig</strong> – the figure</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tracking.clearml_tracking.ClearMLTrackingContext.track_text">
+<span class="sig-name descname"><span class="pre">track_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tracking.clearml_tracking.ClearMLTrackingContext.track_text" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name of the text (not a filename, should not include file extension)</p></li>
+<li><p><strong>content</strong> – the content (arbitrarily long text, e.g. a log)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.tracking.clearml_tracking.ClearMLExperiment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClearMLExperiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">clearml.Task</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_logging_values_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/tracking/clearml_tracking.py#L34"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.tracking.clearml_tracking.ClearMLExperiment" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="tracking_base.html#sensai.tracking.tracking_base.TrackedExperiment" title="sensai.tracking.tracking_base.TrackedExperiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.tracking.tracking_base.TrackedExperiment</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tracking.clearml_tracking.ClearMLExperiment.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">clearml.Task</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_logging_values_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tracking.clearml_tracking.ClearMLExperiment.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>task</strong> – instances of trains.Task</p></li>
+<li><p><strong>project_name</strong> – only necessary if task is not provided</p></li>
+<li><p><strong>task_name</strong> – only necessary if task is not provided</p></li>
+<li><p><strong>additional_logging_values_dict</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="azure_tracking.html" class="btn btn-neutral float-left" title="azure_tracking" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mlflow_tracking.html" class="btn btn-neutral float-right" title="mlflow_tracking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

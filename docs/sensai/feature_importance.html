@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>feature_importance &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="feature_selection" href="feature_selection.html" />
+    <link rel="prev" title="metric_computation" href="evaluation/metric_computation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">evaluation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">feature_importance</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/sensai/feature_importance.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.feature_importance">
+<span id="feature-importance"></span><h1>feature_importance<a class="headerlink" href="#module-sensai.feature_importance" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.feature_importance.FeatureImportance">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureImportance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_importance_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/feature_importance.py#L23"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.feature_importance.FeatureImportance" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.FeatureImportance.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_importance_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.feature_importance.FeatureImportance.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.FeatureImportance.get_feature_importance_dict">
+<span class="sig-name descname"><span class="pre">get_feature_importance_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_var_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.feature_importance.FeatureImportance.get_feature_importance_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.FeatureImportance.get_sorted_tuples">
+<span class="sig-name descname"><span class="pre">get_sorted_tuples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_var_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.feature_importance.FeatureImportance.get_sorted_tuples" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicted_var_name</strong> – the predicted variable name for which to retrieve the sorted feature importance values</p></li>
+<li><p><strong>reverse</strong> – whether to reverse the order (i.e. descending order of importance values, where the most important feature comes
+first, rather than ascending order)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a sorted list of tuples (feature name, feature importance)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.FeatureImportance.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_var_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">matplotlib.figure.Figure</span></span></span><a class="headerlink" href="#sensai.feature_importance.FeatureImportance.plot" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.FeatureImportance.get_data_frame">
+<span class="sig-name descname"><span class="pre">get_data_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_var_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.feature_importance.FeatureImportance.get_data_frame" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>predicted_var_name</strong> – the predicted variable name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a data frame with two columns, “feature” and “importance”</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.feature_importance.FeatureImportanceProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureImportanceProvider</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/feature_importance.py#L69"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.feature_importance.FeatureImportanceProvider" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Interface for models that can provide feature importance values</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.FeatureImportanceProvider.get_feature_importance_dict">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_feature_importance_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.feature_importance.FeatureImportanceProvider.get_feature_importance_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the feature importance values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>either a dictionary mapping feature names to importance values or (for models predicting multiple
+variables (independently)) a dictionary which maps predicted variable names to such dictionaries</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.FeatureImportanceProvider.get_feature_importance">
+<span class="sig-name descname"><span class="pre">get_feature_importance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.feature_importance.FeatureImportance" title="sensai.feature_importance.FeatureImportance"><span class="pre">sensai.feature_importance.FeatureImportance</span></a></span></span><a class="headerlink" href="#sensai.feature_importance.FeatureImportanceProvider.get_feature_importance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.FeatureImportanceProvider.get_feature_importances">
+<span class="sig-name descname"><span class="pre">get_feature_importances</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.feature_importance.FeatureImportanceProvider.get_feature_importances" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.feature_importance.plot_feature_importance">
+<span class="sig-name descname"><span class="pre">plot_feature_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_importance_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtitle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">matplotlib.figure.Figure</span></span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/feature_importance.py#L91"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.feature_importance.plot_feature_importance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.feature_importance.AggregatedFeatureImportance">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AggregatedFeatureImportance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*items:</span> <span class="pre">typing.Union[sensai.feature_importance.FeatureImportanceProvider,</span> <span class="pre">typing.Dict[str,</span> <span class="pre">float],</span> <span class="pre">typing.Dict[str,</span> <span class="pre">typing.Dict[str,</span> <span class="pre">float]]],</span> <span class="pre">feature_agg_reg_ex:</span> <span class="pre">typing.Sequence[str]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">agg_fn=&lt;function</span> <span class="pre">mean&gt;</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/feature_importance.py#L107"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.feature_importance.AggregatedFeatureImportance" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Aggregates feature importance values (e.g. from models implementing FeatureImportanceProvider, such as sklearn’s RandomForest
+models and compatible models from lightgbm, etc.)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.AggregatedFeatureImportance.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*items:</span> <span class="pre">typing.Union[sensai.feature_importance.FeatureImportanceProvider,</span> <span class="pre">typing.Dict[str,</span> <span class="pre">float],</span> <span class="pre">typing.Dict[str,</span> <span class="pre">typing.Dict[str,</span> <span class="pre">float]]],</span> <span class="pre">feature_agg_reg_ex:</span> <span class="pre">typing.Sequence[str]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">agg_fn=&lt;function</span> <span class="pre">mean&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.feature_importance.AggregatedFeatureImportance.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>items</strong> – (optional) initial list of feature importance providers or dictionaries to aggregate; further
+values can be added via method add</p></li>
+<li><p><strong>feature_agg_reg_ex</strong> – a sequence of regular expressions describing which feature names to sum as one. Each regex must
+contain exactly one group. If a regex matches a feature name, the feature importance will be summed under the key
+of the matched group instead of the full feature name. For example, the regex r”(w+)_d+$” will cause “foo_1” and “foo_2”
+to be summed under “foo” and similarly “bar_1” and “bar_2” to be summed under “bar”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.AggregatedFeatureImportance.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_importance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.feature_importance.FeatureImportanceProvider" title="sensai.feature_importance.FeatureImportanceProvider"><span class="pre">sensai.feature_importance.FeatureImportanceProvider</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.feature_importance.AggregatedFeatureImportance.add" title="Permalink to this definition"></a></dt>
+<dd><p>Adds the feature importance values from the given dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature_importance</strong> – the dictionary obtained via a model’s getFeatureImportances method</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.AggregatedFeatureImportance.get_aggregated_feature_importance_dict">
+<span class="sig-name descname"><span class="pre">get_aggregated_feature_importance_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.feature_importance.AggregatedFeatureImportance.get_aggregated_feature_importance_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.AggregatedFeatureImportance.get_aggregated_feature_importance">
+<span class="sig-name descname"><span class="pre">get_aggregated_feature_importance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.feature_importance.FeatureImportance" title="sensai.feature_importance.FeatureImportance"><span class="pre">sensai.feature_importance.FeatureImportance</span></a></span></span><a class="headerlink" href="#sensai.feature_importance.AggregatedFeatureImportance.get_aggregated_feature_importance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.feature_importance.compute_permutation_feature_importance_dict">
+<span class="sig-name descname"><span class="pre">compute_permutation_feature_importance_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_repeats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_input_preprocessors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/feature_importance.py#L178"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.feature_importance.compute_permutation_feature_importance_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.feature_importance.AggregatedPermutationFeatureImportance">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AggregatedPermutationFeatureImportance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregated_feature_importance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.feature_importance.AggregatedFeatureImportance" title="sensai.feature_importance.AggregatedFeatureImportance"><span class="pre">sensai.feature_importance.AggregatedFeatureImportance</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_repeats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_model_input_preprocessors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_jobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/feature_importance.py#L196"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.feature_importance.AggregatedPermutationFeatureImportance" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="util/string.html#sensai.util.string.ToStringMixin" title="sensai.util.string.ToStringMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.string.ToStringMixin</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.AggregatedPermutationFeatureImportance.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregated_feature_importance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.feature_importance.AggregatedFeatureImportance" title="sensai.feature_importance.AggregatedFeatureImportance"><span class="pre">sensai.feature_importance.AggregatedFeatureImportance</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_repeats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_model_input_preprocessors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_jobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.feature_importance.AggregatedPermutationFeatureImportance.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aggregated_feature_importance</strong> – the object in which to aggregate the feature importance (to which no feature importance
+values should have yet been added)</p></li>
+<li><p><strong>scoring</strong> – the scoring method; see <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html">https://scikit-learn.org/stable/modules/model_evaluation.html</a>; e.g. “r2” for regression or
+“accuracy” for classification</p></li>
+<li><p><strong>num_repeats</strong> – the number of data permutations to apply for each model</p></li>
+<li><p><strong>random_seed</strong> – the random seed for shuffling the data</p></li>
+<li><p><strong>exclude_model_input_preprocessors</strong> – whether to exclude model input preprocessors, such that the
+feature importance will be reported on the transformed inputs that are actually fed to the model rather than the original
+inputs.
+Enabling this can, for example, help save time in cases where the input preprocessors discard many of the raw input
+columns, but it may not be a good idea of the preprocessors generate multiple columns from the original input columns.</p></li>
+<li><p><strong>num_jobs</strong> – Number of jobs to run in parallel. Each separate model-data permutation feature importance computation is parallelised over
+the columns. <cite>None</cite> means 1 unless in a <code class="xref py py-obj docutils literal notranslate"><span class="pre">joblib.parallel_backend</span></code> context.
+<cite>-1</cite> means using all processors.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.AggregatedPermutationFeatureImportance.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vector_model.html#sensai.vector_model.VectorModel" title="sensai.vector_model.VectorModel"><span class="pre">sensai.vector_model.VectorModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">io_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.feature_importance.AggregatedPermutationFeatureImportance.add" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.AggregatedPermutationFeatureImportance.add_cross_validation_data">
+<span class="sig-name descname"><span class="pre">add_cross_validation_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cross_val_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="evaluation/crossval.html#sensai.evaluation.crossval.VectorModelCrossValidationData" title="sensai.evaluation.crossval.VectorModelCrossValidationData"><span class="pre">sensai.evaluation.crossval.VectorModelCrossValidationData</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.feature_importance.AggregatedPermutationFeatureImportance.add_cross_validation_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.feature_importance.AggregatedPermutationFeatureImportance.get_feature_importance">
+<span class="sig-name descname"><span class="pre">get_feature_importance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.feature_importance.FeatureImportance" title="sensai.feature_importance.FeatureImportance"><span class="pre">sensai.feature_importance.FeatureImportance</span></a></span></span><a class="headerlink" href="#sensai.feature_importance.AggregatedPermutationFeatureImportance.get_feature_importance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="evaluation/metric_computation.html" class="btn btn-neutral float-left" title="metric_computation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="feature_selection.html" class="btn btn-neutral float-right" title="feature_selection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

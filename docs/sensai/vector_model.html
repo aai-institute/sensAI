@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vector_model &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vectoriser" href="vectoriser.html" />
+    <link rel="prev" title="version" href="util/version.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html">util</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">vector_model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/sensai/vector_model.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.vector_model">
+<span id="vector-model"></span><h1>vector_model<a class="headerlink" href="#module-sensai.vector_model" title="Permalink to this headline"></a></h1>
+<p>This module defines base classes for models that use pandas.DataFrames for inputs and outputs, where each data frame row represents
+a single model input or output. Since every row contains a vector of data (one-dimensional array), we refer to them as vector-based
+models. Hence the name of the module and of the central base class <a class="reference internal" href="#sensai.vector_model.VectorModel" title="sensai.vector_model.VectorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorModel</span></code></a>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModelBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorModelBase</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/vector_model.py#L34"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.vector_model.VectorModelBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code>, <a class="reference internal" href="util/string.html#sensai.util.string.ToStringMixin" title="sensai.util.string.ToStringMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.string.ToStringMixin</span></code></a></p>
+<p>Base class for vector models, which defines the fundamental prediction interface.
+A vector model takes data frames as input, where each row represents a vector of information.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModelBase.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModelBase.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModelBase.predict">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModelBase.predict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModelBase.is_regression_model">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_regression_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModelBase.is_regression_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModelBase.get_predicted_variable_names">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_predicted_variable_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModelBase.get_predicted_variable_names" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModelBase.with_name">
+<span class="sig-name descname"><span class="pre">with_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.vector_model.TVectorModelBase</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModelBase.with_name" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the model’s name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – the name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModelBase.set_name">
+<span class="sig-name descname"><span class="pre">set_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModelBase.set_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModelBase.get_name">
+<span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModelBase.get_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModelFittableBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorModelFittableBase</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/vector_model.py#L73"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.vector_model.VectorModelFittableBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.vector_model.VectorModelBase" title="sensai.vector_model.VectorModelBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorModelBase</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base class for vector models, which encompasses the fundamental prediction and fitting interfaces.
+A vector model takes data frames as input, where each row represents a vector of information.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModelFittableBase.fit">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModelFittableBase.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModelFittableBase.is_fitted">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_fitted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModelFittableBase.is_fitted" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vector_model.TrainingContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TrainingContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/vector_model.py#L87"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.vector_model.TrainingContext" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Contains context information for an ongoing training process</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.TrainingContext.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.TrainingContext.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/vector_model.py#L96"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.vector_model.VectorModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.vector_model.VectorModelFittableBase" title="sensai.vector_model.VectorModelFittableBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorModelFittableBase</span></code></a>, <a class="reference internal" href="util/cache.html#sensai.util.cache.PickleLoadSaveMixin" title="sensai.util.cache.PickleLoadSaveMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.cache.PickleLoadSaveMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Represents a model which uses data frames as inputs and outputs whose rows define individual data points.
+Every data frame row represents a vector of information (one-dimensional array), hence the name of the model.
+Note that the vectors in question are not necessarily vectors in the mathematical sense, as the information in each cell is not
+required to be numeric or uniform but can be arbitrarily complex.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.TOSTRING_INCLUDE_PREPROCESSORS">
+<span class="sig-name descname"><span class="pre">TOSTRING_INCLUDE_PREPROCESSORS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#sensai.vector_model.VectorModel.TOSTRING_INCLUDE_PREPROCESSORS" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>check_input_columns</strong> – whether to check if the input column list (that is fed to the underlying model, i.e. after feature
+generation) during inference coincides with the input column list that was observed during training.
+This should be disabled if feature generation is not performed by the model itself, e.g. in meta-models
+such as ensemble models.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.with_raw_input_transformers">
+<span class="sig-name descname"><span class="pre">with_raw_input_transformers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">transformers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.vector_model.TVectorModel</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModel.with_raw_input_transformers" title="Permalink to this definition"></a></dt>
+<dd><p>Makes the model use the given transformers (removing previously set raw input transformers, if any), which
+are to be applied to the raw input data frame (prior to feature generation).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transformers</strong> – <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrameTransformer</span></code> instances to use (in sequence) for the transformation of inputs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.with_feature_transformers">
+<span class="sig-name descname"><span class="pre">with_feature_transformers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">transformers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.vector_model.TVectorModel</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModel.with_feature_transformers" title="Permalink to this definition"></a></dt>
+<dd><p>Makes the model use the given transformers
+which are to be applied to the data frames generated by feature generators.
+(If the model does not use feature generators, the transformers will be applied to
+whatever is produced by the raw input transformers or, if there are none, the original raw
+input data frame).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>transformers</strong> – <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrameTransformer</span></code> instances to use (in sequence) for the transformation of features</p></li>
+<li><p><strong>add</strong> – whether to add the transformers to the existing transformers rather than replacing them</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.with_input_transformers">
+<span class="sig-name descname"><span class="pre">with_input_transformers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">input_transformers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.vector_model.TVectorModel</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModel.with_input_transformers" title="Permalink to this definition"></a></dt>
+<dd><p>Makes the model use the given feature transformers (removing previously set transformers, if any),
+i.e. it transforms the data frame that is generated by the feature generators (if any).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input_transformers</strong> – <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrameTransformer</span></code> instances to use (in sequence) for the transformation of inputs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.with_feature_generator">
+<span class="sig-name descname"><span class="pre">with_feature_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_generator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="featuregen/feature_generator.html#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.vector_model.TVectorModel</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModel.with_feature_generator" title="Permalink to this definition"></a></dt>
+<dd><p>Makes the model use the given feature generator in order to obtain the model inputs.
+If the model shall use more than one feature generator, pass a <code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFeatureGenerator</span></code> which combines them or
+use the perhaps more convenient <code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureCollector</span></code> in conjunction with <code class="xref py py-meth docutils literal notranslate"><span class="pre">withFeatureCollector()</span></code>.</p>
+<p>Note: Feature computation takes place before input transformation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature_generator</strong> – the feature generator to use for input computation</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.with_feature_collector">
+<span class="sig-name descname"><span class="pre">with_feature_collector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_collector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="featuregen/feature_generator_registry.html#sensai.featuregen.feature_generator_registry.FeatureCollector" title="sensai.featuregen.feature_generator_registry.FeatureCollector"><span class="pre">sensai.featuregen.feature_generator_registry.FeatureCollector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.vector_model.TVectorModel</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModel.with_feature_collector" title="Permalink to this definition"></a></dt>
+<dd><p>Makes the model use a multi-feature generator obtained from the given collector
+in order compute the underlying model’s input from the data frame that is given.
+Overrides any feature generator previously passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">withFeatureGenerator()</span></code> (if any).</p>
+<p>Note: Feature generation takes place before feature transformation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature_collector</strong> – the feature collector from which to obtain the multi-feature generator</p></li>
+<li><p><strong>shared</strong> – whether the given feature collector is shared between models (i.e. whether
+the same instance is passed to multiple models).
+Passing <cite>shared=False</cite> ensures that models using the same collector do not end up
+using the same multi-feature collector.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.is_fitted">
+<span class="sig-name descname"><span class="pre">is_fitted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModel.is_fitted" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the model has been fitted, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.compute_model_inputs">
+<span class="sig-name descname"><span class="pre">compute_model_inputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModel.compute_model_inputs" title="Permalink to this definition"></a></dt>
+<dd><p>Applies feature generators and input transformers (if any) to generate from an input data frame the input for the
+underlying model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – the input data frame, to which input preprocessing is to be applied</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the input data frame that serves as input for the underlying model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.compute_model_outputs">
+<span class="sig-name descname"><span class="pre">compute_model_outputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModel.compute_model_outputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModel.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Applies the model to the given input data frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – the input data frame</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the model outputs in the form of a data frame whose index corresponds to the index of <code class="docutils literal notranslate"><span class="pre">x</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.fit_input_output_data">
+<span class="sig-name descname"><span class="pre">fit_input_output_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">io_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_preprocessors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModel.fit_input_output_data" title="Permalink to this definition"></a></dt>
+<dd><p>Fits the model using the given data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>io_data</strong> – the input/output data</p></li>
+<li><p><strong>fit_preprocessors</strong> – whether the model’s preprocessors (feature generators and data frame transformers) shall be fitted</p></li>
+<li><p><strong>fit_model</strong> – whether the model itself shall be fitted</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_preprocessors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModel.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fits the model using the given data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – a data frame containing input data</p></li>
+<li><p><strong>y</strong> – a data frame containing output data; may be None if the underlying model does not actually require
+fitting, e.g. in the case of a rule-based models, but fitting is still necessary for preprocessors</p></li>
+<li><p><strong>fit_preprocessors</strong> – whether the model’s preprocessors (feature generators and data frame transformers) shall be fitted</p></li>
+<li><p><strong>fit_model</strong> – whether the model itself shall be fitted</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.is_being_fitted">
+<span class="sig-name descname"><span class="pre">is_being_fitted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModel.is_being_fitted" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the model is currently in the process of being fitted, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.get_predicted_variable_names">
+<span class="sig-name descname"><span class="pre">get_predicted_variable_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModel.get_predicted_variable_names" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the list of variable names that are ultimately output by this model (i.e. the columns of the data frame output
+by <a class="reference internal" href="#sensai.vector_model.VectorModel.predict" title="sensai.vector_model.VectorModel.predict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">predict()</span></code></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.get_model_input_variable_names">
+<span class="sig-name descname"><span class="pre">get_model_input_variable_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModel.get_model_input_variable_names" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the list of variable names required by the underlying model as input (after feature generation and data frame
+transformation) or None if the model has not been fitted (or is a rule-based model which does not determine the variable names).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.get_input_transformer">
+<span class="sig-name descname"><span class="pre">get_input_transformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModel.get_input_transformer" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the (first) feature transformer of the given type (if any) within this models feature transformer chain</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cls</strong> – the type of transformer to look for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the first matching feature transformer or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.get_feature_transformer">
+<span class="sig-name descname"><span class="pre">get_feature_transformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModel.get_feature_transformer" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the (first) feature transformer of the given type (if any) within this models feature transformer chain</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cls</strong> – the type of transformer to look for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the first matching feature transformer or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.get_raw_input_transformer">
+<span class="sig-name descname"><span class="pre">get_raw_input_transformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModel.get_raw_input_transformer" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the (first) raw input transformer of the given type (if any) within this models raw input transformer chain</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cls</strong> – the type of transformer to look for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the first matching raw input transformer or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.get_input_transformer_chain">
+<span class="sig-name descname"><span class="pre">get_input_transformer_chain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformerChain" title="sensai.data_transformation.dft.DataFrameTransformerChain"><span class="pre">sensai.data_transformation.dft.DataFrameTransformerChain</span></a></span></span><a class="headerlink" href="#sensai.vector_model.VectorModel.get_input_transformer_chain" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the model’s feature transformer chain (which may be empty and contain no actual transformers),
+i.e. the transformers that are applied after feature generation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.get_raw_input_transformer_chain">
+<span class="sig-name descname"><span class="pre">get_raw_input_transformer_chain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformerChain" title="sensai.data_transformation.dft.DataFrameTransformerChain"><span class="pre">sensai.data_transformation.dft.DataFrameTransformerChain</span></a></span></span><a class="headerlink" href="#sensai.vector_model.VectorModel.get_raw_input_transformer_chain" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the model’s raw input transformer chain (which may be empty and contain no actual transformers),
+i.e. the transformers that are applied before feature generation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.get_feature_transformer_chain">
+<span class="sig-name descname"><span class="pre">get_feature_transformer_chain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformerChain" title="sensai.data_transformation.dft.DataFrameTransformerChain"><span class="pre">sensai.data_transformation.dft.DataFrameTransformerChain</span></a></span></span><a class="headerlink" href="#sensai.vector_model.VectorModel.get_feature_transformer_chain" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the model’s feature transformer chain (which may be empty and contain no actual transformers),
+i.e. the transformers that are applied after feature generation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.set_feature_generator">
+<span class="sig-name descname"><span class="pre">set_feature_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_generator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="featuregen/feature_generator.html#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModel.set_feature_generator" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.get_feature_generator">
+<span class="sig-name descname"><span class="pre">get_feature_generator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="featuregen/feature_generator.html#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.vector_model.VectorModel.get_feature_generator" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the model’s feature generator (if any)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorModel.remove_input_preprocessors">
+<span class="sig-name descname"><span class="pre">remove_input_preprocessors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorModel.remove_input_preprocessors" title="Permalink to this definition"></a></dt>
+<dd><p>Removes all input preprocessors (i.e. raw input transformers, feature generators and feature transformers) from the model</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorRegressionModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorRegressionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/vector_model.py#L505"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.vector_model.VectorRegressionModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.vector_model.VectorModel" title="sensai.vector_model.VectorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorRegressionModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorRegressionModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>check_input_columns</strong> – Whether to check if the input column list (after feature generation)
+during inference coincides with the input column list during fit.
+This should be disabled if feature generation is not performed by the model itself,
+e.g. in ensemble models.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorRegressionModel.is_regression_model">
+<span class="sig-name descname"><span class="pre">is_regression_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorRegressionModel.is_regression_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorRegressionModel.with_output_transformers">
+<span class="sig-name descname"><span class="pre">with_output_transformers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">output_transformers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.vector_model.TVectorRegressionModel</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorRegressionModel.with_output_transformers" title="Permalink to this definition"></a></dt>
+<dd><p>Makes the model use the given output transformers. Call with empty input to remove existing output transformers.
+The transformers are ignored during the fit phase. Not supported for rule-based models.</p>
+<p><strong>Important</strong>: The output columns names of the last output transformer should be the same
+as the first one’s input column names. If this fails to hold, an exception will be raised when <a class="reference internal" href="#sensai.vector_model.VectorRegressionModel.predict" title="sensai.vector_model.VectorRegressionModel.predict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">predict()</span></code></a> is called.</p>
+<p><strong>Note</strong>: Output transformers perform post-processing after the actual predictions have been made. Contrary
+to invertible target transformers, they are not invoked during the fit phase. Therefore, any losses computed there,
+including the losses on validation sets (e.g. for early stopping), will be computed on the non-post-processed data.
+A possible use case for such post-processing is if you know how improve the predictions of your fittable model
+by some heuristics or by hand-crafted rules.</p>
+<p><strong>How not to use</strong>: Output transformers are not meant to transform the predictions into something with a
+different semantic meaning (e.g. normalized into non-normalized or something like that) - you should consider
+using a targetTransformer for this purpose. Instead, they give the possibility to improve predictions through
+post processing, when this is desired.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output_transformers</strong> – DataFrameTransformers for the transformation of outputs
+(after the model has been applied)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorRegressionModel.with_target_transformer">
+<span class="sig-name descname"><span class="pre">with_target_transformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_transformer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="data_transformation/dft.html#sensai.data_transformation.dft.InvertibleDataFrameTransformer" title="sensai.data_transformation.dft.InvertibleDataFrameTransformer"><span class="pre">sensai.data_transformation.dft.InvertibleDataFrameTransformer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.vector_model.TVectorRegressionModel</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorRegressionModel.with_target_transformer" title="Permalink to this definition"></a></dt>
+<dd><p>Makes the model use the given target transformers such that the underlying low-level model is trained on the transformed
+targets, but this high-level model still outputs the original (untransformed) values, i.e. the transformation is applied
+to targets during training and the inverse transformation is applied to the underlying model’s predictions during inference.
+Hence the requirement of  the transformer being invertible.</p>
+<p>This method is not supported for rule-based models, because they are not trained and therefore the transformation
+would serve no purpose.</p>
+<p>NOTE: All feature generators and data frame transformers - should they make use of outputs - will be fit on the untransformed
+target. The targetTransformer only affects the fitting of the underlying model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target_transformer</strong> – a transformer which transforms the targets (training data outputs) prior to learning the model, such
+that the model learns to predict the transformed outputs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorRegressionModel.get_target_transformer">
+<span class="sig-name descname"><span class="pre">get_target_transformer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorRegressionModel.get_target_transformer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorRegressionModel.get_output_transformer_chain">
+<span class="sig-name descname"><span class="pre">get_output_transformer_chain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorRegressionModel.get_output_transformer_chain" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorRegressionModel.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorRegressionModel.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Applies the model to the given input data frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – the input data frame</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the model outputs in the form of a data frame whose index corresponds to the index of <code class="docutils literal notranslate"><span class="pre">x</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorRegressionModel.is_fitted">
+<span class="sig-name descname"><span class="pre">is_fitted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorRegressionModel.is_fitted" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the model has been fitted, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorRegressionModel.get_model_output_variable_names">
+<span class="sig-name descname"><span class="pre">get_model_output_variable_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorRegressionModel.get_model_output_variable_names" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the list of variable names predicted by the underlying model.
+For the case where at training time the ground truth is transformed by a target transformer
+which changes column names, the names of the variables prior to the transformation will be returned.
+Thus this method always returns the variable names that are actually predicted by the underlying model alone.
+For the variable names that are ultimately output by the entire VectorModel instance when calling predict,
+use getPredictedVariableNames.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorClassificationModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorClassificationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/vector_model.py#L636"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.vector_model.VectorClassificationModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.vector_model.VectorModel" title="sensai.vector_model.VectorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorClassificationModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorClassificationModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>check_input_columns</strong> – Whether to check if the input column list (after feature generation)
+during inference coincides with the input column list during fit.
+This should be disabled if feature generation is not performed by the model itself,
+e.g. in ensemble models.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorClassificationModel.is_regression_model">
+<span class="sig-name descname"><span class="pre">is_regression_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorClassificationModel.is_regression_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorClassificationModel.get_class_labels">
+<span class="sig-name descname"><span class="pre">get_class_labels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.vector_model.VectorClassificationModel.get_class_labels" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorClassificationModel.convert_class_probabilities_to_predictions">
+<span class="sig-name descname"><span class="pre">convert_class_probabilities_to_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.VectorClassificationModel.convert_class_probabilities_to_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>Converts from a data frame as returned by predictClassProbabilities to a result as return by predict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df</strong> – the output data frame from predictClassProbabilities</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an output data frame as it would be returned by predict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.VectorClassificationModel.predict_class_probabilities">
+<span class="sig-name descname"><span class="pre">predict_class_probabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.vector_model.VectorClassificationModel.predict_class_probabilities" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – the input data</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a data frame where the list of columns is the list of class labels and the values are probabilities, with the same
+index as the input data frame.
+Raises an exception if the classifier cannot predict probabilities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vector_model.RuleBasedVectorRegressionModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RuleBasedVectorRegressionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_variable_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/vector_model.py#L734"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.vector_model.RuleBasedVectorRegressionModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.vector_model.VectorRegressionModel" title="sensai.vector_model.VectorRegressionModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorRegressionModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.RuleBasedVectorRegressionModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_variable_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.RuleBasedVectorRegressionModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>predicted_variable_names</strong> – These are typically known at init time for rule-based models</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vector_model.RuleBasedVectorClassificationModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RuleBasedVectorClassificationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicted_variable_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'predictedLabel'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/vector_model.py#L751"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.vector_model.RuleBasedVectorClassificationModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.vector_model.VectorClassificationModel" title="sensai.vector_model.VectorClassificationModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorClassificationModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vector_model.RuleBasedVectorClassificationModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicted_variable_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'predictedLabel'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vector_model.RuleBasedVectorClassificationModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> – </p></li>
+<li><p><strong>predicted_variable_name</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="util/version.html" class="btn btn-neutral float-left" title="version" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vectoriser.html" class="btn btn-neutral float-right" title="vectoriser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

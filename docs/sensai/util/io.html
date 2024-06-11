@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>io &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="jscode" href="jscode.html" />
+    <link rel="prev" title="helper" href="helper.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html">tracking</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../util.html">util</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="aggregation.html">aggregation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache.html">cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache_azure.html">cache_azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache_mysql.html">cache_mysql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datastruct.html">datastruct</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deprecation.html">deprecation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dtype.html">dtype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hash.html">hash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="helper.html">helper</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jscode.html">jscode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging.html">logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="math.html">math</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiprocessing.html">multiprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pandas.html">pandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pickle.html">pickle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot.html">plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="profiling.html">profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sequences.html">sequences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="string.html">string</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test.html">test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="typing.html">typing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version.html">version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../util.html">util</a></li>
+      <li class="breadcrumb-item active">io</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sensai/util/io.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.util.io">
+<span id="io"></span><h1>io<a class="headerlink" href="#module-sensai.util.io" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.io.ResultWriter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ResultWriter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close_figures</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/io.py#L13"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.io.ResultWriter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.ResultWriter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close_figures</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.ResultWriter.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>result_dir</strong> – </p></li>
+<li><p><strong>filename_prefix</strong> – </p></li>
+<li><p><strong>enabled</strong> – whether the result writer is enabled; if it is not, it will create neither files nor directories</p></li>
+<li><p><strong>close_figures</strong> – whether to close figures that are passed by default</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.ResultWriter.child_with_added_prefix">
+<span class="sig-name descname"><span class="pre">child_with_added_prefix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.util.io.ResultWriter" title="sensai.util.io.ResultWriter"><span class="pre">sensai.util.io.ResultWriter</span></a></span></span><a class="headerlink" href="#sensai.util.io.ResultWriter.child_with_added_prefix" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a derived result writer with an added prefix, i.e. the given prefix is appended to this
+result writer’s prefix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prefix</strong> – the prefix to append</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new writer instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.ResultWriter.child_for_subdirectory">
+<span class="sig-name descname"><span class="pre">child_for_subdirectory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.util.io.ResultWriter" title="sensai.util.io.ResultWriter"><span class="pre">sensai.util.io.ResultWriter</span></a></span></span><a class="headerlink" href="#sensai.util.io.ResultWriter.child_for_subdirectory" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.ResultWriter.path">
+<span class="sig-name descname"><span class="pre">path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_suffix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extension_to_add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_other_extensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sensai.util.io.ResultWriter.path" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename_suffix</strong> – the suffix to add (which may or may not already include a file extension)</p></li>
+<li><p><strong>extension_to_add</strong> – if not None, the file extension to add (without the leading “.”) unless
+the extension to add or one of the extenions in valid_extensions is already present</p></li>
+<li><p><strong>valid_other_extensions</strong> – a sequence of valid other extensions (without the “.”), only
+relevant if extensionToAdd is specified</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the full path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.ResultWriter.write_text_file">
+<span class="sig-name descname"><span class="pre">write_text_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_suffix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.ResultWriter.write_text_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.ResultWriter.write_text_file_lines">
+<span class="sig-name descname"><span class="pre">write_text_file_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_suffix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.ResultWriter.write_text_file_lines" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.ResultWriter.write_data_frame_text_file">
+<span class="sig-name descname"><span class="pre">write_data_frame_text_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_suffix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.ResultWriter.write_data_frame_text_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.ResultWriter.write_data_frame_csv_file">
+<span class="sig-name descname"><span class="pre">write_data_frame_csv_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_suffix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.ResultWriter.write_data_frame_csv_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.ResultWriter.write_figure">
+<span class="sig-name descname"><span class="pre">write_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_suffix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">matplotlib.figure.Figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close_figure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.ResultWriter.write_figure" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename_suffix</strong> – the filename suffix, which may or may not include a file extension, valid extensions being {“png”, “jpg”}</p></li>
+<li><p><strong>fig</strong> – the figure to save</p></li>
+<li><p><strong>close_figure</strong> – whether to close the figure after having saved it; if None, use default passed at construction</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the path to the file that was written (or would have been written if the writer was enabled)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.ResultWriter.write_figures">
+<span class="sig-name descname"><span class="pre">write_figures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figures</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">matplotlib.figure.Figure</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close_figures</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.ResultWriter.write_figures" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.ResultWriter.write_pickle">
+<span class="sig-name descname"><span class="pre">write_pickle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_suffix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.ResultWriter.write_pickle" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.util.io.write_text_file_lines">
+<span class="sig-name descname"><span class="pre">write_text_file_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/io.py#L128"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.io.write_text_file_lines" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lines</strong> – the lines to write (without a trailing newline, which will be added)</p></li>
+<li><p><strong>path</strong> – the path of the text file to write to</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.util.io.read_text_file_lines">
+<span class="sig-name descname"><span class="pre">read_text_file_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_empty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/io.py#L139"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.io.read_text_file_lines" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – the path of the text file to read from</p></li>
+<li><p><strong>strip</strong> – whether to strip each line, removing whitespace/newline characters</p></li>
+<li><p><strong>skip_empty</strong> – whether to skip any lines that are empty (after stripping)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the list of lines</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.util.io.is_s3_path">
+<span class="sig-name descname"><span class="pre">is_s3_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/io.py#L156"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.io.is_s3_path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.io.S3Object">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">S3Object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/io.py#L160"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.io.S3Object" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.S3Object.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.S3Object.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.io.S3Object.OutputFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">OutputFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s3_object</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.util.io.S3Object" title="sensai.util.io.S3Object"><span class="pre">sensai.util.io.S3Object</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.S3Object.OutputFile" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.S3Object.OutputFile.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s3_object</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.util.io.S3Object" title="sensai.util.io.S3Object"><span class="pre">sensai.util.io.S3Object</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.S3Object.OutputFile.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.S3Object.OutputFile.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.S3Object.OutputFile.write" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.S3Object.get_file_content">
+<span class="sig-name descname"><span class="pre">get_file_content</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.S3Object.get_file_content" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.S3Object.open_file">
+<span class="sig-name descname"><span class="pre">open_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.S3Object.open_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.io.S3Object.put">
+<span class="sig-name descname"><span class="pre">put</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.io.S3Object.put" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="helper.html" class="btn btn-neutral float-left" title="helper" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="jscode.html" class="btn btn-neutral float-right" title="jscode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

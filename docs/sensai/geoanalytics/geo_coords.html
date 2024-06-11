@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>geo_coords &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="geopandas" href="geopandas.html" />
+    <link rel="prev" title="geo_clustering" href="geo_clustering.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../featuregen.html">featuregen</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../geoanalytics.html">geoanalytics</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="geo_clustering.html">geo_clustering</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">geo_coords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geopandas.html">geopandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="local_coords.html">local_coords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map_tiles.html">map_tiles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../geoanalytics.html">geoanalytics</a></li>
+      <li class="breadcrumb-item active">geo_coords</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sensai/geoanalytics/geo_coords.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.geoanalytics.geo_coords">
+<span id="geo-coords"></span><h1>geo_coords<a class="headerlink" href="#module-sensai.geoanalytics.geo_coords" title="Permalink to this headline"></a></h1>
+<p>Utility functions and classes for geographic coordinates</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.longitude_per_m">
+<span class="sig-name descname"><span class="pre">longitude_per_m</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latitude</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/geoanalytics/geo_coords.py#L18"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.geoanalytics.geo_coords.longitude_per_m" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.latitude_per_m">
+<span class="sig-name descname"><span class="pre">latitude_per_m</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/geoanalytics/geo_coords.py#L22"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.geoanalytics.geo_coords.latitude_per_m" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.approximate_squared_distance">
+<span class="sig-name descname"><span class="pre">approximate_squared_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/geoanalytics/geo_coords.py#L26"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.geoanalytics.geo_coords.approximate_squared_distance" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p1</strong> – a tuple (latitude, longitude)</p></li>
+<li><p><strong>p2</strong> – a tuple (latitude, longitude)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the approximate squared distance (in m²) between p1 and p2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.closest_point_on_segment">
+<span class="sig-name descname"><span class="pre">closest_point_on_segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segPoint1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segPoint2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/geoanalytics/geo_coords.py#L41"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.geoanalytics.geo_coords.closest_point_on_segment" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the point on the line segment connecting segPoint1 and segPoint2 that is closest to searchPos</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>search_pos</strong> – the position for which to search for the closest point on the line segment</p></li>
+<li><p><strong>segPoint1</strong> – the first point defining the line segment on which to search</p></li>
+<li><p><strong>segPoint2</strong> – the second point defining the line segment on which to search</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the closest point, which is on the line connecting segPoint1 and segPoint2 (and may be one of the two points)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.orientation">
+<span class="sig-name descname"><span class="pre">orientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/geoanalytics/geo_coords.py#L73"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.geoanalytics.geo_coords.orientation" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the orientation angle for the vector from p1 to p2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p1</strong> – a (lat, lon) pair</p></li>
+<li><p><strong>p2</strong> – a (lat, lon) pair</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the orientation angle in rad</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.abs_angle_difference">
+<span class="sig-name descname"><span class="pre">abs_angle_difference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/geoanalytics/geo_coords.py#L89"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.geoanalytics.geo_coords.abs_angle_difference" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the absolute angle difference in ]-pi, pi] between two angles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a1</strong> – an angle in rad</p></li>
+<li><p><strong>a2</strong> – an angle in rad</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the difference in rad</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.closest_point_on_polyline">
+<span class="sig-name descname"><span class="pre">closest_point_on_polyline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polyline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_orientation_angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_angle_difference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/geoanalytics/geo_coords.py#L105"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.geoanalytics.geo_coords.closest_point_on_polyline" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the point on the given polyline that is closest to the given search position along with the
+distance (in metres) to the polyline</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>search_pos</strong> – a (lat, lon) pair indicating the position for which to find the closest math on the polyline</p></li>
+<li><p><strong>polyline</strong> – list of (lat, lon) pairs that make up the polyline on which to search</p></li>
+<li><p><strong>search_orientation_angle</strong> – if not None, defines the orientation with which to compute angle differences
+(if maxAngleDifference &gt; 0)</p></li>
+<li><p><strong>max_angle_difference</strong> – the maximum absolute angle difference (in rad) that is admissible (between the orientation of the
+respective line segment and the orientation given in searchOrientationAngle)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a tuple (opt_point, opt_dist, opt_segment_start_idx) where
+opt_point is the closest point (with admissible orientation - or None if there is none),
+opt_dist is the distance from the polyline to the closest point,
+opt_segment_start_idx is the index of the first point of the segment on the polyline for which the closest point was found</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.GeoCoord">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GeoCoord</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/geoanalytics/geo_coords.py#L142"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.geoanalytics.geo_coords.GeoCoord" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../util/string.html#sensai.util.string.ToStringMixin" title="sensai.util.string.ToStringMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.string.ToStringMixin</span></code></a></p>
+<p>Represents geographic coordinates (WGS84)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.GeoCoord.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geo_coords.GeoCoord.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.GeoCoord.latlon">
+<span class="sig-name descname"><span class="pre">latlon</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geo_coords.GeoCoord.latlon" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.GeoCoord.distance_to">
+<span class="sig-name descname"><span class="pre">distance_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gps_position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.geoanalytics.geo_coords.GeoCoord" title="sensai.geoanalytics.geo_coords.GeoCoord"><span class="pre">sensai.geoanalytics.geo_coords.GeoCoord</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geo_coords.GeoCoord.distance_to" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.GeoCoord.squared_distance_to">
+<span class="sig-name descname"><span class="pre">squared_distance_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gps_position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.geoanalytics.geo_coords.GeoCoord" title="sensai.geoanalytics.geo_coords.GeoCoord"><span class="pre">sensai.geoanalytics.geo_coords.GeoCoord</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geo_coords.GeoCoord.squared_distance_to" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.GeoCoord.local_coords">
+<span class="sig-name descname"><span class="pre">local_coords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lcs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geo_coords.GeoCoord.local_coords" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.GeoCoord.mean_coord">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mean_coord</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_coords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.geoanalytics.geo_coords.GeoCoord" title="sensai.geoanalytics.geo_coords.GeoCoord"><span class="pre">sensai.geoanalytics.geo_coords.GeoCoord</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geo_coords.GeoCoord.mean_coord" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.GpsTracePoint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GpsTracePoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas._libs.tslibs.timestamps.Timestamp</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/geoanalytics/geo_coords.py#L170"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.geoanalytics.geo_coords.GpsTracePoint" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.geoanalytics.geo_coords.GeoCoord" title="sensai.geoanalytics.geo_coords.GeoCoord"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.geoanalytics.geo_coords.GeoCoord</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.GpsTracePoint.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas._libs.tslibs.timestamps.Timestamp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geo_coords.GpsTracePoint.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.GeoRect">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GeoRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/geoanalytics/geo_coords.py#L176"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.geoanalytics.geo_coords.GeoRect" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.GeoRect.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geo_coords.GeoRect.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geo_coords.GeoRect.from_circle">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">centre_lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centre_lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius_m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geo_coords.GeoRect.from_circle" title="Permalink to this definition"></a></dt>
+<dd><p>Creates the bounding rectangle for the given circular area</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="geo_clustering.html" class="btn btn-neutral float-left" title="geo_clustering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="geopandas.html" class="btn btn-neutral float-right" title="geopandas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

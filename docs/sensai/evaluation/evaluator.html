@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>evaluator &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="evaluator_clustering" href="evaluator_clustering.html" />
+    <link rel="prev" title="eval_util" href="eval_util.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensemble.html">ensemble</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../evaluation.html">evaluation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="crossval.html">crossval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eval_stats.html">eval_stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eval_util.html">eval_util</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">evaluator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluator_clustering.html">evaluator_clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metric_computation.html">metric_computation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../evaluation.html">evaluation</a></li>
+      <li class="breadcrumb-item active">evaluator</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sensai/evaluation/evaluator.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.evaluation.evaluator">
+<span id="evaluator"></span><h1>evaluator<a class="headerlink" href="#module-sensai.evaluation.evaluator" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.MetricsDictProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MetricsDictProvider</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L27"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.MetricsDictProvider" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../tracking/tracking_base.html#sensai.tracking.tracking_base.TrackingMixin" title="sensai.tracking.tracking_base.TrackingMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.tracking.tracking_base.TrackingMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.MetricsDictProvider.compute_metrics">
+<span class="sig-name descname"><span class="pre">compute_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.MetricsDictProvider.compute_metrics" title="Permalink to this definition"></a></dt>
+<dd><p>Computes metrics for the given model, typically by fitting the model and applying it to test data.
+If a tracked experiment was previously set, the metrics are tracked with the string representation
+of the model added under an additional key ‘str(model)’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – the model for which to compute metrics</p></li>
+<li><p><strong>kwargs</strong> – parameters to pass on to the underlying evaluation method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a dictionary with metrics values</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.MetricsDictProviderFromFunction">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MetricsDictProviderFromFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compute_metrics_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModel" title="sensai.vector_model.VectorModel"><span class="pre">sensai.vector_model.VectorModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L55"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.MetricsDictProviderFromFunction" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.evaluator.MetricsDictProvider" title="sensai.evaluation.evaluator.MetricsDictProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.MetricsDictProvider</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.MetricsDictProviderFromFunction.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compute_metrics_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModel" title="sensai.vector_model.VectorModel"><span class="pre">sensai.vector_model.VectorModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.MetricsDictProviderFromFunction.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorModelEvaluationData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorModelEvaluationData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stats_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.evaluation.evaluator.TEvalStats</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModelBase" title="sensai.vector_model.VectorModelBase"><span class="pre">sensai.vector_model.VectorModelBase</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L63"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.VectorModelEvaluationData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.TEvalStats</span></code>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorModelEvaluationData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stats_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.evaluation.evaluator.TEvalStats</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModelBase" title="sensai.vector_model.VectorModelBase"><span class="pre">sensai.vector_model.VectorModelBase</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorModelEvaluationData.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stats_dict</strong> – a dictionary mapping from output variable name to the evaluation statistics object</p></li>
+<li><p><strong>io_data</strong> – the input/output data that was used to produce the results</p></li>
+<li><p><strong>model</strong> – the model that was used to produce predictions</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorModelEvaluationData.model_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model_name</span></span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorModelEvaluationData.model_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorModelEvaluationData.input_data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">input_data</span></span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorModelEvaluationData.input_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorModelEvaluationData.get_eval_stats">
+<span class="sig-name descname"><span class="pre">get_eval_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_var_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.evaluation.evaluator.TEvalStats</span></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorModelEvaluationData.get_eval_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorModelEvaluationData.get_data_frame">
+<span class="sig-name descname"><span class="pre">get_data_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorModelEvaluationData.get_data_frame" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an DataFrame with all evaluation metrics (one row per output variable)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a DataFrame containing evaluation metrics</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorModelEvaluationData.iter_input_output_ground_truth_tuples">
+<span class="sig-name descname"><span class="pre">iter_input_output_ground_truth_tuples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_var_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../util/typing.html#sensai.util.typing.PandasNamedTuple" title="sensai.util.typing.PandasNamedTuple"><span class="pre">sensai.util.typing.PandasNamedTuple</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorModelEvaluationData.iter_input_output_ground_truth_tuples" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorRegressionModelEvaluationData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorRegressionModelEvaluationData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stats_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.evaluation.evaluator.TEvalStats</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModelBase" title="sensai.vector_model.VectorModelBase"><span class="pre">sensai.vector_model.VectorModelBase</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.VectorRegressionModelEvaluationData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.evaluator.VectorModelEvaluationData" title="sensai.evaluation.evaluator.VectorModelEvaluationData"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.VectorModelEvaluationData</span></code></a>[<a class="reference internal" href="eval_stats/eval_stats_regression.html#sensai.evaluation.eval_stats.eval_stats_regression.RegressionEvalStats" title="sensai.evaluation.eval_stats.eval_stats_regression.RegressionEvalStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_regression.RegressionEvalStats</span></code></a>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorRegressionModelEvaluationData.get_eval_stats_collection">
+<span class="sig-name descname"><span class="pre">get_eval_stats_collection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorRegressionModelEvaluationData.get_eval_stats_collection" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.EvaluatorParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EvaluatorParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.DataSplitter" title="sensai.data.DataSplitter"><span class="pre">sensai.data.DataSplitter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_test_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L125"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.EvaluatorParams" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../util/string.html#sensai.util.string.ToStringMixin" title="sensai.util.string.ToStringMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.string.ToStringMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.EvaluatorParams.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.DataSplitter" title="sensai.data.DataSplitter"><span class="pre">sensai.data.DataSplitter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_test_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.EvaluatorParams.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_splitter</strong> – [if test data must be obtained via split] a splitter to use in order to obtain; if None, must specify
+fractionalSplitTestFraction for fractional split (default)</p></li>
+<li><p><strong>fractional_split_test_fraction</strong> – [if test data must be obtained via split, dataSplitter is None] the fraction of the data to
+use for testing/evaluation;</p></li>
+<li><p><strong>fractional_split_random_seed</strong> – [if test data must be obtained via split, dataSplitter is none] the random seed to use for the
+fractional split of the data</p></li>
+<li><p><strong>fractional_split_shuffle</strong> – [if test data must be obtained via split, dataSplitter is None] whether to randomly (based on
+randomSeed) shuffle the dataset before splitting it</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.EvaluatorParams.get_data_splitter">
+<span class="sig-name descname"><span class="pre">get_data_splitter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../data.html#sensai.data.DataSplitter" title="sensai.data.DataSplitter"><span class="pre">sensai.data.DataSplitter</span></a></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.EvaluatorParams.get_data_splitter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.EvaluatorParams.set_data_splitter">
+<span class="sig-name descname"><span class="pre">set_data_splitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.DataSplitter" title="sensai.data.DataSplitter"><span class="pre">sensai.data.DataSplitter</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.EvaluatorParams.set_data_splitter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorModelEvaluator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorModelEvaluator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.evaluator.EvaluatorParams" title="sensai.evaluation.evaluator.EvaluatorParams"><span class="pre">sensai.evaluation.evaluator.EvaluatorParams</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L168"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.VectorModelEvaluator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.evaluator.MetricsDictProvider" title="sensai.evaluation.evaluator.MetricsDictProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.MetricsDictProvider</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.TEvalData</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorModelEvaluator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.evaluator.EvaluatorParams" title="sensai.evaluation.evaluator.EvaluatorParams"><span class="pre">sensai.evaluation.evaluator.EvaluatorParams</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorModelEvaluator.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructs an evaluator with test and training data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – the full data set, or, if <cite>test_data</cite> is given, the training data</p></li>
+<li><p><strong>test_data</strong> – the data to use for testing/evaluation; if None, must specify appropriate parameters to define splitting</p></li>
+<li><p><strong>params</strong> – the parameters</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorModelEvaluator.set_tracked_experiment">
+<span class="sig-name descname"><span class="pre">set_tracked_experiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tracked_experiment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tracking/tracking_base.html#sensai.tracking.tracking_base.TrackedExperiment" title="sensai.tracking.tracking_base.TrackedExperiment"><span class="pre">sensai.tracking.tracking_base.TrackedExperiment</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorModelEvaluator.set_tracked_experiment" title="Permalink to this definition"></a></dt>
+<dd><p>Sets a tracked experiment which will result in metrics being saved whenever computeMetrics is called
+or evalModel is called with track=True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tracked_experiment</strong> – the experiment in which to track evaluation metrics.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorModelEvaluator.eval_model">
+<span class="sig-name descname"><span class="pre">eval_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModelBase" title="sensai.vector_model.VectorModelBase"><span class="pre">sensai.vector_model.VectorModelBase</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModelFittableBase" title="sensai.vector_model.VectorModelFittableBase"><span class="pre">sensai.vector_model.VectorModelFittableBase</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_training_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.evaluation.evaluator.TEvalData</span></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorModelEvaluator.eval_model" title="Permalink to this definition"></a></dt>
+<dd><p>Evaluates the given model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – the model to evaluate</p></li>
+<li><p><strong>on_training_data</strong> – if True, evaluate on this evaluator’s training data rather than the held-out test data</p></li>
+<li><p><strong>track</strong> – whether to track the evaluation metrics for the case where a tracked experiment was set on this object</p></li>
+<li><p><strong>fit</strong> – whether to fit the model before evaluating it (via this object’s <cite>fit_model</cite> method); if enabled, the model
+must support fitting</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the evaluation result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorModelEvaluator.create_metrics_dict_provider">
+<span class="sig-name descname"><span class="pre">create_metrics_dict_provider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_var_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.evaluation.evaluator.MetricsDictProvider" title="sensai.evaluation.evaluator.MetricsDictProvider"><span class="pre">sensai.evaluation.evaluator.MetricsDictProvider</span></a></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorModelEvaluator.create_metrics_dict_provider" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a metrics dictionary provider, e.g. for use in hyperparameter optimisation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>predicted_var_name</strong> – the name of the predicted variable for which to obtain evaluation metrics; may be None only
+if the model outputs but a single predicted variable</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a metrics dictionary provider instance for the given variable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorModelEvaluator.fit_model">
+<span class="sig-name descname"><span class="pre">fit_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModelFittableBase" title="sensai.vector_model.VectorModelFittableBase"><span class="pre">sensai.vector_model.VectorModelFittableBase</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorModelEvaluator.fit_model" title="Permalink to this definition"></a></dt>
+<dd><p>Fits the given model’s parameters using this evaluator’s training data</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.RegressionEvaluatorParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RegressionEvaluatorParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.DataSplitter" title="sensai.data.DataSplitter"><span class="pre">sensai.data.DataSplitter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_test_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="eval_stats/eval_stats_regression.html#sensai.evaluation.eval_stats.eval_stats_regression.RegressionMetric" title="sensai.evaluation.eval_stats.eval_stats_regression.RegressionMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_regression.RegressionMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="eval_stats/eval_stats_regression.html#sensai.evaluation.eval_stats.eval_stats_regression.RegressionMetric" title="sensai.evaluation.eval_stats.eval_stats_regression.RegressionMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_regression.RegressionMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_data_frame_transformer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L251"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.RegressionEvaluatorParams" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.evaluator.EvaluatorParams" title="sensai.evaluation.evaluator.EvaluatorParams"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.EvaluatorParams</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.RegressionEvaluatorParams.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.DataSplitter" title="sensai.data.DataSplitter"><span class="pre">sensai.data.DataSplitter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_test_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="eval_stats/eval_stats_regression.html#sensai.evaluation.eval_stats.eval_stats_regression.RegressionMetric" title="sensai.evaluation.eval_stats.eval_stats_regression.RegressionMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_regression.RegressionMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="eval_stats/eval_stats_regression.html#sensai.evaluation.eval_stats.eval_stats_regression.RegressionMetric" title="sensai.evaluation.eval_stats.eval_stats_regression.RegressionMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_regression.RegressionMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_data_frame_transformer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.RegressionEvaluatorParams.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_splitter</strong> – [if test data must be obtained via split] a splitter to use in order to obtain; if None, must specify
+fractionalSplitTestFraction for fractional split (default)</p></li>
+<li><p><strong>fractional_split_test_fraction</strong> – [if dataSplitter is None, test data must be obtained via split] the fraction of the data to
+use for testing/evaluation;</p></li>
+<li><p><strong>fractional_split_random_seed</strong> – [if dataSplitter is none, test data must be obtained via split] the random seed to use for the
+fractional split of the data</p></li>
+<li><p><strong>fractional_split_shuffle</strong> – [if dataSplitter is None, test data must be obtained via split] whether to randomly (based on
+randomSeed) shuffle the dataset before splitting it</p></li>
+<li><p><strong>metrics</strong> – regression metrics to apply. If None, default regression metrics are used.</p></li>
+<li><p><strong>additional_metrics</strong> – additional regression metrics to apply</p></li>
+<li><p><strong>output_data_frame_transformer</strong> – a data frame transformer to apply to all output data frames (both model outputs and ground
+truth), such that evaluation metrics are computed on the transformed data frame</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.RegressionEvaluatorParams.from_dict_or_instance">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict_or_instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.evaluation.evaluator.RegressionEvaluatorParams" title="sensai.evaluation.evaluator.RegressionEvaluatorParams"><span class="pre">sensai.evaluation.evaluator.RegressionEvaluatorParams</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.evaluation.evaluator.RegressionEvaluatorParams" title="sensai.evaluation.evaluator.RegressionEvaluatorParams"><span class="pre">sensai.evaluation.evaluator.RegressionEvaluatorParams</span></a></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.RegressionEvaluatorParams.from_dict_or_instance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorRegressionModelEvaluatorParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorRegressionModelEvaluatorParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L295"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.VectorRegressionModelEvaluatorParams" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.evaluator.RegressionEvaluatorParams" title="sensai.evaluation.evaluator.RegressionEvaluatorParams"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.RegressionEvaluatorParams</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorRegressionModelEvaluatorParams.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorRegressionModelEvaluatorParams.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_splitter</strong> – [if test data must be obtained via split] a splitter to use in order to obtain; if None, must specify
+fractionalSplitTestFraction for fractional split (default)</p></li>
+<li><p><strong>fractional_split_test_fraction</strong> – [if dataSplitter is None, test data must be obtained via split] the fraction of the data to
+use for testing/evaluation;</p></li>
+<li><p><strong>fractional_split_random_seed</strong> – [if dataSplitter is none, test data must be obtained via split] the random seed to use for the
+fractional split of the data</p></li>
+<li><p><strong>fractional_split_shuffle</strong> – [if dataSplitter is None, test data must be obtained via split] whether to randomly (based on
+randomSeed) shuffle the dataset before splitting it</p></li>
+<li><p><strong>metrics</strong> – regression metrics to apply. If None, default regression metrics are used.</p></li>
+<li><p><strong>additional_metrics</strong> – additional regression metrics to apply</p></li>
+<li><p><strong>output_data_frame_transformer</strong> – a data frame transformer to apply to all output data frames (both model outputs and ground
+truth), such that evaluation metrics are computed on the transformed data frame</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorRegressionModelEvaluator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorRegressionModelEvaluator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.evaluator.RegressionEvaluatorParams" title="sensai.evaluation.evaluator.RegressionEvaluatorParams"><span class="pre">sensai.evaluation.evaluator.RegressionEvaluatorParams</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L301"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.VectorRegressionModelEvaluator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.evaluator.VectorModelEvaluator" title="sensai.evaluation.evaluator.VectorModelEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.VectorModelEvaluator</span></code></a>[<a class="reference internal" href="#sensai.evaluation.evaluator.VectorRegressionModelEvaluationData" title="sensai.evaluation.evaluator.VectorRegressionModelEvaluationData"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.VectorRegressionModelEvaluationData</span></code></a>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorRegressionModelEvaluator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.evaluator.RegressionEvaluatorParams" title="sensai.evaluation.evaluator.RegressionEvaluatorParams"><span class="pre">sensai.evaluation.evaluator.RegressionEvaluatorParams</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorRegressionModelEvaluator.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructs an evaluator with test and training data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – the full data set, or, if testData is given, the training data</p></li>
+<li><p><strong>test_data</strong> – the data to use for testing/evaluation; if None, must specify appropriate parameters to define splitting</p></li>
+<li><p><strong>params</strong> – the parameters</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorRegressionModelEvaluator.compute_test_data_outputs">
+<span class="sig-name descname"><span class="pre">compute_test_data_outputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModelBase" title="sensai.vector_model.VectorModelBase"><span class="pre">sensai.vector_model.VectorModelBase</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorRegressionModelEvaluator.compute_test_data_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Applies the given model to the test data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> – the model to apply</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a pair (predictions, groundTruth)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorClassificationModelEvaluationData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorClassificationModelEvaluationData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stats_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.evaluation.evaluator.TEvalStats</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModelBase" title="sensai.vector_model.VectorModelBase"><span class="pre">sensai.vector_model.VectorModelBase</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L362"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.VectorClassificationModelEvaluationData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.evaluator.VectorModelEvaluationData" title="sensai.evaluation.evaluator.VectorModelEvaluationData"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.VectorModelEvaluationData</span></code></a>[<a class="reference internal" href="eval_stats/eval_stats_classification.html#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></code></a>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorClassificationModelEvaluationData.get_misclassified_inputs_data_frame">
+<span class="sig-name descname"><span class="pre">get_misclassified_inputs_data_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorClassificationModelEvaluationData.get_misclassified_inputs_data_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorClassificationModelEvaluationData.get_misclassified_triples_pred_true_input">
+<span class="sig-name descname"><span class="pre">get_misclassified_triples_pred_true_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorClassificationModelEvaluationData.get_misclassified_triples_pred_true_input" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list containing a triple (predicted class, true class, input series) for each misclassified data point</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.ClassificationEvaluatorParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationEvaluatorParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.DataSplitter" title="sensai.data.DataSplitter"><span class="pre">sensai.data.DataSplitter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_test_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="eval_stats/eval_stats_classification.html#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_probabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary_positive_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">('__guess',)</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L375"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.ClassificationEvaluatorParams" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.evaluator.EvaluatorParams" title="sensai.evaluation.evaluator.EvaluatorParams"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.EvaluatorParams</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.ClassificationEvaluatorParams.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.DataSplitter" title="sensai.data.DataSplitter"><span class="pre">sensai.data.DataSplitter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_test_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional_split_shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="eval_stats/eval_stats_classification.html#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_probabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary_positive_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">('__guess',)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.ClassificationEvaluatorParams.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_splitter</strong> – [if test data must be obtained via split] a splitter to use in order to obtain; if None, must specify
+fractionalSplitTestFraction for fractional split (default)</p></li>
+<li><p><strong>fractional_split_test_fraction</strong> – [if dataSplitter is None, test data must be obtained via split] the fraction of the data to
+use for testing/evaluation</p></li>
+<li><p><strong>fractional_split_random_seed</strong> – [if dataSplitter is none, test data must be obtained via split] the random seed to use for the
+fractional split of the data</p></li>
+<li><p><strong>fractional_split_shuffle</strong> – [if dataSplitter is None, test data must be obtained via split] whether to randomly (based on
+randomSeed) shuffle the dataset before splitting it</p></li>
+<li><p><strong>additional_metrics</strong> – additional metrics to apply</p></li>
+<li><p><strong>compute_probabilities</strong> – whether to compute class probabilities. Enabling this will enable many downstream computations
+and visualisations (e.g. precision-recall plots) but requires the model to support probability computation in general.</p></li>
+<li><p><strong>binary_positive_label</strong> – the positive class label for binary classification; if GUESS, try to detect from labels;
+if None, no detection (assume non-binary classification)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.ClassificationEvaluatorParams.from_dict_or_instance">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict_or_instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.evaluation.evaluator.ClassificationEvaluatorParams" title="sensai.evaluation.evaluator.ClassificationEvaluatorParams"><span class="pre">sensai.evaluation.evaluator.ClassificationEvaluatorParams</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.evaluation.evaluator.ClassificationEvaluatorParams" title="sensai.evaluation.evaluator.ClassificationEvaluatorParams"><span class="pre">sensai.evaluation.evaluator.ClassificationEvaluatorParams</span></a></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.ClassificationEvaluatorParams.from_dict_or_instance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorClassificationModelEvaluatorParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorClassificationModelEvaluatorParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L416"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.VectorClassificationModelEvaluatorParams" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.evaluator.ClassificationEvaluatorParams" title="sensai.evaluation.evaluator.ClassificationEvaluatorParams"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.ClassificationEvaluatorParams</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorClassificationModelEvaluatorParams.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorClassificationModelEvaluatorParams.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_splitter</strong> – [if test data must be obtained via split] a splitter to use in order to obtain; if None, must specify
+fractionalSplitTestFraction for fractional split (default)</p></li>
+<li><p><strong>fractional_split_test_fraction</strong> – [if dataSplitter is None, test data must be obtained via split] the fraction of the data to
+use for testing/evaluation</p></li>
+<li><p><strong>fractional_split_random_seed</strong> – [if dataSplitter is none, test data must be obtained via split] the random seed to use for the
+fractional split of the data</p></li>
+<li><p><strong>fractional_split_shuffle</strong> – [if dataSplitter is None, test data must be obtained via split] whether to randomly (based on
+randomSeed) shuffle the dataset before splitting it</p></li>
+<li><p><strong>additional_metrics</strong> – additional metrics to apply</p></li>
+<li><p><strong>compute_probabilities</strong> – whether to compute class probabilities. Enabling this will enable many downstream computations
+and visualisations (e.g. precision-recall plots) but requires the model to support probability computation in general.</p></li>
+<li><p><strong>binary_positive_label</strong> – the positive class label for binary classification; if GUESS, try to detect from labels;
+if None, no detection (assume non-binary classification)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorClassificationModelEvaluator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorClassificationModelEvaluator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.evaluator.ClassificationEvaluatorParams" title="sensai.evaluation.evaluator.ClassificationEvaluatorParams"><span class="pre">sensai.evaluation.evaluator.ClassificationEvaluatorParams</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L422"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.VectorClassificationModelEvaluator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.evaluator.VectorModelEvaluator" title="sensai.evaluation.evaluator.VectorModelEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.VectorModelEvaluator</span></code></a>[<a class="reference internal" href="#sensai.evaluation.evaluator.VectorClassificationModelEvaluationData" title="sensai.evaluation.evaluator.VectorClassificationModelEvaluationData"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.VectorClassificationModelEvaluationData</span></code></a>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorClassificationModelEvaluator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.evaluator.ClassificationEvaluatorParams" title="sensai.evaluation.evaluator.ClassificationEvaluatorParams"><span class="pre">sensai.evaluation.evaluator.ClassificationEvaluatorParams</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorClassificationModelEvaluator.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructs an evaluator with test and training data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – the full data set, or, if <cite>test_data</cite> is given, the training data</p></li>
+<li><p><strong>test_data</strong> – the data to use for testing/evaluation; if None, must specify appropriate parameters to define splitting</p></li>
+<li><p><strong>params</strong> – the parameters</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.VectorClassificationModelEvaluator.compute_test_data_outputs">
+<span class="sig-name descname"><span class="pre">compute_test_data_outputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.VectorClassificationModelEvaluator.compute_test_data_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Applies the given model to the test data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> – the model to apply</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a triple (predictions, predicted class probability vectors, groundTruth) of DataFrames</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.RuleBasedVectorClassificationModelEvaluator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RuleBasedVectorClassificationModelEvaluator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L478"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.RuleBasedVectorClassificationModelEvaluator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.evaluator.VectorClassificationModelEvaluator" title="sensai.evaluation.evaluator.VectorClassificationModelEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.VectorClassificationModelEvaluator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.RuleBasedVectorClassificationModelEvaluator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.RuleBasedVectorClassificationModelEvaluator.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructs an evaluator with test and training data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – the full data set, or, if <cite>test_data</cite> is given, the training data</p></li>
+<li><p><strong>test_data</strong> – the data to use for testing/evaluation; if None, must specify appropriate parameters to define splitting</p></li>
+<li><p><strong>params</strong> – the parameters</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.RuleBasedVectorClassificationModelEvaluator.eval_model">
+<span class="sig-name descname"><span class="pre">eval_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModelBase" title="sensai.vector_model.VectorModelBase"><span class="pre">sensai.vector_model.VectorModelBase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_training_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.evaluation.evaluator.VectorClassificationModelEvaluationData" title="sensai.evaluation.evaluator.VectorClassificationModelEvaluationData"><span class="pre">sensai.evaluation.evaluator.VectorClassificationModelEvaluationData</span></a></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.RuleBasedVectorClassificationModelEvaluator.eval_model" title="Permalink to this definition"></a></dt>
+<dd><p>Evaluate the rule based model. The training data and test data coincide, thus fitting the model
+will fit the model’s preprocessors on the full data set and evaluating it will evaluate the model on the
+same data set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – the model to evaluate</p></li>
+<li><p><strong>on_training_data</strong> – has to be False here. Setting to True is not supported and will lead to an
+exception</p></li>
+<li><p><strong>track</strong> – whether to track the evaluation metrics for the case where a tracked experiment was set on this object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the evaluation result</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.RuleBasedVectorRegressionModelEvaluator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RuleBasedVectorRegressionModelEvaluator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/evaluator.py#L501"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.evaluator.RuleBasedVectorRegressionModelEvaluator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.evaluator.VectorRegressionModelEvaluator" title="sensai.evaluation.evaluator.VectorRegressionModelEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.VectorRegressionModelEvaluator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.RuleBasedVectorRegressionModelEvaluator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.evaluator.RuleBasedVectorRegressionModelEvaluator.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructs an evaluator with test and training data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – the full data set, or, if testData is given, the training data</p></li>
+<li><p><strong>test_data</strong> – the data to use for testing/evaluation; if None, must specify appropriate parameters to define splitting</p></li>
+<li><p><strong>params</strong> – the parameters</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.evaluator.RuleBasedVectorRegressionModelEvaluator.eval_model">
+<span class="sig-name descname"><span class="pre">eval_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModelBase" title="sensai.vector_model.VectorModelBase"><span class="pre">sensai.vector_model.VectorModelBase</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModelFittableBase" title="sensai.vector_model.VectorModelFittableBase"><span class="pre">sensai.vector_model.VectorModelFittableBase</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_training_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.evaluation.evaluator.VectorRegressionModelEvaluationData" title="sensai.evaluation.evaluator.VectorRegressionModelEvaluationData"><span class="pre">sensai.evaluation.evaluator.VectorRegressionModelEvaluationData</span></a></span></span><a class="headerlink" href="#sensai.evaluation.evaluator.RuleBasedVectorRegressionModelEvaluator.eval_model" title="Permalink to this definition"></a></dt>
+<dd><p>Evaluate the rule based model. The training data and test data coincide, thus fitting the model
+will fit the model’s preprocessors on the full data set and evaluating it will evaluate the model on the
+same data set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – the model to evaluate</p></li>
+<li><p><strong>on_training_data</strong> – has to be False here. Setting to True is not supported and will lead to an
+exception</p></li>
+<li><p><strong>track</strong> – whether to track the evaluation metrics for the case where a tracked experiment was set on this object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the evaluation result</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eval_util.html" class="btn btn-neutral float-left" title="eval_util" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="evaluator_clustering.html" class="btn btn-neutral float-right" title="evaluator_clustering" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

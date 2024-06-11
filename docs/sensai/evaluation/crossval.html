@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>crossval &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="eval_stats" href="eval_stats.html" />
+    <link rel="prev" title="evaluation" href="../evaluation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensemble.html">ensemble</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../evaluation.html">evaluation</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">crossval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eval_stats.html">eval_stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eval_util.html">eval_util</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluator.html">evaluator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluator_clustering.html">evaluator_clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metric_computation.html">metric_computation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../evaluation.html">evaluation</a></li>
+      <li class="breadcrumb-item active">crossval</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sensai/evaluation/crossval.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.evaluation.crossval">
+<span id="crossval"></span><h1>crossval<a class="headerlink" href="#module-sensai.evaluation.crossval" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorModelCrossValidationData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorModelCrossValidationData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trained_models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.crossval.TModel</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_data_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.crossval.TEvalData</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicted_var_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_indices_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/crossval.py#L29"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.crossval.VectorModelCrossValidationData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.evaluation.crossval.TModel</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.evaluation.crossval.TEvalData</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.evaluation.crossval.TEvalStats</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.evaluation.crossval.TEvalStatsCollection</span></code>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorModelCrossValidationData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trained_models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.crossval.TModel</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_data_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.crossval.TEvalData</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicted_var_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_indices_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.crossval.VectorModelCrossValidationData.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorModelCrossValidationData.model_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model_name</span></span><a class="headerlink" href="#sensai.evaluation.crossval.VectorModelCrossValidationData.model_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorModelCrossValidationData.get_eval_stats_collection">
+<span class="sig-name descname"><span class="pre">get_eval_stats_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_var_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.evaluation.crossval.TEvalStatsCollection</span></span></span><a class="headerlink" href="#sensai.evaluation.crossval.VectorModelCrossValidationData.get_eval_stats_collection" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorModelCrossValidationData.iter_input_output_ground_truth_tuples">
+<span class="sig-name descname"><span class="pre">iter_input_output_ground_truth_tuples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_var_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../util/typing.html#sensai.util.typing.PandasNamedTuple" title="sensai.util.typing.PandasNamedTuple"><span class="pre">sensai.util.typing.PandasNamedTuple</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.crossval.VectorModelCrossValidationData.iter_input_output_ground_truth_tuples" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorModelCrossValidationData.track_metrics">
+<span class="sig-name descname"><span class="pre">track_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tracking_context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tracking/tracking_base.html#sensai.tracking.tracking_base.TrackingContext" title="sensai.tracking.tracking_base.TrackingContext"><span class="pre">sensai.tracking.tracking_base.TrackingContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.crossval.VectorModelCrossValidationData.track_metrics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.CrossValidationSplitter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CrossValidationSplitter</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/crossval.py#L72"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.crossval.CrossValidationSplitter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Defines a mechanism with which to generate data splits for cross-validation</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.CrossValidationSplitter.create_folds">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_folds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_folds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.crossval.CrossValidationSplitter.create_folds" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – the data from which to obtain the folds</p></li>
+<li><p><strong>num_folds</strong> – the number of splits/folds</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list containing numFolds tuples (t, e) where t and e are sequences of data point indices to use for training
+and evaluation respectively</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.CrossValidationSplitterDefault">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CrossValidationSplitterDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/crossval.py#L87"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.crossval.CrossValidationSplitterDefault" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.crossval.CrossValidationSplitter" title="sensai.evaluation.crossval.CrossValidationSplitter"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.crossval.CrossValidationSplitter</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.CrossValidationSplitterDefault.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.crossval.CrossValidationSplitterDefault.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.CrossValidationSplitterDefault.create_folds">
+<span class="sig-name descname"><span class="pre">create_folds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_splits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.crossval.CrossValidationSplitterDefault.create_folds" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – the data from which to obtain the folds</p></li>
+<li><p><strong>num_folds</strong> – the number of splits/folds</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list containing numFolds tuples (t, e) where t and e are sequences of data point indices to use for training
+and evaluation respectively</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.CrossValidationSplitterNested">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CrossValidationSplitterNested</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/crossval.py#L109"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.crossval.CrossValidationSplitterNested" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.crossval.CrossValidationSplitter" title="sensai.evaluation.crossval.CrossValidationSplitter"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.crossval.CrossValidationSplitter</span></code></a></p>
+<p>A data splitter for nested cross-validation (which is useful, in particular, for time series prediction problems)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.CrossValidationSplitterNested.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.crossval.CrossValidationSplitterNested.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.CrossValidationSplitterNested.create_folds">
+<span class="sig-name descname"><span class="pre">create_folds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_folds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.crossval.CrossValidationSplitterNested.create_folds" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – the data from which to obtain the folds</p></li>
+<li><p><strong>num_folds</strong> – the number of splits/folds</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list containing numFolds tuples (t, e) where t and e are sequences of data point indices to use for training
+and evaluation respectively</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorModelCrossValidatorParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorModelCrossValidatorParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.crossval.CrossValidationSplitter" title="sensai.evaluation.crossval.CrossValidationSplitter"><span class="pre">sensai.evaluation.crossval.CrossValidationSplitter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_trained_models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluator_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="evaluator.html#sensai.evaluation.evaluator.RegressionEvaluatorParams" title="sensai.evaluation.evaluator.RegressionEvaluatorParams"><span class="pre">sensai.evaluation.evaluator.RegressionEvaluatorParams</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="evaluator.html#sensai.evaluation.evaluator.ClassificationEvaluatorParams" title="sensai.evaluation.evaluator.ClassificationEvaluatorParams"><span class="pre">sensai.evaluation.evaluator.ClassificationEvaluatorParams</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_splitter_random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_splitter_shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/crossval.py#L126"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.crossval.VectorModelCrossValidatorParams" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorModelCrossValidatorParams.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.crossval.CrossValidationSplitter" title="sensai.evaluation.crossval.CrossValidationSplitter"><span class="pre">sensai.evaluation.crossval.CrossValidationSplitter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_trained_models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluator_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="evaluator.html#sensai.evaluation.evaluator.RegressionEvaluatorParams" title="sensai.evaluation.evaluator.RegressionEvaluatorParams"><span class="pre">sensai.evaluation.evaluator.RegressionEvaluatorParams</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="evaluator.html#sensai.evaluation.evaluator.ClassificationEvaluatorParams" title="sensai.evaluation.evaluator.ClassificationEvaluatorParams"><span class="pre">sensai.evaluation.evaluator.ClassificationEvaluatorParams</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_splitter_random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_splitter_shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.crossval.VectorModelCrossValidatorParams.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>folds</strong> – the number of folds</p></li>
+<li><p><strong>splitter</strong> – the splitter to use in order to generate the folds; if None, use default split (using parameters for random seed
+and shuffling below)</p></li>
+<li><p><strong>return_trained_models</strong> – whether to create a copy of the model for each fold and return each of the models
+(requires that models can be deep-copied); if False, the model that is passed to evalModel is fitted several times</p></li>
+<li><p><strong>evaluator_params</strong> – the model evaluator parameters</p></li>
+<li><p><strong>default_splitter_random_seed</strong> – [if splitter is None] the random seed to use for splits</p></li>
+<li><p><strong>default_splitter_shuffle</strong> – [if splitter is None] whether to shuffle the data (using randomSeed) before creating the folds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorModelCrossValidator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorModelCrossValidator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.crossval.VectorModelCrossValidatorParams" title="sensai.evaluation.crossval.VectorModelCrossValidatorParams"><span class="pre">sensai.evaluation.crossval.VectorModelCrossValidatorParams</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/crossval.py#L152"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.crossval.VectorModelCrossValidator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="evaluator.html#sensai.evaluation.evaluator.MetricsDictProvider" title="sensai.evaluation.evaluator.MetricsDictProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.MetricsDictProvider</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.evaluation.crossval.TCrossValData</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorModelCrossValidator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.crossval.VectorModelCrossValidatorParams" title="sensai.evaluation.crossval.VectorModelCrossValidatorParams"><span class="pre">sensai.evaluation.crossval.VectorModelCrossValidatorParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.crossval.VectorModelCrossValidator.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – the data set</p></li>
+<li><p><strong>params</strong> – parameters</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorModelCrossValidator.for_model">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">for_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModel" title="sensai.vector_model.VectorModel"><span class="pre">sensai.vector_model.VectorModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.crossval.VectorModelCrossValidatorParams" title="sensai.evaluation.crossval.VectorModelCrossValidatorParams"><span class="pre">sensai.evaluation.crossval.VectorModelCrossValidatorParams</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.crossval.VectorClassificationModelCrossValidator" title="sensai.evaluation.crossval.VectorClassificationModelCrossValidator"><span class="pre">sensai.evaluation.crossval.VectorClassificationModelCrossValidator</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.evaluation.crossval.VectorRegressionModelCrossValidator" title="sensai.evaluation.crossval.VectorRegressionModelCrossValidator"><span class="pre">sensai.evaluation.crossval.VectorRegressionModelCrossValidator</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.crossval.VectorModelCrossValidator.for_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorModelCrossValidator.eval_model">
+<span class="sig-name descname"><span class="pre">eval_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModel" title="sensai.vector_model.VectorModel"><span class="pre">sensai.vector_model.VectorModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.crossval.VectorModelCrossValidator.eval_model" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – the model to evaluate</p></li>
+<li><p><strong>track</strong> – whether tracking shall be enabled for the case where a tracked experiment is set on this object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>cross-validation results</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorModelCrossValidator.create_metrics_dict_provider">
+<span class="sig-name descname"><span class="pre">create_metrics_dict_provider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_var_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="evaluator.html#sensai.evaluation.evaluator.MetricsDictProvider" title="sensai.evaluation.evaluator.MetricsDictProvider"><span class="pre">sensai.evaluation.evaluator.MetricsDictProvider</span></a></span></span><a class="headerlink" href="#sensai.evaluation.crossval.VectorModelCrossValidator.create_metrics_dict_provider" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a metrics dictionary provider, e.g. for use in hyperparameter optimisation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>predicted_var_name</strong> – the name of the predicted variable for which to obtain evaluation metrics; may be None only
+if the model outputs but a single predicted variable</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a metrics dictionary provider instance for the given variable</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorRegressionModelCrossValidationData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorRegressionModelCrossValidationData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trained_models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.crossval.TModel</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_data_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.crossval.TEvalData</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicted_var_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_indices_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/crossval.py#L228"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.crossval.VectorRegressionModelCrossValidationData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.crossval.VectorModelCrossValidationData" title="sensai.evaluation.crossval.VectorModelCrossValidationData"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.crossval.VectorModelCrossValidationData</span></code></a>[<a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorRegressionModel" title="sensai.vector_model.VectorRegressionModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorRegressionModel</span></code></a>, <a class="reference internal" href="evaluator.html#sensai.evaluation.evaluator.VectorRegressionModelEvaluationData" title="sensai.evaluation.evaluator.VectorRegressionModelEvaluationData"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.VectorRegressionModelEvaluationData</span></code></a>, <a class="reference internal" href="eval_stats/eval_stats_regression.html#sensai.evaluation.eval_stats.eval_stats_regression.RegressionEvalStats" title="sensai.evaluation.eval_stats.eval_stats_regression.RegressionEvalStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_regression.RegressionEvalStats</span></code></a>, <a class="reference internal" href="eval_stats/eval_stats_regression.html#sensai.evaluation.eval_stats.eval_stats_regression.RegressionEvalStatsCollection" title="sensai.evaluation.eval_stats.eval_stats_regression.RegressionEvalStatsCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_regression.RegressionEvalStatsCollection</span></code></a>]</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorRegressionModelCrossValidator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorRegressionModelCrossValidator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.crossval.VectorModelCrossValidatorParams" title="sensai.evaluation.crossval.VectorModelCrossValidatorParams"><span class="pre">sensai.evaluation.crossval.VectorModelCrossValidatorParams</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/crossval.py#L234"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.crossval.VectorRegressionModelCrossValidator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.crossval.VectorModelCrossValidator" title="sensai.evaluation.crossval.VectorModelCrossValidator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.crossval.VectorModelCrossValidator</span></code></a>[<a class="reference internal" href="#sensai.evaluation.crossval.VectorRegressionModelCrossValidationData" title="sensai.evaluation.crossval.VectorRegressionModelCrossValidationData"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.crossval.VectorRegressionModelCrossValidationData</span></code></a>]</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorClassificationModelCrossValidationData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorClassificationModelCrossValidationData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trained_models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.crossval.TModel</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_data_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.crossval.TEvalData</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicted_var_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_indices_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/crossval.py#L244"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.crossval.VectorClassificationModelCrossValidationData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.crossval.VectorModelCrossValidationData" title="sensai.evaluation.crossval.VectorModelCrossValidationData"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.crossval.VectorModelCrossValidationData</span></code></a>[<a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorClassificationModel" title="sensai.vector_model.VectorClassificationModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorClassificationModel</span></code></a>, <a class="reference internal" href="evaluator.html#sensai.evaluation.evaluator.VectorClassificationModelEvaluationData" title="sensai.evaluation.evaluator.VectorClassificationModelEvaluationData"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.evaluator.VectorClassificationModelEvaluationData</span></code></a>, <a class="reference internal" href="eval_stats/eval_stats_classification.html#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></code></a>, <a class="reference internal" href="eval_stats/eval_stats_classification.html#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsCollection" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsCollection</span></code></a>]</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.crossval.VectorClassificationModelCrossValidator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorClassificationModelCrossValidator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data.html#sensai.data.InputOutputData" title="sensai.data.InputOutputData"><span class="pre">sensai.data.InputOutputData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.crossval.VectorModelCrossValidatorParams" title="sensai.evaluation.crossval.VectorModelCrossValidatorParams"><span class="pre">sensai.evaluation.crossval.VectorModelCrossValidatorParams</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/crossval.py#L250"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.crossval.VectorClassificationModelCrossValidator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.crossval.VectorModelCrossValidator" title="sensai.evaluation.crossval.VectorModelCrossValidator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.crossval.VectorModelCrossValidator</span></code></a>[<a class="reference internal" href="#sensai.evaluation.crossval.VectorClassificationModelCrossValidationData" title="sensai.evaluation.crossval.VectorClassificationModelCrossValidationData"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.crossval.VectorClassificationModelCrossValidationData</span></code></a>]</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../evaluation.html" class="btn btn-neutral float-left" title="evaluation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eval_stats.html" class="btn btn-neutral float-right" title="eval_stats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

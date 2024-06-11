@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>distance_metric &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ensemble" href="ensemble.html" />
+    <link rel="prev" title="value_transformation" href="data_transformation/value_transformation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">distance_metric</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/sensai/distance_metric.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.distance_metric">
+<span id="distance-metric"></span><h1>distance_metric<a class="headerlink" href="#module-sensai.distance_metric" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.distance_metric.DistanceMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DistanceMetric</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/distance_metric.py#L19"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.distance_metric.DistanceMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract base class for (symmetric) distance metrics</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.DistanceMetric.distance">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">named_tuple_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="util/typing.html#sensai.util.typing.PandasNamedTuple" title="sensai.util.typing.PandasNamedTuple"><span class="pre">sensai.util.typing.PandasNamedTuple</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">named_tuple_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="util/typing.html#sensai.util.typing.PandasNamedTuple" title="sensai.util.typing.PandasNamedTuple"><span class="pre">sensai.util.typing.PandasNamedTuple</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#sensai.distance_metric.DistanceMetric.distance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.distance_metric.SingleColumnDistanceMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SingleColumnDistanceMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/distance_metric.py#L32"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.distance_metric.SingleColumnDistanceMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.distance_metric.DistanceMetric" title="sensai.distance_metric.DistanceMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.distance_metric.DistanceMetric</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.SingleColumnDistanceMetric.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.SingleColumnDistanceMetric.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.SingleColumnDistanceMetric.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">named_tuple_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="util/typing.html#sensai.util.typing.PandasNamedTuple" title="sensai.util.typing.PandasNamedTuple"><span class="pre">sensai.util.typing.PandasNamedTuple</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">named_tuple_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="util/typing.html#sensai.util.typing.PandasNamedTuple" title="sensai.util.typing.PandasNamedTuple"><span class="pre">sensai.util.typing.PandasNamedTuple</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.SingleColumnDistanceMetric.distance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.distance_metric.DistanceMatrixDFCache">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DistanceMatrixDFCache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pickle_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_on_update</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deferred_save_delay_secs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/distance_metric.py#L45"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.distance_metric.DistanceMatrixDFCache" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="util/cache.html#sensai.util.cache.PersistentKeyValueCache" title="sensai.util.cache.PersistentKeyValueCache"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.cache.PersistentKeyValueCache</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]], <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TValue</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TValue</span></code>]</p>
+<p>A cache for distance matrices, which are stored as dataframes with identifiers as both index and columns</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.DistanceMatrixDFCache.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pickle_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_on_update</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deferred_save_delay_secs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.DistanceMatrixDFCache.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.DistanceMatrixDFCache.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.DistanceMatrixDFCache.shape" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.DistanceMatrixDFCache.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.DistanceMatrixDFCache.set" title="Permalink to this definition"></a></dt>
+<dd><p>Sets a cached value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – the key under which to store the value</p></li>
+<li><p><strong>value</strong> – the value to store; since None is used indicate the absence of a value, None should not be
+used a value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.DistanceMatrixDFCache.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.DistanceMatrixDFCache.save" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.DistanceMatrixDFCache.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.util.cache.TValue</span></span></span><a class="headerlink" href="#sensai.distance_metric.DistanceMatrixDFCache.get" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves a cached value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the lookup key</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the cached value or None if no value is found</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.DistanceMatrixDFCache.num_unfilled_entries">
+<span class="sig-name descname"><span class="pre">num_unfilled_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.DistanceMatrixDFCache.num_unfilled_entries" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.DistanceMatrixDFCache.get_all_cached">
+<span class="sig-name descname"><span class="pre">get_all_cached</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.DistanceMatrixDFCache.get_all_cached" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.distance_metric.CachedDistanceMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CachedDistanceMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_metric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.distance_metric.DistanceMetric" title="sensai.distance_metric.DistanceMetric"><span class="pre">sensai.distance_metric.DistanceMetric</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_value_cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="util/cache.html#sensai.util.cache.KeyValueCache" title="sensai.util.cache.KeyValueCache"><span class="pre">sensai.util.cache.KeyValueCache</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">persist_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/distance_metric.py#L106"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.distance_metric.CachedDistanceMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.distance_metric.DistanceMetric" title="sensai.distance_metric.DistanceMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.distance_metric.DistanceMetric</span></code></a>, <a class="reference internal" href="util/cache.html#sensai.util.cache.CachedValueProviderMixin" title="sensai.util.cache.CachedValueProviderMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.cache.CachedValueProviderMixin</span></code></a></p>
+<p>A decorator which provides caching for a distance metric, i.e. the metric is computed only if the
+value for the given pair of identifiers is not found within the persistent cache</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.CachedDistanceMetric.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_metric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.distance_metric.DistanceMetric" title="sensai.distance_metric.DistanceMetric"><span class="pre">sensai.distance_metric.DistanceMetric</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_value_cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="util/cache.html#sensai.util.cache.KeyValueCache" title="sensai.util.cache.KeyValueCache"><span class="pre">sensai.util.cache.KeyValueCache</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">persist_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.CachedDistanceMetric.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.CachedDistanceMetric.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">named_tuple_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">named_tuple_b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.CachedDistanceMetric.distance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.CachedDistanceMetric.fill_cache">
+<span class="sig-name descname"><span class="pre">fill_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_indexed_by_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.CachedDistanceMetric.fill_cache" title="Permalink to this definition"></a></dt>
+<dd><p>Fill cache for all identifiers in the provided dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_indexed_by_id</strong> – Dataframe that is indexed by identifiers of the members</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.distance_metric.LinearCombinationDistanceMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LinearCombinationDistanceMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.distance_metric.DistanceMetric" title="sensai.distance_metric.DistanceMetric"><span class="pre">sensai.distance_metric.DistanceMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/distance_metric.py#L146"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.distance_metric.LinearCombinationDistanceMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.distance_metric.DistanceMetric" title="sensai.distance_metric.DistanceMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.distance_metric.DistanceMetric</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.LinearCombinationDistanceMetric.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.distance_metric.DistanceMetric" title="sensai.distance_metric.DistanceMetric"><span class="pre">sensai.distance_metric.DistanceMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.LinearCombinationDistanceMetric.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>metrics</strong> – a sequence of tuples (weight, distance metric)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.LinearCombinationDistanceMetric.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">named_tuple_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">named_tuple_b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.LinearCombinationDistanceMetric.distance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.distance_metric.HellingerDistanceMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HellingerDistanceMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/distance_metric.py#L165"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.distance_metric.HellingerDistanceMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.distance_metric.SingleColumnDistanceMetric" title="sensai.distance_metric.SingleColumnDistanceMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.distance_metric.SingleColumnDistanceMetric</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.HellingerDistanceMetric.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.HellingerDistanceMetric.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.distance_metric.EuclideanDistanceMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EuclideanDistanceMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/distance_metric.py#L193"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.distance_metric.EuclideanDistanceMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.distance_metric.SingleColumnDistanceMetric" title="sensai.distance_metric.SingleColumnDistanceMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.distance_metric.SingleColumnDistanceMetric</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.EuclideanDistanceMetric.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.EuclideanDistanceMetric.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.distance_metric.IdentityDistanceMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">IdentityDistanceMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/distance_metric.py#L204"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.distance_metric.IdentityDistanceMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.distance_metric.DistanceMetric" title="sensai.distance_metric.DistanceMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.distance_metric.DistanceMetric</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.IdentityDistanceMetric.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.IdentityDistanceMetric.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.IdentityDistanceMetric.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">named_tuple_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">named_tuple_b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.IdentityDistanceMetric.distance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.distance_metric.RelativeBitwiseEqualityDistanceMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RelativeBitwiseEqualityDistanceMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/distance_metric.py#L221"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.distance_metric.RelativeBitwiseEqualityDistanceMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.distance_metric.SingleColumnDistanceMetric" title="sensai.distance_metric.SingleColumnDistanceMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.distance_metric.SingleColumnDistanceMetric</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.RelativeBitwiseEqualityDistanceMetric.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.RelativeBitwiseEqualityDistanceMetric.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.distance_metric.RelativeBitwiseEqualityDistanceMetric.check_input_value">
+<span class="sig-name descname"><span class="pre">check_input_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.distance_metric.RelativeBitwiseEqualityDistanceMetric.check_input_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_transformation/value_transformation.html" class="btn btn-neutral float-left" title="value_transformation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ensemble.html" class="btn btn-neutral float-right" title="ensemble" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

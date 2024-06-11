@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to sensAI: Supervised Learning with VectorModels &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/nbsphinx-code-cells.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Neural Networks" href="neural_networks.html" />
+    <link rel="prev" title="sensAI - the Python library for sensible AI" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to sensAI: Supervised Learning with VectorModels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#VectorModels">VectorModels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Training-and-Evaluating-Models">Training and Evaluating Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Low-Level-Training-and-Inference">Low-Level Training and Inference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Using-Evaluators">Using Evaluators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Using-the-Fully-Integrated-Evaluation-Utilities">Using the Fully-Integrated Evaluation Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Simple-Evaluation">Simple Evaluation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Customising-the-Set-of-Plots">Customising the Set of Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Cross-Validation">Cross-Validation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Comparing-Models">Comparing Models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Feature-Generators-and-Data-Frame-Transformers">Feature Generators and Data Frame Transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sensai/index.html">Modules</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction to sensAI: Supervised Learning with VectorModels</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/intro.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Introduction-to-sensAI:-Supervised-Learning-with-VectorModels">
+<h1>Introduction to sensAI: Supervised Learning with VectorModels<a class="headerlink" href="#Introduction-to-sensAI:-Supervised-Learning-with-VectorModels" title="Permalink to this headline"></a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../src&quot;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">sensai</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<section id="Logging">
+<h2>Logging<a class="headerlink" href="#Logging" title="Permalink to this headline"></a></h2>
+<p>sensAI will log relevant activies and inform about ongoing processes as well as results via the log. It is therefore highly recommended that logging be enabled when using sensAI.</p>
+<p>sensAI provides a <code class="docutils literal notranslate"><span class="pre">logging</span></code> module which includes Python’s standard logging module and adds some additional functionality. To enable logging, simply use its <code class="docutils literal notranslate"><span class="pre">configureLogging</span></code> function.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sensai.util</span> <span class="kn">import</span> <span class="n">logging</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>To additionally write log output to a file, use the function <code class="docutils literal notranslate"><span class="pre">logging.add_file_logger</span></code>.</p>
+</section>
+<section id="VectorModels">
+<h2>VectorModels<a class="headerlink" href="#VectorModels" title="Permalink to this headline"></a></h2>
+<p>The central base class for supervised learning problems in sensAI is <code class="docutils literal notranslate"><span class="pre">VectorModel</span></code>. A VectorModel is any model which operates on data points that can be reprsented as vectors of data. Here, vector is to be understood not in the mathematical sense but in the computer science sense, where a vector is simply an array of (potentially arbitaririly complex) data. (The mathematical equivalent is a tuple.) Models are typically expected to be able to process more than one data point at a time and thus
+should be able to process a sequence of vectors.</p>
+<p>We use pandas DataFrames to represent such sequences of data points. Note that pandas DataFrames are not limited to primitive data types but can hold arbitrary objects in every cell. When dealing with a large number of inputs, DataFrames also provide at least limited meta-information in the form of column names, so we do not lose track of what is contained in which element of a data point (vector).</p>
+<p>VectorModel itself is an abstract base class, which provides a lot of useful functionality that all its specialisations inherit (as we will see later, particularly in the more advanced tutorials). The class is specialised in <code class="docutils literal notranslate"><span class="pre">VectorClassificationModel</span></code> and <code class="docutils literal notranslate"><span class="pre">VectorRegressionModel</span></code>, which in turn are specialised for various machine learning frameworks (such as sklearn and PyTorch) or can be directly subclassed to create your own model.</p>
+<p>In this tutorial, we will be dealing with a classification problem. Therefore, we will apply subclasses of <code class="docutils literal notranslate"><span class="pre">VectorClassificationModel</span></code> such as <code class="docutils literal notranslate"><span class="pre">SkLearnRandomForestVectorClassificationModel</span></code>. As an sklearn classification model which uses a well-defined training and inference interface, the implementation of the class is essentially justa few lines of code (given the intermediate abstraction <code class="docutils literal notranslate"><span class="pre">AbstractSkLearnVectorClassificationModel</span></code> for all classification models that use the sklearn
+protocol).</p>
+</section>
+<section id="Training-and-Evaluating-Models">
+<h2>Training and Evaluating Models<a class="headerlink" href="#Training-and-Evaluating-Models" title="Permalink to this headline"></a></h2>
+<p>First, let us load a dataset which we can experiment. sklearn provides, for example, the Iris classification dataset, where the task is to differentiate three different types of flowers based on measurements of their petals and sepals.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn.datasets</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">iris_data</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="n">iris_input_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris_data</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris_data</span><span class="p">[</span><span class="s2">&quot;feature_names&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">iris_output_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">iris_data</span><span class="p">[</span><span class="s2">&quot;target_names&quot;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">iris_data</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]]})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Here’s a sample of the data, combining both the inputs and outputs:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_combined_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">iris_input_df</span><span class="p">,</span> <span class="n">iris_output_df</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">iris_combined_df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal length (cm)</th>
+      <th>sepal width (cm)</th>
+      <th>petal length (cm)</th>
+      <th>petal width (cm)</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>39</th>
+      <td>5.1</td>
+      <td>3.4</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>5.7</td>
+      <td>2.8</td>
+      <td>4.5</td>
+      <td>1.3</td>
+      <td>versicolor</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>5.1</td>
+      <td>3.8</td>
+      <td>1.5</td>
+      <td>0.3</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>6.7</td>
+      <td>3.3</td>
+      <td>5.7</td>
+      <td>2.5</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>6.1</td>
+      <td>3.0</td>
+      <td>4.6</td>
+      <td>1.4</td>
+      <td>versicolor</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>5.8</td>
+      <td>2.7</td>
+      <td>4.1</td>
+      <td>1.0</td>
+      <td>versicolor</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>6.0</td>
+      <td>3.4</td>
+      <td>4.5</td>
+      <td>1.6</td>
+      <td>versicolor</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>5.0</td>
+      <td>3.4</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>6.7</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.3</td>
+      <td>virginica</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>When working with sensAI, we typically use DataFrames such as this as the starting point.</p>
+<p>We create an instance of <strong>InputOutputData</strong> from the two data frames.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_io_data</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">InputOutputData</span><span class="p">(</span><span class="n">iris_input_df</span><span class="p">,</span> <span class="n">iris_output_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Low-Level-Training-and-Inference">
+<h3>Low-Level Training and Inference<a class="headerlink" href="#Low-Level-Training-and-Inference" title="Permalink to this headline"></a></h3>
+<p>We use a <strong>DataSplitter</strong> (see subclasses) to split the data into a training and test set, specifically a <strong>DataSplitterFractional</strong>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_splitter</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataSplitterFractional</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">training_io_data</span><span class="p">,</span> <span class="n">test_io_data</span> <span class="o">=</span> <span class="n">data_splitter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">iris_io_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now we are ready to train a model. Let us train a random forest classifier, which should work well for this sort of problem. sensAI provides models from various libraries, including scikit-learn, PyTorch, lightgbm, xgboost, catboost, and TensorFlow.</p>
+<p>In this case, let us use the random forest implementation from sklearn, which is provided via the wrapper class SkLearnRandomForestVectorClassificationModel.</p>
+<p>sensAI’s <strong>VectorModel</strong> classes (specialised for classification and regression) provide a common interface with a lot of useful functionality, which we will see later.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_forest_model</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">classification</span><span class="o">.</span><span class="n">SkLearnRandomForestVectorClassificationModel</span><span class="p">(</span>
+    <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="s2">&quot;RandomForest&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The class suppports all the parameters supported by the original sklearn model. In this case, we only set the minimum number of samples that must end up in each leaf.</p>
+<p>We train the model using the <code class="docutils literal notranslate"><span class="pre">fitInputOutputData</span></code> method; we could also use the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method, which is analogous to the sklearn interface and takes two arguments (input, output).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_forest_model</span><span class="o">.</span><span class="n">fit_input_output_data</span><span class="p">(</span><span class="n">training_io_data</span><span class="p">)</span>
+<span class="n">random_forest_model</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+INFO  2024-06-11 09:29:34,163 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:34,165 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:34,258 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+SkLearnRandomForestVectorClassificationModel[id=140469611729232, featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+</pre></div></div>
+</div>
+<p>We can now apply the trained model and predict the outputs for the test set we reserved.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predicted_outputs_df</span> <span class="o">=</span> <span class="n">random_forest_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_io_data</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">predicted_outputs_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>91</th>
+      <td>versicolor</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>versicolor</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>versicolor</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>setosa</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Let’s compare some of the predictions to the ground truth.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">predicted_outputs_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;predictedClass&quot;</span><span class="p">}),</span> <span class="n">test_io_data</span><span class="o">.</span><span class="n">outputs</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>predictedClass</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>90</th>
+      <td>versicolor</td>
+      <td>versicolor</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>versicolor</td>
+      <td>versicolor</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>versicolor</td>
+      <td>versicolor</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>versicolor</td>
+      <td>versicolor</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>versicolor</td>
+      <td>versicolor</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>virginica</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>virginica</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>virginica</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>virginica</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>virginica</td>
+      <td>virginica</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Using the ground truth and predicted values, we could now compute the metrics we’re interested in. We could, for example, use the metrics implemented in sklearn to analyse the result. Yet sensAI already provides abstractions that facilitate the generation of metrics and the collection of results. Read on!</p>
+</section>
+<section id="Using-Evaluators">
+<h3>Using Evaluators<a class="headerlink" href="#Using-Evaluators" title="Permalink to this headline"></a></h3>
+<p>sensAI provides evaluator abstractions which facilitate the training and evaluation of models.</p>
+<p>For a classification problem, we instantiate a VectorClassificationModelEvaluator. An evaluator serves to evaluate one or more models based on the same data, so we construct it with the data and instructions on how to handle/split the data for evaluation.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evaluator_params</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">evaluation</span><span class="o">.</span><span class="n">ClassificationEvaluatorParams</span><span class="p">(</span><span class="n">data_splitter</span><span class="o">=</span><span class="n">data_splitter</span><span class="p">,</span> <span class="n">compute_probabilities</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">evaluation</span><span class="o">.</span><span class="n">VectorClassificationModelEvaluator</span><span class="p">(</span><span class="n">iris_io_data</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">evaluator_params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can use this evaluator to evaluate one or more models. Let us evaluate the random forest model from above.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evaluator</span><span class="o">.</span><span class="n">fit_model</span><span class="p">(</span><span class="n">random_forest_model</span><span class="p">)</span>
+<span class="n">eval_data</span> <span class="o">=</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">eval_model</span><span class="p">(</span><span class="n">random_forest_model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+INFO  2024-06-11 09:29:34,376 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:34,378 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:34,464 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+</pre></div></div>
+</div>
+<p>The evaluation data holds, in particular, an <strong>EvalStats</strong> object, which can provide data on the quality of the results. Depending on the type of problem, many metrics will already be computed by default.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eval_stats</span> <span class="o">=</span> <span class="n">eval_data</span><span class="o">.</span><span class="n">get_eval_stats</span><span class="p">()</span>
+<span class="n">eval_stats</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ClassificationEvalStats[id=140469621781072, accuracy=0.9666666666666667, balancedAccuracy=0.9722222222222222, geoMeanTrueClassProb=0.8890980234758366, N=30]
+</pre></div></div>
+</div>
+<p>We can get the metrics in a dictionary as follows:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eval_stats</span><span class="o">.</span><span class="n">metrics_dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;accuracy&#39;: 0.9666666666666667,
+ &#39;balancedAccuracy&#39;: 0.9722222222222222,
+ &#39;geoMeanTrueClassProb&#39;: 0.8890980234758366}
+</pre></div></div>
+</div>
+<p>We can compute additional metrics by passing a metric to the <code class="docutils literal notranslate"><span class="pre">compute_metric_value</span></code> method, but we could also have added additional metrics to the <code class="docutils literal notranslate"><span class="pre">evaluator_params</span></code> above and have the metric included in all results.</p>
+<p>Let’s see how frequently the true class is among the top two most probable classes.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eval_stats</span><span class="o">.</span><span class="n">compute_metric_value</span><span class="p">(</span><span class="n">sensai</span><span class="o">.</span><span class="n">eval_stats_classification</span><span class="o">.</span><span class="n">ClassificationMetricTopNAccuracy</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1.0
+</pre></div></div>
+</div>
+<p>The EvalStats object can also be used to generate plots, such as a confusion matrix or a precision-recall plot for binary classification.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eval_stats</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/intro_35_0.png" src="_images/intro_35_0.png" />
+</div>
+</div>
+</section>
+<section id="Using-the-Fully-Integrated-Evaluation-Utilities">
+<h3>Using the Fully-Integrated Evaluation Utilities<a class="headerlink" href="#Using-the-Fully-Integrated-Evaluation-Utilities" title="Permalink to this headline"></a></h3>
+<p>sensAI’s evaluation utilities take things one step further and assist you in out all the evaluation steps and results computations in a single call.</p>
+<p>You can perform evaluations based on a single split or cross-validation. We simply declare the necessary parameters for both types of computations (or the one type we seek to carry out).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evaluatorParams</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">evaluation</span><span class="o">.</span><span class="n">ClassificationEvaluatorParams</span><span class="p">(</span>
+    <span class="n">data_splitter</span><span class="o">=</span><span class="n">data_splitter</span><span class="p">,</span> <span class="n">compute_probabilities</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">additional_metrics</span><span class="o">=</span><span class="p">[</span><span class="n">sensai</span><span class="o">.</span><span class="n">eval_stats_classification</span><span class="o">.</span><span class="n">ClassificationMetricTopNAccuracy</span><span class="p">(</span><span class="mi">2</span><span class="p">)])</span>
+<span class="n">cross_validator_params</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">evaluation</span><span class="o">.</span><span class="n">crossval</span><span class="o">.</span><span class="n">VectorModelCrossValidatorParams</span><span class="p">(</span><span class="n">folds</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">evaluator_params</span><span class="o">=</span><span class="n">evaluator_params</span><span class="p">)</span>
+<span class="n">eval_util</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">evaluation</span><span class="o">.</span><span class="n">ClassificationModelEvaluation</span><span class="p">(</span><span class="n">iris_io_data</span><span class="p">,</span>
+    <span class="n">evaluator_params</span><span class="o">=</span><span class="n">evaluatorParams</span><span class="p">,</span> <span class="n">cross_validator_params</span><span class="o">=</span><span class="n">cross_validator_params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>In practice, we will usually want to save evaluation results. The evaluation methods of <code class="docutils literal notranslate"><span class="pre">eval_util</span></code> take a parameter <code class="docutils literal notranslate"><span class="pre">result_writer</span></code> which allows us to define where results shall be written. Within this notebook, we shall simply inspect the resulting metrics in the log that is printed, and we shall configure plots to be shown directly.</p>
+<section id="Simple-Evaluation">
+<h4>Simple Evaluation<a class="headerlink" href="#Simple-Evaluation" title="Permalink to this headline"></a></h4>
+<p>We can perform the same evaluation as above (which uses a single split) like so:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eval_util</span><span class="o">.</span><span class="n">perform_simple_evaluation</span><span class="p">(</span><span class="n">random_forest_model</span><span class="p">,</span> <span class="n">show_plots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+INFO  2024-06-11 09:29:34,891 sensai.evaluation.eval_util:perform_simple_evaluation:281 - Evaluating SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)] via &lt;sensai.evaluation.evaluator.VectorClassificationModelEvaluator object at 0x7fc1a2fedc50&gt;
+INFO  2024-06-11 09:29:34,891 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:34,893 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:34,980 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:34,991 sensai.evaluation.eval_util:gather_results:289 - Evaluation results for class: ClassificationEvalStats[accuracy=0.9666666666666667, balancedAccuracy=0.9722222222222222, geoMeanTrueClassProb=0.8890980234758366, top2Accuracy=1.0, N=30]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;sensai.evaluation.evaluator.VectorClassificationModelEvaluationData at 0x7fc1a10a8710&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/intro_40_2.png" src="_images/intro_40_2.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/intro_40_3.png" src="_images/intro_40_3.png" />
+</div>
+</div>
+</section>
+<section id="Customising-the-Set-of-Plots">
+<h4>Customising the Set of Plots<a class="headerlink" href="#Customising-the-Set-of-Plots" title="Permalink to this headline"></a></h4>
+<p>If we decide that we don’t really want to have the normalised confusion matrix, we can disable it for any further experiments.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eval_util</span><span class="o">.</span><span class="n">eval_stats_plot_collector</span><span class="o">.</span><span class="n">get_enabled_plots</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;confusion-matrix-rel&#39;,
+ &#39;confusion-matrix-abs&#39;,
+ &#39;precision-recall&#39;,
+ &#39;threshold-precision-recall&#39;,
+ &#39;threshold-counts&#39;]
+</pre></div></div>
+</div>
+<p>Some of these are only active for binary classification. The one we don’t want is “confusion-matrix-rel”.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eval_util</span><span class="o">.</span><span class="n">eval_stats_plot_collector</span><span class="o">.</span><span class="n">disable_plots</span><span class="p">(</span><span class="s2">&quot;confusion-matrix-rel&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We could also define our own plot class (by creating a new subclass of <code class="docutils literal notranslate"><span class="pre">ClassificationEvalStatsPlot</span></code>) and add it to the plot collector in order to have the plot auto-generated whenever we apply one of <code class="docutils literal notranslate"><span class="pre">eval_util</span></code>’s methods.</p>
+</section>
+<section id="Cross-Validation">
+<h4>Cross-Validation<a class="headerlink" href="#Cross-Validation" title="Permalink to this headline"></a></h4>
+<p>We can similarly run cross-validation and produce the respective evaluation metrics with a single call.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eval_util</span><span class="o">.</span><span class="n">perform_cross_validation</span><span class="p">(</span><span class="n">random_forest_model</span><span class="p">,</span> <span class="n">show_plots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+INFO  2024-06-11 09:29:35,590 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 1/10 ...
+INFO  2024-06-11 09:29:35,590 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:35,592 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:35,679 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:35,690 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 1/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=0.9553599022560102, N=15]
+INFO  2024-06-11 09:29:35,691 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 2/10 ...
+INFO  2024-06-11 09:29:35,692 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:35,694 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:35,785 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:35,795 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 2/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=0.9734228107223192, N=15]
+INFO  2024-06-11 09:29:35,795 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 3/10 ...
+INFO  2024-06-11 09:29:35,796 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:35,798 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:35,885 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:35,895 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 3/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=0.976458969438705, N=15]
+INFO  2024-06-11 09:29:35,896 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 4/10 ...
+INFO  2024-06-11 09:29:35,897 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:35,898 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:35,986 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:35,995 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 4/10: ClassificationEvalStats[accuracy=0.9333333333333333, balancedAccuracy=0.9333333333333332, geoMeanTrueClassProb=0.9411926691126593, N=15]
+INFO  2024-06-11 09:29:35,995 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 5/10 ...
+INFO  2024-06-11 09:29:35,996 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:35,998 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:36,092 sensai.vector_model:fit:400 - Fitting completed in 0.10 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:36,102 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 5/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=0.9298964965102043, N=15]
+INFO  2024-06-11 09:29:36,103 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 6/10 ...
+INFO  2024-06-11 09:29:36,104 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:36,105 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:36,192 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:36,204 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 6/10: ClassificationEvalStats[accuracy=0.8666666666666667, balancedAccuracy=0.8888888888888888, geoMeanTrueClassProb=0.6379522029160006, N=15]
+INFO  2024-06-11 09:29:36,204 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 7/10 ...
+INFO  2024-06-11 09:29:36,205 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:36,206 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:36,293 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:36,304 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 7/10: ClassificationEvalStats[accuracy=0.8666666666666667, balancedAccuracy=0.8611111111111112, geoMeanTrueClassProb=0.8099785263057822, N=15]
+INFO  2024-06-11 09:29:36,304 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 8/10 ...
+INFO  2024-06-11 09:29:36,305 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:36,306 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:36,394 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:36,406 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 8/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=0.9657414983648998, N=15]
+INFO  2024-06-11 09:29:36,407 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 9/10 ...
+INFO  2024-06-11 09:29:36,408 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:36,409 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:36,510 sensai.vector_model:fit:400 - Fitting completed in 0.10 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:36,520 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 9/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=0.9560552426688266, N=15]
+INFO  2024-06-11 09:29:36,521 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 10/10 ...
+INFO  2024-06-11 09:29:36,522 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:36,524 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:36,616 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:36,626 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 10/10: ClassificationEvalStats[accuracy=0.9333333333333333, balancedAccuracy=0.9523809523809524, geoMeanTrueClassProb=0.841736920530503, N=15]
+INFO  2024-06-11 09:29:36,636 sensai.evaluation.eval_util:perform_cross_validation:344 - Cross-validation results:
+       mean[accuracy]  std[accuracy]  mean[balancedAccuracy]  std[balancedAccuracy]  mean[geoMeanTrueClassProb]  std[geoMeanTrueClassProb]
+class            0.96       0.053333                0.963571               0.050077                     0.89878                    0.10223
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;sensai.evaluation.crossval.VectorClassificationModelCrossValidationData at 0x7fc1a0d06390&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/intro_49_2.png" src="_images/intro_49_2.png" />
+</div>
+</div>
+<p>As you can see, the plot we disabled earlier is no longer being generated.</p>
+</section>
+<section id="Comparing-Models">
+<h4>Comparing Models<a class="headerlink" href="#Comparing-Models" title="Permalink to this headline"></a></h4>
+<p>A most common use case is to compare the performance of several models. The evaluation utility makes it very simple to compare any number of models.</p>
+<p>Let’s say we want to compare the random forest we have been using thus far to a simple decision tree.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">eval_util</span><span class="o">.</span><span class="n">compare_models</span><span class="p">([</span>
+        <span class="n">random_forest_model</span><span class="p">,</span>
+        <span class="n">sensai</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">classification</span><span class="o">.</span><span class="n">SkLearnDecisionTreeVectorClassificationModel</span><span class="p">(</span><span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="s2">&quot;DecisionTree&quot;</span><span class="p">)],</span>
+    <span class="n">use_cross_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+INFO  2024-06-11 09:29:36,952 sensai.evaluation.eval_util:compare_models:393 - Evaluating model 1/2 named &#39;RandomForest&#39; ...
+INFO  2024-06-11 09:29:36,961 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 1/10 ...
+INFO  2024-06-11 09:29:37,032 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:37,034 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:37,122 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:37,134 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 1/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=0.9553599022560102, N=15]
+INFO  2024-06-11 09:29:37,135 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 2/10 ...
+INFO  2024-06-11 09:29:37,135 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:37,137 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:37,223 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:37,232 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 2/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=0.9734228107223192, N=15]
+INFO  2024-06-11 09:29:37,232 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 3/10 ...
+INFO  2024-06-11 09:29:37,233 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:37,234 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:37,322 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:37,334 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 3/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=0.976458969438705, N=15]
+INFO  2024-06-11 09:29:37,335 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 4/10 ...
+INFO  2024-06-11 09:29:37,335 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:37,336 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:37,431 sensai.vector_model:fit:400 - Fitting completed in 0.10 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:37,443 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 4/10: ClassificationEvalStats[accuracy=0.9333333333333333, balancedAccuracy=0.9333333333333332, geoMeanTrueClassProb=0.9411926691126593, N=15]
+INFO  2024-06-11 09:29:37,444 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 5/10 ...
+INFO  2024-06-11 09:29:37,445 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:37,446 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:37,535 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:37,545 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 5/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=0.9298964965102043, N=15]
+INFO  2024-06-11 09:29:37,546 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 6/10 ...
+INFO  2024-06-11 09:29:37,547 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:37,548 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:37,637 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:37,647 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 6/10: ClassificationEvalStats[accuracy=0.8666666666666667, balancedAccuracy=0.8888888888888888, geoMeanTrueClassProb=0.6379522029160006, N=15]
+INFO  2024-06-11 09:29:37,647 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 7/10 ...
+INFO  2024-06-11 09:29:37,648 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:37,649 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:37,738 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:37,747 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 7/10: ClassificationEvalStats[accuracy=0.8666666666666667, balancedAccuracy=0.8611111111111112, geoMeanTrueClassProb=0.8099785263057822, N=15]
+INFO  2024-06-11 09:29:37,748 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 8/10 ...
+INFO  2024-06-11 09:29:37,749 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:37,750 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:37,838 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:37,851 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 8/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=0.9657414983648998, N=15]
+INFO  2024-06-11 09:29:37,853 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 9/10 ...
+INFO  2024-06-11 09:29:37,854 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:37,856 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:37,966 sensai.vector_model:fit:400 - Fitting completed in 0.11 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:37,978 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 9/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=0.9560552426688266, N=15]
+INFO  2024-06-11 09:29:37,979 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 10/10 ...
+INFO  2024-06-11 09:29:37,979 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+INFO  2024-06-11 09:29:37,981 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:38,068 sensai.vector_model:fit:400 - Fitting completed in 0.09 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:38,077 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 10/10: ClassificationEvalStats[accuracy=0.9333333333333333, balancedAccuracy=0.9523809523809524, geoMeanTrueClassProb=0.841736920530503, N=15]
+INFO  2024-06-11 09:29:38,087 sensai.evaluation.eval_util:perform_cross_validation:344 - Cross-validation results:
+       mean[accuracy]  std[accuracy]  mean[balancedAccuracy]  std[balancedAccuracy]  mean[geoMeanTrueClassProb]  std[geoMeanTrueClassProb]
+class            0.96       0.053333                0.963571               0.050077                     0.89878                    0.10223
+INFO  2024-06-11 09:29:38,160 sensai.evaluation.eval_util:compare_models:393 - Evaluating model 2/2 named &#39;DecisionTree&#39; ...
+INFO  2024-06-11 09:29:38,161 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 1/10 ...
+INFO  2024-06-11 09:29:38,161 sensai.vector_model:fit:371 - Fitting SkLearnDecisionTreeVectorClassificationModel instance
+INFO  2024-06-11 09:29:38,165 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type DecisionTreeClassifier
+INFO  2024-06-11 09:29:38,169 sensai.vector_model:fit:400 - Fitting completed in 0.00 seconds: SkLearnDecisionTreeVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=DecisionTree, model=DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;, random_state=42, splitter=&#39;best&#39;)]
+INFO  2024-06-11 09:29:38,177 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 1/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=1.0, N=15]
+INFO  2024-06-11 09:29:38,178 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 2/10 ...
+INFO  2024-06-11 09:29:38,180 sensai.vector_model:fit:371 - Fitting SkLearnDecisionTreeVectorClassificationModel instance
+INFO  2024-06-11 09:29:38,182 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type DecisionTreeClassifier
+INFO  2024-06-11 09:29:38,185 sensai.vector_model:fit:400 - Fitting completed in 0.00 seconds: SkLearnDecisionTreeVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=DecisionTree, model=DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;, random_state=42, splitter=&#39;best&#39;)]
+INFO  2024-06-11 09:29:38,193 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 2/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=1.0, N=15]
+INFO  2024-06-11 09:29:38,194 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 3/10 ...
+INFO  2024-06-11 09:29:38,196 sensai.vector_model:fit:371 - Fitting SkLearnDecisionTreeVectorClassificationModel instance
+INFO  2024-06-11 09:29:38,198 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type DecisionTreeClassifier
+INFO  2024-06-11 09:29:38,201 sensai.vector_model:fit:400 - Fitting completed in 0.00 seconds: SkLearnDecisionTreeVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=DecisionTree, model=DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;, random_state=42, splitter=&#39;best&#39;)]
+INFO  2024-06-11 09:29:38,209 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 3/10: ClassificationEvalStats[accuracy=1.0, balancedAccuracy=1.0, geoMeanTrueClassProb=1.0, N=15]
+INFO  2024-06-11 09:29:38,209 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 4/10 ...
+INFO  2024-06-11 09:29:38,211 sensai.vector_model:fit:371 - Fitting SkLearnDecisionTreeVectorClassificationModel instance
+INFO  2024-06-11 09:29:38,213 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type DecisionTreeClassifier
+INFO  2024-06-11 09:29:38,217 sensai.vector_model:fit:400 - Fitting completed in 0.00 seconds: SkLearnDecisionTreeVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=DecisionTree, model=DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;, random_state=42, splitter=&#39;best&#39;)]
+INFO  2024-06-11 09:29:38,225 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 4/10: ClassificationEvalStats[accuracy=0.9333333333333333, balancedAccuracy=0.9333333333333332, geoMeanTrueClassProb=0.6141303814089187, N=15]
+INFO  2024-06-11 09:29:38,225 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 5/10 ...
+INFO  2024-06-11 09:29:38,228 sensai.vector_model:fit:371 - Fitting SkLearnDecisionTreeVectorClassificationModel instance
+INFO  2024-06-11 09:29:38,230 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type DecisionTreeClassifier
+INFO  2024-06-11 09:29:38,235 sensai.vector_model:fit:400 - Fitting completed in 0.00 seconds: SkLearnDecisionTreeVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=DecisionTree, model=DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;, random_state=42, splitter=&#39;best&#39;)]
+INFO  2024-06-11 09:29:38,242 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 5/10: ClassificationEvalStats[accuracy=0.9333333333333333, balancedAccuracy=0.9333333333333332, geoMeanTrueClassProb=0.9548416039104165, N=15]
+INFO  2024-06-11 09:29:38,244 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 6/10 ...
+INFO  2024-06-11 09:29:38,246 sensai.vector_model:fit:371 - Fitting SkLearnDecisionTreeVectorClassificationModel instance
+INFO  2024-06-11 09:29:38,247 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type DecisionTreeClassifier
+INFO  2024-06-11 09:29:38,251 sensai.vector_model:fit:400 - Fitting completed in 0.00 seconds: SkLearnDecisionTreeVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=DecisionTree, model=DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;, random_state=42, splitter=&#39;best&#39;)]
+INFO  2024-06-11 09:29:38,259 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 6/10: ClassificationEvalStats[accuracy=0.8666666666666667, balancedAccuracy=0.8888888888888888, geoMeanTrueClassProb=0.39810717055349726, N=15]
+INFO  2024-06-11 09:29:38,260 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 7/10 ...
+INFO  2024-06-11 09:29:38,262 sensai.vector_model:fit:371 - Fitting SkLearnDecisionTreeVectorClassificationModel instance
+INFO  2024-06-11 09:29:38,263 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type DecisionTreeClassifier
+INFO  2024-06-11 09:29:38,265 sensai.vector_model:fit:400 - Fitting completed in 0.00 seconds: SkLearnDecisionTreeVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=DecisionTree, model=DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;, random_state=42, splitter=&#39;best&#39;)]
+INFO  2024-06-11 09:29:38,271 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 7/10: ClassificationEvalStats[accuracy=0.8666666666666667, balancedAccuracy=0.8611111111111112, geoMeanTrueClassProb=0.39810717055349726, N=15]
+INFO  2024-06-11 09:29:38,272 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 8/10 ...
+INFO  2024-06-11 09:29:38,272 sensai.vector_model:fit:371 - Fitting SkLearnDecisionTreeVectorClassificationModel instance
+INFO  2024-06-11 09:29:38,273 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type DecisionTreeClassifier
+INFO  2024-06-11 09:29:38,276 sensai.vector_model:fit:400 - Fitting completed in 0.00 seconds: SkLearnDecisionTreeVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=DecisionTree, model=DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;, random_state=42, splitter=&#39;best&#39;)]
+INFO  2024-06-11 09:29:38,282 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 8/10: ClassificationEvalStats[accuracy=0.9333333333333333, balancedAccuracy=0.9444444444444445, geoMeanTrueClassProb=0.9548416039104165, N=15]
+INFO  2024-06-11 09:29:38,282 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 9/10 ...
+INFO  2024-06-11 09:29:38,283 sensai.vector_model:fit:371 - Fitting SkLearnDecisionTreeVectorClassificationModel instance
+INFO  2024-06-11 09:29:38,284 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type DecisionTreeClassifier
+INFO  2024-06-11 09:29:38,287 sensai.vector_model:fit:400 - Fitting completed in 0.00 seconds: SkLearnDecisionTreeVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=DecisionTree, model=DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;, random_state=42, splitter=&#39;best&#39;)]
+INFO  2024-06-11 09:29:38,292 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 9/10: ClassificationEvalStats[accuracy=0.9333333333333333, balancedAccuracy=0.9333333333333332, geoMeanTrueClassProb=0.6141303814089187, N=15]
+INFO  2024-06-11 09:29:38,292 sensai.evaluation.crossval:eval_model:192 - Training and evaluating model with fold 10/10 ...
+INFO  2024-06-11 09:29:38,293 sensai.vector_model:fit:371 - Fitting SkLearnDecisionTreeVectorClassificationModel instance
+INFO  2024-06-11 09:29:38,295 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type DecisionTreeClassifier
+INFO  2024-06-11 09:29:38,297 sensai.vector_model:fit:400 - Fitting completed in 0.00 seconds: SkLearnDecisionTreeVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=DecisionTree, model=DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=2, min_samples_split=2, min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;, random_state=42, splitter=&#39;best&#39;)]
+INFO  2024-06-11 09:29:38,302 sensai.evaluation.crossval:eval_model:201 - Evaluation result for class, fold 10/10: ClassificationEvalStats[accuracy=0.9333333333333333, balancedAccuracy=0.9523809523809524, geoMeanTrueClassProb=0.6309573444801932, N=15]
+INFO  2024-06-11 09:29:38,313 sensai.evaluation.eval_util:perform_cross_validation:344 - Cross-validation results:
+       mean[accuracy]  std[accuracy]  mean[balancedAccuracy]  std[balancedAccuracy]  mean[geoMeanTrueClassProb]  std[geoMeanTrueClassProb]
+class            0.94       0.046667                0.944683                0.04441                    0.756512                   0.238693
+INFO  2024-06-11 09:29:38,399 sensai.evaluation.eval_util:compare_models:462 - Model comparison results, aggregated across folds:
+              mean[accuracy]  std[accuracy]  mean[balancedAccuracy]  std[balancedAccuracy]  mean[geoMeanTrueClassProb]  std[geoMeanTrueClassProb]
+model_name
+RandomForest            0.96       0.053333                0.963571               0.050077                    0.898780                   0.102230
+DecisionTree            0.94       0.046667                0.944683               0.044410                    0.756512                   0.238693
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/intro_52_1.png" src="_images/intro_52_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/intro_52_2.png" src="_images/intro_52_2.png" />
+</div>
+</div>
+<p>In addition to the data frame with the aggregated metrics, which was already printed to the log, the results object contains all the data that was generated during the evaluation. We can, for example, use it to plot the distribution of one of the metrics across all the folds for one of our models.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">results_df</span><span class="p">)</span>
+
+<span class="n">esc_random_forest</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">result_by_model_name</span><span class="p">[</span><span class="s2">&quot;RandomForest&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">cross_validation_data</span><span class="o">.</span><span class="n">get_eval_stats_collection</span><span class="p">()</span>
+<span class="n">esc_random_forest</span><span class="o">.</span><span class="n">plot_distribution</span><span class="p">(</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">),</span> <span class="n">stat</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean[accuracy]</th>
+      <th>std[accuracy]</th>
+      <th>mean[balancedAccuracy]</th>
+      <th>std[balancedAccuracy]</th>
+      <th>mean[geoMeanTrueClassProb]</th>
+      <th>std[geoMeanTrueClassProb]</th>
+    </tr>
+    <tr>
+      <th>model_name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>RandomForest</th>
+      <td>0.96</td>
+      <td>0.053333</td>
+      <td>0.963571</td>
+      <td>0.050077</td>
+      <td>0.898780</td>
+      <td>0.102230</td>
+    </tr>
+    <tr>
+      <th>DecisionTree</th>
+      <td>0.94</td>
+      <td>0.046667</td>
+      <td>0.944683</td>
+      <td>0.044410</td>
+      <td>0.756512</td>
+      <td>0.238693</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/intro_54_1.png" src="_images/intro_54_1.png" />
+</div>
+</div>
+<p>We can also compute additional aggregations or inspect the full list of metrics.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">esc_random_forest</span><span class="o">.</span><span class="n">agg_metrics_dict</span><span class="p">(</span><span class="n">agg_fns</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;amax[accuracy]&#39;: 1.0,
+ &#39;amin[accuracy]&#39;: 0.8666666666666667,
+ &#39;amax[balancedAccuracy]&#39;: 1.0,
+ &#39;amin[balancedAccuracy]&#39;: 0.8611111111111112,
+ &#39;amax[geoMeanTrueClassProb]&#39;: 0.976458969438705,
+ &#39;amin[geoMeanTrueClassProb]&#39;: 0.6379522029160006}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">esc_random_forest</span><span class="o">.</span><span class="n">get_values</span><span class="p">(</span><span class="s2">&quot;accuracy&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1.0,
+ 1.0,
+ 1.0,
+ 0.9333333333333333,
+ 1.0,
+ 0.8666666666666667,
+ 0.8666666666666667,
+ 1.0,
+ 1.0,
+ 0.9333333333333333]
+</pre></div></div>
+</div>
+</section>
+</section>
+</section>
+<section id="Feature-Generators-and-Data-Frame-Transformers">
+<h2>Feature Generators and Data Frame Transformers<a class="headerlink" href="#Feature-Generators-and-Data-Frame-Transformers" title="Permalink to this headline"></a></h2>
+<p>When dealing with the preparation of input data for a model, we often need to cater to technical requirements of various types of models. sensAI seeks to make the process of supporting multiple input pipelines for different types of models as simple as possible - by focusing on concise, declarative semantics and integrating the model-specific data extraction and transformation mechanisms into the models themselves. In essence, this means:</p>
+<ol class="arabic">
+<li><p><strong>Starting with the raw or most general representation of the data</strong></p>
+<p>This could mean simply starting with the data that is straightforward for us to obtain - or using directly using particular domain specific objects.</p>
+<p>For example, if the problem is to classify situations, we might already have a <code class="docutils literal notranslate"><span class="pre">Situation</span></code> class in our code which represents all the data that is is relevant to a situation (e.g. the point in time, the affected user, the location, etc.). Pandas DataFrames can represent arbitrary data, so there is no reason to not simply use as the raw input data frame that is fed to our models a single column containing instances of class <code class="docutils literal notranslate"><span class="pre">Situation</span></code>. Or we might instead directly observe a set of sensor
+readings, all of which are real numbers; this scenario would certainly be closer to what we typically see in machine learning data sets, but it isn’t always the case in the real world.</p>
+<p>Whatever the case may be, we can represent it in a data frame. We call the original input data frame, which we pass to a sensAI <code class="docutils literal notranslate"><span class="pre">VectorModel</span></code>, the <em>raw data frame</em>.</p>
+</li>
+<li><p><strong>Extracing features from the raw data, using their “natural” representation</strong> (using <code class="docutils literal notranslate"><span class="pre">FeatureGenerators</span></code>)</p>
+<p>We extract from the raw data frame pieces of information that we regard as relevant <em>features</em> for the task at hand. A sensAI <code class="docutils literal notranslate"><span class="pre">FeatureGenerator</span></code> can generate one or more data frame columns (containing arbitrary data), and a model can be associated with any number of feature generators. Several key aspects:</p>
+<ul class="simple">
+<li><p>FeatureGenerators crititcally decouple the original raw data from the features used by the models, enabling different models to use different sets of features or entirely different representations of the same features.</p></li>
+<li><p>FeatureGenerators become part of the model and are (where necessary) jointly trained with model. This facilitates model deployment, as every sensAI model becomes a single unit that can directly process raw input data, which is (usually) straightforward to supply at inference time.</p></li>
+<li><p>FeatureGenerators store meta-data on the features they generate, enabling downstream components to handle them appropriately.</p></li>
+</ul>
+<p>The feature representation that we choose to generate can be arbitrary, but oftentimes, we will want to extract “natural” feature representations, which could, in priciple, be used by many types of models, albeit in different concrete forms. Sequential data can be naturally represented as an array/list, categorical data can be represented using descriptive category names, and numeric data can be represented using unmodified integers and floating point numbers.</p>
+</li>
+<li><p><strong>Transforming feature representations into a form that is suitable for the model at hand</strong> (using <code class="docutils literal notranslate"><span class="pre">DataFrameTransformers</span></code>)</p>
+<p>In the transformation stage, we address the model-specific idiosynchrasies, which may require, for example, that all features be represented as numbers (or even numbers within a limited range) or that all features be discrete, that no values be missing, etc. A <code class="docutils literal notranslate"><span class="pre">DataFrameTransformer</span></code> can, in principle perform an arbitary transformation from one data frame to another, but the typical use case is to apply transformations of feature representations that are necessary for specific types of
+models to work (their best).</p>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="sensAI - the Python library for sensible AI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="neural_networks.html" class="btn btn-neutral float-right" title="Neural Networks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

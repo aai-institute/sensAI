@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eval_stats_classification &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="eval_stats_clustering" href="eval_stats_clustering.html" />
+    <link rel="prev" title="eval_stats_base" href="eval_stats_base.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensemble.html">ensemble</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../evaluation.html">evaluation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../crossval.html">crossval</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../eval_stats.html">eval_stats</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="eval_stats_base.html">eval_stats_base</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">eval_stats_classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eval_stats_clustering.html">eval_stats_clustering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eval_stats_regression.html">eval_stats_regression</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../eval_util.html">eval_util</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../evaluator.html">evaluator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../evaluator_clustering.html">evaluator_clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../metric_computation.html">metric_computation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../../evaluation.html">evaluation</a></li>
+          <li class="breadcrumb-item"><a href="../eval_stats.html">eval_stats</a></li>
+      <li class="breadcrumb-item active">eval_stats_classification</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/sensai/evaluation/eval_stats/eval_stats_classification.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.evaluation.eval_stats.eval_stats_classification">
+<span id="eval-stats-classification"></span><h1>eval_stats_classification<a class="headerlink" href="#module-sensai.evaluation.eval_stats.eval_stats_classification" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_probabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="eval_stats_base.html#sensai.evaluation.eval_stats.eval_stats_base.Metric" title="sensai.evaluation.eval_stats.eval_stats_base.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.Metric</span></code></a>[<a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClassificationEvalStats</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_probabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name of the metric; if None use the class’ name attribute</p></li>
+<li><p><strong>bounds</strong> – the minimum and maximum values the metric can take on</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric.requires_probabilities">
+<span class="sig-name descname"><span class="pre">requires_probabilities</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric.requires_probabilities" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric.compute_value_for_eval_stats">
+<span class="sig-name descname"><span class="pre">compute_value_for_eval_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric.compute_value_for_eval_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric.compute_value">
+<span class="sig-name descname"><span class="pre">compute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_predicted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_predicted_class_probabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric.compute_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationMetricAccuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_probabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L51"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracy" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracy.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'accuracy'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracy.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricBalancedAccuracy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationMetricBalancedAccuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_probabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L58"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricBalancedAccuracy" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricBalancedAccuracy.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'balancedAccuracy'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricBalancedAccuracy.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyWithoutLabels">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationMetricAccuracyWithoutLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probability_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L65"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyWithoutLabels" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></code></a></p>
+<p>Accuracy score with set of data points limited to the ones where the ground truth label is not one of the given labels</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyWithoutLabels.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probability_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyWithoutLabels.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> – one or more labels which are not to be considered (all data points where the ground truth is
+one of these labels will be ignored)</p></li>
+<li><p><strong>probability_threshold</strong> – a probability threshold: the probability of the most likely class must be at least this value for a
+data point to be considered in the metric computation (analogous to
+<a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyMaxProbabilityBeyondThreshold" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyMaxProbabilityBeyondThreshold"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClassificationMetricAccuracyMaxProbabilityBeyondThreshold</span></code></a>)</p></li>
+<li><p><strong>zero_value</strong> – the metric value to assume for the case where the condition never applies (no countable instances without
+the given label/beyond the given threshold)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyWithoutLabels.get_paired_metrics">
+<span class="sig-name descname"><span class="pre">get_paired_metrics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.TMetric</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyWithoutLabels.get_paired_metrics" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a list of metrics that should be considered together with this metric (e.g. for paired visualisations/plots).
+The direction of the pairing should be such that if this metric is “x”, the other is “y” for x-y type visualisations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of metrics</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyWithoutLabels.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyWithoutLabels.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricGeometricMeanOfTrueClassProbability">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationMetricGeometricMeanOfTrueClassProbability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_probabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L110"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricGeometricMeanOfTrueClassProbability" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricGeometricMeanOfTrueClassProbability.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'geoMeanTrueClassProb'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricGeometricMeanOfTrueClassProbability.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricGeometricMeanOfTrueClassProbability.requires_probabilities">
+<span class="sig-name descname"><span class="pre">requires_probabilities</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricGeometricMeanOfTrueClassProbability.requires_probabilities" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricTopNAccuracy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationMetricTopNAccuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L127"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricTopNAccuracy" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricTopNAccuracy.requires_probabilities">
+<span class="sig-name descname"><span class="pre">requires_probabilities</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricTopNAccuracy.requires_probabilities" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricTopNAccuracy.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricTopNAccuracy.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name of the metric; if None use the class’ name attribute</p></li>
+<li><p><strong>bounds</strong> – the minimum and maximum values the metric can take on</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricTopNAccuracy.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricTopNAccuracy.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyMaxProbabilityBeyondThreshold">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationMetricAccuracyMaxProbabilityBeyondThreshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L144"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyMaxProbabilityBeyondThreshold" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></code></a></p>
+<p>Accuracy limited to cases where the probability of the most likely class is at least a given threshold</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyMaxProbabilityBeyondThreshold.requires_probabilities">
+<span class="sig-name descname"><span class="pre">requires_probabilities</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyMaxProbabilityBeyondThreshold.requires_probabilities" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyMaxProbabilityBeyondThreshold.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyMaxProbabilityBeyondThreshold.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> – minimum probability of the most likely class</p></li>
+<li><p><strong>zero_value</strong> – the value of the metric for the case where the probability of the most likely class never reaches the threshold</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyMaxProbabilityBeyondThreshold.get_paired_metrics">
+<span class="sig-name descname"><span class="pre">get_paired_metrics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.TMetric</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyMaxProbabilityBeyondThreshold.get_paired_metrics" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a list of metrics that should be considered together with this metric (e.g. for paired visualisations/plots).
+The direction of the pairing should be such that if this metric is “x”, the other is “y” for x-y type visualisations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of metrics</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyMaxProbabilityBeyondThreshold.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricAccuracyMaxProbabilityBeyondThreshold.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricRelFreqMaxProbabilityBeyondThreshold">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationMetricRelFreqMaxProbabilityBeyondThreshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L178"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricRelFreqMaxProbabilityBeyondThreshold" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></code></a></p>
+<p>Relative frequency of cases where the probability of the most likely class is at least a given threshold</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricRelFreqMaxProbabilityBeyondThreshold.requires_probabilities">
+<span class="sig-name descname"><span class="pre">requires_probabilities</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricRelFreqMaxProbabilityBeyondThreshold.requires_probabilities" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricRelFreqMaxProbabilityBeyondThreshold.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricRelFreqMaxProbabilityBeyondThreshold.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>threshold</strong> – minimum probability of the most likely class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricRelFreqMaxProbabilityBeyondThreshold.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetricRelFreqMaxProbabilityBeyondThreshold.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BinaryClassificationMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L199"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name of the metric; if None use the class’ name attribute</p></li>
+<li><p><strong>bounds</strong> – the minimum and maximum values the metric can take on</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecision">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BinaryClassificationMetricPrecision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L208"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecision" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecision.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'precision'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecision.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecision.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecision.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name of the metric; if None use the class’ name attribute</p></li>
+<li><p><strong>bounds</strong> – the minimum and maximum values the metric can take on</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecision.get_paired_metrics">
+<span class="sig-name descname"><span class="pre">get_paired_metrics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecision.get_paired_metrics" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a list of metrics that should be considered together with this metric (e.g. for paired visualisations/plots).
+The direction of the pairing should be such that if this metric is “x”, the other is “y” for x-y type visualisations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of metrics</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecall">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BinaryClassificationMetricRecall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L221"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecall" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecall.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recall'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecall.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecall.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecall.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name of the metric; if None use the class’ name attribute</p></li>
+<li><p><strong>bounds</strong> – the minimum and maximum values the metric can take on</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricF1Score">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BinaryClassificationMetricF1Score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L231"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricF1Score" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricF1Score.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'F1'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricF1Score.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricF1Score.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricF1Score.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name of the metric; if None use the class’ name attribute</p></li>
+<li><p><strong>bounds</strong> – the minimum and maximum values the metric can take on</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallForPrecision">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BinaryClassificationMetricRecallForPrecision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L241"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallForPrecision" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric</span></code></a></p>
+<p>Computes the maximum recall that can be achieved (by varying the decision threshold) in cases where at least the given precision
+is reached. The given precision may not be achievable at all, in which case the metric value is <code class="docutils literal notranslate"><span class="pre">zeroValue</span></code>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallForPrecision.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallForPrecision.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>precision</strong> – the minimum precision value that must be reached</p></li>
+<li><p><strong>positive_class_label</strong> – the positive class label</p></li>
+<li><p><strong>zero_value</strong> – the value to return for the case where the minimum precision is never reached</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallForPrecision.compute_value_for_eval_stats">
+<span class="sig-name descname"><span class="pre">compute_value_for_eval_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallForPrecision.compute_value_for_eval_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallForPrecision.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallForPrecision.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecisionThreshold">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BinaryClassificationMetricPrecisionThreshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L271"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecisionThreshold" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric</span></code></a></p>
+<p>Precision for the case where predictions are considered “positive” if predicted probability of the positive class is beyond the
+given threshold</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecisionThreshold.requires_probabilities">
+<span class="sig-name descname"><span class="pre">requires_probabilities</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecisionThreshold.requires_probabilities" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecisionThreshold.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecisionThreshold.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> – the minimum predicted probability of the positive class for the prediction to be considered “positive”</p></li>
+<li><p><strong>zero_value</strong> – the value of the metric for the case where a positive class probability beyond the threshold is never predicted
+(denominator = 0)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecisionThreshold.get_paired_metrics">
+<span class="sig-name descname"><span class="pre">get_paired_metrics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecisionThreshold.get_paired_metrics" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a list of metrics that should be considered together with this metric (e.g. for paired visualisations/plots).
+The direction of the pairing should be such that if this metric is “x”, the other is “y” for x-y type visualisations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of metrics</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecisionThreshold.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricPrecisionThreshold.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallThreshold">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BinaryClassificationMetricRecallThreshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L302"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallThreshold" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric</span></code></a></p>
+<p>Recall for the case where predictions are considered “positive” if predicted probability of the positive class is beyond the
+given threshold</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallThreshold.requires_probabilities">
+<span class="sig-name descname"><span class="pre">requires_probabilities</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallThreshold.requires_probabilities" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallThreshold.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallThreshold.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> – the minimum predicted probability of the positive class for the prediction to be considered “positive”</p></li>
+<li><p><strong>zero_value</strong> – the value of the metric for the case where there are no positive instances in the data set (denominator = 0)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallThreshold.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetricRecallThreshold.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.create_default_binary_classification_metrics">
+<span class="sig-name descname"><span class="pre">create_default_binary_classification_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positive_class_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationMetric</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L333"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.create_default_binary_classification_metrics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationEvalStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_predicted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_predicted_class_probabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary_positive_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('__guess',)</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L338"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="eval_stats_base.html#sensai.evaluation.eval_stats.eval_stats_base.PredictionEvalStats" title="sensai.evaluation.eval_stats.eval_stats_base.PredictionEvalStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.PredictionEvalStats</span></code></a>[<a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClassificationMetric</span></code></a>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_predicted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_predicted_class_probabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary_positive_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('__guess',)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_predicted</strong> – the predicted class labels</p></li>
+<li><p><strong>y_true</strong> – the true class labels</p></li>
+<li><p><strong>y_predicted_class_probabilities</strong> – a data frame whose columns are the class labels and whose values are probabilities</p></li>
+<li><p><strong>labels</strong> – the list of class labels</p></li>
+<li><p><strong>metrics</strong> – the metrics to compute for evaluation; if None, use default metrics
+(see DEFAULT_MULTICLASS_CLASSIFICATION_METRICS and <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.create_default_binary_classification_metrics" title="sensai.evaluation.eval_stats.eval_stats_classification.create_default_binary_classification_metrics"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_default_binary_classification_metrics()</span></code></a>)</p></li>
+<li><p><strong>additional_metrics</strong> – the metrics to additionally compute</p></li>
+<li><p><strong>binary_positive_label</strong> – the label of the positive class for the case where it is a binary classification, adding further
+binary metrics by default;
+if GUESS (default), check <cite>labels</cite> (if length 2) for occurrence of one of BINARY_CLASSIFICATION_POSITIVE_LABEL_CANDIDATES in
+the respective order and use the first one found (if any);
+if None, treat the problem as non-binary, regardless of the labels being used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.get_confusion_matrix">
+<span class="sig-name descname"><span class="pre">get_confusion_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ConfusionMatrix" title="sensai.evaluation.eval_stats.eval_stats_classification.ConfusionMatrix"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ConfusionMatrix</span></a></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.get_confusion_matrix" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.get_binary_classification_probability_threshold_variation_data">
+<span class="sig-name descname"><span class="pre">get_binary_classification_probability_threshold_variation_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationProbabilityThresholdVariationData" title="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationProbabilityThresholdVariationData"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationProbabilityThresholdVariationData</span></a></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.get_binary_classification_probability_threshold_variation_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.get_accuracy">
+<span class="sig-name descname"><span class="pre">get_accuracy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.get_accuracy" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.metrics_dict">
+<span class="sig-name descname"><span class="pre">metrics_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.metrics_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Computes all metrics</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a dictionary mapping metric names to values</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.get_misclassified_indices">
+<span class="sig-name descname"><span class="pre">get_misclassified_indices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.get_misclassified_indices" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.plot_confusion_matrix">
+<span class="sig-name descname"><span class="pre">plot_confusion_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_add</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">matplotlib.figure.Figure</span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.plot_confusion_matrix" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.plot_precision_recall_curve">
+<span class="sig-name descname"><span class="pre">plot_precision_recall_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_add</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">matplotlib.figure.Figure</span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats.plot_precision_recall_curve" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsCollection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationEvalStatsCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_stats_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L461"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsCollection" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="eval_stats_base.html#sensai.evaluation.eval_stats.eval_stats_base.EvalStatsCollection" title="sensai.evaluation.eval_stats.eval_stats_base.EvalStatsCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.EvalStatsCollection</span></code></a>[<a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></code></a>, <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationMetric</span></code></a>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsCollection.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_stats_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsCollection.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsCollection.get_combined_eval_stats">
+<span class="sig-name descname"><span class="pre">get_combined_eval_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></a></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsCollection.get_combined_eval_stats" title="Permalink to this definition"></a></dt>
+<dd><p>Combines the data from all contained EvalStats objects into a single object.
+Note that this is only possible if all EvalStats objects use the same set of class labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>an EvalStats object that combines the data from all contained EvalStats objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ConfusionMatrix">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ConfusionMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_predicted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L488"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ConfusionMatrix" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ConfusionMatrix.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_predicted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ConfusionMatrix.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ConfusionMatrix.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_add</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ConfusionMatrix.plot" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BinaryClassificationCounts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_positive_prediction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_positive_ground_truth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_denominator_metric_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L499"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_positive_prediction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_positive_ground_truth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_denominator_metric_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>is_positive_prediction</strong> – the sequence of Booleans indicating whether the model predicted the positive class</p></li>
+<li><p><strong>is_positive_ground_truth</strong> – the sequence of Booleans indicating whether the true class is the positive class</p></li>
+<li><p><strong>zero_denominator_metric_value</strong> – the result to return for metrics such as precision and recall in case the denominator
+is zero (i.e. zero counted cases)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.from_probability_threshold">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_probability_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_positive_ground_truth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts" title="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts</span></a></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.from_probability_threshold" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.from_eval_stats">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_eval_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts" title="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts</span></a></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.from_eval_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.get_precision">
+<span class="sig-name descname"><span class="pre">get_precision</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.get_precision" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.get_recall">
+<span class="sig-name descname"><span class="pre">get_recall</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.get_recall" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.get_f1">
+<span class="sig-name descname"><span class="pre">get_f1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.get_f1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.get_rel_freq_positive">
+<span class="sig-name descname"><span class="pre">get_rel_freq_positive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationCounts.get_rel_freq_positive" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationProbabilityThresholdVariationData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BinaryClassificationProbabilityThresholdVariationData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L560"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationProbabilityThresholdVariationData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationProbabilityThresholdVariationData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationProbabilityThresholdVariationData.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationProbabilityThresholdVariationData.plot_precision_recall">
+<span class="sig-name descname"><span class="pre">plot_precision_recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">matplotlib.figure.Figure</span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationProbabilityThresholdVariationData.plot_precision_recall" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationProbabilityThresholdVariationData.plot_counts">
+<span class="sig-name descname"><span class="pre">plot_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.BinaryClassificationProbabilityThresholdVariationData.plot_counts" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationEvalStatsPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L600"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="eval_stats_base.html#sensai.evaluation.eval_stats.eval_stats_base.EvalStatsPlot" title="sensai.evaluation.eval_stats.eval_stats_base.EvalStatsPlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.EvalStatsPlot</span></code></a>[<a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotConfusionMatrix">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationEvalStatsPlotConfusionMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L604"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotConfusionMatrix" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotConfusionMatrix.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotConfusionMatrix.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotConfusionMatrix.create_figure">
+<span class="sig-name descname"><span class="pre">create_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtitle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">matplotlib.figure.Figure</span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotConfusionMatrix.create_figure" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eval_stats</strong> – the evaluation stats from which to generate the plot</p></li>
+<li><p><strong>subtitle</strong> – the plot’s subtitle</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the figure or None if this plot is not applicable/cannot be created</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotPrecisionRecall">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationEvalStatsPlotPrecisionRecall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L612"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotPrecisionRecall" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotPrecisionRecall.create_figure">
+<span class="sig-name descname"><span class="pre">create_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtitle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">matplotlib.figure.Figure</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotPrecisionRecall.create_figure" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eval_stats</strong> – the evaluation stats from which to generate the plot</p></li>
+<li><p><strong>subtitle</strong> – the plot’s subtitle</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the figure or None if this plot is not applicable/cannot be created</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotProbabilityThresholdPrecisionRecall">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationEvalStatsPlotProbabilityThresholdPrecisionRecall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L619"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotProbabilityThresholdPrecisionRecall" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotProbabilityThresholdPrecisionRecall.create_figure">
+<span class="sig-name descname"><span class="pre">create_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtitle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">matplotlib.figure.Figure</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotProbabilityThresholdPrecisionRecall.create_figure" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eval_stats</strong> – the evaluation stats from which to generate the plot</p></li>
+<li><p><strong>subtitle</strong> – the plot’s subtitle</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the figure or None if this plot is not applicable/cannot be created</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotProbabilityThresholdCounts">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationEvalStatsPlotProbabilityThresholdCounts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_classification.py#L626"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotProbabilityThresholdCounts" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlot</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotProbabilityThresholdCounts.create_figure">
+<span class="sig-name descname"><span class="pre">create_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats" title="sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStats</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtitle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">matplotlib.figure.Figure</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_classification.ClassificationEvalStatsPlotProbabilityThresholdCounts.create_figure" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eval_stats</strong> – the evaluation stats from which to generate the plot</p></li>
+<li><p><strong>subtitle</strong> – the plot’s subtitle</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the figure or None if this plot is not applicable/cannot be created</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eval_stats_base.html" class="btn btn-neutral float-left" title="eval_stats_base" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eval_stats_clustering.html" class="btn btn-neutral float-right" title="eval_stats_clustering" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

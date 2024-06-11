@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vectoriser &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="xgboost" href="xgboost.html" />
+    <link rel="prev" title="vector_model" href="vector_model.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_model.html">vector_model</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">vectoriser</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/sensai/vectoriser.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.vectoriser">
+<span id="vectoriser"></span><h1>vectoriser<a class="headerlink" href="#module-sensai.vectoriser" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vectoriser.Vectoriser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Vectoriser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.vectoriser.T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_fitted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/vectoriser.py#L17"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.vectoriser.Vectoriser" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.vectoriser.T</span></code>], <a class="reference internal" href="util/string.html#sensai.util.string.ToStringMixin" title="sensai.util.string.ToStringMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.string.ToStringMixin</span></code></a></p>
+<p>A vectoriser represents a method for the conversion of instances of some type T into
+vectors, i.e. one-dimensional (numeric) arrays, or (in the special case of a 1D vector) scalars</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.Vectoriser.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.vectoriser.T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_fitted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.Vectoriser.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f</strong> – the function which maps from an instance of T to an array/list/scalar</p></li>
+<li><p><strong>transformer</strong> – an optional transformer (e.g. instance of one of the classes in sklearn.preprocessing)
+which can be used to transform/normalise the generated arrays</p></li>
+<li><p><strong>is_fitted</strong> – whether the vectoriser (and therefore the given transformer) is assumed to be fitted already</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.Vectoriser.is_fitted">
+<span class="sig-name descname"><span class="pre">is_fitted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sensai.vectoriser.Vectoriser.is_fitted" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.Vectoriser.set_name">
+<span class="sig-name descname"><span class="pre">set_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.Vectoriser.set_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.Vectoriser.get_name">
+<span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.Vectoriser.get_name" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the name of this feature generator, which may be a default name if the name has not been set. Note that feature generators
+created by a FeatureGeneratorFactory always get the name with which the generator factory was registered.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.Vectoriser.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.vectoriser.T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.Vectoriser.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.Vectoriser.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.vectoriser.T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.array</span></span></span><a class="headerlink" href="#sensai.vectoriser.Vectoriser.apply" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> – the item to be vectorised</p></li>
+<li><p><strong>transform</strong> – whether to apply this instance’s transformer (if any)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a vector</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.Vectoriser.apply_multi">
+<span class="sig-name descname"><span class="pre">apply_multi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.vectoriser.T</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.array</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.vectoriser.Vectoriser.apply_multi" title="Permalink to this definition"></a></dt>
+<dd><p>Applies this vectoriser to multiple items at once.
+Especially for cases where this vectoriser uses a transformer, this method is significantly faster than
+calling apply repeatedly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>items</strong> – the items to be vectorised</p></li>
+<li><p><strong>transform</strong> – whether to apply this instance’s transformer (if any)</p></li>
+<li><p><strong>use_cache</strong> – whether to apply caching of the value function f given at construction (keeping track of outputs for
+each input object id), which can significantly speed up computation in cases where an items appears more than
+once in the collection of items</p></li>
+<li><p><strong>verbose</strong> – whether to generate log messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of vectors</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vectoriser.Vectoriser.ResultType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ResultType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.Vectoriser.ResultType" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.vectoriser.Vectoriser.ResultType.SCALAR">
+<span class="sig-name descname"><span class="pre">SCALAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#sensai.vectoriser.Vectoriser.ResultType.SCALAR" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.vectoriser.Vectoriser.ResultType.LIST">
+<span class="sig-name descname"><span class="pre">LIST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#sensai.vectoriser.Vectoriser.ResultType.LIST" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.vectoriser.Vectoriser.ResultType.NUMPY_ARRAY">
+<span class="sig-name descname"><span class="pre">NUMPY_ARRAY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#sensai.vectoriser.Vectoriser.ResultType.NUMPY_ARRAY" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.Vectoriser.ResultType.from_value">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.Vectoriser.ResultType.from_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vectoriser.EmptyVectoriser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EmptyVectoriser</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/vectoriser.py#L146"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.vectoriser.EmptyVectoriser" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.vectoriser.Vectoriser" title="sensai.vectoriser.Vectoriser"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vectoriser.Vectoriser</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.EmptyVectoriser.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.EmptyVectoriser.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f</strong> – the function which maps from an instance of T to an array/list/scalar</p></li>
+<li><p><strong>transformer</strong> – an optional transformer (e.g. instance of one of the classes in sklearn.preprocessing)
+which can be used to transform/normalise the generated arrays</p></li>
+<li><p><strong>is_fitted</strong> – whether the vectoriser (and therefore the given transformer) is assumed to be fitted already</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vectoriser.ItemIdentifierProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ItemIdentifierProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/vectoriser.py#L156"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.vectoriser.ItemIdentifierProvider" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.vectoriser.T</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Provides identifiers for sequence items.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.ItemIdentifierProvider.get_identifier">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_identifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.vectoriser.T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Hashable</span></span></span><a class="headerlink" href="#sensai.vectoriser.ItemIdentifierProvider.get_identifier" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vectoriser.SequenceVectoriser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SequenceVectoriser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vectorisers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.vectoriser.Vectoriser" title="sensai.vectoriser.Vectoriser"><span class="pre">sensai.vectoriser.Vectoriser</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sensai.vectoriser.T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.vectoriser.Vectoriser" title="sensai.vectoriser.Vectoriser"><span class="pre">sensai.vectoriser.Vectoriser</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sensai.vectoriser.T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitting_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.vectoriser.SequenceVectoriser.FittingMode" title="sensai.vectoriser.SequenceVectoriser.FittingMode"><span class="pre">sensai.vectoriser.SequenceVectoriser.FittingMode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">FittingMode.UNIQUE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique_id_provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.vectoriser.ItemIdentifierProvider" title="sensai.vectoriser.ItemIdentifierProvider"><span class="pre">sensai.vectoriser.ItemIdentifierProvider</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refit_vectorisers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/vectoriser.py#L165"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.vectoriser.SequenceVectoriser" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.vectoriser.T</span></code>], <a class="reference internal" href="util/string.html#sensai.util.string.ToStringMixin" title="sensai.util.string.ToStringMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.string.ToStringMixin</span></code></a></p>
+<p>Supports the application of Vectorisers to sequences of objects of some type T, where each object of type T is
+mapped to a vector (1D array) by the vectorisers.
+A SequenceVectoriser is fitted by fitting the underlying Vectorisers. In order to obtain the instances of T that
+are used for training, we take into consideration the fact that the sequences of T may overlap and thus training
+is performed on the set of unique instances.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vectoriser.SequenceVectoriser.FittingMode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FittingMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.SequenceVectoriser.FittingMode" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Determines how the individual vectorisers are fitted based on several sequences of objects of type T that are given.
+If NONE, no fitting is performed, otherwise the mode determines how a single sequence of objects of type T for fitting
+is obtained from the collection of sequences: either by forming the set of unique objects from the sequences (UNIQUE)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.vectoriser.SequenceVectoriser.FittingMode.NONE">
+<span class="sig-name descname"><span class="pre">NONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'none'</span></em><a class="headerlink" href="#sensai.vectoriser.SequenceVectoriser.FittingMode.NONE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.vectoriser.SequenceVectoriser.FittingMode.UNIQUE">
+<span class="sig-name descname"><span class="pre">UNIQUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unique'</span></em><a class="headerlink" href="#sensai.vectoriser.SequenceVectoriser.FittingMode.UNIQUE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.vectoriser.SequenceVectoriser.FittingMode.CONCAT">
+<span class="sig-name descname"><span class="pre">CONCAT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'concat'</span></em><a class="headerlink" href="#sensai.vectoriser.SequenceVectoriser.FittingMode.CONCAT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.SequenceVectoriser.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vectorisers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.vectoriser.Vectoriser" title="sensai.vectoriser.Vectoriser"><span class="pre">sensai.vectoriser.Vectoriser</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sensai.vectoriser.T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.vectoriser.Vectoriser" title="sensai.vectoriser.Vectoriser"><span class="pre">sensai.vectoriser.Vectoriser</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sensai.vectoriser.T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitting_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.vectoriser.SequenceVectoriser.FittingMode" title="sensai.vectoriser.SequenceVectoriser.FittingMode"><span class="pre">sensai.vectoriser.SequenceVectoriser.FittingMode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">FittingMode.UNIQUE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique_id_provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.vectoriser.ItemIdentifierProvider" title="sensai.vectoriser.ItemIdentifierProvider"><span class="pre">sensai.vectoriser.ItemIdentifierProvider</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refit_vectorisers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.SequenceVectoriser.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vectorisers</strong> – zero or more vectorisers that are to be applied. If more than one vectoriser is supplied,
+vectors are generated from input instances of type T by concatenating the results of the vectorisers in
+the order the vectorisers are given.</p></li>
+<li><p><strong>fitting_mode</strong> – the fitting mode for vectorisers. If <cite>NONE</cite>, no fitting takes place.
+If <cite>UNIQUE</cite>, fit vectorisers on unique set of items of type T. By default, uniqueness is determined based
+on Python object identity. If a custom mechanisms for determining an item’s identity is desired,
+pass <cite>unique_id_retriever</cite>.
+If <cite>CONCAT</cite>, fit vectorisers based on all items of type T, concatenating them to a single sequence.</p></li>
+<li><p><strong>unique_id_provider</strong> – an object used to determine item identities when using fitting mode <cite>UNIQUE</cite>.</p></li>
+<li><p><strong>refit_vectorisers</strong> – whether any vectorisers that have previously been fitted shall be
+fitted once more when this sequence vectoriser is fitted. Set this to false if you are reusing vectorisers
+that are also part of another sequence vectoriser that will be fitted/has been fitted before this
+sequence vectoriser. This can be useful, in particular, in encoder-decoders where the target features
+are partly the same as the history sequence features, and we want to reuse the latter and their
+fitted transformers for the target features.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.SequenceVectoriser.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.vectoriser.T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.SequenceVectoriser.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.SequenceVectoriser.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.vectoriser.T</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.array</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.vectoriser.SequenceVectoriser.apply" title="Permalink to this definition"></a></dt>
+<dd><p>Applies vectorisation to the given sequence of objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seq</strong> – the sequence to vectorise</p></li>
+<li><p><strong>transform</strong> – whether to apply any post-vectorisation transformers</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.SequenceVectoriser.apply_multi">
+<span class="sig-name descname"><span class="pre">apply_multi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequences</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.vectoriser.T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.array</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.vectoriser.SequenceVectoriser.apply_multi" title="Permalink to this definition"></a></dt>
+<dd><p>Applies this vectoriser to multiple sequences of objects of type T, where each sequence is mapped to a sequence
+of 1D arrays.
+This method can be significantly faster than multiple applications of apply, especially in cases where the vectorisers
+use transformers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sequences</strong> – the sequences to vectorise</p></li>
+<li><p><strong>use_cache</strong> – whether to apply caching of the value functions of contained vectorisers (keeping track of outputs for
+each input object id), which can significantly speed up computation in cases where the given sequences contain individual
+items more than once</p></li>
+<li><p><strong>verbose</strong> – whether to generate log messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a pair (vl, l) where vl is a list of lists of vectors/arrays and l is a list of integers containing the lengths
+of the sequences</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.SequenceVectoriser.apply_multi_with_padding">
+<span class="sig-name descname"><span class="pre">apply_multi_with_padding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequences</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.vectoriser.T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.array</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.vectoriser.SequenceVectoriser.apply_multi_with_padding" title="Permalink to this definition"></a></dt>
+<dd><p>Applies this vectoriser to multiple sequences of objects of type T, where each sequence is mapped to a sequence
+of 1D arrays.
+Sequences are allowed to vary in length. for shorter sequences, 0-vectors are appended until the maximum sequence length
+is reached (padding).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sequences</strong> – the sequences to vectorise</p></li>
+<li><p><strong>use_cache</strong> – whether to apply caching of the value functions of contained vectorisers (keeping track of outputs for
+each input object id), which can significantly speed up computation in cases where the given sequences contain individual
+items more than once</p></li>
+<li><p><strong>verbose</strong> – whether to generate log messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a pair (vl, l) where vl is a list of lists of vectors/arrays, each list having the same length, and l is a list of
+integers containing the original unpadded lengths of the sequences</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.SequenceVectoriser.get_vector_dim">
+<span class="sig-name descname"><span class="pre">get_vector_dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.vectoriser.T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.SequenceVectoriser.get_vector_dim" title="Permalink to this definition"></a></dt>
+<dd><p>Determines the dimensionality of generated vectors by applying the vectoriser to the given sequence</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>seq</strong> – the sequence</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the number of dimensions in generated output vectors (per item)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.vectoriser.VectoriserRegistry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectoriserRegistry</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/vectoriser.py#L348"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.vectoriser.VectoriserRegistry" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.VectoriserRegistry.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.VectoriserRegistry.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.VectoriserRegistry.get_available_vectorisers">
+<span class="sig-name descname"><span class="pre">get_available_vectorisers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.VectoriserRegistry.get_available_vectorisers" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.VectoriserRegistry.register_factory">
+<span class="sig-name descname"><span class="pre">register_factory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Hashable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.vectoriser.Vectoriser" title="sensai.vectoriser.Vectoriser"><span class="pre">sensai.vectoriser.Vectoriser</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Hashable</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.vectoriser.VectoriserRegistry.register_factory" title="Permalink to this definition"></a></dt>
+<dd><p>Registers a vectoriser factory which can subsequently be referenced via their name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name (which can, in particular, be a string or an enum item)</p></li>
+<li><p><strong>factory</strong> – the factory, which takes the default transformer factory as an argument</p></li>
+<li><p><strong>additional_names</strong> – (optional) additional names under which to register the factory</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.VectoriserRegistry.get_vectoriser">
+<span class="sig-name descname"><span class="pre">get_vectoriser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Hashable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_transformer_factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.vectoriser.Vectoriser" title="sensai.vectoriser.Vectoriser"><span class="pre">sensai.vectoriser.Vectoriser</span></a></span></span><a class="headerlink" href="#sensai.vectoriser.VectoriserRegistry.get_vectoriser" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a vectoriser from a name, which must have been previously registered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name (which can, in particular, be a string or an enum item)</p></li>
+<li><p><strong>default_transformer_factory</strong> – the default transformer factory</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new vectoriser instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.vectoriser.VectoriserRegistry.get_vectorisers">
+<span class="sig-name descname"><span class="pre">get_vectorisers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Hashable</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_transformer_factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.vectoriser.Vectoriser" title="sensai.vectoriser.Vectoriser"><span class="pre">sensai.vectoriser.Vectoriser</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.vectoriser.VectoriserRegistry.get_vectorisers" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vector_model.html" class="btn btn-neutral float-left" title="vector_model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="xgboost.html" class="btn btn-neutral float-right" title="xgboost" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

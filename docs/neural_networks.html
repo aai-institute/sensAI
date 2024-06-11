@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neural Networks &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/nbsphinx-code-cells.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modules" href="sensai/index.html" />
+    <link rel="prev" title="Introduction to sensAI: Supervised Learning with VectorModels" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Neural Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Image-Classification">Image Classification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Applying-Predefined-Models">Applying Predefined Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Creating-a-Custom-CNN-Model">Creating a Custom CNN Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Wrapping-a-Custom-torch.nn.Module-Instance">Wrapping a Custom torch.nn.Module Instance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Creating-an-Input-/Output-Adaptive-Custom-Model">Creating an Input-/Output-Adaptive Custom Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sensai/index.html">Modules</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Neural Networks</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/neural_networks.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Neural-Networks">
+<h1>Neural Networks<a class="headerlink" href="#Neural-Networks" title="Permalink to this headline"></a></h1>
+<p>Neural networks being a very powerful class of models, especially in cases where the learning of representations from low-level information (such as pixels, audio samples or text) is key, sensAI provides many useful abstractions for dealing with this class of models, facilitating data handling, learning and evaluation.</p>
+<p>sensAI mainly provides abstractions for PyTorch, but there is also rudimentary support for TensorFlow.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="p">;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;../src&quot;</span><span class="p">,</span> <span class="s2">&quot;..&quot;</span><span class="p">])</span>
+<span class="kn">import</span> <span class="nn">sensai</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">config</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">sensai</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">configure</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<section id="Image-Classification">
+<h2>Image Classification<a class="headerlink" href="#Image-Classification" title="Permalink to this headline"></a></h2>
+<p>As an example use case, let us solve the classification problem of classifying digits in pixel images from the MNIST dataset. Images are greyscale (no colour information) and 28x28 pixels in size.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mnist_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">datafile_path</span><span class="p">(</span><span class="s2">&quot;mnist_train.csv.zip&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>The data frame contains one column for every pixel, each pixel being represented by an 8-bit integer (0 to 255).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mnist_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>label</th>
+      <th>1x1</th>
+      <th>1x2</th>
+      <th>1x3</th>
+      <th>1x4</th>
+      <th>1x5</th>
+      <th>1x6</th>
+      <th>1x7</th>
+      <th>1x8</th>
+      <th>1x9</th>
+      <th>...</th>
+      <th>28x19</th>
+      <th>28x20</th>
+      <th>28x21</th>
+      <th>28x22</th>
+      <th>28x23</th>
+      <th>28x24</th>
+      <th>28x25</th>
+      <th>28x26</th>
+      <th>28x27</th>
+      <th>28x28</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 785 columns</p>
+</div></div>
+</div>
+<p>Let’s create the I/O data for our experiments.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mnistIoData</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">InputOutputData</span><span class="o">.</span><span class="n">from_data_frame</span><span class="p">(</span><span class="n">mnist_df</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now that we have the image data separated from the labels, let’s write a function to restore the 2D image arrays and take a look at some of the images.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">reshape_2d_image</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">reshape_2d_image</span><span class="p">(</span><span class="n">mnistIoData</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;binary&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_10_0.png" src="_images/neural_networks_10_0.png" />
+</div>
+</div>
+<section id="Applying-Predefined-Models">
+<h3>Applying Predefined Models<a class="headerlink" href="#Applying-Predefined-Models" title="Permalink to this headline"></a></h3>
+<p>We create an evaluator in order to test the performance of our models, randomly splitting the data.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evaluator_params</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">evaluation</span><span class="o">.</span><span class="n">ClassificationEvaluatorParams</span><span class="p">(</span><span class="n">fractional_split_test_fraction</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">eval_util</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">evaluation</span><span class="o">.</span><span class="n">ClassificationModelEvaluation</span><span class="p">(</span><span class="n">mnistIoData</span><span class="p">,</span> <span class="n">evaluator_params</span><span class="o">=</span><span class="n">evaluator_params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>One pre-defined model we could try is a simple multi-layer perceptron. A PyTorch-based implementation is provided via class <code class="docutils literal notranslate"><span class="pre">MultiLayerPerceptronVectorClassificationModel</span></code>. This implementation supports CUDA-accelerated computations (on Nvidia GPUs), yet we shall stick to CPU-based computation (cuda=False) in this tutorial.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sensai.torch</span>
+
+<span class="n">nn_optimiser_params</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">NNOptimiserParams</span><span class="p">(</span><span class="n">early_stopping_epochs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">54</span><span class="p">)</span>
+<span class="n">torch_mlp_model</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">MultiLayerPerceptronVectorClassificationModel</span><span class="p">(</span><span class="n">hidden_dims</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+        <span class="n">cuda</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">normalisation_mode</span><span class="o">=</span><span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">NormalisationMode</span><span class="o">.</span><span class="n">MAX_ALL</span><span class="p">,</span>
+        <span class="n">nn_optimiser_params</span><span class="o">=</span><span class="n">nn_optimiser_params</span><span class="p">,</span> <span class="n">p_dropout</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="s2">&quot;MLP&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Neural networks work best on <strong>normalised inputs</strong>, so we have opted to apply basic normalisation by specifying a normalisation mode which will transforms inputs by dividing by the maximum value found across all columns in the training data. For more elaborate normalisation options, we could have used a data frame transformer (DFT), particularly <code class="docutils literal notranslate"><span class="pre">DFTNormalisation</span></code> or <code class="docutils literal notranslate"><span class="pre">DFTSkLearnTransformer</span></code>.</p>
+<p>sensAI’s default <strong>neural network training algorithm</strong> is based on early stopping, which involves checking, in regular intervals, the performance of the model on a validation set (which is split from the training set) and ultimately selecting the model that performed best on the validation set. You have full control over the loss evaluation method used to select the best model (by passing a respective <code class="docutils literal notranslate"><span class="pre">NNLossEvaluator</span></code> instance to NNOptimiserParams) as well as the method that is used to split
+the training set into the actual training set and the validation set (by adding a <code class="docutils literal notranslate"><span class="pre">DataFrameSplitter</span></code> to the model or using a custom <code class="docutils literal notranslate"><span class="pre">TorchDataSetProvider</span></code>).</p>
+<p>Given the vectorised nature of our MNIST dataset, we can apply any type of model which can accept the numeric inputs. Let’s compare the neural network we defined above against another pre-defined model, which is based on a scikit-learn implementation and uses decision trees rather than neural networks.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_forest_model</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">classification</span><span class="o">.</span><span class="n">SkLearnRandomForestVectorClassificationModel</span><span class="p">(</span>
+        <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="s2">&quot;RandomForest&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s compare the two models using our evaluation utility.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eval_util</span><span class="o">.</span><span class="n">compare_models</span><span class="p">([</span><span class="n">random_forest_model</span><span class="p">,</span> <span class="n">torch_mlp_model</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+INFO  2024-06-11 09:29:37,395 sensai.evaluation.eval_util:compare_models:393 - Evaluating model 1/2 named &#39;RandomForest&#39; ...
+DEBUG 2024-06-11 09:29:37,619 sensai.evaluation.evaluator:__init__:182 - &lt;sensai.data.DataSplitterFractional object at 0x7fe227050750&gt; created split with 48000 (80.00%) and 12000 (20.00%) training and test data points respectively
+INFO  2024-06-11 09:29:37,620 sensai.evaluation.eval_util:perform_simple_evaluation:281 - Evaluating SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, modelConstructor=RandomForestClassifier(random_state=42, min_samples_leaf=1, n_estimators=10)] via &lt;sensai.evaluation.evaluator.VectorClassificationModelEvaluator object at 0x7fe2270b6150&gt;
+INFO  2024-06-11 09:29:37,620 sensai.vector_model:fit:371 - Fitting SkLearnRandomForestVectorClassificationModel instance
+DEBUG 2024-06-11 09:29:37,651 sensai.vector_model:fit:394 - Fitting with outputs[1]=[&#39;label&#39;], inputs[784]=[1x1/int64, 1x2/int64, 1x3/int64, 1x4/int64, 1x5/int64, 1x6/int64, 1x7/int64, 1x8/int64, 1x9/int64, 1x10/int64, 1x11/int64, 1x12/int64, 1x13/int64, 1x14/int64, 1x15/int64, 1x16/int64, 1x17/int64, 1x18/int64, 1x19/int64, 1x20/int64, 1x21/int64, 1x22/int64, 1x23/int64, 1x24/int64, 1x25/int64, 1x26/int64, 1x27/int64, 1x28/int64, 2x1/int64, 2x2/int64, 2x3/int64, 2x4/int64, 2x5/int64, 2x6/int64, 2x7/int64, 2x8/int64, 2x9/int64, 2x10/int64, 2x11/int64, 2x12/int64, 2x13/int64, 2x14/int64, 2x15/int64, 2x16/int64, 2x17/int64, 2x18/int64, 2x19/int64, 2x20/int64, 2x21/int64, 2x22/int64, 2x23/int64, 2x24/int64, 2x25/int64, 2x26/int64, 2x27/int64, 2x28/int64, 3x1/int64, 3x2/int64, 3x3/int64, 3x4/int64, 3x5/int64, 3x6/int64, 3x7/int64, 3x8/int64, 3x9/int64, 3x10/int64, 3x11/int64, 3x12/int64, 3x13/int64, 3x14/int64, 3x15/int64, 3x16/int64, 3x17/int64, 3x18/int64, 3x19/int64, 3x20/int64, 3x21/int64, 3x22/int64, 3x23/int64, 3x24/int64, 3x25/int64, 3x26/int64, 3x27/int64, 3x28/int64, 4x1/int64, 4x2/int64, 4x3/int64, 4x4/int64, 4x5/int64, 4x6/int64, 4x7/int64, 4x8/int64, 4x9/int64, 4x10/int64, 4x11/int64, 4x12/int64, 4x13/int64, 4x14/int64, 4x15/int64, 4x16/int64, 4x17/int64, 4x18/int64, 4x19/int64, 4x20/int64, 4x21/int64, 4x22/int64, 4x23/int64, 4x24/int64, 4x25/int64, 4x26/int64, 4x27/int64, 4x28/int64, 5x1/int64, 5x2/int64, 5x3/int64, 5x4/int64, 5x5/int64, 5x6/int64, 5x7/int64, 5x8/int64, 5x9/int64, 5x10/int64, 5x11/int64, 5x12/int64, 5x13/int64, 5x14/int64, 5x15/int64, 5x16/int64, 5x17/int64, 5x18/int64, 5x19/int64, 5x20/int64, 5x21/int64, 5x22/int64, 5x23/int64, 5x24/int64, 5x25/int64, 5x26/int64, 5x27/int64, 5x28/int64, 6x1/int64, 6x2/int64, 6x3/int64, 6x4/int64, 6x5/int64, 6x6/int64, 6x7/int64, 6x8/int64, 6x9/int64, 6x10/int64, 6x11/int64, 6x12/int64, 6x13/int64, 6x14/int64, 6x15/int64, 6x16/int64, 6x17/int64, 6x18/int64, 6x19/int64, 6x20/int64, 6x21/int64, 6x22/int64, 6x23/int64, 6x24/int64, 6x25/int64, 6x26/int64, 6x27/int64, 6x28/int64, 7x1/int64, 7x2/int64, 7x3/int64, 7x4/int64, 7x5/int64, 7x6/int64, 7x7/int64, 7x8/int64, 7x9/int64, 7x10/int64, 7x11/int64, 7x12/int64, 7x13/int64, 7x14/int64, 7x15/int64, 7x16/int64, 7x17/int64, 7x18/int64, 7x19/int64, 7x20/int64, 7x21/int64, 7x22/int64, 7x23/int64, 7x24/int64, 7x25/int64, 7x26/int64, 7x27/int64, 7x28/int64, 8x1/int64, 8x2/int64, 8x3/int64, 8x4/int64, 8x5/int64, 8x6/int64, 8x7/int64, 8x8/int64, 8x9/int64, 8x10/int64, 8x11/int64, 8x12/int64, 8x13/int64, 8x14/int64, 8x15/int64, 8x16/int64, 8x17/int64, 8x18/int64, 8x19/int64, 8x20/int64, 8x21/int64, 8x22/int64, 8x23/int64, 8x24/int64, 8x25/int64, 8x26/int64, 8x27/int64, 8x28/int64, 9x1/int64, 9x2/int64, 9x3/int64, 9x4/int64, 9x5/int64, 9x6/int64, 9x7/int64, 9x8/int64, 9x9/int64, 9x10/int64, 9x11/int64, 9x12/int64, 9x13/int64, 9x14/int64, 9x15/int64, 9x16/int64, 9x17/int64, 9x18/int64, 9x19/int64, 9x20/int64, 9x21/int64, 9x22/int64, 9x23/int64, 9x24/int64, 9x25/int64, 9x26/int64, 9x27/int64, 9x28/int64, 10x1/int64, 10x2/int64, 10x3/int64, 10x4/int64, 10x5/int64, 10x6/int64, 10x7/int64, 10x8/int64, 10x9/int64, 10x10/int64, 10x11/int64, 10x12/int64, 10x13/int64, 10x14/int64, 10x15/int64, 10x16/int64, 10x17/int64, 10x18/int64, 10x19/int64, 10x20/int64, 10x21/int64, 10x22/int64, 10x23/int64, 10x24/int64, 10x25/int64, 10x26/int64, 10x27/int64, 10x28/int64, 11x1/int64, 11x2/int64, 11x3/int64, 11x4/int64, 11x5/int64, 11x6/int64, 11x7/int64, 11x8/int64, 11x9/int64, 11x10/int64, 11x11/int64, 11x12/int64, 11x13/int64, 11x14/int64, 11x15/int64, 11x16/int64, 11x17/int64, 11x18/int64, 11x19/int64, 11x20/int64, 11x21/int64, 11x22/int64, 11x23/int64, 11x24/int64, 11x25/int64, 11x26/int64, 11x27/int64, 11x28/int64, 12x1/int64, 12x2/int64, 12x3/int64, 12x4/int64, 12x5/int64, 12x6/int64, 12x7/int64, 12x8/int64, 12x9/int64, 12x10/int64, 12x11/int64, 12x12/int64, 12x13/int64, 12x14/int64, 12x15/int64, 12x16/int64, 12x17/int64, 12x18/int64, 12x19/int64, 12x20/int64, 12x21/int64, 12x22/int64, 12x23/int64, 12x24/int64, 12x25/int64, 12x26/int64, 12x27/int64, 12x28/int64, 13x1/int64, 13x2/int64, 13x3/int64, 13x4/int64, 13x5/int64, 13x6/int64, 13x7/int64, 13x8/int64, 13x9/int64, 13x10/int64, 13x11/int64, 13x12/int64, 13x13/int64, 13x14/int64, 13x15/int64, 13x16/int64, 13x17/int64, 13x18/int64, 13x19/int64, 13x20/int64, 13x21/int64, 13x22/int64, 13x23/int64, 13x24/int64, 13x25/int64, 13x26/int64, 13x27/int64, 13x28/int64, 14x1/int64, 14x2/int64, 14x3/int64, 14x4/int64, 14x5/int64, 14x6/int64, 14x7/int64, 14x8/int64, 14x9/int64, 14x10/int64, 14x11/int64, 14x12/int64, 14x13/int64, 14x14/int64, 14x15/int64, 14x16/int64, 14x17/int64, 14x18/int64, 14x19/int64, 14x20/int64, 14x21/int64, 14x22/int64, 14x23/int64, 14x24/int64, 14x25/int64, 14x26/int64, 14x27/int64, 14x28/int64, 15x1/int64, 15x2/int64, 15x3/int64, 15x4/int64, 15x5/int64, 15x6/int64, 15x7/int64, 15x8/int64, 15x9/int64, 15x10/int64, 15x11/int64, 15x12/int64, 15x13/int64, 15x14/int64, 15x15/int64, 15x16/int64, 15x17/int64, 15x18/int64, 15x19/int64, 15x20/int64, 15x21/int64, 15x22/int64, 15x23/int64, 15x24/int64, 15x25/int64, 15x26/int64, 15x27/int64, 15x28/int64, 16x1/int64, 16x2/int64, 16x3/int64, 16x4/int64, 16x5/int64, 16x6/int64, 16x7/int64, 16x8/int64, 16x9/int64, 16x10/int64, 16x11/int64, 16x12/int64, 16x13/int64, 16x14/int64, 16x15/int64, 16x16/int64, 16x17/int64, 16x18/int64, 16x19/int64, 16x20/int64, 16x21/int64, 16x22/int64, 16x23/int64, 16x24/int64, 16x25/int64, 16x26/int64, 16x27/int64, 16x28/int64, 17x1/int64, 17x2/int64, 17x3/int64, 17x4/int64, 17x5/int64, 17x6/int64, 17x7/int64, 17x8/int64, 17x9/int64, 17x10/int64, 17x11/int64, 17x12/int64, 17x13/int64, 17x14/int64, 17x15/int64, 17x16/int64, 17x17/int64, 17x18/int64, 17x19/int64, 17x20/int64, 17x21/int64, 17x22/int64, 17x23/int64, 17x24/int64, 17x25/int64, 17x26/int64, 17x27/int64, 17x28/int64, 18x1/int64, 18x2/int64, 18x3/int64, 18x4/int64, 18x5/int64, 18x6/int64, 18x7/int64, 18x8/int64, 18x9/int64, 18x10/int64, 18x11/int64, 18x12/int64, 18x13/int64, 18x14/int64, 18x15/int64, 18x16/int64, 18x17/int64, 18x18/int64, 18x19/int64, 18x20/int64, 18x21/int64, 18x22/int64, 18x23/int64, 18x24/int64, 18x25/int64, 18x26/int64, 18x27/int64, 18x28/int64, 19x1/int64, 19x2/int64, 19x3/int64, 19x4/int64, 19x5/int64, 19x6/int64, 19x7/int64, 19x8/int64, 19x9/int64, 19x10/int64, 19x11/int64, 19x12/int64, 19x13/int64, 19x14/int64, 19x15/int64, 19x16/int64, 19x17/int64, 19x18/int64, 19x19/int64, 19x20/int64, 19x21/int64, 19x22/int64, 19x23/int64, 19x24/int64, 19x25/int64, 19x26/int64, 19x27/int64, 19x28/int64, 20x1/int64, 20x2/int64, 20x3/int64, 20x4/int64, 20x5/int64, 20x6/int64, 20x7/int64, 20x8/int64, 20x9/int64, 20x10/int64, 20x11/int64, 20x12/int64, 20x13/int64, 20x14/int64, 20x15/int64, 20x16/int64, 20x17/int64, 20x18/int64, 20x19/int64, 20x20/int64, 20x21/int64, 20x22/int64, 20x23/int64, 20x24/int64, 20x25/int64, 20x26/int64, 20x27/int64, 20x28/int64, 21x1/int64, 21x2/int64, 21x3/int64, 21x4/int64, 21x5/int64, 21x6/int64, 21x7/int64, 21x8/int64, 21x9/int64, 21x10/int64, 21x11/int64, 21x12/int64, 21x13/int64, 21x14/int64, 21x15/int64, 21x16/int64, 21x17/int64, 21x18/int64, 21x19/int64, 21x20/int64, 21x21/int64, 21x22/int64, 21x23/int64, 21x24/int64, 21x25/int64, 21x26/int64, 21x27/int64, 21x28/int64, 22x1/int64, 22x2/int64, 22x3/int64, 22x4/int64, 22x5/int64, 22x6/int64, 22x7/int64, 22x8/int64, 22x9/int64, 22x10/int64, 22x11/int64, 22x12/int64, 22x13/int64, 22x14/int64, 22x15/int64, 22x16/int64, 22x17/int64, 22x18/int64, 22x19/int64, 22x20/int64, 22x21/int64, 22x22/int64, 22x23/int64, 22x24/int64, 22x25/int64, 22x26/int64, 22x27/int64, 22x28/int64, 23x1/int64, 23x2/int64, 23x3/int64, 23x4/int64, 23x5/int64, 23x6/int64, 23x7/int64, 23x8/int64, 23x9/int64, 23x10/int64, 23x11/int64, 23x12/int64, 23x13/int64, 23x14/int64, 23x15/int64, 23x16/int64, 23x17/int64, 23x18/int64, 23x19/int64, 23x20/int64, 23x21/int64, 23x22/int64, 23x23/int64, 23x24/int64, 23x25/int64, 23x26/int64, 23x27/int64, 23x28/int64, 24x1/int64, 24x2/int64, 24x3/int64, 24x4/int64, 24x5/int64, 24x6/int64, 24x7/int64, 24x8/int64, 24x9/int64, 24x10/int64, 24x11/int64, 24x12/int64, 24x13/int64, 24x14/int64, 24x15/int64, 24x16/int64, 24x17/int64, 24x18/int64, 24x19/int64, 24x20/int64, 24x21/int64, 24x22/int64, 24x23/int64, 24x24/int64, 24x25/int64, 24x26/int64, 24x27/int64, 24x28/int64, 25x1/int64, 25x2/int64, 25x3/int64, 25x4/int64, 25x5/int64, 25x6/int64, 25x7/int64, 25x8/int64, 25x9/int64, 25x10/int64, 25x11/int64, 25x12/int64, 25x13/int64, 25x14/int64, 25x15/int64, 25x16/int64, 25x17/int64, 25x18/int64, 25x19/int64, 25x20/int64, 25x21/int64, 25x22/int64, 25x23/int64, 25x24/int64, 25x25/int64, 25x26/int64, 25x27/int64, 25x28/int64, 26x1/int64, 26x2/int64, 26x3/int64, 26x4/int64, 26x5/int64, 26x6/int64, 26x7/int64, 26x8/int64, 26x9/int64, 26x10/int64, 26x11/int64, 26x12/int64, 26x13/int64, 26x14/int64, 26x15/int64, 26x16/int64, 26x17/int64, 26x18/int64, 26x19/int64, 26x20/int64, 26x21/int64, 26x22/int64, 26x23/int64, 26x24/int64, 26x25/int64, 26x26/int64, 26x27/int64, 26x28/int64, 27x1/int64, 27x2/int64, 27x3/int64, 27x4/int64, 27x5/int64, 27x6/int64, 27x7/int64, 27x8/int64, 27x9/int64, 27x10/int64, 27x11/int64, 27x12/int64, 27x13/int64, 27x14/int64, 27x15/int64, 27x16/int64, 27x17/int64, 27x18/int64, 27x19/int64, 27x20/int64, 27x21/int64, 27x22/int64, 27x23/int64, 27x24/int64, 27x25/int64, 27x26/int64, 27x27/int64, 27x28/int64, 28x1/int64, 28x2/int64, 28x3/int64, 28x4/int64, 28x5/int64, 28x6/int64, 28x7/int64, 28x8/int64, 28x9/int64, 28x10/int64, 28x11/int64, 28x12/int64, 28x13/int64, 28x14/int64, 28x15/int64, 28x16/int64, 28x17/int64, 28x18/int64, 28x19/int64, 28x20/int64, 28x21/int64, 28x22/int64, 28x23/int64, 28x24/int64, 28x25/int64, 28x26/int64, 28x27/int64, 28x28/int64]; N=48000 data points
+INFO  2024-06-11 09:29:37,652 sensai.sklearn.sklearn_base:_fit_classifier:281 - Fitting sklearn classifier of type RandomForestClassifier
+INFO  2024-06-11 09:29:40,498 sensai.vector_model:fit:400 - Fitting completed in 2.88 seconds: SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=1, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=10, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)]
+INFO  2024-06-11 09:29:40,585 sensai.evaluation.eval_util:gather_results:289 - Evaluation results for label: ClassificationEvalStats[accuracy=0.9466666666666667, balancedAccuracy=0.945916926388699, N=12000]
+INFO  2024-06-11 09:29:40,859 sensai.evaluation.eval_util:compare_models:393 - Evaluating model 2/2 named &#39;MLP&#39; ...
+INFO  2024-06-11 09:29:40,860 sensai.evaluation.eval_util:perform_simple_evaluation:281 - Evaluating MultiLayerPerceptronVectorClassificationModel[hidden_dims=(50, 20), hid_activation_function=&lt;built-in method sigmoid of type object at 0x7fe1c8188880&gt;, output_activation_function=ActivationFunction.LOG_SOFTMAX, input_dim=None, cuda=False, p_dropout=0.0, featureGenerator=None, outputMode=ClassificationOutputMode.LOG_PROBABILITIES, torch_model_factory=Method[_create_torch_model], normalisationMode=NormalisationMode.MAX_ALL, nnOptimiserParams=NNOptimiserParams[epochs=1000, batch_size=54, optimiser_lr=0.001, shrinkage_clip=10.0, optimiser=adam, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=2, shuffle=True], model=None, inputTensoriser=None, outputTensoriser=None, torchDataSetProviderFactory=None, dataFrameSplitter=None, name=MLP] via &lt;sensai.evaluation.evaluator.VectorClassificationModelEvaluator object at 0x7fe2270b6150&gt;
+INFO  2024-06-11 09:29:40,861 sensai.vector_model:fit:371 - Fitting MultiLayerPerceptronVectorClassificationModel instance
+DEBUG 2024-06-11 09:29:40,870 sensai.vector_model:fit:394 - Fitting with outputs[1]=[&#39;label&#39;], inputs[784]=[1x1/int64, 1x2/int64, 1x3/int64, 1x4/int64, 1x5/int64, 1x6/int64, 1x7/int64, 1x8/int64, 1x9/int64, 1x10/int64, 1x11/int64, 1x12/int64, 1x13/int64, 1x14/int64, 1x15/int64, 1x16/int64, 1x17/int64, 1x18/int64, 1x19/int64, 1x20/int64, 1x21/int64, 1x22/int64, 1x23/int64, 1x24/int64, 1x25/int64, 1x26/int64, 1x27/int64, 1x28/int64, 2x1/int64, 2x2/int64, 2x3/int64, 2x4/int64, 2x5/int64, 2x6/int64, 2x7/int64, 2x8/int64, 2x9/int64, 2x10/int64, 2x11/int64, 2x12/int64, 2x13/int64, 2x14/int64, 2x15/int64, 2x16/int64, 2x17/int64, 2x18/int64, 2x19/int64, 2x20/int64, 2x21/int64, 2x22/int64, 2x23/int64, 2x24/int64, 2x25/int64, 2x26/int64, 2x27/int64, 2x28/int64, 3x1/int64, 3x2/int64, 3x3/int64, 3x4/int64, 3x5/int64, 3x6/int64, 3x7/int64, 3x8/int64, 3x9/int64, 3x10/int64, 3x11/int64, 3x12/int64, 3x13/int64, 3x14/int64, 3x15/int64, 3x16/int64, 3x17/int64, 3x18/int64, 3x19/int64, 3x20/int64, 3x21/int64, 3x22/int64, 3x23/int64, 3x24/int64, 3x25/int64, 3x26/int64, 3x27/int64, 3x28/int64, 4x1/int64, 4x2/int64, 4x3/int64, 4x4/int64, 4x5/int64, 4x6/int64, 4x7/int64, 4x8/int64, 4x9/int64, 4x10/int64, 4x11/int64, 4x12/int64, 4x13/int64, 4x14/int64, 4x15/int64, 4x16/int64, 4x17/int64, 4x18/int64, 4x19/int64, 4x20/int64, 4x21/int64, 4x22/int64, 4x23/int64, 4x24/int64, 4x25/int64, 4x26/int64, 4x27/int64, 4x28/int64, 5x1/int64, 5x2/int64, 5x3/int64, 5x4/int64, 5x5/int64, 5x6/int64, 5x7/int64, 5x8/int64, 5x9/int64, 5x10/int64, 5x11/int64, 5x12/int64, 5x13/int64, 5x14/int64, 5x15/int64, 5x16/int64, 5x17/int64, 5x18/int64, 5x19/int64, 5x20/int64, 5x21/int64, 5x22/int64, 5x23/int64, 5x24/int64, 5x25/int64, 5x26/int64, 5x27/int64, 5x28/int64, 6x1/int64, 6x2/int64, 6x3/int64, 6x4/int64, 6x5/int64, 6x6/int64, 6x7/int64, 6x8/int64, 6x9/int64, 6x10/int64, 6x11/int64, 6x12/int64, 6x13/int64, 6x14/int64, 6x15/int64, 6x16/int64, 6x17/int64, 6x18/int64, 6x19/int64, 6x20/int64, 6x21/int64, 6x22/int64, 6x23/int64, 6x24/int64, 6x25/int64, 6x26/int64, 6x27/int64, 6x28/int64, 7x1/int64, 7x2/int64, 7x3/int64, 7x4/int64, 7x5/int64, 7x6/int64, 7x7/int64, 7x8/int64, 7x9/int64, 7x10/int64, 7x11/int64, 7x12/int64, 7x13/int64, 7x14/int64, 7x15/int64, 7x16/int64, 7x17/int64, 7x18/int64, 7x19/int64, 7x20/int64, 7x21/int64, 7x22/int64, 7x23/int64, 7x24/int64, 7x25/int64, 7x26/int64, 7x27/int64, 7x28/int64, 8x1/int64, 8x2/int64, 8x3/int64, 8x4/int64, 8x5/int64, 8x6/int64, 8x7/int64, 8x8/int64, 8x9/int64, 8x10/int64, 8x11/int64, 8x12/int64, 8x13/int64, 8x14/int64, 8x15/int64, 8x16/int64, 8x17/int64, 8x18/int64, 8x19/int64, 8x20/int64, 8x21/int64, 8x22/int64, 8x23/int64, 8x24/int64, 8x25/int64, 8x26/int64, 8x27/int64, 8x28/int64, 9x1/int64, 9x2/int64, 9x3/int64, 9x4/int64, 9x5/int64, 9x6/int64, 9x7/int64, 9x8/int64, 9x9/int64, 9x10/int64, 9x11/int64, 9x12/int64, 9x13/int64, 9x14/int64, 9x15/int64, 9x16/int64, 9x17/int64, 9x18/int64, 9x19/int64, 9x20/int64, 9x21/int64, 9x22/int64, 9x23/int64, 9x24/int64, 9x25/int64, 9x26/int64, 9x27/int64, 9x28/int64, 10x1/int64, 10x2/int64, 10x3/int64, 10x4/int64, 10x5/int64, 10x6/int64, 10x7/int64, 10x8/int64, 10x9/int64, 10x10/int64, 10x11/int64, 10x12/int64, 10x13/int64, 10x14/int64, 10x15/int64, 10x16/int64, 10x17/int64, 10x18/int64, 10x19/int64, 10x20/int64, 10x21/int64, 10x22/int64, 10x23/int64, 10x24/int64, 10x25/int64, 10x26/int64, 10x27/int64, 10x28/int64, 11x1/int64, 11x2/int64, 11x3/int64, 11x4/int64, 11x5/int64, 11x6/int64, 11x7/int64, 11x8/int64, 11x9/int64, 11x10/int64, 11x11/int64, 11x12/int64, 11x13/int64, 11x14/int64, 11x15/int64, 11x16/int64, 11x17/int64, 11x18/int64, 11x19/int64, 11x20/int64, 11x21/int64, 11x22/int64, 11x23/int64, 11x24/int64, 11x25/int64, 11x26/int64, 11x27/int64, 11x28/int64, 12x1/int64, 12x2/int64, 12x3/int64, 12x4/int64, 12x5/int64, 12x6/int64, 12x7/int64, 12x8/int64, 12x9/int64, 12x10/int64, 12x11/int64, 12x12/int64, 12x13/int64, 12x14/int64, 12x15/int64, 12x16/int64, 12x17/int64, 12x18/int64, 12x19/int64, 12x20/int64, 12x21/int64, 12x22/int64, 12x23/int64, 12x24/int64, 12x25/int64, 12x26/int64, 12x27/int64, 12x28/int64, 13x1/int64, 13x2/int64, 13x3/int64, 13x4/int64, 13x5/int64, 13x6/int64, 13x7/int64, 13x8/int64, 13x9/int64, 13x10/int64, 13x11/int64, 13x12/int64, 13x13/int64, 13x14/int64, 13x15/int64, 13x16/int64, 13x17/int64, 13x18/int64, 13x19/int64, 13x20/int64, 13x21/int64, 13x22/int64, 13x23/int64, 13x24/int64, 13x25/int64, 13x26/int64, 13x27/int64, 13x28/int64, 14x1/int64, 14x2/int64, 14x3/int64, 14x4/int64, 14x5/int64, 14x6/int64, 14x7/int64, 14x8/int64, 14x9/int64, 14x10/int64, 14x11/int64, 14x12/int64, 14x13/int64, 14x14/int64, 14x15/int64, 14x16/int64, 14x17/int64, 14x18/int64, 14x19/int64, 14x20/int64, 14x21/int64, 14x22/int64, 14x23/int64, 14x24/int64, 14x25/int64, 14x26/int64, 14x27/int64, 14x28/int64, 15x1/int64, 15x2/int64, 15x3/int64, 15x4/int64, 15x5/int64, 15x6/int64, 15x7/int64, 15x8/int64, 15x9/int64, 15x10/int64, 15x11/int64, 15x12/int64, 15x13/int64, 15x14/int64, 15x15/int64, 15x16/int64, 15x17/int64, 15x18/int64, 15x19/int64, 15x20/int64, 15x21/int64, 15x22/int64, 15x23/int64, 15x24/int64, 15x25/int64, 15x26/int64, 15x27/int64, 15x28/int64, 16x1/int64, 16x2/int64, 16x3/int64, 16x4/int64, 16x5/int64, 16x6/int64, 16x7/int64, 16x8/int64, 16x9/int64, 16x10/int64, 16x11/int64, 16x12/int64, 16x13/int64, 16x14/int64, 16x15/int64, 16x16/int64, 16x17/int64, 16x18/int64, 16x19/int64, 16x20/int64, 16x21/int64, 16x22/int64, 16x23/int64, 16x24/int64, 16x25/int64, 16x26/int64, 16x27/int64, 16x28/int64, 17x1/int64, 17x2/int64, 17x3/int64, 17x4/int64, 17x5/int64, 17x6/int64, 17x7/int64, 17x8/int64, 17x9/int64, 17x10/int64, 17x11/int64, 17x12/int64, 17x13/int64, 17x14/int64, 17x15/int64, 17x16/int64, 17x17/int64, 17x18/int64, 17x19/int64, 17x20/int64, 17x21/int64, 17x22/int64, 17x23/int64, 17x24/int64, 17x25/int64, 17x26/int64, 17x27/int64, 17x28/int64, 18x1/int64, 18x2/int64, 18x3/int64, 18x4/int64, 18x5/int64, 18x6/int64, 18x7/int64, 18x8/int64, 18x9/int64, 18x10/int64, 18x11/int64, 18x12/int64, 18x13/int64, 18x14/int64, 18x15/int64, 18x16/int64, 18x17/int64, 18x18/int64, 18x19/int64, 18x20/int64, 18x21/int64, 18x22/int64, 18x23/int64, 18x24/int64, 18x25/int64, 18x26/int64, 18x27/int64, 18x28/int64, 19x1/int64, 19x2/int64, 19x3/int64, 19x4/int64, 19x5/int64, 19x6/int64, 19x7/int64, 19x8/int64, 19x9/int64, 19x10/int64, 19x11/int64, 19x12/int64, 19x13/int64, 19x14/int64, 19x15/int64, 19x16/int64, 19x17/int64, 19x18/int64, 19x19/int64, 19x20/int64, 19x21/int64, 19x22/int64, 19x23/int64, 19x24/int64, 19x25/int64, 19x26/int64, 19x27/int64, 19x28/int64, 20x1/int64, 20x2/int64, 20x3/int64, 20x4/int64, 20x5/int64, 20x6/int64, 20x7/int64, 20x8/int64, 20x9/int64, 20x10/int64, 20x11/int64, 20x12/int64, 20x13/int64, 20x14/int64, 20x15/int64, 20x16/int64, 20x17/int64, 20x18/int64, 20x19/int64, 20x20/int64, 20x21/int64, 20x22/int64, 20x23/int64, 20x24/int64, 20x25/int64, 20x26/int64, 20x27/int64, 20x28/int64, 21x1/int64, 21x2/int64, 21x3/int64, 21x4/int64, 21x5/int64, 21x6/int64, 21x7/int64, 21x8/int64, 21x9/int64, 21x10/int64, 21x11/int64, 21x12/int64, 21x13/int64, 21x14/int64, 21x15/int64, 21x16/int64, 21x17/int64, 21x18/int64, 21x19/int64, 21x20/int64, 21x21/int64, 21x22/int64, 21x23/int64, 21x24/int64, 21x25/int64, 21x26/int64, 21x27/int64, 21x28/int64, 22x1/int64, 22x2/int64, 22x3/int64, 22x4/int64, 22x5/int64, 22x6/int64, 22x7/int64, 22x8/int64, 22x9/int64, 22x10/int64, 22x11/int64, 22x12/int64, 22x13/int64, 22x14/int64, 22x15/int64, 22x16/int64, 22x17/int64, 22x18/int64, 22x19/int64, 22x20/int64, 22x21/int64, 22x22/int64, 22x23/int64, 22x24/int64, 22x25/int64, 22x26/int64, 22x27/int64, 22x28/int64, 23x1/int64, 23x2/int64, 23x3/int64, 23x4/int64, 23x5/int64, 23x6/int64, 23x7/int64, 23x8/int64, 23x9/int64, 23x10/int64, 23x11/int64, 23x12/int64, 23x13/int64, 23x14/int64, 23x15/int64, 23x16/int64, 23x17/int64, 23x18/int64, 23x19/int64, 23x20/int64, 23x21/int64, 23x22/int64, 23x23/int64, 23x24/int64, 23x25/int64, 23x26/int64, 23x27/int64, 23x28/int64, 24x1/int64, 24x2/int64, 24x3/int64, 24x4/int64, 24x5/int64, 24x6/int64, 24x7/int64, 24x8/int64, 24x9/int64, 24x10/int64, 24x11/int64, 24x12/int64, 24x13/int64, 24x14/int64, 24x15/int64, 24x16/int64, 24x17/int64, 24x18/int64, 24x19/int64, 24x20/int64, 24x21/int64, 24x22/int64, 24x23/int64, 24x24/int64, 24x25/int64, 24x26/int64, 24x27/int64, 24x28/int64, 25x1/int64, 25x2/int64, 25x3/int64, 25x4/int64, 25x5/int64, 25x6/int64, 25x7/int64, 25x8/int64, 25x9/int64, 25x10/int64, 25x11/int64, 25x12/int64, 25x13/int64, 25x14/int64, 25x15/int64, 25x16/int64, 25x17/int64, 25x18/int64, 25x19/int64, 25x20/int64, 25x21/int64, 25x22/int64, 25x23/int64, 25x24/int64, 25x25/int64, 25x26/int64, 25x27/int64, 25x28/int64, 26x1/int64, 26x2/int64, 26x3/int64, 26x4/int64, 26x5/int64, 26x6/int64, 26x7/int64, 26x8/int64, 26x9/int64, 26x10/int64, 26x11/int64, 26x12/int64, 26x13/int64, 26x14/int64, 26x15/int64, 26x16/int64, 26x17/int64, 26x18/int64, 26x19/int64, 26x20/int64, 26x21/int64, 26x22/int64, 26x23/int64, 26x24/int64, 26x25/int64, 26x26/int64, 26x27/int64, 26x28/int64, 27x1/int64, 27x2/int64, 27x3/int64, 27x4/int64, 27x5/int64, 27x6/int64, 27x7/int64, 27x8/int64, 27x9/int64, 27x10/int64, 27x11/int64, 27x12/int64, 27x13/int64, 27x14/int64, 27x15/int64, 27x16/int64, 27x17/int64, 27x18/int64, 27x19/int64, 27x20/int64, 27x21/int64, 27x22/int64, 27x23/int64, 27x24/int64, 27x25/int64, 27x26/int64, 27x27/int64, 27x28/int64, 28x1/int64, 28x2/int64, 28x3/int64, 28x4/int64, 28x5/int64, 28x6/int64, 28x7/int64, 28x8/int64, 28x9/int64, 28x10/int64, 28x11/int64, 28x12/int64, 28x13/int64, 28x14/int64, 28x15/int64, 28x16/int64, 28x17/int64, 28x18/int64, 28x19/int64, 28x20/int64, 28x21/int64, 28x22/int64, 28x23/int64, 28x24/int64, 28x25/int64, 28x26/int64, 28x27/int64, 28x28/int64]; N=48000 data points
+INFO  2024-06-11 09:29:41,046 sensai.torch.torch_opt.NNOptimiser:fit:682 - Preparing parameter learning of MultiLayerPerceptronTorchModel[cuda=False, inputDim=784, outputDim=10, hidActivationFunction=&lt;built-in method sigmoid of type object at 0x7fe1c8188880&gt;, outputActivationFunction=functools.partial(&lt;function log_softmax at 0x7fe22611a9e0&gt;, dim=1), hiddenDims=(50, 20), pDropout=0.0, overrideInputDim=None, bestEpoch=None, totalEpochs=None] via NNOptimiser[params=NNOptimiserParams[epochs=1000, batch_size=54, optimiser_lr=0.001, shrinkage_clip=10.0, optimiser=adam, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=2, shuffle=True]] with cuda=False
+INFO  2024-06-11 09:29:41,048 sensai.torch.torch_opt.NNOptimiser:fit:716 - Obtaining input/output training instances
+INFO  2024-06-11 09:29:41,228 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Data set 1/1: #train=36000, #validation=12000
+INFO  2024-06-11 09:29:41,229 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Number of validation sets: 1
+INFO  2024-06-11 09:29:41,231 sensai.torch.torch_opt.NNOptimiser:fit:746 - Learning parameters of MultiLayerPerceptronTorchModel[cuda=False, inputDim=784, outputDim=10, hidActivationFunction=&lt;built-in method sigmoid of type object at 0x7fe1c8188880&gt;, outputActivationFunction=functools.partial(&lt;function log_softmax at 0x7fe22611a9e0&gt;, dim=1), hiddenDims=(50, 20), pDropout=0.0, overrideInputDim=None, bestEpoch=None, totalEpochs=None]
+INFO  2024-06-11 09:29:41,232 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Number of parameters: 40480
+INFO  2024-06-11 09:29:41,232 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Starting training process via NNOptimiser[params=NNOptimiserParams[epochs=1000, batch_size=54, optimiser_lr=0.001, shrinkage_clip=10.0, optimiser=adam, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=2, shuffle=True]]
+INFO  2024-06-11 09:29:41,242 sensai.torch.torch_opt.NNOptimiser:fit:764 - Begin training with cuda=False
+INFO  2024-06-11 09:29:41,242 sensai.torch.torch_opt.NNOptimiser:fit:765 - Press Ctrl+C to end training early
+INFO  2024-06-11 09:29:42,418 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   1/1000 completed in  1.18s | train loss 1.4059 | validation NLL 0.7300 | best NLL 0.730044 from this epoch
+INFO  2024-06-11 09:29:43,557 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   2/1000 completed in  1.13s | train loss 0.5021 | validation NLL 0.3806 | best NLL 0.380582 from this epoch
+INFO  2024-06-11 09:29:44,756 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   3/1000 completed in  1.19s | train loss 0.3138 | validation NLL 0.2847 | best NLL 0.284687 from this epoch
+INFO  2024-06-11 09:29:45,946 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   4/1000 completed in  1.18s | train loss 0.2409 | validation NLL 0.2393 | best NLL 0.239259 from this epoch
+INFO  2024-06-11 09:29:47,124 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   5/1000 completed in  1.17s | train loss 0.1981 | validation NLL 0.2081 | best NLL 0.208118 from this epoch
+INFO  2024-06-11 09:29:48,276 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   6/1000 completed in  1.14s | train loss 0.1676 | validation NLL 0.1872 | best NLL 0.187202 from this epoch
+INFO  2024-06-11 09:29:49,294 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   7/1000 completed in  1.01s | train loss 0.1450 | validation NLL 0.1697 | best NLL 0.169709 from this epoch
+INFO  2024-06-11 09:29:50,309 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   8/1000 completed in  1.01s | train loss 0.1274 | validation NLL 0.1593 | best NLL 0.159322 from this epoch
+INFO  2024-06-11 09:29:51,326 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   9/1000 completed in  1.01s | train loss 0.1131 | validation NLL 0.1509 | best NLL 0.150902 from this epoch
+INFO  2024-06-11 09:29:52,344 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch  10/1000 completed in  1.01s | train loss 0.1013 | validation NLL 0.1440 | best NLL 0.144011 from this epoch
+INFO  2024-06-11 09:29:53,363 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch  11/1000 completed in  1.01s | train loss 0.0906 | validation NLL 0.1381 | best NLL 0.138148 from this epoch
+INFO  2024-06-11 09:29:54,383 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch  12/1000 completed in  1.01s | train loss 0.0816 | validation NLL 0.1334 | best NLL 0.133373 from this epoch
+INFO  2024-06-11 09:29:55,400 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch  13/1000 completed in  1.01s | train loss 0.0739 | validation NLL 0.1315 | best NLL 0.131459 from this epoch
+INFO  2024-06-11 09:29:56,417 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch  14/1000 completed in  1.01s | train loss 0.0667 | validation NLL 0.1281 | best NLL 0.128110 from this epoch
+INFO  2024-06-11 09:29:57,436 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch  15/1000 completed in  1.01s | train loss 0.0610 | validation NLL 0.1271 | best NLL 0.127124 from this epoch
+INFO  2024-06-11 09:29:58,599 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch  16/1000 completed in  1.16s | train loss 0.0553 | validation NLL 0.1222 | best NLL 0.122218 from this epoch
+INFO  2024-06-11 09:29:59,777 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch  17/1000 completed in  1.17s | train loss 0.0504 | validation NLL 0.1258 | best NLL 0.122218 from epoch 16
+INFO  2024-06-11 09:30:00,944 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch  18/1000 completed in  1.17s | train loss 0.0461 | validation NLL 0.1233 | best NLL 0.122218 from epoch 16
+INFO  2024-06-11 09:30:00,945 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Stopping early: 2 epochs without validation metric improvement
+INFO  2024-06-11 09:30:00,945 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Training complete
+INFO  2024-06-11 09:30:00,946 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Best model is from epoch 16 with NLL 0.12221813999116421 on validation set
+INFO  2024-06-11 09:30:00,954 sensai.vector_model:fit:400 - Fitting completed in 20.09 seconds: MultiLayerPerceptronVectorClassificationModel[hidden_dims=(50, 20), hid_activation_function=&lt;built-in method sigmoid of type object at 0x7fe1c8188880&gt;, output_activation_function=ActivationFunction.LOG_SOFTMAX, input_dim=None, cuda=False, p_dropout=0.0, featureGenerator=None, outputMode=ClassificationOutputMode.LOG_PROBABILITIES, torch_model_factory=Method[_create_torch_model], normalisationMode=NormalisationMode.MAX_ALL, nnOptimiserParams=NNOptimiserParams[epochs=1000, batch_size=54, optimiser_lr=0.001, shrinkage_clip=10.0, optimiser=adam, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=2, shuffle=True], model=MultiLayerPerceptronTorchModel[cuda=False, inputDim=784, outputDim=10, hidActivationFunction=&lt;built-in method sigmoid of type object at 0x7fe1c8188880&gt;, outputActivationFunction=functools.partial(&lt;function log_softmax at 0x7fe22611a9e0&gt;, dim=1), hiddenDims=(50, 20), pDropout=0.0, overrideInputDim=None, bestEpoch=16, totalEpochs=18], inputTensoriser=None, outputTensoriser=None, torchDataSetProviderFactory=None, dataFrameSplitter=None, name=MLP]
+DEBUG 2024-06-11 09:30:00,955 sensai.torch.torch_data:__init__:546 - Applying &lt;sensai.torch.torch_data.TensoriserDataFrameFloatValuesMatrix object at 0x7fe2248c8f50&gt; to data frame of length 12000 ...
+INFO  2024-06-11 09:30:01,085 sensai.evaluation.eval_util:gather_results:289 - Evaluation results for label: ClassificationEvalStats[accuracy=0.96225, balancedAccuracy=0.9618968610010363, N=12000]
+INFO  2024-06-11 09:30:01,410 sensai.evaluation.eval_util:compare_models:462 - Model comparison results:
+              accuracy  balancedAccuracy
+model_name
+RandomForest  0.946667          0.945917
+MLP           0.962250          0.961897
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;sensai.evaluation.eval_util.ModelComparisonData at 0x7fe2245f4650&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_19_2.png" src="_images/neural_networks_19_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_19_3.png" src="_images/neural_networks_19_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_19_4.png" src="_images/neural_networks_19_4.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_19_5.png" src="_images/neural_networks_19_5.png" />
+</div>
+</div>
+<p>Both models perform reasonably well.</p>
+</section>
+<section id="Creating-a-Custom-CNN-Model">
+<h3>Creating a Custom CNN Model<a class="headerlink" href="#Creating-a-Custom-CNN-Model" title="Permalink to this headline"></a></h3>
+<p>Given that this is an image recognition problem, it can be sensible to apply convolutional neural networks (CNNs), which can analyse patches of the image in order to generate more high-level features from them. Specifically, we shall apply a neural network model which uses multiple convolutions, a max-pooling layer and a multi-layer perceptron at the end in order to produce the classification.</p>
+<p>For classification and regression, sensAI provides the fundamental classes <code class="docutils literal notranslate"><span class="pre">TorchVectorClassificationModel</span></code> and <code class="docutils literal notranslate"><span class="pre">TorchVectorRegressionModel</span></code> respectively. Ultimately, these classes will wrap an instance of <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>, the base class for neural networks in PyTorch.</p>
+<section id="Wrapping-a-Custom-torch.nn.Module-Instance">
+<h4>Wrapping a Custom torch.nn.Module Instance<a class="headerlink" href="#Wrapping-a-Custom-torch.nn.Module-Instance" title="Permalink to this headline"></a></h4>
+<p>If we already had an implementation of a <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>, it can be straightforwardly adapted to become a sensAI <code class="docutils literal notranslate"><span class="pre">VectorModel</span></code>.</p>
+<p>Let’s say we had the following implementation of a torch module, which performs the steps described above.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="k">class</span> <span class="nc">MnistCnnModule</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_conv</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">pooling_kernel_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+            <span class="n">mlp_hidden_dims</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">output_activation_fn</span><span class="p">:</span> <span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">ActivationFunction</span><span class="p">,</span> <span class="n">p_dropout</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">kernel_size</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">pooling_kernel_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cnn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_conv</span><span class="p">,</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">((</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_dropout</span><span class="p">)</span>
+        <span class="n">reduced_dim</span> <span class="o">=</span> <span class="p">(</span><span class="n">image_dim</span> <span class="o">-</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">p</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">reduced_dim</span><span class="p">)</span> <span class="o">!=</span> <span class="n">reduced_dim</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pooling kernel size </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2"> is not a divisor of post-convolution dimension </span><span class="si">{</span><span class="n">image_dim</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">MultiLayerPerceptron</span><span class="p">(</span><span class="n">num_conv</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">reduced_dim</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">mlp_hidden_dims</span><span class="p">,</span>
+            <span class="n">output_activation_fn</span><span class="o">=</span><span class="n">output_activation_fn</span><span class="o">.</span><span class="n">get_torch_function</span><span class="p">(),</span>
+            <span class="n">hid_activation_fn</span><span class="o">=</span><span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">ActivationFunction</span><span class="o">.</span><span class="n">RELU</span><span class="o">.</span><span class="n">get_torch_function</span><span class="p">(),</span>
+            <span class="n">p_dropout</span><span class="o">=</span><span class="n">p_dropout</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cnn</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Since this module requires 2D images as input, we will need a component that transforms the vector input that is given in our data frame into a tensor that will serve as input to the module. In sensAI, the abstraction for this purpose is a <code class="docutils literal notranslate"><span class="pre">sensai.torch.Tensoriser</span></code>. A <strong>Tensoriser</strong> can, in principle, perform arbitrary computations in order to produce, from a data frame with N rows, one or more tensors of length N (first dimension equal to N) that will ultimately be fed to the neural network.</p>
+<p>Luckily, for the case at hand, we already have the function <code class="docutils literal notranslate"><span class="pre">reshape_2d_image</span></code> from above to assist in the implementation of the tensoriser.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ImageReshapingInputTensoriser</span><span class="p">(</span><span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">RuleBasedTensoriser</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_tensorise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]:</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">reshape_2d_image</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()]</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">images</span><span class="p">))</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">/</span> <span class="mi">255</span>
+</pre></div>
+</div>
+</div>
+<p>In this case, we derived the class from <code class="docutils literal notranslate"><span class="pre">RuleBasedTensoriser</span></code> rather than <code class="docutils literal notranslate"><span class="pre">Tensoriser</span></code>, because our tensoriser does not require fitting. We additionally took care of the normalisation.</p>
+<p>Now we have all we need to create a sensAI <code class="docutils literal notranslate"><span class="pre">TorchVectorClassificationModel</span></code> that will work on the input/output data we loaded earlier.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cnn_module</span> <span class="o">=</span> <span class="n">MnistCnnModule</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">ActivationFunction</span><span class="o">.</span><span class="n">LOG_SOFTMAX</span><span class="p">)</span>
+<span class="n">nn_optimiser_params</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">NNOptimiserParams</span><span class="p">(</span>
+    <span class="n">optimiser</span><span class="o">=</span><span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">Optimiser</span><span class="o">.</span><span class="n">ADAMW</span><span class="p">,</span>
+    <span class="n">optimiser_lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+    <span class="n">early_stopping_epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">cnn_model_from_module</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">TorchVectorClassificationModel</span><span class="o">.</span><span class="n">from_module</span><span class="p">(</span>
+        <span class="n">cnn_module</span><span class="p">,</span> <span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">ClassificationOutputMode</span><span class="o">.</span><span class="n">LOG_PROBABILITIES</span><span class="p">,</span>
+        <span class="n">cuda</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nn_optimiser_params</span><span class="o">=</span><span class="n">nn_optimiser_params</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">with_input_tensoriser</span><span class="p">(</span><span class="n">ImageReshapingInputTensoriser</span><span class="p">())</span> \
+    <span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="s2">&quot;CNN&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We have now fully defined all the necessary parameters, including parameters controlling the training of the model.</p>
+<p>We are now ready to evaluate the model.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eval_util</span><span class="o">.</span><span class="n">perform_simple_evaluation</span><span class="p">(</span><span class="n">cnn_model_from_module</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+DEBUG 2024-06-11 09:30:03,401 sensai.evaluation.evaluator:__init__:182 - &lt;sensai.data.DataSplitterFractional object at 0x7fe227050750&gt; created split with 48000 (80.00%) and 12000 (20.00%) training and test data points respectively
+INFO  2024-06-11 09:30:03,402 sensai.evaluation.eval_util:perform_simple_evaluation:281 - Evaluating TorchVectorClassificationModel[featureGenerator=None, outputMode=ClassificationOutputMode.LOG_PROBABILITIES, torch_model_factory=&lt;sensai.torch.torch_base.TorchModelFactoryFromModule object at 0x7fe224909610&gt;, normalisationMode=NormalisationMode.NONE, nnOptimiserParams=NNOptimiserParams[epochs=1000, batch_size=1024, optimiser_lr=0.01, shrinkage_clip=10.0, optimiser=Optimiser.ADAMW, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=3, shuffle=True], model=None, inputTensoriser=&lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223249450&gt;, outputTensoriser=None, torchDataSetProviderFactory=None, dataFrameSplitter=None, name=CNN] via &lt;sensai.evaluation.evaluator.VectorClassificationModelEvaluator object at 0x7fe223740cd0&gt;
+INFO  2024-06-11 09:30:03,402 sensai.vector_model:fit:371 - Fitting TorchVectorClassificationModel instance
+DEBUG 2024-06-11 09:30:03,426 sensai.vector_model:fit:394 - Fitting with outputs[1]=[&#39;label&#39;], inputs[784]=[1x1/int64, 1x2/int64, 1x3/int64, 1x4/int64, 1x5/int64, 1x6/int64, 1x7/int64, 1x8/int64, 1x9/int64, 1x10/int64, 1x11/int64, 1x12/int64, 1x13/int64, 1x14/int64, 1x15/int64, 1x16/int64, 1x17/int64, 1x18/int64, 1x19/int64, 1x20/int64, 1x21/int64, 1x22/int64, 1x23/int64, 1x24/int64, 1x25/int64, 1x26/int64, 1x27/int64, 1x28/int64, 2x1/int64, 2x2/int64, 2x3/int64, 2x4/int64, 2x5/int64, 2x6/int64, 2x7/int64, 2x8/int64, 2x9/int64, 2x10/int64, 2x11/int64, 2x12/int64, 2x13/int64, 2x14/int64, 2x15/int64, 2x16/int64, 2x17/int64, 2x18/int64, 2x19/int64, 2x20/int64, 2x21/int64, 2x22/int64, 2x23/int64, 2x24/int64, 2x25/int64, 2x26/int64, 2x27/int64, 2x28/int64, 3x1/int64, 3x2/int64, 3x3/int64, 3x4/int64, 3x5/int64, 3x6/int64, 3x7/int64, 3x8/int64, 3x9/int64, 3x10/int64, 3x11/int64, 3x12/int64, 3x13/int64, 3x14/int64, 3x15/int64, 3x16/int64, 3x17/int64, 3x18/int64, 3x19/int64, 3x20/int64, 3x21/int64, 3x22/int64, 3x23/int64, 3x24/int64, 3x25/int64, 3x26/int64, 3x27/int64, 3x28/int64, 4x1/int64, 4x2/int64, 4x3/int64, 4x4/int64, 4x5/int64, 4x6/int64, 4x7/int64, 4x8/int64, 4x9/int64, 4x10/int64, 4x11/int64, 4x12/int64, 4x13/int64, 4x14/int64, 4x15/int64, 4x16/int64, 4x17/int64, 4x18/int64, 4x19/int64, 4x20/int64, 4x21/int64, 4x22/int64, 4x23/int64, 4x24/int64, 4x25/int64, 4x26/int64, 4x27/int64, 4x28/int64, 5x1/int64, 5x2/int64, 5x3/int64, 5x4/int64, 5x5/int64, 5x6/int64, 5x7/int64, 5x8/int64, 5x9/int64, 5x10/int64, 5x11/int64, 5x12/int64, 5x13/int64, 5x14/int64, 5x15/int64, 5x16/int64, 5x17/int64, 5x18/int64, 5x19/int64, 5x20/int64, 5x21/int64, 5x22/int64, 5x23/int64, 5x24/int64, 5x25/int64, 5x26/int64, 5x27/int64, 5x28/int64, 6x1/int64, 6x2/int64, 6x3/int64, 6x4/int64, 6x5/int64, 6x6/int64, 6x7/int64, 6x8/int64, 6x9/int64, 6x10/int64, 6x11/int64, 6x12/int64, 6x13/int64, 6x14/int64, 6x15/int64, 6x16/int64, 6x17/int64, 6x18/int64, 6x19/int64, 6x20/int64, 6x21/int64, 6x22/int64, 6x23/int64, 6x24/int64, 6x25/int64, 6x26/int64, 6x27/int64, 6x28/int64, 7x1/int64, 7x2/int64, 7x3/int64, 7x4/int64, 7x5/int64, 7x6/int64, 7x7/int64, 7x8/int64, 7x9/int64, 7x10/int64, 7x11/int64, 7x12/int64, 7x13/int64, 7x14/int64, 7x15/int64, 7x16/int64, 7x17/int64, 7x18/int64, 7x19/int64, 7x20/int64, 7x21/int64, 7x22/int64, 7x23/int64, 7x24/int64, 7x25/int64, 7x26/int64, 7x27/int64, 7x28/int64, 8x1/int64, 8x2/int64, 8x3/int64, 8x4/int64, 8x5/int64, 8x6/int64, 8x7/int64, 8x8/int64, 8x9/int64, 8x10/int64, 8x11/int64, 8x12/int64, 8x13/int64, 8x14/int64, 8x15/int64, 8x16/int64, 8x17/int64, 8x18/int64, 8x19/int64, 8x20/int64, 8x21/int64, 8x22/int64, 8x23/int64, 8x24/int64, 8x25/int64, 8x26/int64, 8x27/int64, 8x28/int64, 9x1/int64, 9x2/int64, 9x3/int64, 9x4/int64, 9x5/int64, 9x6/int64, 9x7/int64, 9x8/int64, 9x9/int64, 9x10/int64, 9x11/int64, 9x12/int64, 9x13/int64, 9x14/int64, 9x15/int64, 9x16/int64, 9x17/int64, 9x18/int64, 9x19/int64, 9x20/int64, 9x21/int64, 9x22/int64, 9x23/int64, 9x24/int64, 9x25/int64, 9x26/int64, 9x27/int64, 9x28/int64, 10x1/int64, 10x2/int64, 10x3/int64, 10x4/int64, 10x5/int64, 10x6/int64, 10x7/int64, 10x8/int64, 10x9/int64, 10x10/int64, 10x11/int64, 10x12/int64, 10x13/int64, 10x14/int64, 10x15/int64, 10x16/int64, 10x17/int64, 10x18/int64, 10x19/int64, 10x20/int64, 10x21/int64, 10x22/int64, 10x23/int64, 10x24/int64, 10x25/int64, 10x26/int64, 10x27/int64, 10x28/int64, 11x1/int64, 11x2/int64, 11x3/int64, 11x4/int64, 11x5/int64, 11x6/int64, 11x7/int64, 11x8/int64, 11x9/int64, 11x10/int64, 11x11/int64, 11x12/int64, 11x13/int64, 11x14/int64, 11x15/int64, 11x16/int64, 11x17/int64, 11x18/int64, 11x19/int64, 11x20/int64, 11x21/int64, 11x22/int64, 11x23/int64, 11x24/int64, 11x25/int64, 11x26/int64, 11x27/int64, 11x28/int64, 12x1/int64, 12x2/int64, 12x3/int64, 12x4/int64, 12x5/int64, 12x6/int64, 12x7/int64, 12x8/int64, 12x9/int64, 12x10/int64, 12x11/int64, 12x12/int64, 12x13/int64, 12x14/int64, 12x15/int64, 12x16/int64, 12x17/int64, 12x18/int64, 12x19/int64, 12x20/int64, 12x21/int64, 12x22/int64, 12x23/int64, 12x24/int64, 12x25/int64, 12x26/int64, 12x27/int64, 12x28/int64, 13x1/int64, 13x2/int64, 13x3/int64, 13x4/int64, 13x5/int64, 13x6/int64, 13x7/int64, 13x8/int64, 13x9/int64, 13x10/int64, 13x11/int64, 13x12/int64, 13x13/int64, 13x14/int64, 13x15/int64, 13x16/int64, 13x17/int64, 13x18/int64, 13x19/int64, 13x20/int64, 13x21/int64, 13x22/int64, 13x23/int64, 13x24/int64, 13x25/int64, 13x26/int64, 13x27/int64, 13x28/int64, 14x1/int64, 14x2/int64, 14x3/int64, 14x4/int64, 14x5/int64, 14x6/int64, 14x7/int64, 14x8/int64, 14x9/int64, 14x10/int64, 14x11/int64, 14x12/int64, 14x13/int64, 14x14/int64, 14x15/int64, 14x16/int64, 14x17/int64, 14x18/int64, 14x19/int64, 14x20/int64, 14x21/int64, 14x22/int64, 14x23/int64, 14x24/int64, 14x25/int64, 14x26/int64, 14x27/int64, 14x28/int64, 15x1/int64, 15x2/int64, 15x3/int64, 15x4/int64, 15x5/int64, 15x6/int64, 15x7/int64, 15x8/int64, 15x9/int64, 15x10/int64, 15x11/int64, 15x12/int64, 15x13/int64, 15x14/int64, 15x15/int64, 15x16/int64, 15x17/int64, 15x18/int64, 15x19/int64, 15x20/int64, 15x21/int64, 15x22/int64, 15x23/int64, 15x24/int64, 15x25/int64, 15x26/int64, 15x27/int64, 15x28/int64, 16x1/int64, 16x2/int64, 16x3/int64, 16x4/int64, 16x5/int64, 16x6/int64, 16x7/int64, 16x8/int64, 16x9/int64, 16x10/int64, 16x11/int64, 16x12/int64, 16x13/int64, 16x14/int64, 16x15/int64, 16x16/int64, 16x17/int64, 16x18/int64, 16x19/int64, 16x20/int64, 16x21/int64, 16x22/int64, 16x23/int64, 16x24/int64, 16x25/int64, 16x26/int64, 16x27/int64, 16x28/int64, 17x1/int64, 17x2/int64, 17x3/int64, 17x4/int64, 17x5/int64, 17x6/int64, 17x7/int64, 17x8/int64, 17x9/int64, 17x10/int64, 17x11/int64, 17x12/int64, 17x13/int64, 17x14/int64, 17x15/int64, 17x16/int64, 17x17/int64, 17x18/int64, 17x19/int64, 17x20/int64, 17x21/int64, 17x22/int64, 17x23/int64, 17x24/int64, 17x25/int64, 17x26/int64, 17x27/int64, 17x28/int64, 18x1/int64, 18x2/int64, 18x3/int64, 18x4/int64, 18x5/int64, 18x6/int64, 18x7/int64, 18x8/int64, 18x9/int64, 18x10/int64, 18x11/int64, 18x12/int64, 18x13/int64, 18x14/int64, 18x15/int64, 18x16/int64, 18x17/int64, 18x18/int64, 18x19/int64, 18x20/int64, 18x21/int64, 18x22/int64, 18x23/int64, 18x24/int64, 18x25/int64, 18x26/int64, 18x27/int64, 18x28/int64, 19x1/int64, 19x2/int64, 19x3/int64, 19x4/int64, 19x5/int64, 19x6/int64, 19x7/int64, 19x8/int64, 19x9/int64, 19x10/int64, 19x11/int64, 19x12/int64, 19x13/int64, 19x14/int64, 19x15/int64, 19x16/int64, 19x17/int64, 19x18/int64, 19x19/int64, 19x20/int64, 19x21/int64, 19x22/int64, 19x23/int64, 19x24/int64, 19x25/int64, 19x26/int64, 19x27/int64, 19x28/int64, 20x1/int64, 20x2/int64, 20x3/int64, 20x4/int64, 20x5/int64, 20x6/int64, 20x7/int64, 20x8/int64, 20x9/int64, 20x10/int64, 20x11/int64, 20x12/int64, 20x13/int64, 20x14/int64, 20x15/int64, 20x16/int64, 20x17/int64, 20x18/int64, 20x19/int64, 20x20/int64, 20x21/int64, 20x22/int64, 20x23/int64, 20x24/int64, 20x25/int64, 20x26/int64, 20x27/int64, 20x28/int64, 21x1/int64, 21x2/int64, 21x3/int64, 21x4/int64, 21x5/int64, 21x6/int64, 21x7/int64, 21x8/int64, 21x9/int64, 21x10/int64, 21x11/int64, 21x12/int64, 21x13/int64, 21x14/int64, 21x15/int64, 21x16/int64, 21x17/int64, 21x18/int64, 21x19/int64, 21x20/int64, 21x21/int64, 21x22/int64, 21x23/int64, 21x24/int64, 21x25/int64, 21x26/int64, 21x27/int64, 21x28/int64, 22x1/int64, 22x2/int64, 22x3/int64, 22x4/int64, 22x5/int64, 22x6/int64, 22x7/int64, 22x8/int64, 22x9/int64, 22x10/int64, 22x11/int64, 22x12/int64, 22x13/int64, 22x14/int64, 22x15/int64, 22x16/int64, 22x17/int64, 22x18/int64, 22x19/int64, 22x20/int64, 22x21/int64, 22x22/int64, 22x23/int64, 22x24/int64, 22x25/int64, 22x26/int64, 22x27/int64, 22x28/int64, 23x1/int64, 23x2/int64, 23x3/int64, 23x4/int64, 23x5/int64, 23x6/int64, 23x7/int64, 23x8/int64, 23x9/int64, 23x10/int64, 23x11/int64, 23x12/int64, 23x13/int64, 23x14/int64, 23x15/int64, 23x16/int64, 23x17/int64, 23x18/int64, 23x19/int64, 23x20/int64, 23x21/int64, 23x22/int64, 23x23/int64, 23x24/int64, 23x25/int64, 23x26/int64, 23x27/int64, 23x28/int64, 24x1/int64, 24x2/int64, 24x3/int64, 24x4/int64, 24x5/int64, 24x6/int64, 24x7/int64, 24x8/int64, 24x9/int64, 24x10/int64, 24x11/int64, 24x12/int64, 24x13/int64, 24x14/int64, 24x15/int64, 24x16/int64, 24x17/int64, 24x18/int64, 24x19/int64, 24x20/int64, 24x21/int64, 24x22/int64, 24x23/int64, 24x24/int64, 24x25/int64, 24x26/int64, 24x27/int64, 24x28/int64, 25x1/int64, 25x2/int64, 25x3/int64, 25x4/int64, 25x5/int64, 25x6/int64, 25x7/int64, 25x8/int64, 25x9/int64, 25x10/int64, 25x11/int64, 25x12/int64, 25x13/int64, 25x14/int64, 25x15/int64, 25x16/int64, 25x17/int64, 25x18/int64, 25x19/int64, 25x20/int64, 25x21/int64, 25x22/int64, 25x23/int64, 25x24/int64, 25x25/int64, 25x26/int64, 25x27/int64, 25x28/int64, 26x1/int64, 26x2/int64, 26x3/int64, 26x4/int64, 26x5/int64, 26x6/int64, 26x7/int64, 26x8/int64, 26x9/int64, 26x10/int64, 26x11/int64, 26x12/int64, 26x13/int64, 26x14/int64, 26x15/int64, 26x16/int64, 26x17/int64, 26x18/int64, 26x19/int64, 26x20/int64, 26x21/int64, 26x22/int64, 26x23/int64, 26x24/int64, 26x25/int64, 26x26/int64, 26x27/int64, 26x28/int64, 27x1/int64, 27x2/int64, 27x3/int64, 27x4/int64, 27x5/int64, 27x6/int64, 27x7/int64, 27x8/int64, 27x9/int64, 27x10/int64, 27x11/int64, 27x12/int64, 27x13/int64, 27x14/int64, 27x15/int64, 27x16/int64, 27x17/int64, 27x18/int64, 27x19/int64, 27x20/int64, 27x21/int64, 27x22/int64, 27x23/int64, 27x24/int64, 27x25/int64, 27x26/int64, 27x27/int64, 27x28/int64, 28x1/int64, 28x2/int64, 28x3/int64, 28x4/int64, 28x5/int64, 28x6/int64, 28x7/int64, 28x8/int64, 28x9/int64, 28x10/int64, 28x11/int64, 28x12/int64, 28x13/int64, 28x14/int64, 28x15/int64, 28x16/int64, 28x17/int64, 28x18/int64, 28x19/int64, 28x20/int64, 28x21/int64, 28x22/int64, 28x23/int64, 28x24/int64, 28x25/int64, 28x26/int64, 28x27/int64, 28x28/int64]; N=48000 data points
+INFO  2024-06-11 09:30:03,427 sensai.torch.torch_base:_fit_classifier:780 - Fitting &lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223249450&gt; ...
+INFO  2024-06-11 09:30:03,486 sensai.torch.torch_opt.NNOptimiser:fit:682 - Preparing parameter learning of TorchModelFromModule[cuda=False, bestEpoch=None, totalEpochs=None] via NNOptimiser[params=NNOptimiserParams[epochs=1000, batch_size=1024, optimiser_lr=0.01, shrinkage_clip=10.0, optimiser=Optimiser.ADAMW, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=3, shuffle=True]] with cuda=False
+INFO  2024-06-11 09:30:03,488 sensai.torch.torch_opt.NNOptimiser:fit:716 - Obtaining input/output training instances
+INFO  2024-06-11 09:30:05,929 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Data set 1/1: #train=36000, #validation=12000
+INFO  2024-06-11 09:30:05,930 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Number of validation sets: 1
+INFO  2024-06-11 09:30:05,931 sensai.torch.torch_opt.NNOptimiser:fit:746 - Learning parameters of TorchModelFromModule[cuda=False, bestEpoch=None, totalEpochs=None]
+INFO  2024-06-11 09:30:05,931 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Number of parameters: 926862
+INFO  2024-06-11 09:30:05,932 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Starting training process via NNOptimiser[params=NNOptimiserParams[epochs=1000, batch_size=1024, optimiser_lr=0.01, shrinkage_clip=10.0, optimiser=Optimiser.ADAMW, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=3, shuffle=True]]
+INFO  2024-06-11 09:30:05,943 sensai.torch.torch_opt.NNOptimiser:fit:764 - Begin training with cuda=False
+INFO  2024-06-11 09:30:05,943 sensai.torch.torch_opt.NNOptimiser:fit:765 - Press Ctrl+C to end training early
+INFO  2024-06-11 09:30:16,000 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   1/1000 completed in 10.06s | train loss 0.8318 | validation NLL 0.1962 | best NLL 0.196246 from this epoch
+INFO  2024-06-11 09:30:25,930 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   2/1000 completed in  9.92s | train loss 0.1365 | validation NLL 0.1341 | best NLL 0.134100 from this epoch
+INFO  2024-06-11 09:30:35,948 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   3/1000 completed in 10.01s | train loss 0.0724 | validation NLL 0.1154 | best NLL 0.115383 from this epoch
+INFO  2024-06-11 09:30:45,855 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   4/1000 completed in  9.90s | train loss 0.0524 | validation NLL 0.1286 | best NLL 0.115383 from epoch 3
+INFO  2024-06-11 09:30:55,768 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   5/1000 completed in  9.91s | train loss 0.0418 | validation NLL 0.1073 | best NLL 0.107293 from this epoch
+INFO  2024-06-11 09:31:05,693 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   6/1000 completed in  9.91s | train loss 0.0345 | validation NLL 0.0818 | best NLL 0.081762 from this epoch
+INFO  2024-06-11 09:31:15,568 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   7/1000 completed in  9.86s | train loss 0.0293 | validation NLL 0.0953 | best NLL 0.081762 from epoch 6
+INFO  2024-06-11 09:31:25,440 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   8/1000 completed in  9.87s | train loss 0.0245 | validation NLL 0.1157 | best NLL 0.081762 from epoch 6
+INFO  2024-06-11 09:31:35,300 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   9/1000 completed in  9.86s | train loss 0.0209 | validation NLL 0.0996 | best NLL 0.081762 from epoch 6
+INFO  2024-06-11 09:31:35,301 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Stopping early: 3 epochs without validation metric improvement
+INFO  2024-06-11 09:31:35,302 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Training complete
+INFO  2024-06-11 09:31:35,302 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Best model is from epoch 6 with NLL 0.08176225980122884 on validation set
+INFO  2024-06-11 09:31:35,313 sensai.vector_model:fit:400 - Fitting completed in 91.91 seconds: TorchVectorClassificationModel[featureGenerator=None, outputMode=ClassificationOutputMode.LOG_PROBABILITIES, torch_model_factory=&lt;sensai.torch.torch_base.TorchModelFactoryFromModule object at 0x7fe224909610&gt;, normalisationMode=NormalisationMode.NONE, nnOptimiserParams=NNOptimiserParams[epochs=1000, batch_size=1024, optimiser_lr=0.01, shrinkage_clip=10.0, optimiser=Optimiser.ADAMW, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=3, shuffle=True], model=TorchModelFromModule[cuda=False, bestEpoch=6, totalEpochs=9], inputTensoriser=&lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223249450&gt;, outputTensoriser=None, torchDataSetProviderFactory=None, dataFrameSplitter=None, name=CNN]
+DEBUG 2024-06-11 09:31:35,314 sensai.torch.torch_data:__init__:546 - Applying &lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223249450&gt; to data frame of length 12000 ...
+INFO  2024-06-11 09:31:37,080 sensai.evaluation.eval_util:gather_results:289 - Evaluation results for label: ClassificationEvalStats[accuracy=0.9784166666666667, balancedAccuracy=0.9782716826784611, N=12000]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_28_1.png" src="_images/neural_networks_28_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_28_2.png" src="_images/neural_networks_28_2.png" />
+</div>
+</div>
+</section>
+<section id="Creating-an-Input-/Output-Adaptive-Custom-Model">
+<h4>Creating an Input-/Output-Adaptive Custom Model<a class="headerlink" href="#Creating-an-Input-/Output-Adaptive-Custom-Model" title="Permalink to this headline"></a></h4>
+<p>While the above approach allows us to straightforwardly encapsulate a <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>, it really doesn’t follow sensAI’s principle of adapting model hyperparameters based on the inputs and outputs we receive during training - whenever possible. Notice that in the above example, we had to hard-code the image dimension (<code class="docutils literal notranslate"><span class="pre">28</span></code>) as well as the number of classes (<code class="docutils literal notranslate"><span class="pre">10</span></code>), even though these parameters could have been easily determined from the data. Especially in other domains where feature
+engineering is possible, we might want to experiment with different combinations of features, and therefore automatically adapting to inputs is key if we want to avoid editing the model hyperparameters time and time again; similarly, we might change the set of target labels in our classification problem and the model should simply adapt to a changed output dimension.</p>
+<p>To design a model that can fully adapt to the inputs and outputs, we can simply subclass <code class="docutils literal notranslate"><span class="pre">TorchVectorClassificationModel</span></code>, where the late instantiation of the underlying model is catered for. Naturally, delayed construction of the underlying model necessitates the use of factories and thus results in some indirections.</p>
+<p>If we had designed the above model to be within the sensAI <code class="docutils literal notranslate"><span class="pre">VectorModel</span></code> realm from the beginning, here’s what we might have written:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="k">class</span> <span class="nc">CnnModel</span><span class="p">(</span><span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">TorchVectorClassificationModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cuda</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_conv</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">pooling_kernel_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">mlp_hidden_dims</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+            <span class="n">nn_optimiser_params</span><span class="p">:</span> <span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">NNOptimiserParams</span><span class="p">,</span> <span class="n">p_dropout</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cuda</span> <span class="o">=</span> <span class="n">cuda</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_activation_fn</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">ActivationFunction</span><span class="o">.</span><span class="n">LOG_SOFTMAX</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kernel_size</span> <span class="o">=</span> <span class="n">kernel_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_conv</span> <span class="o">=</span> <span class="n">num_conv</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pooling_kernel_size</span> <span class="o">=</span> <span class="n">pooling_kernel_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp_hidden_dims</span> <span class="o">=</span> <span class="n">mlp_hidden_dims</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_dropout</span> <span class="o">=</span> <span class="n">p_dropout</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">ClassificationOutputMode</span><span class="o">.</span><span class="n">for_activation_fn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_activation_fn</span><span class="p">),</span>
+            <span class="n">torch_model_factory</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VectorTorchModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">),</span>
+            <span class="n">nn_optimiser_params</span><span class="o">=</span><span class="n">nn_optimiser_params</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">VectorTorchModel</span><span class="p">(</span><span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">VectorTorchModel</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="s2">&quot;CnnModel&quot;</span><span class="p">):</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">cuda</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
+
+        <span class="k">def</span> <span class="nf">create_torch_module_for_dims</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">input_dim</span><span class="p">)),</span> <span class="n">output_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">)</span>
+
+        <span class="k">class</span> <span class="nc">Module</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+            <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="s2">&quot;CnnModel&quot;</span><span class="p">):</span>
+                <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+                <span class="n">k</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">kernel_size</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">pooling_kernel_size</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cnn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">num_conv</span><span class="p">,</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pool</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">((</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">p_dropout</span><span class="p">)</span>
+                <span class="n">reduced_dim</span> <span class="o">=</span> <span class="p">(</span><span class="n">image_dim</span> <span class="o">-</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">p</span>
+                <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">reduced_dim</span><span class="p">)</span> <span class="o">!=</span> <span class="n">reduced_dim</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pooling kernel size </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2"> is not a divisor of post-convolution dimension </span><span class="si">{</span><span class="n">image_dim</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">MultiLayerPerceptron</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">num_conv</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">reduced_dim</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">mlp_hidden_dims</span><span class="p">,</span>
+                    <span class="n">output_activation_fn</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">output_activation_fn</span><span class="o">.</span><span class="n">get_torch_function</span><span class="p">(),</span>
+                    <span class="n">hid_activation_fn</span><span class="o">=</span><span class="n">sensai</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">ActivationFunction</span><span class="o">.</span><span class="n">RELU</span><span class="o">.</span><span class="n">get_torch_function</span><span class="p">(),</span>
+                    <span class="n">p_dropout</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">p_dropout</span><span class="p">)</span>
+
+            <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cnn</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>It is only insignificantly more code than in the previous implementation. The outer class, which provides the sensAI <code class="docutils literal notranslate"><span class="pre">VectorModel</span></code> features, serves mainly to hold the parameters, and the inner class inheriting from <code class="docutils literal notranslate"><span class="pre">VectorTorchModel</span></code> serves as a factory for the <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>, providing us with the input and output dimensions (number of input columns and number of classes respectively) based on the data, thus enabling the model to adapt. If we had required even more adaptiveness, we
+could have learnt more about the data from within the fitting process of a custom input tensoriser (i.e. we could have added an inner <code class="docutils literal notranslate"><span class="pre">Tensoriser</span></code> class, which could have derived further hyperparameters from the data in its implementation of the fitting method.)</p>
+<p>Let’s instantiate our model and evaluate it.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cnn_model</span> <span class="o">=</span> <span class="n">CnnModel</span><span class="p">(</span><span class="n">cuda</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">num_conv</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">pooling_kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">mlp_hidden_dims</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span>
+        <span class="n">nn_optimiser_params</span><span class="o">=</span><span class="n">nn_optimiser_params</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="s2">&quot;CNN&#39;&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">with_input_tensoriser</span><span class="p">(</span><span class="n">ImageReshapingInputTensoriser</span><span class="p">())</span>
+
+<span class="n">eval_data</span> <span class="o">=</span> <span class="n">eval_util</span><span class="o">.</span><span class="n">perform_simple_evaluation</span><span class="p">(</span><span class="n">cnn_model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+DEBUG 2024-06-11 09:31:38,580 sensai.evaluation.evaluator:__init__:182 - &lt;sensai.data.DataSplitterFractional object at 0x7fe227050750&gt; created split with 48000 (80.00%) and 12000 (20.00%) training and test data points respectively
+INFO  2024-06-11 09:31:38,581 sensai.evaluation.eval_util:perform_simple_evaluation:281 - Evaluating CnnModel[cuda=False, output_activation_fn=ActivationFunction.LOG_SOFTMAX, kernel_size=5, num_conv=32, pooling_kernel_size=2, mlp_hidden_dims=(200, 20), p_dropout=0.0, featureGenerator=None, outputMode=ClassificationOutputMode.LOG_PROBABILITIES, torch_model_factory=functools.partial(&lt;class &#39;__main__.CnnModel.VectorTorchModel&#39;&gt;, CnnModel[id=140609229841488, cuda=False, output_activation_fn=ActivationFunction.LOG_SOFTMAX, kernel_size=5, num_conv=32, pooling_kernel_size=2, mlp_hidden_dims=(200, 20), p_dropout=0.0, featureGenerator=None, outputMode=ClassificationOutputMode.LOG_PROBABILITIES, torch_model_factory=..., normalisationMode=NormalisationMode.NONE, nnOptimiserParams=NNOptimiserParams[epochs=1000, batch_size=1024, optimiser_lr=0.01, shrinkage_clip=10.0, optimiser=Optimiser.ADAMW, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=3, shuffle=True], model=None, inputTensoriser=&lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223326ed0&gt;, outputTensoriser=None, torchDataSetProviderFactory=None, dataFrameSplitter=None, name=CNN&#39;]), normalisationMode=NormalisationMode.NONE, nnOptimiserParams=NNOptimiserParams[epochs=1000, batch_size=1024, optimiser_lr=0.01, shrinkage_clip=10.0, optimiser=Optimiser.ADAMW, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=3, shuffle=True], model=None, inputTensoriser=&lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223326ed0&gt;, outputTensoriser=None, torchDataSetProviderFactory=None, dataFrameSplitter=None, name=CNN&#39;] via &lt;sensai.evaluation.evaluator.VectorClassificationModelEvaluator object at 0x7fe222fa8d50&gt;
+INFO  2024-06-11 09:31:38,581 sensai.vector_model:fit:371 - Fitting CnnModel instance
+DEBUG 2024-06-11 09:31:38,604 sensai.vector_model:fit:394 - Fitting with outputs[1]=[&#39;label&#39;], inputs[784]=[1x1/int64, 1x2/int64, 1x3/int64, 1x4/int64, 1x5/int64, 1x6/int64, 1x7/int64, 1x8/int64, 1x9/int64, 1x10/int64, 1x11/int64, 1x12/int64, 1x13/int64, 1x14/int64, 1x15/int64, 1x16/int64, 1x17/int64, 1x18/int64, 1x19/int64, 1x20/int64, 1x21/int64, 1x22/int64, 1x23/int64, 1x24/int64, 1x25/int64, 1x26/int64, 1x27/int64, 1x28/int64, 2x1/int64, 2x2/int64, 2x3/int64, 2x4/int64, 2x5/int64, 2x6/int64, 2x7/int64, 2x8/int64, 2x9/int64, 2x10/int64, 2x11/int64, 2x12/int64, 2x13/int64, 2x14/int64, 2x15/int64, 2x16/int64, 2x17/int64, 2x18/int64, 2x19/int64, 2x20/int64, 2x21/int64, 2x22/int64, 2x23/int64, 2x24/int64, 2x25/int64, 2x26/int64, 2x27/int64, 2x28/int64, 3x1/int64, 3x2/int64, 3x3/int64, 3x4/int64, 3x5/int64, 3x6/int64, 3x7/int64, 3x8/int64, 3x9/int64, 3x10/int64, 3x11/int64, 3x12/int64, 3x13/int64, 3x14/int64, 3x15/int64, 3x16/int64, 3x17/int64, 3x18/int64, 3x19/int64, 3x20/int64, 3x21/int64, 3x22/int64, 3x23/int64, 3x24/int64, 3x25/int64, 3x26/int64, 3x27/int64, 3x28/int64, 4x1/int64, 4x2/int64, 4x3/int64, 4x4/int64, 4x5/int64, 4x6/int64, 4x7/int64, 4x8/int64, 4x9/int64, 4x10/int64, 4x11/int64, 4x12/int64, 4x13/int64, 4x14/int64, 4x15/int64, 4x16/int64, 4x17/int64, 4x18/int64, 4x19/int64, 4x20/int64, 4x21/int64, 4x22/int64, 4x23/int64, 4x24/int64, 4x25/int64, 4x26/int64, 4x27/int64, 4x28/int64, 5x1/int64, 5x2/int64, 5x3/int64, 5x4/int64, 5x5/int64, 5x6/int64, 5x7/int64, 5x8/int64, 5x9/int64, 5x10/int64, 5x11/int64, 5x12/int64, 5x13/int64, 5x14/int64, 5x15/int64, 5x16/int64, 5x17/int64, 5x18/int64, 5x19/int64, 5x20/int64, 5x21/int64, 5x22/int64, 5x23/int64, 5x24/int64, 5x25/int64, 5x26/int64, 5x27/int64, 5x28/int64, 6x1/int64, 6x2/int64, 6x3/int64, 6x4/int64, 6x5/int64, 6x6/int64, 6x7/int64, 6x8/int64, 6x9/int64, 6x10/int64, 6x11/int64, 6x12/int64, 6x13/int64, 6x14/int64, 6x15/int64, 6x16/int64, 6x17/int64, 6x18/int64, 6x19/int64, 6x20/int64, 6x21/int64, 6x22/int64, 6x23/int64, 6x24/int64, 6x25/int64, 6x26/int64, 6x27/int64, 6x28/int64, 7x1/int64, 7x2/int64, 7x3/int64, 7x4/int64, 7x5/int64, 7x6/int64, 7x7/int64, 7x8/int64, 7x9/int64, 7x10/int64, 7x11/int64, 7x12/int64, 7x13/int64, 7x14/int64, 7x15/int64, 7x16/int64, 7x17/int64, 7x18/int64, 7x19/int64, 7x20/int64, 7x21/int64, 7x22/int64, 7x23/int64, 7x24/int64, 7x25/int64, 7x26/int64, 7x27/int64, 7x28/int64, 8x1/int64, 8x2/int64, 8x3/int64, 8x4/int64, 8x5/int64, 8x6/int64, 8x7/int64, 8x8/int64, 8x9/int64, 8x10/int64, 8x11/int64, 8x12/int64, 8x13/int64, 8x14/int64, 8x15/int64, 8x16/int64, 8x17/int64, 8x18/int64, 8x19/int64, 8x20/int64, 8x21/int64, 8x22/int64, 8x23/int64, 8x24/int64, 8x25/int64, 8x26/int64, 8x27/int64, 8x28/int64, 9x1/int64, 9x2/int64, 9x3/int64, 9x4/int64, 9x5/int64, 9x6/int64, 9x7/int64, 9x8/int64, 9x9/int64, 9x10/int64, 9x11/int64, 9x12/int64, 9x13/int64, 9x14/int64, 9x15/int64, 9x16/int64, 9x17/int64, 9x18/int64, 9x19/int64, 9x20/int64, 9x21/int64, 9x22/int64, 9x23/int64, 9x24/int64, 9x25/int64, 9x26/int64, 9x27/int64, 9x28/int64, 10x1/int64, 10x2/int64, 10x3/int64, 10x4/int64, 10x5/int64, 10x6/int64, 10x7/int64, 10x8/int64, 10x9/int64, 10x10/int64, 10x11/int64, 10x12/int64, 10x13/int64, 10x14/int64, 10x15/int64, 10x16/int64, 10x17/int64, 10x18/int64, 10x19/int64, 10x20/int64, 10x21/int64, 10x22/int64, 10x23/int64, 10x24/int64, 10x25/int64, 10x26/int64, 10x27/int64, 10x28/int64, 11x1/int64, 11x2/int64, 11x3/int64, 11x4/int64, 11x5/int64, 11x6/int64, 11x7/int64, 11x8/int64, 11x9/int64, 11x10/int64, 11x11/int64, 11x12/int64, 11x13/int64, 11x14/int64, 11x15/int64, 11x16/int64, 11x17/int64, 11x18/int64, 11x19/int64, 11x20/int64, 11x21/int64, 11x22/int64, 11x23/int64, 11x24/int64, 11x25/int64, 11x26/int64, 11x27/int64, 11x28/int64, 12x1/int64, 12x2/int64, 12x3/int64, 12x4/int64, 12x5/int64, 12x6/int64, 12x7/int64, 12x8/int64, 12x9/int64, 12x10/int64, 12x11/int64, 12x12/int64, 12x13/int64, 12x14/int64, 12x15/int64, 12x16/int64, 12x17/int64, 12x18/int64, 12x19/int64, 12x20/int64, 12x21/int64, 12x22/int64, 12x23/int64, 12x24/int64, 12x25/int64, 12x26/int64, 12x27/int64, 12x28/int64, 13x1/int64, 13x2/int64, 13x3/int64, 13x4/int64, 13x5/int64, 13x6/int64, 13x7/int64, 13x8/int64, 13x9/int64, 13x10/int64, 13x11/int64, 13x12/int64, 13x13/int64, 13x14/int64, 13x15/int64, 13x16/int64, 13x17/int64, 13x18/int64, 13x19/int64, 13x20/int64, 13x21/int64, 13x22/int64, 13x23/int64, 13x24/int64, 13x25/int64, 13x26/int64, 13x27/int64, 13x28/int64, 14x1/int64, 14x2/int64, 14x3/int64, 14x4/int64, 14x5/int64, 14x6/int64, 14x7/int64, 14x8/int64, 14x9/int64, 14x10/int64, 14x11/int64, 14x12/int64, 14x13/int64, 14x14/int64, 14x15/int64, 14x16/int64, 14x17/int64, 14x18/int64, 14x19/int64, 14x20/int64, 14x21/int64, 14x22/int64, 14x23/int64, 14x24/int64, 14x25/int64, 14x26/int64, 14x27/int64, 14x28/int64, 15x1/int64, 15x2/int64, 15x3/int64, 15x4/int64, 15x5/int64, 15x6/int64, 15x7/int64, 15x8/int64, 15x9/int64, 15x10/int64, 15x11/int64, 15x12/int64, 15x13/int64, 15x14/int64, 15x15/int64, 15x16/int64, 15x17/int64, 15x18/int64, 15x19/int64, 15x20/int64, 15x21/int64, 15x22/int64, 15x23/int64, 15x24/int64, 15x25/int64, 15x26/int64, 15x27/int64, 15x28/int64, 16x1/int64, 16x2/int64, 16x3/int64, 16x4/int64, 16x5/int64, 16x6/int64, 16x7/int64, 16x8/int64, 16x9/int64, 16x10/int64, 16x11/int64, 16x12/int64, 16x13/int64, 16x14/int64, 16x15/int64, 16x16/int64, 16x17/int64, 16x18/int64, 16x19/int64, 16x20/int64, 16x21/int64, 16x22/int64, 16x23/int64, 16x24/int64, 16x25/int64, 16x26/int64, 16x27/int64, 16x28/int64, 17x1/int64, 17x2/int64, 17x3/int64, 17x4/int64, 17x5/int64, 17x6/int64, 17x7/int64, 17x8/int64, 17x9/int64, 17x10/int64, 17x11/int64, 17x12/int64, 17x13/int64, 17x14/int64, 17x15/int64, 17x16/int64, 17x17/int64, 17x18/int64, 17x19/int64, 17x20/int64, 17x21/int64, 17x22/int64, 17x23/int64, 17x24/int64, 17x25/int64, 17x26/int64, 17x27/int64, 17x28/int64, 18x1/int64, 18x2/int64, 18x3/int64, 18x4/int64, 18x5/int64, 18x6/int64, 18x7/int64, 18x8/int64, 18x9/int64, 18x10/int64, 18x11/int64, 18x12/int64, 18x13/int64, 18x14/int64, 18x15/int64, 18x16/int64, 18x17/int64, 18x18/int64, 18x19/int64, 18x20/int64, 18x21/int64, 18x22/int64, 18x23/int64, 18x24/int64, 18x25/int64, 18x26/int64, 18x27/int64, 18x28/int64, 19x1/int64, 19x2/int64, 19x3/int64, 19x4/int64, 19x5/int64, 19x6/int64, 19x7/int64, 19x8/int64, 19x9/int64, 19x10/int64, 19x11/int64, 19x12/int64, 19x13/int64, 19x14/int64, 19x15/int64, 19x16/int64, 19x17/int64, 19x18/int64, 19x19/int64, 19x20/int64, 19x21/int64, 19x22/int64, 19x23/int64, 19x24/int64, 19x25/int64, 19x26/int64, 19x27/int64, 19x28/int64, 20x1/int64, 20x2/int64, 20x3/int64, 20x4/int64, 20x5/int64, 20x6/int64, 20x7/int64, 20x8/int64, 20x9/int64, 20x10/int64, 20x11/int64, 20x12/int64, 20x13/int64, 20x14/int64, 20x15/int64, 20x16/int64, 20x17/int64, 20x18/int64, 20x19/int64, 20x20/int64, 20x21/int64, 20x22/int64, 20x23/int64, 20x24/int64, 20x25/int64, 20x26/int64, 20x27/int64, 20x28/int64, 21x1/int64, 21x2/int64, 21x3/int64, 21x4/int64, 21x5/int64, 21x6/int64, 21x7/int64, 21x8/int64, 21x9/int64, 21x10/int64, 21x11/int64, 21x12/int64, 21x13/int64, 21x14/int64, 21x15/int64, 21x16/int64, 21x17/int64, 21x18/int64, 21x19/int64, 21x20/int64, 21x21/int64, 21x22/int64, 21x23/int64, 21x24/int64, 21x25/int64, 21x26/int64, 21x27/int64, 21x28/int64, 22x1/int64, 22x2/int64, 22x3/int64, 22x4/int64, 22x5/int64, 22x6/int64, 22x7/int64, 22x8/int64, 22x9/int64, 22x10/int64, 22x11/int64, 22x12/int64, 22x13/int64, 22x14/int64, 22x15/int64, 22x16/int64, 22x17/int64, 22x18/int64, 22x19/int64, 22x20/int64, 22x21/int64, 22x22/int64, 22x23/int64, 22x24/int64, 22x25/int64, 22x26/int64, 22x27/int64, 22x28/int64, 23x1/int64, 23x2/int64, 23x3/int64, 23x4/int64, 23x5/int64, 23x6/int64, 23x7/int64, 23x8/int64, 23x9/int64, 23x10/int64, 23x11/int64, 23x12/int64, 23x13/int64, 23x14/int64, 23x15/int64, 23x16/int64, 23x17/int64, 23x18/int64, 23x19/int64, 23x20/int64, 23x21/int64, 23x22/int64, 23x23/int64, 23x24/int64, 23x25/int64, 23x26/int64, 23x27/int64, 23x28/int64, 24x1/int64, 24x2/int64, 24x3/int64, 24x4/int64, 24x5/int64, 24x6/int64, 24x7/int64, 24x8/int64, 24x9/int64, 24x10/int64, 24x11/int64, 24x12/int64, 24x13/int64, 24x14/int64, 24x15/int64, 24x16/int64, 24x17/int64, 24x18/int64, 24x19/int64, 24x20/int64, 24x21/int64, 24x22/int64, 24x23/int64, 24x24/int64, 24x25/int64, 24x26/int64, 24x27/int64, 24x28/int64, 25x1/int64, 25x2/int64, 25x3/int64, 25x4/int64, 25x5/int64, 25x6/int64, 25x7/int64, 25x8/int64, 25x9/int64, 25x10/int64, 25x11/int64, 25x12/int64, 25x13/int64, 25x14/int64, 25x15/int64, 25x16/int64, 25x17/int64, 25x18/int64, 25x19/int64, 25x20/int64, 25x21/int64, 25x22/int64, 25x23/int64, 25x24/int64, 25x25/int64, 25x26/int64, 25x27/int64, 25x28/int64, 26x1/int64, 26x2/int64, 26x3/int64, 26x4/int64, 26x5/int64, 26x6/int64, 26x7/int64, 26x8/int64, 26x9/int64, 26x10/int64, 26x11/int64, 26x12/int64, 26x13/int64, 26x14/int64, 26x15/int64, 26x16/int64, 26x17/int64, 26x18/int64, 26x19/int64, 26x20/int64, 26x21/int64, 26x22/int64, 26x23/int64, 26x24/int64, 26x25/int64, 26x26/int64, 26x27/int64, 26x28/int64, 27x1/int64, 27x2/int64, 27x3/int64, 27x4/int64, 27x5/int64, 27x6/int64, 27x7/int64, 27x8/int64, 27x9/int64, 27x10/int64, 27x11/int64, 27x12/int64, 27x13/int64, 27x14/int64, 27x15/int64, 27x16/int64, 27x17/int64, 27x18/int64, 27x19/int64, 27x20/int64, 27x21/int64, 27x22/int64, 27x23/int64, 27x24/int64, 27x25/int64, 27x26/int64, 27x27/int64, 27x28/int64, 28x1/int64, 28x2/int64, 28x3/int64, 28x4/int64, 28x5/int64, 28x6/int64, 28x7/int64, 28x8/int64, 28x9/int64, 28x10/int64, 28x11/int64, 28x12/int64, 28x13/int64, 28x14/int64, 28x15/int64, 28x16/int64, 28x17/int64, 28x18/int64, 28x19/int64, 28x20/int64, 28x21/int64, 28x22/int64, 28x23/int64, 28x24/int64, 28x25/int64, 28x26/int64, 28x27/int64, 28x28/int64]; N=48000 data points
+INFO  2024-06-11 09:31:38,605 sensai.torch.torch_base:_fit_classifier:780 - Fitting &lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223326ed0&gt; ...
+INFO  2024-06-11 09:31:38,664 sensai.torch.torch_opt.NNOptimiser:fit:682 - Preparing parameter learning of CnnModel.VectorTorchModel[cuda=False, inputDim=784, outputDim=10, bestEpoch=None, totalEpochs=None] via NNOptimiser[params=NNOptimiserParams[epochs=1000, batch_size=1024, optimiser_lr=0.01, shrinkage_clip=10.0, optimiser=Optimiser.ADAMW, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=3, shuffle=True]] with cuda=False
+INFO  2024-06-11 09:31:38,666 sensai.torch.torch_opt.NNOptimiser:fit:716 - Obtaining input/output training instances
+INFO  2024-06-11 09:31:41,081 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Data set 1/1: #train=36000, #validation=12000
+INFO  2024-06-11 09:31:41,082 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Number of validation sets: 1
+INFO  2024-06-11 09:31:41,089 sensai.torch.torch_opt.NNOptimiser:fit:746 - Learning parameters of CnnModel.VectorTorchModel[cuda=False, inputDim=784, outputDim=10, bestEpoch=None, totalEpochs=None]
+INFO  2024-06-11 09:31:41,090 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Number of parameters: 926862
+INFO  2024-06-11 09:31:41,090 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Starting training process via NNOptimiser[params=NNOptimiserParams[epochs=1000, batch_size=1024, optimiser_lr=0.01, shrinkage_clip=10.0, optimiser=Optimiser.ADAMW, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=3, shuffle=True]]
+INFO  2024-06-11 09:31:41,100 sensai.torch.torch_opt.NNOptimiser:fit:764 - Begin training with cuda=False
+INFO  2024-06-11 09:31:41,101 sensai.torch.torch_opt.NNOptimiser:fit:765 - Press Ctrl+C to end training early
+INFO  2024-06-11 09:31:50,910 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   1/1000 completed in  9.81s | train loss 0.8259 | validation NLL 0.2525 | best NLL 0.252539 from this epoch
+INFO  2024-06-11 09:32:00,872 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   2/1000 completed in  9.95s | train loss 0.1533 | validation NLL 0.1433 | best NLL 0.143283 from this epoch
+INFO  2024-06-11 09:32:10,740 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   3/1000 completed in  9.86s | train loss 0.0881 | validation NLL 0.0999 | best NLL 0.099880 from this epoch
+INFO  2024-06-11 09:32:20,640 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   4/1000 completed in  9.89s | train loss 0.0596 | validation NLL 0.1221 | best NLL 0.099880 from epoch 3
+INFO  2024-06-11 09:32:30,532 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   5/1000 completed in  9.89s | train loss 0.0452 | validation NLL 0.0962 | best NLL 0.096233 from this epoch
+INFO  2024-06-11 09:32:40,474 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   6/1000 completed in  9.93s | train loss 0.0380 | validation NLL 0.0974 | best NLL 0.096233 from epoch 5
+INFO  2024-06-11 09:32:50,547 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   7/1000 completed in 10.07s | train loss 0.0294 | validation NLL 0.0986 | best NLL 0.096233 from epoch 5
+INFO  2024-06-11 09:33:00,420 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Epoch   8/1000 completed in  9.87s | train loss 0.0223 | validation NLL 0.1068 | best NLL 0.096233 from epoch 5
+INFO  2024-06-11 09:33:00,421 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Stopping early: 3 epochs without validation metric improvement
+INFO  2024-06-11 09:33:00,421 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Training complete
+INFO  2024-06-11 09:33:00,422 sensai.torch.torch_opt.NNOptimiser:training_log:697 - Best model is from epoch 5 with NLL 0.09623306624094645 on validation set
+INFO  2024-06-11 09:33:00,434 sensai.vector_model:fit:400 - Fitting completed in 81.85 seconds: CnnModel[cuda=False, output_activation_fn=ActivationFunction.LOG_SOFTMAX, kernel_size=5, num_conv=32, pooling_kernel_size=2, mlp_hidden_dims=(200, 20), p_dropout=0.0, featureGenerator=None, outputMode=ClassificationOutputMode.LOG_PROBABILITIES, torch_model_factory=functools.partial(&lt;class &#39;__main__.CnnModel.VectorTorchModel&#39;&gt;, CnnModel[id=140609229841488, cuda=False, output_activation_fn=ActivationFunction.LOG_SOFTMAX, kernel_size=5, num_conv=32, pooling_kernel_size=2, mlp_hidden_dims=(200, 20), p_dropout=0.0, featureGenerator=None, outputMode=ClassificationOutputMode.LOG_PROBABILITIES, torch_model_factory=..., normalisationMode=NormalisationMode.NONE, nnOptimiserParams=NNOptimiserParams[epochs=1000, batch_size=1024, optimiser_lr=0.01, shrinkage_clip=10.0, optimiser=Optimiser.ADAMW, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=3, shuffle=True], model=CnnModel.VectorTorchModel[cuda=False, inputDim=784, outputDim=10, bestEpoch=5, totalEpochs=8], inputTensoriser=&lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223326ed0&gt;, outputTensoriser=None, torchDataSetProviderFactory=None, dataFrameSplitter=None, name=CNN&#39;]), normalisationMode=NormalisationMode.NONE, nnOptimiserParams=NNOptimiserParams[epochs=1000, batch_size=1024, optimiser_lr=0.01, shrinkage_clip=10.0, optimiser=Optimiser.ADAMW, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=3, shuffle=True], model=CnnModel.VectorTorchModel[cuda=False, inputDim=784, outputDim=10, bestEpoch=5, totalEpochs=8], inputTensoriser=&lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223326ed0&gt;, outputTensoriser=None, torchDataSetProviderFactory=None, dataFrameSplitter=None, name=CNN&#39;]
+DEBUG 2024-06-11 09:33:00,435 sensai.torch.torch_data:__init__:546 - Applying &lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223326ed0&gt; to data frame of length 12000 ...
+INFO  2024-06-11 09:33:02,192 sensai.evaluation.eval_util:gather_results:289 - Evaluation results for label: ClassificationEvalStats[accuracy=0.97775, balancedAccuracy=0.9776402722798222, N=12000]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_32_1.png" src="_images/neural_networks_32_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_32_2.png" src="_images/neural_networks_32_2.png" />
+</div>
+</div>
+<p>Our CNN models do improve upon the MLP model we evaluated earlier. Let’s do a comparison of all the models we trained thus far:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comparison_data</span> <span class="o">=</span> <span class="n">eval_util</span><span class="o">.</span><span class="n">compare_models</span><span class="p">([</span><span class="n">torch_mlp_model</span><span class="p">,</span> <span class="n">cnn_model_from_module</span><span class="p">,</span> <span class="n">cnn_model</span><span class="p">,</span> <span class="n">random_forest_model</span><span class="p">],</span> <span class="n">fit_models</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">comparison_data</span><span class="o">.</span><span class="n">results_df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+INFO  2024-06-11 09:33:03,359 sensai.evaluation.eval_util:compare_models:393 - Evaluating model 1/4 named &#39;MLP&#39; ...
+DEBUG 2024-06-11 09:33:03,576 sensai.evaluation.evaluator:__init__:182 - &lt;sensai.data.DataSplitterFractional object at 0x7fe227050750&gt; created split with 48000 (80.00%) and 12000 (20.00%) training and test data points respectively
+INFO  2024-06-11 09:33:03,577 sensai.evaluation.eval_util:perform_simple_evaluation:281 - Evaluating MultiLayerPerceptronVectorClassificationModel[hidden_dims=(50, 20), hid_activation_function=&lt;built-in method sigmoid of type object at 0x7fe1c8188880&gt;, output_activation_function=ActivationFunction.LOG_SOFTMAX, input_dim=None, cuda=False, p_dropout=0.0, featureGenerator=None, outputMode=ClassificationOutputMode.LOG_PROBABILITIES, torch_model_factory=Method[_create_torch_model], normalisationMode=NormalisationMode.MAX_ALL, nnOptimiserParams=NNOptimiserParams[epochs=1000, batch_size=54, optimiser_lr=0.001, shrinkage_clip=10.0, optimiser=adam, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=2, shuffle=True], model=MultiLayerPerceptronTorchModel[cuda=False, inputDim=784, outputDim=10, hidActivationFunction=&lt;built-in method sigmoid of type object at 0x7fe1c8188880&gt;, outputActivationFunction=functools.partial(&lt;function log_softmax at 0x7fe22611a9e0&gt;, dim=1), hiddenDims=(50, 20), pDropout=0.0, overrideInputDim=None, bestEpoch=16, totalEpochs=18], inputTensoriser=None, outputTensoriser=None, torchDataSetProviderFactory=None, dataFrameSplitter=None, name=MLP] via &lt;sensai.evaluation.evaluator.VectorClassificationModelEvaluator object at 0x7fe223777150&gt;
+DEBUG 2024-06-11 09:33:03,578 sensai.torch.torch_data:__init__:546 - Applying &lt;sensai.torch.torch_data.TensoriserDataFrameFloatValuesMatrix object at 0x7fe2237009d0&gt; to data frame of length 12000 ...
+INFO  2024-06-11 09:33:03,706 sensai.evaluation.eval_util:gather_results:289 - Evaluation results for label: ClassificationEvalStats[accuracy=0.96225, balancedAccuracy=0.9618968610010363, N=12000]
+INFO  2024-06-11 09:33:04,111 sensai.evaluation.eval_util:compare_models:393 - Evaluating model 2/4 named &#39;CNN&#39; ...
+INFO  2024-06-11 09:33:04,113 sensai.evaluation.eval_util:perform_simple_evaluation:281 - Evaluating TorchVectorClassificationModel[featureGenerator=None, outputMode=ClassificationOutputMode.LOG_PROBABILITIES, torch_model_factory=&lt;sensai.torch.torch_base.TorchModelFactoryFromModule object at 0x7fe224909610&gt;, normalisationMode=NormalisationMode.NONE, nnOptimiserParams=NNOptimiserParams[epochs=1000, batch_size=1024, optimiser_lr=0.01, shrinkage_clip=10.0, optimiser=Optimiser.ADAMW, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=3, shuffle=True], model=TorchModelFromModule[cuda=False, bestEpoch=6, totalEpochs=9], inputTensoriser=&lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223249450&gt;, outputTensoriser=None, torchDataSetProviderFactory=None, dataFrameSplitter=None, name=CNN] via &lt;sensai.evaluation.evaluator.VectorClassificationModelEvaluator object at 0x7fe223777150&gt;
+DEBUG 2024-06-11 09:33:04,115 sensai.torch.torch_data:__init__:546 - Applying &lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223249450&gt; to data frame of length 12000 ...
+INFO  2024-06-11 09:33:05,909 sensai.evaluation.eval_util:gather_results:289 - Evaluation results for label: ClassificationEvalStats[accuracy=0.9784166666666667, balancedAccuracy=0.9782716826784611, N=12000]
+INFO  2024-06-11 09:33:06,226 sensai.evaluation.eval_util:compare_models:393 - Evaluating model 3/4 named &#39;CNN&#39;&#39; ...
+INFO  2024-06-11 09:33:06,227 sensai.evaluation.eval_util:perform_simple_evaluation:281 - Evaluating CnnModel[cuda=False, output_activation_fn=ActivationFunction.LOG_SOFTMAX, kernel_size=5, num_conv=32, pooling_kernel_size=2, mlp_hidden_dims=(200, 20), p_dropout=0.0, featureGenerator=None, outputMode=ClassificationOutputMode.LOG_PROBABILITIES, torch_model_factory=functools.partial(&lt;class &#39;__main__.CnnModel.VectorTorchModel&#39;&gt;, CnnModel[id=140609229841488, cuda=False, output_activation_fn=ActivationFunction.LOG_SOFTMAX, kernel_size=5, num_conv=32, pooling_kernel_size=2, mlp_hidden_dims=(200, 20), p_dropout=0.0, featureGenerator=None, outputMode=ClassificationOutputMode.LOG_PROBABILITIES, torch_model_factory=..., normalisationMode=NormalisationMode.NONE, nnOptimiserParams=NNOptimiserParams[epochs=1000, batch_size=1024, optimiser_lr=0.01, shrinkage_clip=10.0, optimiser=Optimiser.ADAMW, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=3, shuffle=True], model=CnnModel.VectorTorchModel[cuda=False, inputDim=784, outputDim=10, bestEpoch=5, totalEpochs=8], inputTensoriser=&lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223326ed0&gt;, outputTensoriser=None, torchDataSetProviderFactory=None, dataFrameSplitter=None, name=CNN&#39;]), normalisationMode=NormalisationMode.NONE, nnOptimiserParams=NNOptimiserParams[epochs=1000, batch_size=1024, optimiser_lr=0.01, shrinkage_clip=10.0, optimiser=Optimiser.ADAMW, gpu=None, train_fraction=0.75, scaled_outputs=False, loss_evaluator=NNLossEvaluatorClassification[LossFunction.NLL], optimiser_args={}, use_shrinkage=True, early_stopping_epochs=3, shuffle=True], model=CnnModel.VectorTorchModel[cuda=False, inputDim=784, outputDim=10, bestEpoch=5, totalEpochs=8], inputTensoriser=&lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223326ed0&gt;, outputTensoriser=None, torchDataSetProviderFactory=None, dataFrameSplitter=None, name=CNN&#39;] via &lt;sensai.evaluation.evaluator.VectorClassificationModelEvaluator object at 0x7fe223777150&gt;
+DEBUG 2024-06-11 09:33:06,228 sensai.torch.torch_data:__init__:546 - Applying &lt;__main__.ImageReshapingInputTensoriser object at 0x7fe223326ed0&gt; to data frame of length 12000 ...
+INFO  2024-06-11 09:33:08,024 sensai.evaluation.eval_util:gather_results:289 - Evaluation results for label: ClassificationEvalStats[accuracy=0.97775, balancedAccuracy=0.9776402722798222, N=12000]
+INFO  2024-06-11 09:33:08,353 sensai.evaluation.eval_util:compare_models:393 - Evaluating model 4/4 named &#39;RandomForest&#39; ...
+INFO  2024-06-11 09:33:08,355 sensai.evaluation.eval_util:perform_simple_evaluation:281 - Evaluating SkLearnRandomForestVectorClassificationModel[featureGenerator=None, fitArgs={}, useBalancedClassWeights=False, useLabelEncoding=False, name=RandomForest, model=RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None, criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None, max_samples=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=1, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=10, n_jobs=None, oob_score=False, random_state=42, verbose=0, warm_start=False)] via &lt;sensai.evaluation.evaluator.VectorClassificationModelEvaluator object at 0x7fe223777150&gt;
+INFO  2024-06-11 09:33:08,451 sensai.evaluation.eval_util:gather_results:289 - Evaluation results for label: ClassificationEvalStats[accuracy=0.9466666666666667, balancedAccuracy=0.945916926388699, N=12000]
+INFO  2024-06-11 09:33:08,775 sensai.evaluation.eval_util:compare_models:462 - Model comparison results:
+              accuracy  balancedAccuracy
+model_name
+MLP           0.962250          0.961897
+CNN           0.978417          0.978272
+CNN&#39;          0.977750          0.977640
+RandomForest  0.946667          0.945917
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>accuracy</th>
+      <th>balancedAccuracy</th>
+    </tr>
+    <tr>
+      <th>model_name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>MLP</th>
+      <td>0.962250</td>
+      <td>0.961897</td>
+    </tr>
+    <tr>
+      <th>CNN</th>
+      <td>0.978417</td>
+      <td>0.978272</td>
+    </tr>
+    <tr>
+      <th>CNN'</th>
+      <td>0.977750</td>
+      <td>0.977640</td>
+    </tr>
+    <tr>
+      <th>RandomForest</th>
+      <td>0.946667</td>
+      <td>0.945917</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_34_2.png" src="_images/neural_networks_34_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_34_3.png" src="_images/neural_networks_34_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_34_4.png" src="_images/neural_networks_34_4.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_34_5.png" src="_images/neural_networks_34_5.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_34_6.png" src="_images/neural_networks_34_6.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_34_7.png" src="_images/neural_networks_34_7.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_34_8.png" src="_images/neural_networks_34_8.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_34_9.png" src="_images/neural_networks_34_9.png" />
+</div>
+</div>
+<p>Note that any differences between the two CNN models are due only to randomness in the parameter initialisation; they are functionally identical.</p>
+<p>Could the CNN model have produced even better results? Let’s take a look at some examples where the CNN model went wrong by inspecting the evaluation data that was returned earlier.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">misclassified</span> <span class="o">=</span> <span class="n">eval_data</span><span class="o">.</span><span class="n">get_misclassified_triples_pred_true_input</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">predClass</span><span class="p">,</span> <span class="n">trueClass</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">misclassified</span><span class="p">[:</span><span class="mi">9</span><span class="p">]):</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="o">//</span><span class="mi">3</span><span class="p">][</span><span class="n">i</span><span class="o">%</span><span class="k">3</span>].imshow(reshape_2d_image(input), cmap=&quot;binary&quot;)
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="o">//</span><span class="mi">3</span><span class="p">][</span><span class="n">i</span><span class="o">%</span><span class="k">3</span>].set_title(f&quot;{trueClass} misclassified as {predClass}&quot;)
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/neural_networks_36_0.png" src="_images/neural_networks_36_0.png" />
+</div>
+</div>
+<p>While some of these examples are indeed ambiguous, there still is room for improvement.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="intro.html" class="btn btn-neutral float-left" title="Introduction to sensAI: Supervised Learning with VectorModels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sensai/index.html" class="btn btn-neutral float-right" title="Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

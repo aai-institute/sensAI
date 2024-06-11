@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lstnet_models &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="lstnet_modules" href="lstnet_modules.html" />
+    <link rel="prev" title="lstnet" href="../lstnet.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../torch.html">torch</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../torch_base.html">torch_base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../torch_data.html">torch_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../torch_enums.html">torch_enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../torch_eval_util.html">torch_eval_util</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../torch_models.html">torch_models</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../lstnet.html">lstnet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mlp.html">mlp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../residualffn.html">residualffn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../seq.html">seq</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../torch_modules.html">torch_modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../torch_opt.html">torch_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../torchtext.html">torchtext</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../../../torch.html">torch</a></li>
+          <li class="breadcrumb-item"><a href="../../torch_models.html">torch_models</a></li>
+          <li class="breadcrumb-item"><a href="../lstnet.html">lstnet</a></li>
+      <li class="breadcrumb-item active">lstnet_models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/sensai/torch/torch_models/lstnet/lstnet_models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.torch.torch_models.lstnet.lstnet_models">
+<span id="lstnet-models"></span><h1>lstnet_models<a class="headerlink" href="#module-sensai.torch.torch_models.lstnet.lstnet_models" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LSTNetworkVectorClassificationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_input_time_slices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_dim_per_time_slice</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_convolutions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cnn_time_slices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hid_rnn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hid_skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hw_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hw_combine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'plus'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_activation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ActivationFunction.LOG_SOFTMAX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nn_optimiser_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../torch_opt.html#sensai.torch.torch_opt.NNOptimiserParams" title="sensai.torch.torch_opt.NNOptimiserParams"><span class="pre">sensai.torch.torch_opt.NNOptimiserParams</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_models/lstnet/lstnet_models.py#L18"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../torch_base.html#sensai.torch.torch_base.TorchVectorClassificationModel" title="sensai.torch.torch_base.TorchVectorClassificationModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_base.TorchVectorClassificationModel</span></code></a></p>
+<p>Classification model for time series data using the LSTNetwork architecture.</p>
+<p>Since the model takes a time series as input, it requires that input data frames to use special naming of columns
+such that the data can be interpreted correctly:
+Each column name must start with an N-digit prefix indicating the time slice the data pertains to (for any fixed N);
+the following suffix shall indicate the name of the actual feature.
+For each N-digit prefix, we must have the same set of suffixes in the list of columns, i.e. we must have the same
+features for each time slice in the input time series.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_input_time_slices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_dim_per_time_slice</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_convolutions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cnn_time_slices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hid_rnn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hid_skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hw_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hw_combine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'plus'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_activation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ActivationFunction.LOG_SOFTMAX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nn_optimiser_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../torch_opt.html#sensai.torch.torch_opt.NNOptimiserParams" title="sensai.torch.torch_opt.NNOptimiserParams"><span class="pre">sensai.torch.torch_opt.NNOptimiserParams</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_input_time_slices</strong> – the number of input time slices</p></li>
+<li><p><strong>input_dim_per_time_slice</strong> – the dimension of the input data per time slice</p></li>
+<li><p><strong>num_classes</strong> – the number of classes considered by this classification problem; if None, determine from data</p></li>
+<li><p><strong>num_cnn_time_slices</strong> – the number of time slices considered by each convolution (i.e. it is one of the dimensions of the matrix
+used for convolutions, the other dimension being inputDimPerTimeSlice), a.k.a. “Ck”</p></li>
+<li><p><strong>num_convolutions</strong> – the number of separate convolutions to apply, i.e. the number of independent convolution matrices,
+a.k.a “hidC”;
+if it is 0, then the entire complex processing path is not applied.</p></li>
+<li><p><strong>hid_rnn</strong> – the number of hidden output dimensions for the RNN stage</p></li>
+<li><p><strong>skip</strong> – the number of time slices to skip for the skip-RNN. If it is 0, then the skip-RNN is not used.</p></li>
+<li><p><strong>hid_skip</strong> – the number of output dimensions of each of the skip parallel RNNs</p></li>
+<li><p><strong>hw_window</strong> – the number of time slices from the end of the input time series to consider as input for the highway component.
+If it is 0, the highway component is not used.</p></li>
+<li><p><strong>hw_combine</strong> – {“plus”, “product”, “bilinear”} the function with which the highway component’s output is combined with the
+complex path’s output</p></li>
+<li><p><strong>dropout</strong> – the dropout probability to use during training (dropouts are applied after every major step in the evaluation path)</p></li>
+<li><p><strong>output_activation</strong> – the output activation function</p></li>
+<li><p><strong>nn_optimiser_params</strong> – parameters for NNOptimiser to use for training</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DataUtil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../torch_data.html#sensai.torch.torch_data.DataUtil" title="sensai.torch.torch_data.DataUtil"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.DataUtil</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.input_dim">
+<span class="sig-name descname"><span class="pre">input_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.input_dim" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the dimensionality of the input or None if it is variable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.model_output_dim">
+<span class="sig-name descname"><span class="pre">model_output_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.model_output_dim" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the dimensionality that is to be output by the model to be trained</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.split_into_tensors">
+<span class="sig-name descname"><span class="pre">split_into_tensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fractional_size_of_first_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.split_into_tensors" title="Permalink to this definition"></a></dt>
+<dd><p>Splits the data set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fractional_size_of_first_set</strong> – the desired fractional size in</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a tuple (A, B) where A and B are tuples (in, out) with input and output data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.get_input_output_pair">
+<span class="sig-name descname"><span class="pre">get_input_output_pair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.get_input_output_pair" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.get_output_tensor_scaler">
+<span class="sig-name descname"><span class="pre">get_output_tensor_scaler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../torch_data.html#sensai.torch.torch_data.TensorScaler" title="sensai.torch.torch_data.TensorScaler"><span class="pre">sensai.torch.torch_data.TensorScaler</span></a></span></span><a class="headerlink" href="#sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.get_output_tensor_scaler" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the scaler with which to scale model outputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the scaler</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.get_input_tensor_scaler">
+<span class="sig-name descname"><span class="pre">get_input_tensor_scaler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../torch_data.html#sensai.torch.torch_data.TensorScaler" title="sensai.torch.torch_data.TensorScaler"><span class="pre">sensai.torch.torch_data.TensorScaler</span></a></span></span><a class="headerlink" href="#sensai.torch.torch_models.lstnet.lstnet_models.LSTNetworkVectorClassificationModel.DataUtil.get_input_tensor_scaler" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the scaler with which to scale model inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the scaler</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../lstnet.html" class="btn btn-neutral float-left" title="lstnet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lstnet_modules.html" class="btn btn-neutral float-right" title="lstnet_modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

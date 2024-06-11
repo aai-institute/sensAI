@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>feature_generator_registry &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="geoanalytics" href="../geoanalytics.html" />
+    <link rel="prev" title="feature_generator" href="feature_generator.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../featuregen.html">featuregen</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="feature_generator.html">feature_generator</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">feature_generator_registry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../featuregen.html">featuregen</a></li>
+      <li class="breadcrumb-item active">feature_generator_registry</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sensai/featuregen/feature_generator_registry.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.featuregen.feature_generator_registry">
+<span id="feature-generator-registry"></span><h1>feature_generator_registry<a class="headerlink" href="#module-sensai.featuregen.feature_generator_registry" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureGeneratorRegistry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_singletons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator_registry.py#L16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents a registry for (named) feature generator factories</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_singletons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>use_singletons</strong> – if True, internally maintain feature generator singletons, such that there is at most one
+instance for each name/key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry.available_features">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">available_features</span></span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry.available_features" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry.register_factory">
+<span class="sig-name descname"><span class="pre">register_factory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Hashable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="feature_generator.html#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry.register_factory" title="Permalink to this definition"></a></dt>
+<dd><p>Registers a feature generator factory which can subsequently be referenced by models via their name/hashable key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name/key (which can, in particular, be a string or an Enum item). Especially for larger projects
+the use of an Enum is recommended (for optimal IDE support)</p></li>
+<li><p><strong>factory</strong> – the factory</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry.get_feature_generator">
+<span class="sig-name descname"><span class="pre">get_feature_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="feature_generator.html#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry.get_feature_generator" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a feature generator from a name, which must have been previously registered.
+The name of the returned feature generator (as returned by getName()) is set to name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – the name (which can, in particular, be a string or an enum item)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new feature generator instance (or existing instance for the case where useSingletons is enabled)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry.collect_features">
+<span class="sig-name descname"><span class="pre">collect_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">feature_generators_or_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Hashable</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="feature_generator.html#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.featuregen.feature_generator_registry.FeatureCollector" title="sensai.featuregen.feature_generator_registry.FeatureCollector"><span class="pre">sensai.featuregen.feature_generator_registry.FeatureCollector</span></a></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry.collect_features" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a feature collector for the given feature names/keys/instances, which can subsequently be added to a model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature_generators_or_names</strong> – feature names/keys known to this registry or feature generator instances</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureCollector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureCollector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">feature_generators_or_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Hashable</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="feature_generator.html#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry" title="sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry"><span class="pre">sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator_registry.py#L82"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureCollector" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A feature collector which facilitates the collection of features that shall be used by a model as well as the
+generation of commonly used feature transformers that are informed by the features’ meta-data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureCollector.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">feature_generators_or_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Hashable</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="feature_generator.html#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry" title="sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry"><span class="pre">sensai.featuregen.feature_generator_registry.FeatureGeneratorRegistry</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureCollector.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature_generators_or_names</strong> – generator names/keys (known to the registry) or generator instances</p></li>
+<li><p><strong>registry</strong> – the feature generator registry for the case where names/keys are passed</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureCollector.get_multi_feature_generator">
+<span class="sig-name descname"><span class="pre">get_multi_feature_generator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="feature_generator.html#sensai.featuregen.feature_generator.MultiFeatureGenerator" title="sensai.featuregen.feature_generator.MultiFeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.MultiFeatureGenerator</span></a></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureCollector.get_multi_feature_generator" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the multi-feature generator that was created for this collector.
+To create a new, independent instance (e.g. when using this collector for multiple
+models), use <a class="reference internal" href="#sensai.featuregen.feature_generator_registry.FeatureCollector.create_multi_feature_generator" title="sensai.featuregen.feature_generator_registry.FeatureCollector.create_multi_feature_generator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_multi_feature_generator()</span></code></a> instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the multi-feature generator that was created for this instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureCollector.get_normalisation_rules">
+<span class="sig-name descname"><span class="pre">get_normalisation_rules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_generated_categorical_rules</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureCollector.get_normalisation_rules" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureCollector.get_categorical_feature_name_regex">
+<span class="sig-name descname"><span class="pre">get_categorical_feature_name_regex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureCollector.get_categorical_feature_name_regex" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a regular expression that matches all known categorical feature names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureCollector.create_multi_feature_generator">
+<span class="sig-name descname"><span class="pre">create_multi_feature_generator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureCollector.create_multi_feature_generator" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new instance of the multi-feature generator that generates the features
+collected by this instance. If the feature collector instance is not used for
+multiple models, use <a class="reference internal" href="#sensai.featuregen.feature_generator_registry.FeatureCollector.get_multi_feature_generator" title="sensai.featuregen.feature_generator_registry.FeatureCollector.get_multi_feature_generator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_multi_feature_generator()</span></code></a> instead to obtain
+the instance that has already been created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a new multi-feature generator that generates the collected features</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureCollector.create_dft_normalisation">
+<span class="sig-name descname"><span class="pre">create_dft_normalisation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">default_transformer_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">require_all_handled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation" title="sensai.data_transformation.dft.DFTNormalisation"><span class="pre">sensai.data_transformation.dft.DFTNormalisation</span></a></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureCollector.create_dft_normalisation" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a feature transformer that will apply normalisation to all supported (numeric) features</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default_transformer_factory</strong> – a factory for the creation of transformer instances (which implements the
+API used by sklearn.preprocessing, e.g. StandardScaler) that shall be used to create a transformer for all
+rules that do not specify a particular transformer.
+The default transformer will only be applied to columns matched by such rules, unmatched columns will
+not be transformed.
+Use SkLearnTransformerFactoryFactory to conveniently create a factory.</p></li>
+<li><p><strong>require_all_handled</strong> – whether to raise an exception if not all columns are matched by a rule</p></li>
+<li><p><strong>inplace</strong> – whether to apply data frame transformations in-place</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the transformer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureCollector.create_dft_one_hot_encoder">
+<span class="sig-name descname"><span class="pre">create_dft_one_hot_encoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_unknown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureCollector.create_dft_one_hot_encoder" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a feature transformer that will apply one-hot encoding to all the features that are known to be categorical</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inplace</strong> – whether to perform the transformation in-place</p></li>
+<li><p><strong>ignore_unknown</strong> – if True and an unknown category is encountered during transform, the resulting one-hot
+encoded columns for this feature will be all zeros. if False, an unknown category will raise an error.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the transformer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureCollector.create_feature_transformer_normalisation">
+<span class="sig-name descname"><span class="pre">create_feature_transformer_normalisation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">default_transformer_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">require_all_handled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation" title="sensai.data_transformation.dft.DFTNormalisation"><span class="pre">sensai.data_transformation.dft.DFTNormalisation</span></a></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureCollector.create_feature_transformer_normalisation" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a feature transformer that will apply normalisation to all supported (numeric) features.
+Alias of create_dft_normalisation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default_transformer_factory</strong> – a factory for the creation of transformer instances (which implements the
+API used by sklearn.preprocessing, e.g. StandardScaler) that shall be used to create a transformer for all
+rules that do not specify a particular transformer.
+The default transformer will only be applied to columns matched by such rules, unmatched columns will
+not be transformed.
+Use SkLearnTransformerFactoryFactory to conveniently create a factory.</p></li>
+<li><p><strong>require_all_handled</strong> – whether to raise an exception if not all columns are matched by a rule</p></li>
+<li><p><strong>inplace</strong> – whether to apply data frame transformations in-place</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the transformer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator_registry.FeatureCollector.create_feature_transformer_one_hot_encoder">
+<span class="sig-name descname"><span class="pre">create_feature_transformer_one_hot_encoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_unknown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator_registry.FeatureCollector.create_feature_transformer_one_hot_encoder" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a feature transformer that will apply one-hot encoding to all the features that are known to be categorical.
+Alias of create_dft_one_hot_encoder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inplace</strong> – whether to perform the transformation in-place</p></li>
+<li><p><strong>ignore_unknown</strong> – if True and an unknown category is encountered during transform, the resulting one-hot
+encoded columns for this feature will be all zeros. if False, an unknown category will raise an error.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the transformer</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="feature_generator.html" class="btn btn-neutral float-left" title="feature_generator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../geoanalytics.html" class="btn btn-neutral float-right" title="geoanalytics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

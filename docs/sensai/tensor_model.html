@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tensor_model &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tensorflow" href="tensorflow.html" />
+    <link rel="prev" title="sklearn_quantile" href="sklearn_quantile.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">tensor_model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/sensai/tensor_model.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.tensor_model">
+<span id="tensor-model"></span><h1>tensor_model<a class="headerlink" href="#module-sensai.tensor_model" title="Permalink to this headline"></a></h1>
+<p>This module contains base classes for models that input and output tensors, for examples CNNs.
+The fitting and predictions will still be performed on data frames, like in VectorModel,
+but now it will be expected that all entries of the input data frame passed to the model are tensors of the same shape.
+Lists of scalars of the same lengths are also accepted. The same is expected of the ground truth data frames.
+Everything will work as well if the entries are just scalars but in this case it is recommended to use
+VectorModel instead.</p>
+<p>If we denote the shapes of entries in the dfs as inputTensorShape and outputTensorShape,
+the model will be fit on input tensors of shape (N_rows, N_inputColumns, inputTensorShape) and output tensors of
+shape (N_rows, N_outputColumns, outputTensorShape), where empty dimensions (e.g. for one-column data frames)
+will be stripped.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="sensai.tensor_model.InvalidShapeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InvalidShapeError</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/tensor_model.py#L32"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.tensor_model.InvalidShapeError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorModel</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/tensor_model.py#L52"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.tensor_model.TensorModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tensor_model.TensorModel.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorModel.get_model_input_shape">
+<span class="sig-name descname"><span class="pre">get_model_input_shape</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.tensor_model.TensorModel.get_model_input_shape" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorModel.get_model_output_shape">
+<span class="sig-name descname"><span class="pre">get_model_output_shape</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tensor_model.TensorModel.get_model_output_shape" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToScalarRegressionModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorToScalarRegressionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/tensor_model.py#L123"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.tensor_model.TensorToScalarRegressionModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="vector_model.html#sensai.vector_model.VectorRegressionModel" title="sensai.vector_model.VectorRegressionModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorRegressionModel</span></code></a>, <a class="reference internal" href="#sensai.tensor_model.TensorModel" title="sensai.tensor_model.TensorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.tensor_model.TensorModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToScalarRegressionModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tensor_model.TensorToScalarRegressionModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Base class for regression models that take tensors as input and output scalars. They can be evaluated
+in the same way as non-tensor regression models</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>check_input_shape</strong> – Whether to check if during predict input tensors have the same shape as during fit.
+For certain applications, e.g. using CNNs on larger inputs than the training set, this has
+to be disabled</p></li>
+<li><p><strong>check_input_columns</strong> – Whether to check if input columns at predict time coincide with those at fit time</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToScalarRegressionModel.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.tensor_model.TensorToScalarRegressionModel.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Applies the model to the given input data frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – the input data frame</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the model outputs in the form of a data frame whose index corresponds to the index of <code class="docutils literal notranslate"><span class="pre">x</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToScalarClassificationModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorToScalarClassificationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/tensor_model.py#L150"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.tensor_model.TensorToScalarClassificationModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="vector_model.html#sensai.vector_model.VectorClassificationModel" title="sensai.vector_model.VectorClassificationModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorClassificationModel</span></code></a>, <a class="reference internal" href="#sensai.tensor_model.TensorModel" title="sensai.tensor_model.TensorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.tensor_model.TensorModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToScalarClassificationModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tensor_model.TensorToScalarClassificationModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Base class for classification models that take tensors as input and output scalars. They can be evaluated
+in the same way as non-tensor classification models</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>check_input_shape</strong> – Whether to check if during predict input tensors have the same shape as during fit.
+For certain applications, e.g. using CNNs on larger inputs than the training set, this has
+to be disabled</p></li>
+<li><p><strong>check_input_columns</strong> – Whether to check if input columns at predict time coincide with those at fit time</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToScalarClassificationModel.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.tensor_model.TensorToScalarClassificationModel.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Applies the model to the given input data frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – the input data frame</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the model outputs in the form of a data frame whose index corresponds to the index of <code class="docutils literal notranslate"><span class="pre">x</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToTensorRegressionModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorToTensorRegressionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_output_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/tensor_model.py#L199"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.tensor_model.TensorToTensorRegressionModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="vector_model.html#sensai.vector_model.VectorRegressionModel" title="sensai.vector_model.VectorRegressionModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorRegressionModel</span></code></a>, <a class="reference internal" href="#sensai.tensor_model.TensorModel" title="sensai.tensor_model.TensorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.tensor_model.TensorModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToTensorRegressionModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_output_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tensor_model.TensorToTensorRegressionModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Base class for regression models that output tensors. Multiple targets can be used by putting
+them into separate columns. In that case it is required that all target tensors have the same shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>check_input_shape</strong> – Whether to check if during predict tensors have the same shape as during fit.
+For certain applications, e.g. using CNNs on larger inputs than the training set, this has
+to be disabled</p></li>
+<li><p><strong>check_output_shape</strong> – Whether to check if predictions have the same shape as ground truth data during fit.
+For certain applications, e.g. using CNNs on larger inputs than the training set, this has
+to be disabled</p></li>
+<li><p><strong>check_input_columns</strong> – Whether to check if input columns at predict time coincide with those at fit time</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToTensorRegressionModel.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.tensor_model.TensorToTensorRegressionModel.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Applies the model to the given input data frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – the input data frame</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the model outputs in the form of a data frame whose index corresponds to the index of <code class="docutils literal notranslate"><span class="pre">x</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToTensorClassificationModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorToTensorClassificationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_output_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/tensor_model.py#L236"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.tensor_model.TensorToTensorClassificationModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="vector_model.html#sensai.vector_model.VectorModel" title="sensai.vector_model.VectorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorModel</span></code></a>, <a class="reference internal" href="#sensai.tensor_model.TensorModel" title="sensai.tensor_model.TensorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.tensor_model.TensorModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToTensorClassificationModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_input_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_output_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_input_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tensor_model.TensorToTensorClassificationModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Base class for classification models that output tensors, e.g. for semantic segregation. The models
+can be fit on a ground truth data frame with a single column. The entries in this column should be
+binary tensors with one-hot-encoded labels, i.e. of shape <cite>(*predictionShape, numLabels)</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>check_input_shape</strong> – Whether to check if during predict tensors have the same shape as during fit.
+For certain applications, e.g. using CNNs on larger inputs than the training set, this has
+to be disabled</p></li>
+<li><p><strong>check_output_shape</strong> – Whether to check if predictions have the same shape as ground truth data during fit.
+For certain applications, e.g. using CNNs on larger inputs than the training set, this has
+to be disabled</p></li>
+<li><p><strong>check_input_columns</strong> – Whether to check if input columns at predict time coincide with those at fit time</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToTensorClassificationModel.is_regression_model">
+<span class="sig-name descname"><span class="pre">is_regression_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sensai.tensor_model.TensorToTensorClassificationModel.is_regression_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToTensorClassificationModel.get_num_predicted_classes">
+<span class="sig-name descname"><span class="pre">get_num_predicted_classes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tensor_model.TensorToTensorClassificationModel.get_num_predicted_classes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToTensorClassificationModel.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_preprocessors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tensor_model.TensorToTensorClassificationModel.fit" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – data frame containing input tensors on which to train</p></li>
+<li><p><strong>y</strong> – ground truth has to be an array containing only zeroes and ones (one-hot-encoded labels) of the shape
+<cite>(*prediction_shape, numLabels)</cite></p></li>
+<li><p><strong>fit_preprocessors</strong> – whether the model’s preprocessors (feature generators and data frame transformers) shall be fitted</p></li>
+<li><p><strong>fit_model</strong> – whether the model itself shall be fitted</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToTensorClassificationModel.get_model_output_shape">
+<span class="sig-name descname"><span class="pre">get_model_output_shape</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tensor_model.TensorToTensorClassificationModel.get_model_output_shape" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToTensorClassificationModel.convert_class_probabilities_to_predictions">
+<span class="sig-name descname"><span class="pre">convert_class_probabilities_to_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.tensor_model.TensorToTensorClassificationModel.convert_class_probabilities_to_predictions" title="Permalink to this definition"></a></dt>
+<dd><p>Converts from a result returned by predictClassProbabilities to a result as return by predict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df</strong> – the output data frame from predictClassProbabilities</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an output data frame as it would be returned by predict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToTensorClassificationModel.predict_class_probabilities">
+<span class="sig-name descname"><span class="pre">predict_class_probabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.tensor_model.TensorToTensorClassificationModel.predict_class_probabilities" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – the input data</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a data frame with a single column containing arrays of shape <cite>(*tensorShape, numLabels)</cite>.
+Raises an exception if the classifier cannot predict probabilities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.tensor_model.TensorToTensorClassificationModel.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.tensor_model.TensorToTensorClassificationModel.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an array of integers. If the model was fitted on binary ground truth arrays of
+shape <cite>(*tensorShape, numLabels)</cite>, predictions will have the shape <cite>tensorShape</cite> and contain integers
+0, 1, …, numLabels - 1. They correspond to the predicted labels</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sklearn_quantile.html" class="btn btn-neutral float-left" title="sklearn_quantile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tensorflow.html" class="btn btn-neutral float-right" title="tensorflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

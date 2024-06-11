@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>datastruct &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="deprecation" href="deprecation.html" />
+    <link rel="prev" title="cache_mysql" href="cache_mysql.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html">tracking</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../util.html">util</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="aggregation.html">aggregation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache.html">cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache_azure.html">cache_azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache_mysql.html">cache_mysql</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">datastruct</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deprecation.html">deprecation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dtype.html">dtype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hash.html">hash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="helper.html">helper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="io.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jscode.html">jscode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging.html">logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="math.html">math</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiprocessing.html">multiprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pandas.html">pandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pickle.html">pickle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot.html">plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="profiling.html">profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sequences.html">sequences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="string.html">string</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test.html">test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="typing.html">typing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version.html">version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../util.html">util</a></li>
+      <li class="breadcrumb-item active">datastruct</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sensai/util/datastruct.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.util.datastruct">
+<span id="datastruct"></span><h1>datastruct<a class="headerlink" href="#module-sensai.util.datastruct" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.datastruct.Trivalent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Trivalent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/datastruct.py#L15"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.datastruct.Trivalent" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.util.datastruct.Trivalent.TRUE">
+<span class="sig-name descname"><span class="pre">TRUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'true'</span></em><a class="headerlink" href="#sensai.util.datastruct.Trivalent.TRUE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.util.datastruct.Trivalent.FALSE">
+<span class="sig-name descname"><span class="pre">FALSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'false'</span></em><a class="headerlink" href="#sensai.util.datastruct.Trivalent.FALSE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.util.datastruct.Trivalent.UNKNOWN">
+<span class="sig-name descname"><span class="pre">UNKNOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unknown'</span></em><a class="headerlink" href="#sensai.util.datastruct.Trivalent.UNKNOWN" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.Trivalent.from_bool">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_bool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.Trivalent.from_bool" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.Trivalent.is_true">
+<span class="sig-name descname"><span class="pre">is_true</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.Trivalent.is_true" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.Trivalent.is_false">
+<span class="sig-name descname"><span class="pre">is_false</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.Trivalent.is_false" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.datastruct.Maybe">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Maybe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/datastruct.py#L31"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.datastruct.Maybe" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.datastruct.TValue</span></code>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.Maybe.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.Maybe.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.datastruct.DeferredParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DeferredParams</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/datastruct.py#L36"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.datastruct.DeferredParams" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="string.html#sensai.util.string.ToStringMixin" title="sensai.util.string.ToStringMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.string.ToStringMixin</span></code></a></p>
+<p>Represents a dictionary of parameters that is specifically designed to hold parameters that can only defined late within
+a process (i.e. not initially at construction time), e.g. because the parameters are data-dependent and therefore can only
+be determined once the data has been seen.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.util.datastruct.DeferredParams.UNDEFINED">
+<span class="sig-name descname"><span class="pre">UNDEFINED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'__undefined__DeferredParams'</span></em><a class="headerlink" href="#sensai.util.datastruct.DeferredParams.UNDEFINED" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.DeferredParams.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.DeferredParams.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.DeferredParams.set_param">
+<span class="sig-name descname"><span class="pre">set_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.DeferredParams.set_param" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.DeferredParams.get_param">
+<span class="sig-name descname"><span class="pre">get_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'__undefined__DeferredParams'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.DeferredParams.get_param" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the parameter name</p></li>
+<li><p><strong>default</strong> – in case no value is set, return this value, and if UNDEFINED (default), raise KeyError</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the parameter value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.DeferredParams.get_dict">
+<span class="sig-name descname"><span class="pre">get_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.DeferredParams.get_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedValues">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SortedValues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sorted_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/datastruct.py#L68"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.datastruct.SortedValues" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.datastruct.TValue</span></code>]</p>
+<p>Provides convenient binary search (bisection) operations for sorted sequences</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedValues.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sorted_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.SortedValues.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedValues.floor_index">
+<span class="sig-name descname"><span class="pre">floor_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedValues.floor_index" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the rightmost index where the value is less than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – the value to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the index or None if there is no such index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedValues.ceil_index">
+<span class="sig-name descname"><span class="pre">ceil_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedValues.ceil_index" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the leftmost index where the value is greater than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – the value to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the index or None if there is no such index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedValues.closest_index">
+<span class="sig-name descname"><span class="pre">closest_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedValues.closest_index" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the index of the value that is closest to the given value.
+If two subsequent values have the same distance, the smaller index is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – the value to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the index or None if this object is empty</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedValues.floor_value">
+<span class="sig-name descname"><span class="pre">floor_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedValues.floor_value" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the largest value that is less than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – the value to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value or None if there is no such value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedValues.ceil_value">
+<span class="sig-name descname"><span class="pre">ceil_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedValues.ceil_value" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the smallest value that is greater than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – the value to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value or None if there is no such value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedValues.closest_value">
+<span class="sig-name descname"><span class="pre">closest_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedValues.closest_value" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the value that is closest to the given value.
+If two subsequent values have the same distance, the smaller value is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – the value to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value or None if this object is empty</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedValues.value_slice">
+<span class="sig-name descname"><span class="pre">value_slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lowest_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highest_key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedValues.value_slice" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValueStructure">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SortedKeyValueStructure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/datastruct.py#L149"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValueStructure" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.datastruct.TKey</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.datastruct.TValue</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValueStructure.floor_index">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">floor_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.datastruct.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValueStructure.floor_index" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the rightmost index where the key value is less than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the value to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the index or None if there is no such index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValueStructure.ceil_index">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ceil_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.datastruct.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValueStructure.ceil_index" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the leftmost index where the key value is greater than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the value to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the index or None if there is no such index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValueStructure.closest_index">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">closest_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.datastruct.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValueStructure.closest_index" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the index where the key is closest to the given value.
+If two subsequent keys have the same distance, the smaller index is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the value to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the index or None if this object is empty.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValueStructure.floor_value">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">floor_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.datastruct.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValueStructure.floor_value" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the value for the largest index where the corresponding key is less than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the key to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value or None if there is no such value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValueStructure.ceil_value">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ceil_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.datastruct.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValueStructure.ceil_value" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the value for the smallest index where the corresponding key is greater than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the key to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value or None if there is no such value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValueStructure.closest_value">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">closest_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.datastruct.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValueStructure.closest_value" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the value that is closest to the given value.
+If two subsequent values have the same distance, the smaller value is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the key to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value or None if this object is empty</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValueStructure.floor_key_and_value">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">floor_key_and_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.datastruct.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValueStructure.floor_key_and_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValueStructure.ceil_key_and_value">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ceil_key_and_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.datastruct.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValueStructure.ceil_key_and_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValueStructure.closest_key_and_value">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">closest_key_and_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.datastruct.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValueStructure.closest_key_and_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValueStructure.interpolated_value">
+<span class="sig-name descname"><span class="pre">interpolated_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.datastruct.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValueStructure.interpolated_value" title="Permalink to this definition"></a></dt>
+<dd><p>Computes a linearly interpolated value for the given key - based on the two closest key-value pairs found in the data structure.
+If the key is found in the data structure, the corresponding value is directly returned.</p>
+<p>NOTE: This operation is supported only for value types that support the required arithmetic operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the key for which the interpolated value is to be computed.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the interpolated value or None if the data structure does not contain floor/ceil entries for the given key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValueStructure.slice">
+<span class="sig-name descname"><span class="pre">slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lower_bound_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.util.datastruct.TSortedKeyValueStructure</span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValueStructure.slice" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lower_bound_key</strong> – the key defining the start of the slice (depending on inner);
+if None, the first included entry will be the very first entry</p></li>
+<li><p><strong>upper_bound_key</strong> – the key defining the end of the slice (depending on inner);
+if None, the last included entry will be the very last entry</p></li>
+<li><p><strong>inner</strong> – if True, the returned slice will be within the bounds; if False, the returned
+slice is extended by one entry in both directions such that it contains the bounds (where possible)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SortedKeysAndValues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/datastruct.py#L291"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.datastruct.TKey</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.datastruct.TValue</span></code>], <a class="reference internal" href="#sensai.util.datastruct.SortedKeyValueStructure" title="sensai.util.datastruct.SortedKeyValueStructure"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.datastruct.SortedKeyValueStructure</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.datastruct.TKey</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.datastruct.TValue</span></code>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keys</strong> – a sorted sequence of keys</p></li>
+<li><p><strong>values</strong> – a sequence of corresponding values</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues.from_series">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.series.Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues.from_series" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an instance from a pandas Series, using the series’ index as the keys and its values as the values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s</strong> – the series</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues.floor_index">
+<span class="sig-name descname"><span class="pre">floor_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues.floor_index" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the rightmost index where the key value is less than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the value to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the index or None if there is no such index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues.ceil_index">
+<span class="sig-name descname"><span class="pre">ceil_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues.ceil_index" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the leftmost index where the key value is greater than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the value to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the index or None if there is no such index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues.closest_index">
+<span class="sig-name descname"><span class="pre">closest_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues.closest_index" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the index where the key is closest to the given value.
+If two subsequent keys have the same distance, the smaller index is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the value to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the index or None if this object is empty.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues.floor_value">
+<span class="sig-name descname"><span class="pre">floor_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues.floor_value" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the value for the largest index where the corresponding key is less than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the key to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value or None if there is no such value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues.ceil_value">
+<span class="sig-name descname"><span class="pre">ceil_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues.ceil_value" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the value for the smallest index where the corresponding key is greater than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the key to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value or None if there is no such value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues.closest_value">
+<span class="sig-name descname"><span class="pre">closest_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues.closest_value" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the value that is closest to the given value.
+If two subsequent values have the same distance, the smaller value is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the key to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value or None if this object is empty</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues.floor_key_and_value">
+<span class="sig-name descname"><span class="pre">floor_key_and_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues.floor_key_and_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues.ceil_key_and_value">
+<span class="sig-name descname"><span class="pre">ceil_key_and_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues.ceil_key_and_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues.closest_key_and_value">
+<span class="sig-name descname"><span class="pre">closest_key_and_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues.closest_key_and_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues.value_slice_inner">
+<span class="sig-name descname"><span class="pre">value_slice_inner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lower_bound_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound_key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues.value_slice_inner" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeysAndValues.value_slice_outer">
+<span class="sig-name descname"><span class="pre">value_slice_outer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lower_bound_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.SortedKeysAndValues.value_slice_outer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SortedKeyValuePairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sorted_key_value_pairs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/datastruct.py#L356"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.datastruct.TKey</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.datastruct.TValue</span></code>], <a class="reference internal" href="#sensai.util.datastruct.SortedKeyValueStructure" title="sensai.util.datastruct.SortedKeyValueStructure"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.datastruct.SortedKeyValueStructure</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.datastruct.TKey</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.datastruct.TValue</span></code>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.from_unsorted_key_value_pairs">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_unsorted_key_value_pairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unsorted_key_value_pairs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.from_unsorted_key_value_pairs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sorted_key_value_pairs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.value_for_index">
+<span class="sig-name descname"><span class="pre">value_for_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.util.datastruct.TValue</span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.value_for_index" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.key_for_index">
+<span class="sig-name descname"><span class="pre">key_for_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.util.datastruct.TKey</span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.key_for_index" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.floor_index">
+<span class="sig-name descname"><span class="pre">floor_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.floor_index" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the rightmost index where the key is less than or equal to the given key</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.floor_value">
+<span class="sig-name descname"><span class="pre">floor_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.floor_value" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the value for the largest index where the corresponding key is less than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the key to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value or None if there is no such value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.floor_key_and_value">
+<span class="sig-name descname"><span class="pre">floor_key_and_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.floor_key_and_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.ceil_index">
+<span class="sig-name descname"><span class="pre">ceil_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.ceil_index" title="Permalink to this definition"></a></dt>
+<dd><p>Find leftmost index where the key is greater than or equal to the given key</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.ceil_value">
+<span class="sig-name descname"><span class="pre">ceil_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.ceil_value" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the value for the smallest index where the corresponding key is greater than or equal to the given value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the key to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value or None if there is no such value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.ceil_key_and_value">
+<span class="sig-name descname"><span class="pre">ceil_key_and_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.ceil_key_and_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.closest_index">
+<span class="sig-name descname"><span class="pre">closest_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.closest_index" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the index where the key is closest to the given value.
+If two subsequent keys have the same distance, the smaller index is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the value to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the index or None if this object is empty.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.closest_value">
+<span class="sig-name descname"><span class="pre">closest_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.closest_value" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the value that is closest to the given value.
+If two subsequent values have the same distance, the smaller value is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the key to search for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value or None if this object is empty</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.closest_key_and_value">
+<span class="sig-name descname"><span class="pre">closest_key_and_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.closest_key_and_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.datastruct.SortedKeyValuePairs.value_slice">
+<span class="sig-name descname"><span class="pre">value_slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lowest_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highest_key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.datastruct.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.datastruct.SortedKeyValuePairs.value_slice" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cache_mysql.html" class="btn btn-neutral float-left" title="cache_mysql" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deprecation.html" class="btn btn-neutral float-right" title="deprecation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

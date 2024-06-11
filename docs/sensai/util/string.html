@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>string &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="test" href="test.html" />
+    <link rel="prev" title="sequences" href="sequences.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html">tracking</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../util.html">util</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="aggregation.html">aggregation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache.html">cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache_azure.html">cache_azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache_mysql.html">cache_mysql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datastruct.html">datastruct</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deprecation.html">deprecation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dtype.html">dtype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hash.html">hash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="helper.html">helper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="io.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jscode.html">jscode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging.html">logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="math.html">math</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiprocessing.html">multiprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pandas.html">pandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pickle.html">pickle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot.html">plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="profiling.html">profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sequences.html">sequences</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">string</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test.html">test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="typing.html">typing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version.html">version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../util.html">util</a></li>
+      <li class="breadcrumb-item active">string</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sensai/util/string.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.util.string">
+<span id="string"></span><h1>string<a class="headerlink" href="#module-sensai.util.string" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.string.StringConverter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">StringConverter</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/string.py#L14"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.string.StringConverter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstraction for a string conversion mechanism</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.StringConverter.to_string">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sensai.util.string.StringConverter.to_string" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.util.string.dict_string">
+<span class="sig-name descname"><span class="pre">dict_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brackets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">converter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.util.string.StringConverter" title="sensai.util.string.StringConverter"><span class="pre">sensai.util.string.StringConverter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/string.py#L23"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.string.dict_string" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a dictionary to a string of the form “&lt;key&gt;=&lt;value&gt;, &lt;key&gt;=&lt;value&gt;, …”, optionally enclosed
+by brackets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d</strong> – the dictionary</p></li>
+<li><p><strong>brackets</strong> – a two-character string containing the opening and closing bracket to use, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;{}&quot;</span></code>;
+if None, do not use enclosing brackets</p></li>
+<li><p><strong>converter</strong> – the string converter to use for values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the string representation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.util.string.list_string">
+<span class="sig-name descname"><span class="pre">list_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brackets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'[]'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quote</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">converter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.util.string.StringConverter" title="sensai.util.string.StringConverter"><span class="pre">sensai.util.string.StringConverter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/string.py#L41"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.string.list_string" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a list or any other iterable to a string of the form “[&lt;value&gt;, &lt;value&gt;, …]”, optionally enclosed
+by different brackets or with the values quoted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>l</strong> – the list</p></li>
+<li><p><strong>brackets</strong> – a two-character string containing the opening and closing bracket to use, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;[]&quot;</span></code>;
+if None, do not use enclosing brackets</p></li>
+<li><p><strong>quote</strong> – a 1-character string defining the quote to use around each value, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;'&quot;</span></code>.</p></li>
+<li><p><strong>converter</strong> – the string converter to use for values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the string representation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.util.string.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">converter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.util.string.StringConverter" title="sensai.util.string.StringConverter"><span class="pre">sensai.util.string.StringConverter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_converter_to_non_complex_objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/string.py#L66"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.string.to_string" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the given object to a string, with proper handling of lists, tuples and dictionaries, optionally using a converter.
+The conversion also removes unwanted line breaks (as present, in particular, in sklearn’s string representations).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – the object to convert</p></li>
+<li><p><strong>converter</strong> – the converter with which to convert objects to strings</p></li>
+<li><p><strong>apply_converter_to_non_complex_objects</strong> – whether to apply/pass on the converter (if any) not only when converting complex objects
+but also non-complex, primitive objects; use of this flag enables converters to implement their conversion functionality using this
+function for complex objects without causing an infinite recursion.</p></li>
+<li><p><strong>context</strong> – context in which the object is being converted (e.g. dictionary key for case where x is the corresponding
+dictionary value), only for debugging purposes (will be reported in log messages upon recursion exception)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the string representation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.util.string.object_repr">
+<span class="sig-name descname"><span class="pre">object_repr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">member_names_or_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/string.py#L106"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.string.object_repr" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.util.string.or_regex_group">
+<span class="sig-name descname"><span class="pre">or_regex_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allowed_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/string.py#L114"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.string.or_regex_group" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>allowed_names</strong> – strings to include as literals in the regex</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a regular expression string of the form (&lt;name1&gt;| …|&lt;nameN&gt;), which any of the given names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.util.string.function_name">
+<span class="sig-name descname"><span class="pre">function_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/string.py#L124"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.string.function_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.string.ToStringMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ToStringMixin</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/string.py#L133"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.string.ToStringMixin" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Provides implementations for <code class="docutils literal notranslate"><span class="pre">__str__</span></code> and <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> which are based on the format <code class="docutils literal notranslate"><span class="pre">&quot;&lt;class</span> <span class="pre">name&gt;[&lt;object</span> <span class="pre">info&gt;]&quot;</span></code> and
+<code class="docutils literal notranslate"><span class="pre">&quot;&lt;class</span> <span class="pre">name&gt;[id=&lt;object</span> <span class="pre">id&gt;,</span> <span class="pre">&lt;object</span> <span class="pre">info&gt;]&quot;</span></code> respectively, where <code class="docutils literal notranslate"><span class="pre">&lt;object</span> <span class="pre">info&gt;</span></code> is usually a list of entries of the
+form <code class="docutils literal notranslate"><span class="pre">&quot;&lt;name&gt;=&lt;value&gt;,</span> <span class="pre">...&quot;</span></code>.</p>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">name&gt;</span></code> will be the qualified name of the class, and <code class="docutils literal notranslate"><span class="pre">&lt;object</span> <span class="pre">info&gt;</span></code> will include all properties
+of the class, including private ones starting with an underscore (though the underscore will be dropped in the string
+representation).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>To exclude private properties, override <code class="xref py py-meth docutils literal notranslate"><span class="pre">_toStringExcludePrivate()</span></code> to return True. If there are exceptions
+(and some private properties shall be retained), additionally override <code class="xref py py-meth docutils literal notranslate"><span class="pre">_toStringExcludeExceptions()</span></code>.</p></li>
+<li><p>To exclude a particular set of properties, override <code class="xref py py-meth docutils literal notranslate"><span class="pre">_toStringExcludes()</span></code>.</p></li>
+<li><p>To include only select properties (introducing inclusion semantics), override <code class="xref py py-meth docutils literal notranslate"><span class="pre">_toStringIncludes()</span></code>.</p></li>
+<li><p>To add values to the properties list that aren’t actually properties of the object (i.e. derived properties),
+override <code class="xref py py-meth docutils literal notranslate"><span class="pre">_toStringAdditionalEntries()</span></code>.</p></li>
+<li><p>To define a fully custom representation for <code class="docutils literal notranslate"><span class="pre">&lt;object</span> <span class="pre">info&gt;</span></code> which is not based on the above principles, override
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_toStringObjectInfo()</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>For well-defined string conversions within a class hierarchy, it can be a good practice to define additional
+inclusions/exclusions by overriding the respective method once more and basing the return value on an extended
+version of the value returned by superclass.
+In some cases, the requirements of a subclass can be at odds with the definitions in the superclass: The superclass
+may make use of exclusion semantics, but the subclass may want to use inclusion semantics (and include
+only some of the many properties it adds). In this case, if the subclass used <code class="xref py py-meth docutils literal notranslate"><span class="pre">_toStringInclude()</span></code>, the exclusion semantics
+of the superclass would be void and none of its properties would actually be included.
+In such cases, override <code class="xref py py-meth docutils literal notranslate"><span class="pre">_toStringIncludesForced()</span></code> to add inclusions regardless of the semantics otherwise used along
+the class hierarchy.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.ToStringMixin._tostring_class_name">
+<span class="sig-name descname"><span class="pre">_tostring_class_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.string.ToStringMixin._tostring_class_name" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the string use for &lt;class name&gt; in the string representation <code class="docutils literal notranslate"><span class="pre">&quot;&lt;class</span> <span class="pre">name&gt;[&lt;object</span> <span class="pre">info]&quot;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.ToStringMixin._tostring_object_info">
+<span class="sig-name descname"><span class="pre">_tostring_object_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sensai.util.string.ToStringMixin._tostring_object_info" title="Permalink to this definition"></a></dt>
+<dd><p>Override this method to use a fully custom definition of the <code class="docutils literal notranslate"><span class="pre">&lt;object</span> <span class="pre">info&gt;</span></code> part in the full string
+representation <code class="docutils literal notranslate"><span class="pre">&quot;&lt;class</span> <span class="pre">name&gt;[&lt;object</span> <span class="pre">info&gt;]&quot;</span></code> to be generated.
+As soon as this method is overridden, any property-based exclusions, inclusions, etc. will have no effect
+(unless the implementation is specifically designed to make use of them - as is the default
+implementation).
+NOTE: Overrides must not internally use super() because of a technical limitation in the proxy
+object that is used for nested object structures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a string containing the string to use for <code class="docutils literal notranslate"><span class="pre">&lt;object</span> <span class="pre">info&gt;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.ToStringMixin._tostring_excludes">
+<span class="sig-name descname"><span class="pre">_tostring_excludes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.string.ToStringMixin._tostring_excludes" title="Permalink to this definition"></a></dt>
+<dd><p>Makes the string representation exclude the returned attributes.
+This method can be conveniently overridden by subclasses which can call super and extend the list returned.</p>
+<p>This method will only have no effect if <code class="xref py py-meth docutils literal notranslate"><span class="pre">_toStringObjectInfo()</span></code> is overridden to not use its result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of attribute names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.ToStringMixin._tostring_exclude_exceptions">
+<span class="sig-name descname"><span class="pre">_tostring_exclude_exceptions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.string.ToStringMixin._tostring_exclude_exceptions" title="Permalink to this definition"></a></dt>
+<dd><p>Defines attribute names which should not be excluded even though other rules (particularly the exclusion of private members
+via <code class="xref py py-meth docutils literal notranslate"><span class="pre">_toStringExcludePrivate()</span></code>) would otherwise exclude them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of attribute names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.ToStringMixin._tostring_includes">
+<span class="sig-name descname"><span class="pre">_tostring_includes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.string.ToStringMixin._tostring_includes" title="Permalink to this definition"></a></dt>
+<dd><p>Makes the string representation include only the returned attributes (i.e. introduces inclusion semantics);
+By default, the list contains only a marker element, which is interpreted as “all attributes included”.</p>
+<p>This method can be conveniently overridden by sub-classes which can call super and extend the list returned.
+Note that it is not a problem for a list containing the aforementioned marker element (which stands for all attributes)
+to be extended; the marker element will be ignored and only the user-added elements will be considered as included.</p>
+<p>Note: To add an included attribute in a sub-class, regardless of any super-classes using exclusion or inclusion semantics,
+use _toStringIncludesForced instead.</p>
+<p>This method will have no effect if <code class="xref py py-meth docutils literal notranslate"><span class="pre">_toStringObjectInfo()</span></code> is overridden to not use its result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of attribute names to be included in the string representation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.ToStringMixin._tostring_includes_forced">
+<span class="sig-name descname"><span class="pre">_tostring_includes_forced</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.string.ToStringMixin._tostring_includes_forced" title="Permalink to this definition"></a></dt>
+<dd><p>Defines a list of attribute names that are required to be present in the string representation, regardless of the
+instance using include semantics or exclude semantics, thus facilitating added inclusions in sub-classes.</p>
+<p>This method will have no effect if <code class="xref py py-meth docutils literal notranslate"><span class="pre">_toStringObjectInfo()</span></code> is overridden to not use its result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of attribute names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.ToStringMixin._tostring_additional_entries">
+<span class="sig-name descname"><span class="pre">_tostring_additional_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.string.ToStringMixin._tostring_additional_entries" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a dictionary of entries to be included in the <code class="docutils literal notranslate"><span class="pre">&lt;object</span> <span class="pre">info&gt;</span></code> part of the string representation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.ToStringMixin._tostring_exclude_private">
+<span class="sig-name descname"><span class="pre">_tostring_exclude_private</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sensai.util.string.ToStringMixin._tostring_exclude_private" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>whether to exclude properties that are private (start with an underscore); explicitly included attributes
+will still be considered - as will properties exempt from the rule via <code class="xref py py-meth docutils literal notranslate"><span class="pre">toStringExcludeException()</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.ToStringMixin.pprint">
+<span class="sig-name descname"><span class="pre">pprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file=&lt;_io.TextIOWrapper</span> <span class="pre">name='&lt;stdout&gt;'</span> <span class="pre">mode='w'</span> <span class="pre">encoding='utf-8'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.string.ToStringMixin.pprint" title="Permalink to this definition"></a></dt>
+<dd><p>Prints a prettily formatted string representation of the object (with line breaks and indentations)
+to <code class="docutils literal notranslate"><span class="pre">stdout</span></code> or the given file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file</strong> – the file to print to</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.ToStringMixin.pprints">
+<span class="sig-name descname"><span class="pre">pprints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sensai.util.string.ToStringMixin.pprints" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a prettily formatted string representation with line breaks and indentations</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.util.string.pretty_string_repr">
+<span class="sig-name descname"><span class="pre">pretty_string_repr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_indentation_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indentation_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span>&#160;&#160;&#160; <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/string.py#L401"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.string.pretty_string_repr" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a pretty string representation (using indentations) from the given object/string representation (as generated, for example, via
+ToStringMixin). An indentation level is added for every opening bracket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> – an object or object string representation</p></li>
+<li><p><strong>initial_indentation_level</strong> – the initial indentation level</p></li>
+<li><p><strong>indentation_string</strong> – the string which corresponds to a single indentation level</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a reformatted version of the input string with added indentations and line breaks</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.string.TagBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TagBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">initial_components</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">glue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/string.py#L472"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.string.TagBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Assists in building strings made up of components that are joined via a glue string</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.TagBuilder.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">initial_components</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">glue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.string.TagBuilder.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>initial_components</strong> – initial components to always include at the beginning</p></li>
+<li><p><strong>glue</strong> – the glue string which joins components</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.TagBuilder.with_component">
+<span class="sig-name descname"><span class="pre">with_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.string.TagBuilder.with_component" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.TagBuilder.with_conditional">
+<span class="sig-name descname"><span class="pre">with_conditional</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cond</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.string.TagBuilder.with_conditional" title="Permalink to this definition"></a></dt>
+<dd><p>Conditionally adds the given component</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cond</strong> – the condition</p></li>
+<li><p><strong>component</strong> – the component to add if the condition holds</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the builder</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.TagBuilder.with_alternative">
+<span class="sig-name descname"><span class="pre">with_alternative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cond</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_component</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">false_component</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.string.TagBuilder.with_alternative" title="Permalink to this definition"></a></dt>
+<dd><p>Adds a component depending on a condition</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cond</strong> – the condition</p></li>
+<li><p><strong>true_component</strong> – the component to add if the condition holds</p></li>
+<li><p><strong>false_component</strong> – the component to add if the condition does not hold</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the builder</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.string.TagBuilder.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.string.TagBuilder.build" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the string (with all components joined)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sequences.html" class="btn btn-neutral float-left" title="sequences" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="test.html" class="btn btn-neutral float-right" title="test" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>feature_generator &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="feature_generator_registry" href="feature_generator_registry.html" />
+    <link rel="prev" title="featuregen" href="../featuregen.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../featuregen.html">featuregen</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">feature_generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_generator_registry.html">feature_generator_registry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../featuregen.html">featuregen</a></li>
+      <li class="breadcrumb-item active">feature_generator</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sensai/featuregen/feature_generator.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.featuregen.feature_generator">
+<span id="feature-generator"></span><h1>feature_generator<a class="headerlink" href="#module-sensai.featuregen.feature_generator" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_categorical_default_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L28"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../util/string.html#sensai.util.string.ToStringMixin" title="sensai.util.string.ToStringMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.string.ToStringMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base class for feature generators that create a new DataFrame containing feature values
+from an input DataFrame</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_categorical_default_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>categorical_feature_names</strong> – either a sequence of column names or a regex that is to match all categorical feature names
+(which must not only work for the feature generated by this feature generator, i.e. it should not match feature names generated
+by other feature generators).
+It will be ensured that the respective columns in the generated data frames will have dtype ‘category’.
+Furthermore, the presence of meta-information can later be leveraged for further transformations, e.g., one-hot encoding.</p></li>
+<li><p><strong>normalisation_rules</strong> – Rules to be used by DFTNormalisation (e.g.,for constructing an input transformer for a model).
+These rules are only relevant if a DFTNormalisation object consuming them is instantiated and used
+within a data processing pipeline. They do not affect feature generation.</p></li>
+<li><p><strong>normalisation_rule_template</strong> – This parameter can be supplied instead of <cite>normalisation_rules</cite> for the case where
+there shall be a single rule that applies to all columns generated by this feature generator that were not labeled as
+categorical. Like normalisation_rules, this is only relevant if a DFTNormalisation object consuming
+normalisation rules is instantiated and used within a data processing pipeline.
+It does not affect feature generation.</p></li>
+<li><p><strong>add_categorical_default_rules</strong> – If True, normalisation rules for categorical features (which are unsupported by normalisation) and their corresponding one-hot
+encoded features (with “_&lt;index&gt;” appended) will be added. It does not affect feature generation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.get_name">
+<span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.get_name" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the name of this feature generator, which may be a default name if the name has not been set. Note that feature generators
+created by a FeatureGeneratorFactory always get the name with which the generator factory was registered.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.set_name">
+<span class="sig-name descname"><span class="pre">set_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.set_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.get_names">
+<span class="sig-name descname"><span class="pre">get_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.get_names" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the list of names of feature generators; will be a list with a single name for a regular feature generator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.get_normalisation_rules">
+<span class="sig-name descname"><span class="pre">get_normalisation_rules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_generated_categorical_rules</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.get_normalisation_rules" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.get_categorical_feature_name_regex">
+<span class="sig-name descname"><span class="pre">get_categorical_feature_name_regex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.get_categorical_feature_name_regex" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.is_categorical_feature">
+<span class="sig-name descname"><span class="pre">is_categorical_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.is_categorical_feature" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.get_generated_column_names">
+<span class="sig-name descname"><span class="pre">get_generated_column_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.get_generated_column_names" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Column names of the data frame generated by the most recent call of the feature generators ‘generate’ method.
+Returns None if generate was never called.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.to_dft">
+<span class="sig-name descname"><span class="pre">to_dft</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.to_dft" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fits the feature generator based on the given data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – the input/features data frame for the learning problem</p></li>
+<li><p><strong>y</strong> – the corresponding output data frame for the learning problem
+(which will typically contain regression or classification target columns)</p></li>
+<li><p><strong>ctx</strong> – a context object whose functionality may be required for feature generation;
+this is typically the model instance that this feature generator is to generate inputs for</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.is_fitted">
+<span class="sig-name descname"><span class="pre">is_fitted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.is_fitted" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.generate" title="Permalink to this definition"></a></dt>
+<dd><p>Generates features for the data points in the given data frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – the input data frame for which to generate features</p></li>
+<li><p><strong>ctx</strong> – a context object whose functionality may be required for feature generation;
+this is typically the model instance that this feature generator is to generate inputs for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a data frame containing the generated features, which uses the same index as X (and Y)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.fit_generate">
+<span class="sig-name descname"><span class="pre">fit_generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.fit_generate" title="Permalink to this definition"></a></dt>
+<dd><p>Fits the feature generator and subsequently generates features for the data points in the given data frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – the input data frame for the learning problem and for which to generate features</p></li>
+<li><p><strong>y</strong> – the corresponding output data frame for the learning problem
+(which will typically contain regression or classification target columns)</p></li>
+<li><p><strong>ctx</strong> – a context object whose functionality may be required for feature generation;
+this is typically the model instance that this feature generator is to generate inputs for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a data frame containing the generated features, which uses the same index as X (and Y)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.flattened">
+<span class="sig-name descname"><span class="pre">flattened</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns_to_flatten</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_other_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.featuregen.feature_generator.ChainedFeatureGenerator" title="sensai.featuregen.feature_generator.ChainedFeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.ChainedFeatureGenerator</span></a></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.flattened" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a new feature generator which returns flattened versions of one or more of the vector-valued columns generated
+by this feature generator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>columns_to_flatten</strong> – the list of columns to flatten; if None, flatten all columns</p></li>
+<li><p><strong>normalisation_rules</strong> – a list of normalisation rules which apply to the flattened columns</p></li>
+<li><p><strong>normalisation_rule_template</strong> – a normalisation rule template which applies to all generated flattened columns</p></li>
+<li><p><strong>keep_other_columns</strong> – if True, any additional columns that are not to be flattened are to be retained
+by the returned feature generator; if False, additional columns are to be discarded</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a feature generator which generates the flattened columns</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.concat">
+<span class="sig-name descname"><span class="pre">concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">others</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.featuregen.feature_generator.MultiFeatureGenerator" title="sensai.featuregen.feature_generator.MultiFeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.MultiFeatureGenerator</span></a></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.concat" title="Permalink to this definition"></a></dt>
+<dd><p>Concatenates this feature generator with one or more other feature generator in order to produce a feature generator that
+jointly generates all features</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>others</strong> – other feature generators</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a <a class="reference internal" href="#sensai.featuregen.feature_generator.MultiFeatureGenerator" title="sensai.featuregen.feature_generator.MultiFeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFeatureGenerator</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGenerator.chain">
+<span class="sig-name descname"><span class="pre">chain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">others</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.featuregen.feature_generator.ChainedFeatureGenerator" title="sensai.featuregen.feature_generator.ChainedFeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.ChainedFeatureGenerator</span></a></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGenerator.chain" title="Permalink to this definition"></a></dt>
+<dd><p>Chains this feature generator with one or more other feature generators such that each feature generator
+receives as input the output of the preceding feature generator. The resulting feature generator
+produces the features of the last element in the chain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>others</strong> – other feature generator</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a <a class="reference internal" href="#sensai.featuregen.feature_generator.ChainedFeatureGenerator" title="sensai.featuregen.feature_generator.ChainedFeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChainedFeatureGenerator</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.RuleBasedFeatureGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RuleBasedFeatureGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_categorical_default_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L314"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.RuleBasedFeatureGenerator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>A feature generator which does not require fitting</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.RuleBasedFeatureGenerator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.RuleBasedFeatureGenerator.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fits the feature generator based on the given data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – the input/features data frame for the learning problem</p></li>
+<li><p><strong>y</strong> – the corresponding output data frame for the learning problem
+(which will typically contain regression or classification target columns)</p></li>
+<li><p><strong>ctx</strong> – a context object whose functionality may be required for feature generation;
+this is typically the model instance that this feature generator is to generate inputs for</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.RuleBasedFeatureGenerator.is_fitted">
+<span class="sig-name descname"><span class="pre">is_fitted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.RuleBasedFeatureGenerator.is_fitted" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.MultiFeatureGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultiFeatureGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">feature_generators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L328"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.MultiFeatureGenerator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></code></a></p>
+<p>Wrapper for multiple feature generators. Calling generate here applies all given feature generators independently and
+returns the concatenation of their outputs</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.MultiFeatureGenerator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">feature_generators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.MultiFeatureGenerator.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>categorical_feature_names</strong> – either a sequence of column names or a regex that is to match all categorical feature names
+(which must not only work for the feature generated by this feature generator, i.e. it should not match feature names generated
+by other feature generators).
+It will be ensured that the respective columns in the generated data frames will have dtype ‘category’.
+Furthermore, the presence of meta-information can later be leveraged for further transformations, e.g., one-hot encoding.</p></li>
+<li><p><strong>normalisation_rules</strong> – Rules to be used by DFTNormalisation (e.g.,for constructing an input transformer for a model).
+These rules are only relevant if a DFTNormalisation object consuming them is instantiated and used
+within a data processing pipeline. They do not affect feature generation.</p></li>
+<li><p><strong>normalisation_rule_template</strong> – This parameter can be supplied instead of <cite>normalisation_rules</cite> for the case where
+there shall be a single rule that applies to all columns generated by this feature generator that were not labeled as
+categorical. Like normalisation_rules, this is only relevant if a DFTNormalisation object consuming
+normalisation rules is instantiated and used within a data processing pipeline.
+It does not affect feature generation.</p></li>
+<li><p><strong>add_categorical_default_rules</strong> – If True, normalisation rules for categorical features (which are unsupported by normalisation) and their corresponding one-hot
+encoded features (with “_&lt;index&gt;” appended) will be added. It does not affect feature generation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.MultiFeatureGenerator.fit_generate">
+<span class="sig-name descname"><span class="pre">fit_generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.MultiFeatureGenerator.fit_generate" title="Permalink to this definition"></a></dt>
+<dd><p>Fits the feature generator and subsequently generates features for the data points in the given data frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – the input data frame for the learning problem and for which to generate features</p></li>
+<li><p><strong>y</strong> – the corresponding output data frame for the learning problem
+(which will typically contain regression or classification target columns)</p></li>
+<li><p><strong>ctx</strong> – a context object whose functionality may be required for feature generation;
+this is typically the model instance that this feature generator is to generate inputs for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a data frame containing the generated features, which uses the same index as X (and Y)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.MultiFeatureGenerator.is_fitted">
+<span class="sig-name descname"><span class="pre">is_fitted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.MultiFeatureGenerator.is_fitted" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.MultiFeatureGenerator.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.MultiFeatureGenerator.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.MultiFeatureGenerator.get_names">
+<span class="sig-name descname"><span class="pre">get_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.MultiFeatureGenerator.get_names" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the list of names of feature generators; will be a list with a single name for a regular feature generator</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorFromNamedTuples">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureGeneratorFromNamedTuples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../util/cache.html#sensai.util.cache.KeyValueCache" title="sensai.util.cache.KeyValueCache"><span class="pre">sensai.util.cache.KeyValueCache</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L393"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorFromNamedTuples" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Generates feature values for one data point at a time, creating a dictionary with
+feature values from each named tuple</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorFromNamedTuples.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../util/cache.html#sensai.util.cache.KeyValueCache" title="sensai.util.cache.KeyValueCache"><span class="pre">sensai.util.cache.KeyValueCache</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorFromNamedTuples.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>categorical_feature_names</strong> – either a sequence of column names or a regex that is to match all categorical feature names
+(which must not only work for the feature generated by this feature generator, i.e. it should not match feature names generated
+by other feature generators).
+It will be ensured that the respective columns in the generated data frames will have dtype ‘category’.
+Furthermore, the presence of meta-information can later be leveraged for further transformations, e.g., one-hot encoding.</p></li>
+<li><p><strong>normalisation_rules</strong> – Rules to be used by DFTNormalisation (e.g.,for constructing an input transformer for a model).
+These rules are only relevant if a DFTNormalisation object consuming them is instantiated and used
+within a data processing pipeline. They do not affect feature generation.</p></li>
+<li><p><strong>normalisation_rule_template</strong> – This parameter can be supplied instead of <cite>normalisation_rules</cite> for the case where
+there shall be a single rule that applies to all columns generated by this feature generator that were not labeled as
+categorical. Like normalisation_rules, this is only relevant if a DFTNormalisation object consuming
+normalisation rules is instantiated and used within a data processing pipeline.
+It does not affect feature generation.</p></li>
+<li><p><strong>add_categorical_default_rules</strong> – If True, normalisation rules for categorical features (which are unsupported by normalisation) and their corresponding one-hot
+encoded features (with “_&lt;index&gt;” appended) will be added. It does not affect feature generation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorTakeColumns">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureGeneratorTakeColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">except_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify_column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L432"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorTakeColumns" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.featuregen.feature_generator.RuleBasedFeatureGenerator" title="sensai.featuregen.feature_generator.RuleBasedFeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.feature_generator.RuleBasedFeatureGenerator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorTakeColumns.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">except_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify_column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorTakeColumns.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>columns</strong> – name of the column or list of names of columns to be taken. If None, all columns will be taken.</p></li>
+<li><p><strong>except_columns</strong> – list of names of columns to not take if present in the input df</p></li>
+<li><p><strong>categorical_feature_names</strong> – either a sequence of column names or a regex that is to match all categorical feature names
+(which must not only work for the feature generated by this feature generator, i.e. it should not match feature names generated
+by other feature generators).
+It will be ensured that the respective columns in the generated data frames will have dtype ‘category’.
+Furthermore, presence of meta-information can later be leveraged for further transformations, e.g. one-hot encoding.</p></li>
+<li><p><strong>normalisation_rules</strong> – Rules to be used by DFTNormalisation (e.g. for constructing an input transformer for a model).
+These rules are only relevant if a DFTNormalisation object consuming them is instantiated and used
+within a data processing pipeline. They do not affect feature generation.</p></li>
+<li><p><strong>normalisation_rule_template</strong> – This parameter can be supplied instead of normalisationRules for the case where
+there shall be a single rule that applies to all columns generated by this feature generator that were not labeled as
+categorical.</p></li>
+<li><p><strong>verify_column_names</strong> – if True and columns to take were specified, will raise an error in case said columns
+are missing during feature generation. If False, will log on info level instead</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorTakeColumns.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorTakeColumns.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorFlattenColumns">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureGeneratorFlattenColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L485"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorFlattenColumns" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.featuregen.feature_generator.RuleBasedFeatureGenerator" title="sensai.featuregen.feature_generator.RuleBasedFeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.feature_generator.RuleBasedFeatureGenerator</span></code></a></p>
+<p>Instances of this class take columns with vectors and creates a data frame with columns containing entries of
+these vectors.</p>
+<p>For example, if columns “vec1”, “vec2” contain vectors of dimensions dim1, dim2, a data frame with dim1+dim2 new columns
+will be created. It will contain the columns “vec1_&lt;i1&gt;”, “vec2_&lt;i2&gt;” with i1, i2 ranging in (0, dim1), (0, dim2).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorFlattenColumns.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorFlattenColumns.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>columns</strong> – name of the column or list of names of columns to be flattened. If None, all columns will be flattened.</p></li>
+<li><p><strong>categorical_feature_names</strong> – </p></li>
+<li><p><strong>normalisation_rules</strong> – </p></li>
+<li><p><strong>normalisation_rule_template</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorFlattenColumns.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorFlattenColumns.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorFromColumnGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureGeneratorFromColumnGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_gen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../columngen.html#sensai.columngen.ColumnGenerator" title="sensai.columngen.ColumnGenerator"><span class="pre">ColumnGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">take_input_column_if_present</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_categorical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L532"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorFromColumnGenerator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.featuregen.feature_generator.RuleBasedFeatureGenerator" title="sensai.featuregen.feature_generator.RuleBasedFeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.feature_generator.RuleBasedFeatureGenerator</span></code></a></p>
+<p>Implements a feature generator via a column generator</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorFromColumnGenerator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_gen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../columngen.html#sensai.columngen.ColumnGenerator" title="sensai.columngen.ColumnGenerator"><span class="pre">ColumnGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">take_input_column_if_present</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_categorical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorFromColumnGenerator.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_gen</strong> – the underlying column generator</p></li>
+<li><p><strong>take_input_column_if_present</strong> – if True, then if a column whose name corresponds to the column to generate exists
+in the input data, simply copy it to generate the output (without using the column generator); if False, always
+apply the columnGen to generate the output</p></li>
+<li><p><strong>is_categorical</strong> – whether the resulting column is categorical</p></li>
+<li><p><strong>normalisation_rule_template</strong> – template for a DFTNormalisation for the resulting column.
+This should only be provided if is_categorical is False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorFromColumnGenerator.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorFromColumnGenerator.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.ChainedFeatureGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ChainedFeatureGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">feature_generators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L575"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.ChainedFeatureGenerator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></code></a></p>
+<p>Chains feature generators such that they are executed one after another. The output of generator i&gt;=1 is the input of
+generator i+1 in the generator sequence.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.ChainedFeatureGenerator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">feature_generators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.ChainedFeatureGenerator.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature_generators</strong> – feature generators to apply in order; the properties of the last feature generator
+determine the relevant meta-data such as categorical feature names and normalisation rules</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.ChainedFeatureGenerator.is_fitted">
+<span class="sig-name descname"><span class="pre">is_fitted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.ChainedFeatureGenerator.is_fitted" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.ChainedFeatureGenerator.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.ChainedFeatureGenerator.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.ChainedFeatureGenerator.fit_generate">
+<span class="sig-name descname"><span class="pre">fit_generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.featuregen.feature_generator.ChainedFeatureGenerator.fit_generate" title="Permalink to this definition"></a></dt>
+<dd><p>Fits the feature generator and subsequently generates features for the data points in the given data frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – the input data frame for the learning problem and for which to generate features</p></li>
+<li><p><strong>y</strong> – the corresponding output data frame for the learning problem
+(which will typically contain regression or classification target columns)</p></li>
+<li><p><strong>ctx</strong> – a context object whose functionality may be required for feature generation;
+this is typically the model instance that this feature generator is to generate inputs for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a data frame containing the generated features, which uses the same index as X (and Y)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorTargetDistribution">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureGeneratorTargetDistribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_column_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.indexes.interval.IntervalIndex</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_column_in_features_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L615"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorTargetDistribution" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></code></a></p>
+<p>A feature generator, which, for a column T (typically the categorical target column of a classification problem
+or the continuous target column of a regression problem),</p>
+<ul class="simple">
+<li><p>can ensure that T takes on limited set of values t_1, …, t_n by allowing the user to apply
+binning using given bin boundaries</p></li>
+<li><p>computes for each value c of a categorical column C the conditional empirical distribution
+P(T | C=c) in the training data during the training phase,</p></li>
+<li><p>generates, for each requested column C and value c in the column, n features
+‘&lt;C&gt;_&lt;T&gt;_distribution_&lt;t_i&gt;’ = P(T=t_i | C=c) if flatten=True
+or one feature ‘&lt;C&gt;_&lt;T&gt;_distribution’ = [P(T=t_i | C=c), …, P(T=t_n | C=c)] if flatten=False</p></li>
+</ul>
+<p>Being probability values, the features generated by this feature generator are already normalised.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorTargetDistribution.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_column_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.indexes.interval.IntervalIndex</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_column_in_features_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorTargetDistribution.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>columns</strong> – the categorical columns for which to generate distribution features</p></li>
+<li><p><strong>target_column</strong> – the column the distributions over which will make up the features.
+If targetColumnBins is not None, this column will be discretised before computing the conditional distributions</p></li>
+<li><p><strong>target_column_bins</strong> – if not None, specifies the binning to apply via pandas.cut
+(see <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.cut.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.cut.html</a>).
+Note that if a value should match no bin, NaN will generated. To avoid this when specifying bin boundaries in a list,
+-inf and +inf should be used as the first and last entries.</p></li>
+<li><p><strong>target_column_in_features_df</strong> – if True, when fitting will look for targetColumn in the features data frame (X) instead of in
+target data frame (Y)</p></li>
+<li><p><strong>flatten</strong> – whether to generate a separate scalar feature per distribution value rather than one feature
+with all of the distribution’s values</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorTargetDistribution.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorTargetDistribution.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorFromVectorModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureGeneratorFromVectorModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModel" title="sensai.vector_model.VectorModel"><span class="pre">VectorModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_feature_generator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_feature_generator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_target_feature_generator_for_training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L715"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorFromVectorModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorFromVectorModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModel" title="sensai.vector_model.VectorModel"><span class="pre">VectorModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_feature_generator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_feature_generator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_target_feature_generator_for_training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorFromVectorModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Provides a feature via predictions of a given model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vector_model</strong> – model used for generate features from predictions</p></li>
+<li><p><strong>target_feature_generator</strong> – generator for target to be predicted</p></li>
+<li><p><strong>categorical_feature_names</strong> – </p></li>
+<li><p><strong>normalisation_rules</strong> – </p></li>
+<li><p><strong>normalisation_rule_template</strong> – </p></li>
+<li><p><strong>input_feature_generator</strong> – optional feature generator to be applied to input of vectorModel’s fit and predict</p></li>
+<li><p><strong>use_target_feature_generator_for_training</strong> – if False, this generator will always apply the model
+to generate features.
+If True, this generator will use targetFeatureGenerator to generate features, bypassing the
+model. This is useful for the case where the model which is
+to receive the generated features shall be trained on the original targets rather than the predictions
+thereof.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorFromVectorModel.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorFromVectorModel.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorMapColumn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureGeneratorMapColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_categorical_default_rules</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L771"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorMapColumn" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.featuregen.feature_generator.RuleBasedFeatureGenerator" title="sensai.featuregen.feature_generator.RuleBasedFeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.feature_generator.RuleBasedFeatureGenerator</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Creates a single feature from a single input column by applying a function to each element of the input column</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorMapColumn.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_categorical_default_rules</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorMapColumn.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>categorical_feature_names</strong> – either a sequence of column names or a regex that is to match all categorical feature names
+(which must not only work for the feature generated by this feature generator, i.e. it should not match feature names generated
+by other feature generators).
+It will be ensured that the respective columns in the generated data frames will have dtype ‘category’.
+Furthermore, the presence of meta-information can later be leveraged for further transformations, e.g., one-hot encoding.</p></li>
+<li><p><strong>normalisation_rules</strong> – Rules to be used by DFTNormalisation (e.g.,for constructing an input transformer for a model).
+These rules are only relevant if a DFTNormalisation object consuming them is instantiated and used
+within a data processing pipeline. They do not affect feature generation.</p></li>
+<li><p><strong>normalisation_rule_template</strong> – This parameter can be supplied instead of <cite>normalisation_rules</cite> for the case where
+there shall be a single rule that applies to all columns generated by this feature generator that were not labeled as
+categorical. Like normalisation_rules, this is only relevant if a DFTNormalisation object consuming
+normalisation rules is instantiated and used within a data processing pipeline.
+It does not affect feature generation.</p></li>
+<li><p><strong>add_categorical_default_rules</strong> – If True, normalisation rules for categorical features (which are unsupported by normalisation) and their corresponding one-hot
+encoded features (with “_&lt;index&gt;” appended) will be added. It does not affect feature generation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorMapColumnDict">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureGeneratorMapColumnDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_categorical_default_rules</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L806"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorMapColumnDict" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.featuregen.feature_generator.RuleBasedFeatureGenerator" title="sensai.featuregen.feature_generator.RuleBasedFeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.feature_generator.RuleBasedFeatureGenerator</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Creates an arbitrary number of features from a single input column by applying a function to each element of the input column</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorMapColumnDict.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_categorical_default_rules</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorMapColumnDict.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>categorical_feature_names</strong> – either a sequence of column names or a regex that is to match all categorical feature names
+(which must not only work for the feature generated by this feature generator, i.e. it should not match feature names generated
+by other feature generators).
+It will be ensured that the respective columns in the generated data frames will have dtype ‘category’.
+Furthermore, the presence of meta-information can later be leveraged for further transformations, e.g., one-hot encoding.</p></li>
+<li><p><strong>normalisation_rules</strong> – Rules to be used by DFTNormalisation (e.g.,for constructing an input transformer for a model).
+These rules are only relevant if a DFTNormalisation object consuming them is instantiated and used
+within a data processing pipeline. They do not affect feature generation.</p></li>
+<li><p><strong>normalisation_rule_template</strong> – This parameter can be supplied instead of <cite>normalisation_rules</cite> for the case where
+there shall be a single rule that applies to all columns generated by this feature generator that were not labeled as
+categorical. Like normalisation_rules, this is only relevant if a DFTNormalisation object consuming
+normalisation rules is instantiated and used within a data processing pipeline.
+It does not affect feature generation.</p></li>
+<li><p><strong>add_categorical_default_rules</strong> – If True, normalisation rules for categorical features (which are unsupported by normalisation) and their corresponding one-hot
+encoded features (with “_&lt;index&gt;” appended) will be added. It does not affect feature generation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorNAMarker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureGeneratorNAMarker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L836"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorNAMarker" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.featuregen.feature_generator.RuleBasedFeatureGenerator" title="sensai.featuregen.feature_generator.RuleBasedFeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.feature_generator.RuleBasedFeatureGenerator</span></code></a></p>
+<p>Creates features indicating whether another feature is N/A (not available).
+It can be practical to use this feature generator in conjunction with DFTFillNA for models that cannot handle missing values.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorNAMarker.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorNAMarker.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Note: When changing the default values used, use only values that are considered to be normalised when using this
+feature generation in a context where DFTNormalisation is used (no normalisation is applied to features generated
+by this feature generator).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>columns</strong> – the columns for which to generate</p></li>
+<li><p><strong>value_a</strong> – the feature value if the input feature is available</p></li>
+<li><p><strong>value_na</strong> – the feature value if the input feature is not available</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.flattened_feature_generator">
+<span class="sig-name descname"><span class="pre">flattened_feature_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fgen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns_to_flatten</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_other_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L864"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.flattened_feature_generator" title="Permalink to this definition"></a></dt>
+<dd><p>Return a flattening version of the input feature generator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fgen</strong> – the feature generator which generates columns that are to be flattened</p></li>
+<li><p><strong>columns_to_flatten</strong> – list of names of output columns to be flattened; if None, flatten all columns</p></li>
+<li><p><strong>keep_other_columns</strong> – whether any additional columns that are not to be flattened are to be retained
+by the returned feature generator</p></li>
+<li><p><strong>normalisation_rules</strong> – additional normalisation rules for the flattened output columns</p></li>
+<li><p><strong>normalisation_rule_template</strong> – This parameter can be supplied instead of normalisation_rules for the case where
+there shall be a single rule that applies to all flattened output columns</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>FeatureGenerator instance that will generate flattened versions of the specified columns and leave
+all other output columns as is.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sensai.featuregen</span> <span class="kn">import</span> <span class="n">FeatureGeneratorTakeColumns</span><span class="p">,</span> <span class="n">flattened_feature_generator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;foo&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="s2">&quot;bar&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fgen</span> <span class="o">=</span> <span class="n">flattened_feature_generator</span><span class="p">(</span><span class="n">FeatureGeneratorTakeColumns</span><span class="p">(),</span> <span class="n">columns_to_flatten</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fgen</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="go">   foo_0  foo_1 bar</span>
+<span class="go">0      1      2   a</span>
+<span class="go">1      3      4   b</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorFromDFT">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureGeneratorFromDFT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_categorical_default_rules</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/featuregen/feature_generator.py#L900"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorFromDFT" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.feature_generator.FeatureGenerator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.featuregen.feature_generator.FeatureGeneratorFromDFT.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_categorical_default_rules</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.featuregen.feature_generator.FeatureGeneratorFromDFT.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>categorical_feature_names</strong> – either a sequence of column names or a regex that is to match all categorical feature names
+(which must not only work for the feature generated by this feature generator, i.e. it should not match feature names generated
+by other feature generators).
+It will be ensured that the respective columns in the generated data frames will have dtype ‘category’.
+Furthermore, the presence of meta-information can later be leveraged for further transformations, e.g., one-hot encoding.</p></li>
+<li><p><strong>normalisation_rules</strong> – Rules to be used by DFTNormalisation (e.g.,for constructing an input transformer for a model).
+These rules are only relevant if a DFTNormalisation object consuming them is instantiated and used
+within a data processing pipeline. They do not affect feature generation.</p></li>
+<li><p><strong>normalisation_rule_template</strong> – This parameter can be supplied instead of <cite>normalisation_rules</cite> for the case where
+there shall be a single rule that applies to all columns generated by this feature generator that were not labeled as
+categorical. Like normalisation_rules, this is only relevant if a DFTNormalisation object consuming
+normalisation rules is instantiated and used within a data processing pipeline.
+It does not affect feature generation.</p></li>
+<li><p><strong>add_categorical_default_rules</strong> – If True, normalisation rules for categorical features (which are unsupported by normalisation) and their corresponding one-hot
+encoded features (with “_&lt;index&gt;” appended) will be added. It does not affect feature generation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../featuregen.html" class="btn btn-neutral float-left" title="featuregen" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="feature_generator_registry.html" class="btn btn-neutral float-right" title="feature_generator_registry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+featuregen
+==========
+
+.. automodule:: sensai.featuregen
+   :members:
+   :undoc-members:
+
+.. toctree::
+   :glob:
+
+   featuregen/*

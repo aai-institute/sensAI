@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>torch_data &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="torch_enums" href="torch_enums.html" />
+    <link rel="prev" title="torch_base" href="torch_base.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../torch.html">torch</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="torch_base.html">torch_base</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">torch_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="torch_enums.html">torch_enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="torch_eval_util.html">torch_eval_util</a></li>
+<li class="toctree-l3"><a class="reference internal" href="torch_models.html">torch_models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="torch_modules.html">torch_modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="torch_opt.html">torch_opt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="torchtext.html">torchtext</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../torch.html">torch</a></li>
+      <li class="breadcrumb-item active">torch_data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sensai/torch/torch_data.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.torch.torch_data">
+<span id="torch-data"></span><h1>torch_data<a class="headerlink" href="#module-sensai.torch.torch_data" title="Permalink to this headline"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.to_tensor">
+<span class="sig-name descname"><span class="pre">to_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L22"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.to_tensor" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScaler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorScaler</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L35"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TensorScaler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScaler.cuda">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cuda</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TensorScaler.cuda" title="Permalink to this definition"></a></dt>
+<dd><p>Makes this scaler’s components use CUDA</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScaler.normalise">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">normalise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TensorScaler.normalise" title="Permalink to this definition"></a></dt>
+<dd><p>Applies scaling/normalisation to the given tensor
+:param tensor: the tensor to scale/normalise
+:return: the scaled/normalised tensor</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScaler.denormalise">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">denormalise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TensorScaler.denormalise" title="Permalink to this definition"></a></dt>
+<dd><p>Applies the inverse of method normalise to the given tensor
+:param tensor: the tensor to denormalise
+:return: the denormalised tensor</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScalerCentreAndScale">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorScalerCentreAndScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">centre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L62"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TensorScalerCentreAndScale" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.TensorScaler" title="sensai.torch.torch_data.TensorScaler"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.TensorScaler</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScalerCentreAndScale.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">centre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TensorScalerCentreAndScale.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScalerCentreAndScale.cuda">
+<span class="sig-name descname"><span class="pre">cuda</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TensorScalerCentreAndScale.cuda" title="Permalink to this definition"></a></dt>
+<dd><p>Makes this scaler’s components use CUDA</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScalerCentreAndScale.normalise">
+<span class="sig-name descname"><span class="pre">normalise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TensorScalerCentreAndScale.normalise" title="Permalink to this definition"></a></dt>
+<dd><p>Applies scaling/normalisation to the given tensor
+:param tensor: the tensor to scale/normalise
+:return: the scaled/normalised tensor</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScalerCentreAndScale.denormalise">
+<span class="sig-name descname"><span class="pre">denormalise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TensorScalerCentreAndScale.denormalise" title="Permalink to this definition"></a></dt>
+<dd><p>Applies the inverse of method normalise to the given tensor
+:param tensor: the tensor to denormalise
+:return: the denormalised tensor</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScalerFromVectorDataScaler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorScalerFromVectorDataScaler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector_data_scaler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../normalisation.html#sensai.normalisation.VectorDataScaler" title="sensai.normalisation.VectorDataScaler"><span class="pre">sensai.normalisation.VectorDataScaler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L88"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TensorScalerFromVectorDataScaler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.TensorScalerCentreAndScale" title="sensai.torch.torch_data.TensorScalerCentreAndScale"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.TensorScalerCentreAndScale</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScalerFromVectorDataScaler.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector_data_scaler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../normalisation.html#sensai.normalisation.VectorDataScaler" title="sensai.normalisation.VectorDataScaler"><span class="pre">sensai.normalisation.VectorDataScaler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TensorScalerFromVectorDataScaler.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScalerIdentity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorScalerIdentity</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L109"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TensorScalerIdentity" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.TensorScaler" title="sensai.torch.torch_data.TensorScaler"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.TensorScaler</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScalerIdentity.cuda">
+<span class="sig-name descname"><span class="pre">cuda</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TensorScalerIdentity.cuda" title="Permalink to this definition"></a></dt>
+<dd><p>Makes this scaler’s components use CUDA</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScalerIdentity.normalise">
+<span class="sig-name descname"><span class="pre">normalise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TensorScalerIdentity.normalise" title="Permalink to this definition"></a></dt>
+<dd><p>Applies scaling/normalisation to the given tensor
+:param tensor: the tensor to scale/normalise
+:return: the scaled/normalised tensor</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScalerIdentity.denormalise">
+<span class="sig-name descname"><span class="pre">denormalise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TensorScalerIdentity.denormalise" title="Permalink to this definition"></a></dt>
+<dd><p>Applies the inverse of method normalise to the given tensor
+:param tensor: the tensor to denormalise
+:return: the denormalised tensor</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScalerFromDFTSkLearnTransformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorScalerFromDFTSkLearnTransformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTSkLearnTransformer" title="sensai.data_transformation.dft.DFTSkLearnTransformer"><span class="pre">sensai.data_transformation.dft.DFTSkLearnTransformer</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L120"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TensorScalerFromDFTSkLearnTransformer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.TensorScalerCentreAndScale" title="sensai.torch.torch_data.TensorScalerCentreAndScale"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.TensorScalerCentreAndScale</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorScalerFromDFTSkLearnTransformer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../data_transformation/dft.html#sensai.data_transformation.dft.DFTSkLearnTransformer" title="sensai.data_transformation.dft.DFTSkLearnTransformer"><span class="pre">sensai.data_transformation.dft.DFTSkLearnTransformer</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TensorScalerFromDFTSkLearnTransformer.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.Tensoriser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Tensoriser</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L138"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.Tensoriser" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Represents a method for transforming a data frame into one or more tensors to be processed by a neural network model</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.Tensoriser.tensorise">
+<span class="sig-name descname"><span class="pre">tensorise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.Tensoriser.tensorise" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.Tensoriser.fit">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.Tensoriser.fit" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – the data frame with which to fit this tensoriser</p></li>
+<li><p><strong>model</strong> – the model in the context of which the fitting takes place (if any).
+The fitting process may set parameters within the model that can only be determined from the (pre-tensorised) data.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.RuleBasedTensoriser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RuleBasedTensoriser</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L169"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.RuleBasedTensoriser" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.Tensoriser</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base class for tensorisers which transform data frames into tensors based on a predefined set of rules and do not require fitting</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.RuleBasedTensoriser.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.RuleBasedTensoriser.fit" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – the data frame with which to fit this tensoriser</p></li>
+<li><p><strong>model</strong> – the model in the context of which the fitting takes place (if any).
+The fitting process may set parameters within the model that can only be determined from the (pre-tensorised) data.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensoriserDataFrameFloatValuesMatrix">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensoriserDataFrameFloatValuesMatrix</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L177"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TensoriserDataFrameFloatValuesMatrix" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.RuleBasedTensoriser" title="sensai.torch.torch_data.RuleBasedTensoriser"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.RuleBasedTensoriser</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensoriserClassLabelIndices">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensoriserClassLabelIndices</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L182"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TensoriserClassLabelIndices" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.RuleBasedTensoriser" title="sensai.torch.torch_data.RuleBasedTensoriser"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.RuleBasedTensoriser</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.DataUtil">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DataUtil</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L189"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.DataUtil" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Interface for DataUtil classes, which are used to process data for neural networks</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.DataUtil.split_into_tensors">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">split_into_tensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fractional_size_of_first_set</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.DataUtil.split_into_tensors" title="Permalink to this definition"></a></dt>
+<dd><p>Splits the data set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fractional_size_of_first_set</strong> – the desired fractional size in</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a tuple (A, B) where A and B are tuples (in, out) with input and output data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.DataUtil.get_output_tensor_scaler">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_output_tensor_scaler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.torch.torch_data.TensorScaler" title="sensai.torch.torch_data.TensorScaler"><span class="pre">sensai.torch.torch_data.TensorScaler</span></a></span></span><a class="headerlink" href="#sensai.torch.torch_data.DataUtil.get_output_tensor_scaler" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the scaler with which to scale model outputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the scaler</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.DataUtil.get_input_tensor_scaler">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_input_tensor_scaler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.torch.torch_data.TensorScaler" title="sensai.torch.torch_data.TensorScaler"><span class="pre">sensai.torch.torch_data.TensorScaler</span></a></span></span><a class="headerlink" href="#sensai.torch.torch_data.DataUtil.get_input_tensor_scaler" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the scaler with which to scale model inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the scaler</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.DataUtil.model_output_dim">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model_output_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#sensai.torch.torch_data.DataUtil.model_output_dim" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the dimensionality that is to be output by the model to be trained</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.DataUtil.input_dim">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">input_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.DataUtil.input_dim" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the dimensionality of the input or None if it is variable</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.VectorDataUtil">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorDataUtil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NormalisationMode.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">differing_output_normalisation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_frame_splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.DataFrameSplitter" title="sensai.data.DataFrameSplitter"><span class="pre">sensai.data.DataFrameSplitter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L236"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.VectorDataUtil" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.DataUtil" title="sensai.torch.torch_data.DataUtil"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.DataUtil</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.VectorDataUtil.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NormalisationMode.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">differing_output_normalisation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_frame_splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.DataFrameSplitter" title="sensai.data.DataFrameSplitter"><span class="pre">sensai.data.DataFrameSplitter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.VectorDataUtil.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputs</strong> – the data frame of inputs</p></li>
+<li><p><strong>outputs</strong> – the data frame of outputs</p></li>
+<li><p><strong>cuda</strong> – whether to apply CUDA</p></li>
+<li><p><strong>normalisation_mode</strong> – the normalisation mode to use for inputs and (unless differingOutputNormalisationMode is specified)
+outputs</p></li>
+<li><p><strong>differing_output_normalisation_mode</strong> – the normalisation mode to apply to outputs, overriding normalisationMode;
+if None, use normalisationMode</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.VectorDataUtil.get_output_tensor_scaler">
+<span class="sig-name descname"><span class="pre">get_output_tensor_scaler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.VectorDataUtil.get_output_tensor_scaler" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the scaler with which to scale model outputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the scaler</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.VectorDataUtil.get_input_tensor_scaler">
+<span class="sig-name descname"><span class="pre">get_input_tensor_scaler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.VectorDataUtil.get_input_tensor_scaler" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the scaler with which to scale model inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the scaler</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.VectorDataUtil.split_into_tensors">
+<span class="sig-name descname"><span class="pre">split_into_tensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fractional_size_of_first_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.VectorDataUtil.split_into_tensors" title="Permalink to this definition"></a></dt>
+<dd><p>Splits the data set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fractional_size_of_first_set</strong> – the desired fractional size in</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a tuple (A, B) where A and B are tuples (in, out) with input and output data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.VectorDataUtil.split_into_data_sets">
+<span class="sig-name descname"><span class="pre">split_into_data_sets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fractional_size_of_first_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorise_dynamically</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.TorchDataSet" title="sensai.torch.torch_data.TorchDataSet"><span class="pre">sensai.torch.torch_data.TorchDataSet</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.torch.torch_data.TorchDataSet" title="sensai.torch.torch_data.TorchDataSet"><span class="pre">sensai.torch.torch_data.TorchDataSet</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.VectorDataUtil.split_into_data_sets" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.VectorDataUtil.input_dim">
+<span class="sig-name descname"><span class="pre">input_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.VectorDataUtil.input_dim" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the dimensionality of the input or None if it is variable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.VectorDataUtil.output_dim">
+<span class="sig-name descname"><span class="pre">output_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.VectorDataUtil.output_dim" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the dimensionality of the outputs (ground truth values)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.VectorDataUtil.model_output_dim">
+<span class="sig-name descname"><span class="pre">model_output_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.VectorDataUtil.model_output_dim" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the dimensionality that is to be output by the model to be trained</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.ClassificationVectorDataUtil">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClassificationVectorDataUtil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NormalisationMode.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_frame_splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.DataFrameSplitter" title="sensai.data.DataFrameSplitter"><span class="pre">sensai.data.DataFrameSplitter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L346"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.ClassificationVectorDataUtil" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.VectorDataUtil" title="sensai.torch.torch_data.VectorDataUtil"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.VectorDataUtil</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.ClassificationVectorDataUtil.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NormalisationMode.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_frame_splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../data.html#sensai.data.DataFrameSplitter" title="sensai.data.DataFrameSplitter"><span class="pre">sensai.data.DataFrameSplitter</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.ClassificationVectorDataUtil.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputs</strong> – the data frame of inputs</p></li>
+<li><p><strong>outputs</strong> – the data frame of outputs</p></li>
+<li><p><strong>cuda</strong> – whether to apply CUDA</p></li>
+<li><p><strong>normalisation_mode</strong> – the normalisation mode to use for inputs and (unless differingOutputNormalisationMode is specified)
+outputs</p></li>
+<li><p><strong>differing_output_normalisation_mode</strong> – the normalisation mode to apply to outputs, overriding normalisationMode;
+if None, use normalisationMode</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.ClassificationVectorDataUtil.model_output_dim">
+<span class="sig-name descname"><span class="pre">model_output_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.ClassificationVectorDataUtil.model_output_dim" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the dimensionality that is to be output by the model to be trained</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TorchDataSet</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L368"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSet" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSet.iter_batches">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">iter_batches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSet.iter_batches" title="Permalink to this definition"></a></dt>
+<dd><p>Provides an iterator over batches from the data set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_size</strong> – the maximum size of each batch</p></li>
+<li><p><strong>shuffle</strong> – whether to shuffle the data set</p></li>
+<li><p><strong>input_only</strong> – whether to provide only inputs (rather than inputs and corresponding outputs).
+If true, provide only inputs, where inputs can either be a tensor or a tuple of tensors.
+If false, provide a pair (i, o) with inputs and corresponding outputs (o is always a tensor).
+Some data sets may only be able to provide inputs, in which case inputOnly=False should lead to an
+exception.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSet.size">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSet.size" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the total size of the data set (number of data points) if it is known.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the number of data points or None of the size is not known.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TorchDataSetProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tensor_scaler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.TensorScaler" title="sensai.torch.torch_data.TensorScaler"><span class="pre">sensai.torch.torch_data.TensorScaler</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensor_scaler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.TensorScaler" title="sensai.torch.torch_data.TensorScaler"><span class="pre">sensai.torch.torch_data.TensorScaler</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_output_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L395"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetProvider" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetProvider.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tensor_scaler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.TensorScaler" title="sensai.torch.torch_data.TensorScaler"><span class="pre">sensai.torch.torch_data.TensorScaler</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensor_scaler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.TensorScaler" title="sensai.torch.torch_data.TensorScaler"><span class="pre">sensai.torch.torch_data.TensorScaler</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_output_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetProvider.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetProvider.provide_split">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">provide_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fractional_size_of_first_set</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.TorchDataSet" title="sensai.torch.torch_data.TorchDataSet"><span class="pre">sensai.torch.torch_data.TorchDataSet</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.torch.torch_data.TorchDataSet" title="sensai.torch.torch_data.TorchDataSet"><span class="pre">sensai.torch.torch_data.TorchDataSet</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetProvider.provide_split" title="Permalink to this definition"></a></dt>
+<dd><p>Provides two data sets, which could, for example, serve as training and validation sets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fractional_size_of_first_set</strong> – the fractional size of the first data set</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a tuple of data sets (A, B) where A has (approximately) the given fractional size and B encompasses
+the remainder of the data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetProvider.get_output_tensor_scaler">
+<span class="sig-name descname"><span class="pre">get_output_tensor_scaler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.torch.torch_data.TensorScaler" title="sensai.torch.torch_data.TensorScaler"><span class="pre">sensai.torch.torch_data.TensorScaler</span></a></span></span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetProvider.get_output_tensor_scaler" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetProvider.get_input_tensor_scaler">
+<span class="sig-name descname"><span class="pre">get_input_tensor_scaler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.torch.torch_data.TensorScaler" title="sensai.torch.torch_data.TensorScaler"><span class="pre">sensai.torch.torch_data.TensorScaler</span></a></span></span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetProvider.get_input_tensor_scaler" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetProvider.get_model_output_dim">
+<span class="sig-name descname"><span class="pre">get_model_output_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetProvider.get_model_output_dim" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the number of output dimensions that would be required to be generated by the model to match this dataset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetProvider.get_input_dim">
+<span class="sig-name descname"><span class="pre">get_input_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetProvider.get_input_dim" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the number of output dimensions that would be required to be generated by the model to match this dataset.
+For models that accept variable input sizes (such as RNNs), this may be None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorTuple">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorTuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L440"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TensorTuple" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents a tuple of tensors (or a single tensor) and can be used to manipulate the contained tensors simultaneously</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorTuple.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TensorTuple.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorTuple.cuda">
+<span class="sig-name descname"><span class="pre">cuda</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.torch.torch_data.TensorTuple" title="sensai.torch.torch_data.TensorTuple"><span class="pre">sensai.torch.torch_data.TensorTuple</span></a></span></span><a class="headerlink" href="#sensai.torch.torch_data.TensorTuple.cuda" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorTuple.tuple">
+<span class="sig-name descname"><span class="pre">tuple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TensorTuple.tuple" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorTuple.item">
+<span class="sig-name descname"><span class="pre">item</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TensorTuple.item" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorTuple.concat">
+<span class="sig-name descname"><span class="pre">concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.torch.torch_data.TensorTuple" title="sensai.torch.torch_data.TensorTuple"><span class="pre">sensai.torch.torch_data.TensorTuple</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.torch.torch_data.TensorTuple" title="sensai.torch.torch_data.TensorTuple"><span class="pre">sensai.torch.torch_data.TensorTuple</span></a></span></span><a class="headerlink" href="#sensai.torch.torch_data.TensorTuple.concat" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromTensors">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TorchDataSetFromTensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L479"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromTensors" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.TorchDataSet" title="sensai.torch.torch_data.TorchDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.TorchDataSet</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromTensors.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromTensors.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – the input tensor(s); if more than one, they must be of the same length (and a slice of each shall be provided to the
+model as an input in each batch)</p></li>
+<li><p><strong>y</strong> – the output tensor</p></li>
+<li><p><strong>cuda</strong> – whether any generated tensors shall be moved to the selected CUDA device</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromTensors.iter_batches">
+<span class="sig-name descname"><span class="pre">iter_batches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromTensors.iter_batches" title="Permalink to this definition"></a></dt>
+<dd><p>Provides an iterator over batches from the data set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_size</strong> – the maximum size of each batch</p></li>
+<li><p><strong>shuffle</strong> – whether to shuffle the data set</p></li>
+<li><p><strong>input_only</strong> – whether to provide only inputs (rather than inputs and corresponding outputs).
+If true, provide only inputs, where inputs can either be a tensor or a tuple of tensors.
+If false, provide a pair (i, o) with inputs and corresponding outputs (o is always a tensor).
+Some data sets may only be able to provide inputs, in which case inputOnly=False should lead to an
+exception.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromTensors.size">
+<span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromTensors.size" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the total size of the data set (number of data points) if it is known.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the number of data points or None of the size is not known.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromDataFramesPreTensorised">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TorchDataSetFromDataFramesPreTensorised</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L541"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromDataFramesPreTensorised" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.TorchDataSetFromTensors" title="sensai.torch.torch_data.TorchDataSetFromTensors"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.TorchDataSetFromTensors</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromDataFramesPreTensorised.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromDataFramesPreTensorised.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – the input tensor(s); if more than one, they must be of the same length (and a slice of each shall be provided to the
+model as an input in each batch)</p></li>
+<li><p><strong>y</strong> – the output tensor</p></li>
+<li><p><strong>cuda</strong> – whether any generated tensors shall be moved to the selected CUDA device</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromDataFramesDynamicallyTensorised">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TorchDataSetFromDataFramesDynamicallyTensorised</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L558"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromDataFramesDynamicallyTensorised" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.TorchDataSet" title="sensai.torch.torch_data.TorchDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.TorchDataSet</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromDataFramesDynamicallyTensorised.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromDataFramesDynamicallyTensorised.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromDataFramesDynamicallyTensorised.size">
+<span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromDataFramesDynamicallyTensorised.size" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the total size of the data set (number of data points) if it is known.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the number of data points or None of the size is not known.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromDataFramesDynamicallyTensorised.iter_batches">
+<span class="sig-name descname"><span class="pre">iter_batches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromDataFramesDynamicallyTensorised.iter_batches" title="Permalink to this definition"></a></dt>
+<dd><p>Provides an iterator over batches from the data set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_size</strong> – the maximum size of each batch</p></li>
+<li><p><strong>shuffle</strong> – whether to shuffle the data set</p></li>
+<li><p><strong>input_only</strong> – whether to provide only inputs (rather than inputs and corresponding outputs).
+If true, provide only inputs, where inputs can either be a tensor or a tuple of tensors.
+If false, provide a pair (i, o) with inputs and corresponding outputs (o is always a tensor).
+Some data sets may only be able to provide inputs, in which case inputOnly=False should lead to an
+exception.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromDataFrames">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TorchDataSetFromDataFrames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorise_dynamically</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L599"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromDataFrames" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.TorchDataSet" title="sensai.torch.torch_data.TorchDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.TorchDataSet</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromDataFrames.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensoriser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.Tensoriser" title="sensai.torch.torch_data.Tensoriser"><span class="pre">sensai.torch.torch_data.Tensoriser</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorise_dynamically</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromDataFrames.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromDataFrames.iter_batches">
+<span class="sig-name descname"><span class="pre">iter_batches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromDataFrames.iter_batches" title="Permalink to this definition"></a></dt>
+<dd><p>Provides an iterator over batches from the data set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_size</strong> – the maximum size of each batch</p></li>
+<li><p><strong>shuffle</strong> – whether to shuffle the data set</p></li>
+<li><p><strong>input_only</strong> – whether to provide only inputs (rather than inputs and corresponding outputs).
+If true, provide only inputs, where inputs can either be a tensor or a tuple of tensors.
+If false, provide a pair (i, o) with inputs and corresponding outputs (o is always a tensor).
+Some data sets may only be able to provide inputs, in which case inputOnly=False should lead to an
+exception.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetFromDataFrames.size">
+<span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetFromDataFrames.size" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the total size of the data set (number of data points) if it is known.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the number of data points or None of the size is not known.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetProviderFromDataUtil">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TorchDataSetProviderFromDataUtil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_util</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.torch.torch_data.DataUtil" title="sensai.torch.torch_data.DataUtil"><span class="pre">sensai.torch.torch_data.DataUtil</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L617"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetProviderFromDataUtil" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.TorchDataSetProvider" title="sensai.torch.torch_data.TorchDataSetProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.TorchDataSetProvider</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetProviderFromDataUtil.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_util</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.torch.torch_data.DataUtil" title="sensai.torch.torch_data.DataUtil"><span class="pre">sensai.torch.torch_data.DataUtil</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetProviderFromDataUtil.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetProviderFromDataUtil.provide_split">
+<span class="sig-name descname"><span class="pre">provide_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fractional_size_of_first_set</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.TorchDataSet" title="sensai.torch.torch_data.TorchDataSet"><span class="pre">sensai.torch.torch_data.TorchDataSet</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.torch.torch_data.TorchDataSet" title="sensai.torch.torch_data.TorchDataSet"><span class="pre">sensai.torch.torch_data.TorchDataSet</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetProviderFromDataUtil.provide_split" title="Permalink to this definition"></a></dt>
+<dd><p>Provides two data sets, which could, for example, serve as training and validation sets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fractional_size_of_first_set</strong> – the fractional size of the first data set</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a tuple of data sets (A, B) where A has (approximately) the given fractional size and B encompasses
+the remainder of the data</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetProviderFromVectorDataUtil">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TorchDataSetProviderFromVectorDataUtil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_util</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.torch.torch_data.VectorDataUtil" title="sensai.torch.torch_data.VectorDataUtil"><span class="pre">sensai.torch.torch_data.VectorDataUtil</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorise_dynamically</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L629"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetProviderFromVectorDataUtil" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.torch.torch_data.TorchDataSetProvider" title="sensai.torch.torch_data.TorchDataSetProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.torch.torch_data.TorchDataSetProvider</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetProviderFromVectorDataUtil.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_util</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.torch.torch_data.VectorDataUtil" title="sensai.torch.torch_data.VectorDataUtil"><span class="pre">sensai.torch.torch_data.VectorDataUtil</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorise_dynamically</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetProviderFromVectorDataUtil.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TorchDataSetProviderFromVectorDataUtil.provide_split">
+<span class="sig-name descname"><span class="pre">provide_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fractional_size_of_first_set</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.torch.torch_data.TorchDataSet" title="sensai.torch.torch_data.TorchDataSet"><span class="pre">sensai.torch.torch_data.TorchDataSet</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.torch.torch_data.TorchDataSet" title="sensai.torch.torch_data.TorchDataSet"><span class="pre">sensai.torch.torch_data.TorchDataSet</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TorchDataSetProviderFromVectorDataUtil.provide_split" title="Permalink to this definition"></a></dt>
+<dd><p>Provides two data sets, which could, for example, serve as training and validation sets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fractional_size_of_first_set</strong> – the fractional size of the first data set</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a tuple of data sets (A, B) where A has (approximately) the given fractional size and B encompasses
+the remainder of the data</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorTransformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorTransformer</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/torch/torch_data.py#L641"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.torch.torch_data.TensorTransformer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.torch.torch_data.TensorTransformer.transform">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#sensai.torch.torch_data.TensorTransformer.transform" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="torch_base.html" class="btn btn-neutral float-left" title="torch_base" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="torch_enums.html" class="btn btn-neutral float-right" title="torch_enums" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cache &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="cache_azure" href="cache_azure.html" />
+    <link rel="prev" title="aggregation" href="aggregation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html">tracking</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../util.html">util</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="aggregation.html">aggregation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache_azure.html">cache_azure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache_mysql.html">cache_mysql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datastruct.html">datastruct</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deprecation.html">deprecation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dtype.html">dtype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hash.html">hash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="helper.html">helper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="io.html">io</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jscode.html">jscode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging.html">logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="math.html">math</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiprocessing.html">multiprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pandas.html">pandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pickle.html">pickle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot.html">plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="profiling.html">profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sequences.html">sequences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="string.html">string</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test.html">test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="typing.html">typing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version.html">version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../util.html">util</a></li>
+      <li class="breadcrumb-item active">cache</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sensai/util/cache.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.util.cache">
+<span id="cache"></span><h1>cache<a class="headerlink" href="#module-sensai.util.cache" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.BoxedValue">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BoxedValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TValue</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L27"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.BoxedValue" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TValue</span></code>]</p>
+<p>Container for a value, which can be used in caches where values may be None (to differentiate the value not being present in the cache
+from the cached value being None)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.BoxedValue.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.BoxedValue.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.KeyValueCache">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">KeyValueCache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L36"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.KeyValueCache" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TKey</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TValue</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.KeyValueCache.set">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.KeyValueCache.set" title="Permalink to this definition"></a></dt>
+<dd><p>Sets a cached value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – the key under which to store the value</p></li>
+<li><p><strong>value</strong> – the value to store; since None is used indicate the absence of a value, None should not be
+used a value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.KeyValueCache.get">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.cache.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.cache.KeyValueCache.get" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves a cached value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the lookup key</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the cached value or None if no value is found</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.InMemoryKeyValueCache">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InMemoryKeyValueCache</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L59"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.InMemoryKeyValueCache" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.util.cache.KeyValueCache" title="sensai.util.cache.KeyValueCache"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.cache.KeyValueCache</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TKey</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TValue</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TKey</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TValue</span></code>]</p>
+<p>A simple in-memory cache (which uses a dictionary internally).</p>
+<p>This class can be instantiated directly, but for better typing support, one can instead
+inherit from it and provide the types of the key and value as type arguments. For example for
+a cache with string keys and integer values:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyCache</span><span class="p">(</span><span class="n">InMemoryKeyValueCache</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.InMemoryKeyValueCache.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.InMemoryKeyValueCache.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.InMemoryKeyValueCache.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.InMemoryKeyValueCache.set" title="Permalink to this definition"></a></dt>
+<dd><p>Sets a cached value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – the key under which to store the value</p></li>
+<li><p><strong>value</strong> – the value to store; since None is used indicate the absence of a value, None should not be
+used a value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.InMemoryKeyValueCache.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.cache.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.cache.InMemoryKeyValueCache.get" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves a cached value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the lookup key</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the cached value or None if no value is found</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.InMemoryKeyValueCache.empty">
+<span class="sig-name descname"><span class="pre">empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.InMemoryKeyValueCache.empty" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.PersistentKeyValueCache">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PersistentKeyValueCache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L89"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.PersistentKeyValueCache" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.util.cache.KeyValueCache" title="sensai.util.cache.KeyValueCache"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.cache.KeyValueCache</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TKey</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TValue</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TKey</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TValue</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.PersistentList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PersistentList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L93"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.PersistentList" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TValue</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.PersistentList.append">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.PersistentList.append" title="Permalink to this definition"></a></dt>
+<dd><p>Adds an item to the cache</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> – the item to store</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.PersistentList.iter_items">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">iter_items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.cache.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.cache.PersistentList.iter_items" title="Permalink to this definition"></a></dt>
+<dd><p>Iterates over the items in the persisted list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>generator of item</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.DelayedUpdateHook">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DelayedUpdateHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_period_secs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periodically_executed_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L113"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.DelayedUpdateHook" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Ensures that a given function is executed after an update happens, but delay the execution until
+there are no further updates for a certain time period</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.DelayedUpdateHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_period_secs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periodically_executed_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.DelayedUpdateHook.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fn</strong> – the function to eventually call after an update</p></li>
+<li><p><strong>time_period_secs</strong> – the time that must pass while not receiving further updates for fn to be called</p></li>
+<li><p><strong>periodically_executed_fn</strong> – a function to execute periodically (every timePeriodSecs seconds) in the busy waiting loop,
+which may, for example, log information or apply additional executions, which must not interfere with the correctness of
+the execution of fn</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.DelayedUpdateHook.handle_update">
+<span class="sig-name descname"><span class="pre">handle_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.DelayedUpdateHook.handle_update" title="Permalink to this definition"></a></dt>
+<dd><p>Notifies of an update and ensures that the function passed at construction is eventually called
+(after no more updates are received within the respective time window)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.PeriodicUpdateHook">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PeriodicUpdateHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_interval_secs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_update_time_period_secs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_update_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periodic_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L159"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.PeriodicUpdateHook" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Periodically checks whether a function shall be called as a result of an update, the function potentially
+being non-atomic (i.e. it may take a long time to execute such that new updates may come in while it is
+executing). Two function all mechanisms are in place:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>a function which is called if there has not been a new update for a certain time period (which may be called
+several times if updates come in while the function is being executed)</p></li>
+<li><p>a function which is called periodically</p></li>
+</ul>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.PeriodicUpdateHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_interval_secs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_update_time_period_secs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_update_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periodic_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.PeriodicUpdateHook.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>check_interval_secs</strong> – the time period, in seconds, between checks</p></li>
+<li><p><strong>no_update_time_period_secs</strong> – the time period after which to execute noUpdateFn if no further updates have come in.
+This must be at least as large as checkIntervalSecs. If None, use checkIntervalSecs.</p></li>
+<li><p><strong>no_update_fn</strong> – the function to call if there have been no further updates for noUpdateTimePeriodSecs seconds</p></li>
+<li><p><strong>periodic_fn</strong> – a function to execute periodically (every checkIntervalSecs seconds) in the busy waiting loop,
+which may, for example, log information or apply additional executions, which must not interfere with the correctness of
+the execution of fn</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.PeriodicUpdateHook.handle_update">
+<span class="sig-name descname"><span class="pre">handle_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.PeriodicUpdateHook.handle_update" title="Permalink to this definition"></a></dt>
+<dd><p>Notifies of an update, making sure the functions given at construction will be called as specified</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.PicklePersistentKeyValueCache">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PicklePersistentKeyValueCache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pickle_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_on_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deferred_save_delay_secs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L222"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.PicklePersistentKeyValueCache" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.util.cache.PersistentKeyValueCache" title="sensai.util.cache.PersistentKeyValueCache"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.cache.PersistentKeyValueCache</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TKey</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TValue</span></code>]</p>
+<p>Represents a key-value cache as a dictionary which is persisted in a file using pickle</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.PicklePersistentKeyValueCache.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pickle_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_on_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deferred_save_delay_secs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.PicklePersistentKeyValueCache.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pickle_path</strong> – the path of the file where the cache values are to be persisted</p></li>
+<li><p><strong>version</strong> – the version of cache entries. If a persisted cache with a non-matching version is found,
+it is discarded</p></li>
+<li><p><strong>save_on_update</strong> – whether to persist the cache after an update; the cache is saved in a deferred
+manner and will be saved after deferredSaveDelaySecs if no new updates have arrived in the meantime,
+i.e. it will ultimately be saved deferredSaveDelaySecs after the latest update</p></li>
+<li><p><strong>deferred_save_delay_secs</strong> – the number of seconds to wait for additional data to be added to the cache
+before actually storing the cache after a cache update</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.PicklePersistentKeyValueCache.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.PicklePersistentKeyValueCache.save" title="Permalink to this definition"></a></dt>
+<dd><p>Saves the cache in the file whose path was provided at construction</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.PicklePersistentKeyValueCache.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.cache.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.cache.PicklePersistentKeyValueCache.get" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves a cached value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the lookup key</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the cached value or None if no value is found</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.PicklePersistentKeyValueCache.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.PicklePersistentKeyValueCache.set" title="Permalink to this definition"></a></dt>
+<dd><p>Sets a cached value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – the key under which to store the value</p></li>
+<li><p><strong>value</strong> – the value to store; since None is used indicate the absence of a value, None should not be
+used a value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.SlicedPicklePersistentList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SlicedPicklePersistentList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pickle_base_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_entries_per_slice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L273"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.SlicedPicklePersistentList" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.util.cache.PersistentList" title="sensai.util.cache.PersistentList"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.cache.PersistentList</span></code></a></p>
+<p>Object handling the creation and access to sliced pickle caches</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.SlicedPicklePersistentList.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pickle_base_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_entries_per_slice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.SlicedPicklePersistentList.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>directory</strong> – path to the directory where the sliced caches are to be stored</p></li>
+<li><p><strong>pickle_base_name</strong> – base name for the pickle, where slices will have the names {pickleBaseName}_sliceX.pickle</p></li>
+<li><p><strong>num_entries_per_slice</strong> – how many entries should be stored in each cache</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.SlicedPicklePersistentList.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.SlicedPicklePersistentList.append" title="Permalink to this definition"></a></dt>
+<dd><p>Append item to cache
+:param item: entry in the cache</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.SlicedPicklePersistentList.iter_items">
+<span class="sig-name descname"><span class="pre">iter_items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.cache.SlicedPicklePersistentList.iter_items" title="Permalink to this definition"></a></dt>
+<dd><p>Iterate over entries in the sliced cache
+:return: iterator over all items in the cache</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.SlicedPicklePersistentList.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.SlicedPicklePersistentList.clear" title="Permalink to this definition"></a></dt>
+<dd><p>Clears the cache if it exists</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.SlicedPicklePersistentList.cache_exists">
+<span class="sig-name descname"><span class="pre">cache_exists</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sensai.util.cache.SlicedPicklePersistentList.cache_exists" title="Permalink to this definition"></a></dt>
+<dd><p>Does this cache already exist
+:return: True if cache exists, False if not</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.SqliteConnectionManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SqliteConnectionManager</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L414"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.SqliteConnectionManager" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.SqliteConnectionManager.open_connection">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">open_connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.SqliteConnectionManager.open_connection" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.SqlitePersistentKeyValueCache">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SqlitePersistentKeyValueCache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cache'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deferred_commit_delay_secs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.util.cache.SqlitePersistentKeyValueCache.KeyType" title="sensai.util.cache.SqlitePersistentKeyValueCache.KeyType"><span class="pre">sensai.util.cache.SqlitePersistentKeyValueCache.KeyType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">KeyType.STRING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_key_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">255</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L438"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.SqlitePersistentKeyValueCache" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.util.cache.PersistentKeyValueCache" title="sensai.util.cache.PersistentKeyValueCache"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.cache.PersistentKeyValueCache</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TKey</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TValue</span></code>]</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.SqlitePersistentKeyValueCache.KeyType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">KeyType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.SqlitePersistentKeyValueCache.KeyType" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.util.cache.SqlitePersistentKeyValueCache.KeyType.STRING">
+<span class="sig-name descname"><span class="pre">STRING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('VARCHAR(%d)',)</span></em><a class="headerlink" href="#sensai.util.cache.SqlitePersistentKeyValueCache.KeyType.STRING" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.util.cache.SqlitePersistentKeyValueCache.KeyType.INTEGER">
+<span class="sig-name descname"><span class="pre">INTEGER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('LONG',)</span></em><a class="headerlink" href="#sensai.util.cache.SqlitePersistentKeyValueCache.KeyType.INTEGER" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.SqlitePersistentKeyValueCache.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cache'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deferred_commit_delay_secs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.util.cache.SqlitePersistentKeyValueCache.KeyType" title="sensai.util.cache.SqlitePersistentKeyValueCache.KeyType"><span class="pre">sensai.util.cache.SqlitePersistentKeyValueCache.KeyType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">KeyType.STRING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_key_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">255</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.SqlitePersistentKeyValueCache.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – the path to the file that is to hold the SQLite database</p></li>
+<li><p><strong>table_name</strong> – the name of the table to create in the database</p></li>
+<li><p><strong>deferred_commit_delay_secs</strong> – the time frame during which no new data must be added for a pending transaction to be committed</p></li>
+<li><p><strong>key_type</strong> – the type to use for keys; for complex keys (i.e. tuples), use STRING (conversions to string are automatic)</p></li>
+<li><p><strong>max_key_length</strong> – the maximum key length for the case where the key_type can be parametrised (e.g. STRING)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.SqlitePersistentKeyValueCache.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.SqlitePersistentKeyValueCache.set" title="Permalink to this definition"></a></dt>
+<dd><p>Sets a cached value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – the key under which to store the value</p></li>
+<li><p><strong>value</strong> – the value to store; since None is used indicate the absence of a value, None should not be
+used a value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.SqlitePersistentKeyValueCache.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sensai.util.cache.TKey</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.cache.TValue</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.util.cache.SqlitePersistentKeyValueCache.get" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves a cached value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – the lookup key</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the cached value or None if no value is found</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.SqlitePersistentKeyValueCache.iter_items">
+<span class="sig-name descname"><span class="pre">iter_items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.SqlitePersistentKeyValueCache.iter_items" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.SqlitePersistentList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SqlitePersistentList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L555"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.SqlitePersistentList" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.util.cache.PersistentList" title="sensai.util.cache.PersistentList"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.cache.PersistentList</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.SqlitePersistentList.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.SqlitePersistentList.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.SqlitePersistentList.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.SqlitePersistentList.append" title="Permalink to this definition"></a></dt>
+<dd><p>Adds an item to the cache</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> – the item to store</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.SqlitePersistentList.iter_items">
+<span class="sig-name descname"><span class="pre">iter_items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.SqlitePersistentList.iter_items" title="Permalink to this definition"></a></dt>
+<dd><p>Iterates over the items in the persisted list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>generator of item</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.CachedValueProviderMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CachedValueProviderMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.util.cache.KeyValueCache" title="sensai.util.cache.KeyValueCache"><span class="pre">sensai.util.cache.KeyValueCache</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.cache.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.cache.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.util.cache.KeyValueCache" title="sensai.util.cache.KeyValueCache"><span class="pre">sensai.util.cache.KeyValueCache</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.cache.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.cache.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persist_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">box_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L569"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.CachedValueProviderMixin" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TKey</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TValue</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.util.cache.TData</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Represents a value provider that can provide values associated with (hashable) keys via a cache or, if
+cached values are not yet present, by computing them.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.CachedValueProviderMixin.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.util.cache.KeyValueCache" title="sensai.util.cache.KeyValueCache"><span class="pre">sensai.util.cache.KeyValueCache</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.cache.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.cache.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#sensai.util.cache.KeyValueCache" title="sensai.util.cache.KeyValueCache"><span class="pre">sensai.util.cache.KeyValueCache</span></a><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.cache.TKey</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.cache.TValue</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persist_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">box_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.CachedValueProviderMixin.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cache</strong> – the cache to use or None. If None, caching will be disabled</p></li>
+<li><p><strong>cache_factory</strong> – a factory with which to create the cache (or recreate it after unpickling if <cite>persistCache</cite> is False, in which
+case this factory must be picklable)</p></li>
+<li><p><strong>persist_cache</strong> – whether to persist the cache when pickling</p></li>
+<li><p><strong>box_values</strong> – whether to box values, such that None is admissible as a value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.util.cache.cached">
+<span class="sig-name descname"><span class="pre">cached</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sensai.util.cache.T</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pickle_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validity_check_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.util.cache.T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pickle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.util.cache.T</span></span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L634"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.cached" title="Permalink to this definition"></a></dt>
+<dd><p>Calls the given function unless its result is already cached (in a pickle), in which case it will read the cached result
+and return it.</p>
+<p>Rather than directly calling this function, consider using the decorator variant <a class="reference internal" href="#sensai.util.cache.pickle_cached" title="sensai.util.cache.pickle_cached"><code class="xref py py-func docutils literal notranslate"><span class="pre">pickle_cached()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fn</strong> – the function whose result is to be cached</p></li>
+<li><p><strong>pickle_path</strong> – the path in which to store the cached result</p></li>
+<li><p><strong>function_name</strong> – the name of the function fn (for the case where its __name__ attribute is not
+informative)</p></li>
+<li><p><strong>validity_check_fn</strong> – an optional function to call in order to check whether a cached result is still valid;
+the function shall return True if the result is still valid and false otherwise. If a cached result is invalid,
+the function fn is called to compute the result and the cached result is updated.</p></li>
+<li><p><strong>backend</strong> – pickle or joblib</p></li>
+<li><p><strong>protocol</strong> – the pickle protocol version</p></li>
+<li><p><strong>load</strong> – whether to load a previously persisted result; if False, do not load an old result but store the newly computed result</p></li>
+<li><p><strong>version</strong> – if not None, previously persisted data will only be returned if it was stored with the same version</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the result (either obtained from the cache or the function)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.util.cache.pickle_cached">
+<span class="sig-name descname"><span class="pre">pickle_cached</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache_base_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pickle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L694"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.pickle_cached" title="Permalink to this definition"></a></dt>
+<dd><p>Function decorator for caching function results via pickle.</p>
+<p>Add this decorator to any function to cache its results in pickle files.
+The function may have arguments, in which case the cache will be specific to the actual arguments
+by computing a hash code from their pickled representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cache_base_path</strong> – the directory where the pickle cache file will be stored</p></li>
+<li><p><strong>filename_prefix</strong> – a prefix of the name of the cache file to be created, to which the function name and, where applicable,
+a hash code of the function arguments as well as the extension “.cache.pickle” will be appended.
+The prefix need not end in a separator, as “-” will automatically be added between filename components.</p></li>
+<li><p><strong>filename</strong> – the full file name of the cache file to be created; if the function takes arguments, the filename must
+contain a placeholder ‘%s’ for the argument hash</p></li>
+<li><p><strong>backend</strong> – the serialisation backend to use (see dumpPickle)</p></li>
+<li><p><strong>protocol</strong> – the pickle protocol version to use</p></li>
+<li><p><strong>load</strong> – whether to load a previously persisted result; if False, do not load an old result but store the newly computed result</p></li>
+<li><p><strong>version</strong> – if not None, previously persisted data will only be returned if it was stored with the same version</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.util.cache.PickleCached">
+<span class="sig-name descname"><span class="pre">PickleCached</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache_base_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pickle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L0"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.PickleCached" title="Permalink to this definition"></a></dt>
+<dd><p>Function decorator for caching function results via pickle.</p>
+<p>Add this decorator to any function to cache its results in pickle files.
+The function may have arguments, in which case the cache will be specific to the actual arguments
+by computing a hash code from their pickled representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cache_base_path</strong> – the directory where the pickle cache file will be stored</p></li>
+<li><p><strong>filename_prefix</strong> – a prefix of the name of the cache file to be created, to which the function name and, where applicable,
+a hash code of the function arguments as well as the extension “.cache.pickle” will be appended.
+The prefix need not end in a separator, as “-” will automatically be added between filename components.</p></li>
+<li><p><strong>filename</strong> – the full file name of the cache file to be created; if the function takes arguments, the filename must
+contain a placeholder ‘%s’ for the argument hash</p></li>
+<li><p><strong>backend</strong> – the serialisation backend to use (see dumpPickle)</p></li>
+<li><p><strong>protocol</strong> – the pickle protocol version to use</p></li>
+<li><p><strong>load</strong> – whether to load a previously persisted result; if False, do not load an old result but store the newly computed result</p></li>
+<li><p><strong>version</strong> – if not None, previously persisted data will only be returned if it was stored with the same version</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.LoadSaveInterface">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LoadSaveInterface</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L756"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.LoadSaveInterface" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.LoadSaveInterface.save">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sensai.util.cache.LoadSaveInterface.save" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.LoadSaveInterface.load">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sensai.util.cache.T</span></span></span><a class="headerlink" href="#sensai.util.cache.LoadSaveInterface.load" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.util.cache.PickleLoadSaveMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PickleLoadSaveMixin</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/util/cache.py#L767"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.util.cache.PickleLoadSaveMixin" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.util.cache.LoadSaveInterface" title="sensai.util.cache.LoadSaveInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.cache.LoadSaveInterface</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.PickleLoadSaveMixin.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pickle'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.PickleLoadSaveMixin.save" title="Permalink to this definition"></a></dt>
+<dd><p>Saves the instance as pickle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – </p></li>
+<li><p><strong>backend</strong> – pickle, cloudpickle, or joblib</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.util.cache.PickleLoadSaveMixin.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pickle'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.util.cache.PickleLoadSaveMixin.load" title="Permalink to this definition"></a></dt>
+<dd><p>Loads a class instance from pickle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – </p></li>
+<li><p><strong>backend</strong> – pickle, cloudpickle, or joblib</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>instance of the present class</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="aggregation.html" class="btn btn-neutral float-left" title="aggregation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cache_azure.html" class="btn btn-neutral float-right" title="cache_azure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

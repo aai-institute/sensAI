@@ -1,0 +1,11 @@
+mlp
+===
+
+.. automodule:: sensai.torch.torch_models.mlp
+   :members:
+   :undoc-members:
+
+.. toctree::
+   :glob:
+
+   mlp/*

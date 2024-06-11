@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dft &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="sklearn_transformer" href="sklearn_transformer.html" />
+    <link rel="prev" title="data_transformation" href="../data_transformation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data.html">data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../data_transformation.html">data_transformation</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">dft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sklearn_transformer.html">sklearn_transformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="value_transformation.html">value_transformation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../data_transformation.html">data_transformation</a></li>
+      <li class="breadcrumb-item active">dft</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sensai/data_transformation/dft.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.data_transformation.dft">
+<span id="dft"></span><h1>dft<a class="headerlink" href="#module-sensai.data_transformation.dft" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DataFrameTransformer</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L30"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code>, <a class="reference internal" href="../util/string.html#sensai.util.string.ToStringMixin" title="sensai.util.string.ToStringMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.string.ToStringMixin</span></code></a></p>
+<p>Base class for data frame transformers, i.e. objects which can transform one data frame into another
+(possibly applying the transformation to the original data frame - in-place transformation).
+A data frame transformer may require being fitted using training data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformer.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformer.get_name">
+<span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformer.get_name" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the name of this dft transformer, which may be a default name if the name has not been set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformer.set_name">
+<span class="sig-name descname"><span class="pre">set_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformer.set_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformer.with_name">
+<span class="sig-name descname"><span class="pre">with_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformer.with_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformer.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformer.apply" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformer.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformer.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformer.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformer.is_fitted">
+<span class="sig-name descname"><span class="pre">is_fitted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformer.is_fitted" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformer.fit_apply">
+<span class="sig-name descname"><span class="pre">fit_apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformer.fit_apply" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformer.to_feature_generator">
+<span class="sig-name descname"><span class="pre">to_feature_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">categorical_feature_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation_rule_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.RuleTemplate</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_categorical_default_rules</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformer.to_feature_generator" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTFromFeatureGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTFromFeatureGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fgen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../featuregen/feature_generator.html#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">FeatureGenerator</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L114"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTFromFeatureGenerator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTFromFeatureGenerator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fgen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../featuregen/feature_generator.html#sensai.featuregen.feature_generator.FeatureGenerator" title="sensai.featuregen.feature_generator.FeatureGenerator"><span class="pre">FeatureGenerator</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTFromFeatureGenerator.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.InvertibleDataFrameTransformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InvertibleDataFrameTransformer</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L127"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.InvertibleDataFrameTransformer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.InvertibleDataFrameTransformer.apply_inverse">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">apply_inverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#sensai.data_transformation.dft.InvertibleDataFrameTransformer.apply_inverse" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.InvertibleDataFrameTransformer.get_inverse">
+<span class="sig-name descname"><span class="pre">get_inverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.data_transformation.dft.InverseDataFrameTransformer" title="sensai.data_transformation.dft.InverseDataFrameTransformer"><span class="pre">sensai.data_transformation.dft.InverseDataFrameTransformer</span></a></span></span><a class="headerlink" href="#sensai.data_transformation.dft.InvertibleDataFrameTransformer.get_inverse" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a transformer whose (forward) transformation is the inverse transformation of this DFT</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.RuleBasedDataFrameTransformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RuleBasedDataFrameTransformer</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L139"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base class for transformers whose logic is entirely based on rules and does not need to be fitted to data</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.RuleBasedDataFrameTransformer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer.fit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.RuleBasedDataFrameTransformer.is_fitted">
+<span class="sig-name descname"><span class="pre">is_fitted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer.is_fitted" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.InverseDataFrameTransformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InverseDataFrameTransformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">invertible_dft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.data_transformation.dft.InvertibleDataFrameTransformer" title="sensai.data_transformation.dft.InvertibleDataFrameTransformer"><span class="pre">sensai.data_transformation.dft.InvertibleDataFrameTransformer</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L152"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.InverseDataFrameTransformer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.InverseDataFrameTransformer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">invertible_dft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.data_transformation.dft.InvertibleDataFrameTransformer" title="sensai.data_transformation.dft.InvertibleDataFrameTransformer"><span class="pre">sensai.data_transformation.dft.InvertibleDataFrameTransformer</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.InverseDataFrameTransformer.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformerChain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DataFrameTransformerChain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">data_frame_transformers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L161"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformerChain" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></code></a></p>
+<p>Supports the application of a chain of data frame transformers.
+During fit and apply each transformer in the chain receives the transformed output of its predecessor.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformerChain.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">data_frame_transformers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformerChain.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformerChain.is_fitted">
+<span class="sig-name descname"><span class="pre">is_fitted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformerChain.is_fitted" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformerChain.get_names">
+<span class="sig-name descname"><span class="pre">get_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformerChain.get_names" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the list of names of all contained feature generators</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformerChain.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformerChain.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformerChain.find_first_transformer_by_type">
+<span class="sig-name descname"><span class="pre">find_first_transformer_by_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformerChain.find_first_transformer_by_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DataFrameTransformerChain.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DataFrameTransformerChain.append" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTRenameColumns">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTRenameColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L211"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTRenameColumns" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTRenameColumns.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTRenameColumns.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>columns_map</strong> – dictionary mapping old column names to new names</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTConditionalRowFilterOnColumn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTConditionalRowFilterOnColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L223"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTConditionalRowFilterOnColumn" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>Filters a data frame by applying a boolean function to one of the columns and retaining only the rows
+for which the function returns True</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTConditionalRowFilterOnColumn.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTConditionalRowFilterOnColumn.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTInSetComparisonRowFilterOnColumn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTInSetComparisonRowFilterOnColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_to_keep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L237"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTInSetComparisonRowFilterOnColumn" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>Filters a data frame on the selected column and retains only the rows for which the value is in the setToKeep</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTInSetComparisonRowFilterOnColumn.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_to_keep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTInSetComparisonRowFilterOnColumn.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTInSetComparisonRowFilterOnColumn.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTInSetComparisonRowFilterOnColumn.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNotInSetComparisonRowFilterOnColumn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTNotInSetComparisonRowFilterOnColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_to_drop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L256"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTNotInSetComparisonRowFilterOnColumn" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>Filters a data frame on the selected column and retains only the rows for which the value is not in the setToDrop</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNotInSetComparisonRowFilterOnColumn.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_to_drop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNotInSetComparisonRowFilterOnColumn.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNotInSetComparisonRowFilterOnColumn.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNotInSetComparisonRowFilterOnColumn.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTVectorizedConditionalRowFilterOnColumn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTVectorizedConditionalRowFilterOnColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectorized_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L275"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTVectorizedConditionalRowFilterOnColumn" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>Filters a data frame by applying a vectorized condition on the selected column and retaining only the rows
+for which it returns True</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTVectorizedConditionalRowFilterOnColumn.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectorized_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTVectorizedConditionalRowFilterOnColumn.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTVectorizedConditionalRowFilterOnColumn.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTVectorizedConditionalRowFilterOnColumn.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTRowFilter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTRowFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L294"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTRowFilter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>Filters a data frame by applying a condition function to each row and retaining only the rows
+for which it returns True</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTRowFilter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTRowFilter.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTModifyColumn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTModifyColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ufunc</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L307"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTModifyColumn" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>Modifies a column specified by ‘column’ using ‘columnTransform’</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTModifyColumn.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ufunc</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTModifyColumn.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> – the name of the column to be modified</p></li>
+<li><p><strong>column_transform</strong> – a function operating on single cells or a Numpy ufunc that applies to an entire Series</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTModifyColumnVectorized">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTModifyColumnVectorized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L325"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTModifyColumnVectorized" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>Modifies a column specified by ‘column’ using ‘columnTransform’. This transformer can be used to utilise Numpy vectorisation for
+performance optimisation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTModifyColumnVectorized.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTModifyColumnVectorized.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> – the name of the column to be modified</p></li>
+<li><p><strong>column_transform</strong> – a function that takes a Numpy array and from which the returned value will be assigned to the column as
+a whole</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTOneHotEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTOneHotEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_unknown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array_valued_result</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L345"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTOneHotEncoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTOneHotEncoder.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_unknown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array_valued_result</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTOneHotEncoder.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>One hot encode categorical variables</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>columns</strong> – list of names or regex matching names of columns that are to be replaced by a list one-hot encoded columns each
+(or an array-valued column for the case where useArrayValues=True);
+If None, then no columns are actually to be one-hot-encoded</p></li>
+<li><p><strong>categories</strong> – numpy arrays containing the possible values of each of the specified columns (for case where sequence is
+specified in ‘columns’) or dictionary mapping column name to array of possible categories for the column name.
+If None, the possible values will be inferred from the columns</p></li>
+<li><p><strong>inplace</strong> – whether to perform the transformation in-place</p></li>
+<li><p><strong>ignore_unknown</strong> – if True and an unknown category is encountered during transform, the resulting one-hot
+encoded columns for this feature will be all zeros. if False, an unknown category will raise an error.</p></li>
+<li><p><strong>array_valued_result</strong> – whether to replace the input columns by columns of the same name containing arrays as values
+instead of creating a separate column per original value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTOneHotEncoder.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTOneHotEncoder.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTColumnFilter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTColumnFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L443"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTColumnFilter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>A DataFrame transformer that filters columns by retaining or dropping specified columns</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTColumnFilter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTColumnFilter.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTColumnFilter.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTColumnFilter.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTKeepColumns">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTKeepColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L467"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTKeepColumns" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.DFTColumnFilter" title="sensai.data_transformation.dft.DFTColumnFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.DFTColumnFilter</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTDRowFilterOnIndex">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTDRowFilterOnIndex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L472"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTDRowFilterOnIndex" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTDRowFilterOnIndex.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTDRowFilterOnIndex.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNormalisation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTNormalisation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_transformer_factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="sklearn_transformer.html#sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol" title="sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol"><span class="pre">sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">require_all_handled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L487"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTNormalisation" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.DataFrameTransformer" title="sensai.data_transformation.dft.DataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.DataFrameTransformer</span></code></a></p>
+<p>Applies normalisation/scaling to a data frame by applying a set of transformation rules, where each
+rule defines a set of columns to which it applies (learning a single transformer based on the values
+of all applicable columns).
+DFTNormalisation ignores N/A values during fitting and application.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RuleTemplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unsupported</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="sklearn_transformer.html#sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol" title="sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol"><span class="pre">sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformer_factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="sklearn_transformer.html#sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol" title="sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol"><span class="pre">sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">independent_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array_valued</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unsupported</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="sklearn_transformer.html#sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol" title="sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol"><span class="pre">sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformer_factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="sklearn_transformer.html#sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol" title="sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol"><span class="pre">sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">independent_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array_valued</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>A template from which a rule which matches multiple columns can be created.
+This is useful for the generation of rules which shall apply to all the (numerical) columns generated
+by a <code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureGenerator</span></code> without specifically naming them.</p>
+<p>Use the parameters as follows:</p>
+<ul>
+<li><p>If the relevant features are already normalised, pass <code class="docutils literal notranslate"><span class="pre">skip=True</span></code></p></li>
+<li><p>If the relevant features cannot be normalised (e.g. because they are categorical), pass <code class="docutils literal notranslate"><span class="pre">unsupported=True</span></code></p></li>
+<li><p>If the relevant features shall be normalised, the other parameters apply.
+No parameters, i.e. <code class="docutils literal notranslate"><span class="pre">RuleTemplate()</span></code>, are an option if …</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>a default transformer factory is specified in the <a class="reference internal" href="#sensai.data_transformation.dft.DFTNormalisation" title="sensai.data_transformation.dft.DFTNormalisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFTNormalisation</span></code></a> instance and its application
+is suitable for the relevant set of features.
+Otherwise, specify either <code class="docutils literal notranslate"><span class="pre">transformer_factory</span></code> or <code class="docutils literal notranslate"><span class="pre">transformer</span></code>.</p></li>
+<li><p>the resulting rule will match only a single column. Otherwise, <code class="docutils literal notranslate"><span class="pre">independent_columns</span></code>
+must be specified to True or False.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>skip</strong> – flag indicating whether no transformation shall be performed on the matched columns (e.g. because they are already
+normalised).</p></li>
+<li><p><strong>unsupported</strong> – flag indicating whether normalisation of matched columns is unsupported (shall trigger an exception if
+attempted). Useful e.g. for preventing intermediate features that need further processing (like columns containing strings) from making
+their way into the final dataframe that will be normalised and used for training a model.</p></li>
+<li><p><strong>transformer</strong> – a transformer instance (following the sklearn.preprocessing interface, e.g. StandardScaler) to apply to the matching column(s)
+for the case where a transformation is necessary (skip=False, unsupported=False). If None is given, either
+transformer_factory or the containing <code class="docutils literal notranslate"><span class="pre">DFTNormalisation</span></code> instance’s default factory will be used when the normaliser is
+fitted.
+NOTE: Using a transformer_factory is usually preferred. Use an instance only if you want the
+same transformer instance to be used in multiple places - e.g. sharing it across several feature generators or models that
+use the same type of column with associated rule/rule template (disabling <cite>fit</cite> where appropriate).</p></li>
+<li><p><strong>transformer_factory</strong> – a factory for the generation of the transformer instance, which will only be applied if
+<cite>transformer</cite> is not given; if neither <cite>transformer</cite> nor <cite>transformer_factory</cite> are given, the containing <code class="docutils literal notranslate"><span class="pre">DFTNormalisation</span></code> instance’s default
+factory will be used. See <code class="xref py py-class docutils literal notranslate"><span class="pre">SkLearnTransformerFactoryFactory</span></code> for convenient construction options.</p></li>
+<li><p><strong>array_valued</strong> – whether the column values are not scalars but arrays (of some fixed but arbitrary length).
+It is assumed that all entries in such arrays are to be normalised in the same way, i.e. the same
+transformation will be applied to each entry in the array.
+Only a single matching column is supported for array_valued=True, i.e. the rule must apply to at most one column.</p></li>
+<li><p><strong>fit</strong> – whether the rule’s transformer shall be fitted. One use case for setting this to False is
+if a transformer instance is provided (instead of a factory), which is already fitted.</p></li>
+<li><p><strong>independent_columns</strong> – whether, for the case where the rule matches multiple columns, the columns are independent and a
+separate transformation is to be learned for each of them (rather than using the same transformation for all columns and
+learning the transformation from the data of all columns).
+This parameter must be specified for rules matching more than one column,
+None is acceptable for rules matching a single column, in which case None, True, and False all have the same effect.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate.to_rule">
+<span class="sig-name descname"><span class="pre">to_rule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">re.Pattern</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate.to_rule" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the template to a rule for all columns matching the regex</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>regex</strong> – a regular expression defining the column the rule applies to</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the resulting Rule</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNormalisation.RuleTemplate.to_placeholder_rule">
+<span class="sig-name descname"><span class="pre">to_placeholder_rule</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNormalisation.RuleTemplate.to_placeholder_rule" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNormalisation.Rule">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Rule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">re.Pattern</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unsupported</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="sklearn_transformer.html#sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol" title="sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol"><span class="pre">sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformer_factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="sklearn_transformer.html#sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol" title="sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol"><span class="pre">sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array_valued</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">independent_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNormalisation.Rule" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../util/string.html#sensai.util.string.ToStringMixin" title="sensai.util.string.ToStringMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.string.ToStringMixin</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNormalisation.Rule.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">re.Pattern</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unsupported</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="sklearn_transformer.html#sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol" title="sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol"><span class="pre">sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformer_factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="sklearn_transformer.html#sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol" title="sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol"><span class="pre">sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array_valued</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">independent_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNormalisation.Rule.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Use the parameters as follows:</p>
+<blockquote>
+<div><ul>
+<li><p>If the relevant features are already normalised, pass <code class="docutils literal notranslate"><span class="pre">skip=True</span></code></p></li>
+<li><p>If the relevant features cannot be normalised (e.g. because they are categorical), pass <code class="docutils literal notranslate"><span class="pre">unsupported=True</span></code></p></li>
+<li><p>If the relevant features shall be normalised, the other parameters apply.
+No parameters other than regex, i.e. <code class="docutils literal notranslate"><span class="pre">Rule(regex)</span></code>, are an option if …</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>a default transformer factory is specified in the <a class="reference internal" href="#sensai.data_transformation.dft.DFTNormalisation" title="sensai.data_transformation.dft.DFTNormalisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">DFTNormalisation</span></code></a> instance and its application
+is suitable for the relevant set of features.
+Otherwise, specify either <code class="docutils literal notranslate"><span class="pre">transformer_factory</span></code> or <code class="docutils literal notranslate"><span class="pre">transformer</span></code>.</p></li>
+<li><p>the resulting rule will match only a single column. Otherwise, <code class="docutils literal notranslate"><span class="pre">independent_columns</span></code>
+must be specified to True or False.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>regex</strong> – a regular expression defining the column(s) the rule applies to.
+If it matches multiple columns, these columns will be normalised in the same way (using the same normalisation
+process for each column) unless independent_columns=True.
+If None, the rule is a placeholder rule and the regex must be set later via set_regex or the rule will not be applicable.</p></li>
+<li><p><strong>skip</strong> – flag indicating whether no transformation shall be performed on the matched columns (e.g. because they are already
+normalised).</p></li>
+<li><p><strong>unsupported</strong> – flag indicating whether normalisation of matched columns is unsupported (shall trigger an exception if
+attempted). Useful e.g. for preventing intermediate features that need further processing (like columns containing strings) from making
+their way into the final dataframe that will be normalised and used for training a model.</p></li>
+<li><p><strong>transformer</strong> – a transformer instance (following the sklearn.preprocessing interface, e.g. StandardScaler) to apply to the matching column(s)
+for the case where a transformation is necessary (skip=False, unsupported=False). If None is given, either
+transformer_factory or the containing <code class="docutils literal notranslate"><span class="pre">DFTNormalisation</span></code> instance’s default factory will be used when the normaliser is
+fitted.
+NOTE: Using a transformer_factory is usually preferred. Use an instance only if you want the
+same transformer instance to be used in multiple places - e.g. sharing it across several feature generators or models that
+use the same type of column with associated rule/rule template (disabling <cite>fit</cite> where appropriate).</p></li>
+<li><p><strong>transformer_factory</strong> – a factory for the generation of the transformer instance, which will only be applied if
+<cite>transformer</cite> is not given; if neither <cite>transformer</cite> nor <cite>transformer_factory</cite> are given, the containing <code class="docutils literal notranslate"><span class="pre">DFTNormalisation</span></code> instance’s default
+factory will be used. See <code class="xref py py-class docutils literal notranslate"><span class="pre">SkLearnTransformerFactoryFactory</span></code> for convenient construction options.</p></li>
+<li><p><strong>array_valued</strong> – whether the column values are not scalars but arrays (of some fixed but arbitrary length).
+It is assumed that all entries in such arrays are to be normalised in the same way, i.e. the same
+transformation will be applied to each entry in the array.
+Only a single matching column is supported for array_valued=True, i.e. the regex must match at most one column.</p></li>
+<li><p><strong>fit</strong> – whether the rule’s transformer shall be fitted. One use case for setting this to False is
+if a transformer instance is provided (instead of a factory), which is already fitted.</p></li>
+<li><p><strong>independent_columns</strong> – whether, for the case where the rule matches multiple columns, the columns are independent and a
+separate transformation is to be learned for each of them (rather than using the same transformation for all columns and
+learning the transformation from the data of all columns).
+This parameter must be specified to for rules matching more than one column,
+None is acceptable for rules matching a single column, in which case None, True, and False all have the same effect.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNormalisation.Rule.set_regex">
+<span class="sig-name descname"><span class="pre">set_regex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNormalisation.Rule.set_regex" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNormalisation.Rule.matches">
+<span class="sig-name descname"><span class="pre">matches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNormalisation.Rule.matches" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNormalisation.Rule.matching_columns">
+<span class="sig-name descname"><span class="pre">matching_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNormalisation.Rule.matching_columns" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNormalisation.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_transformer_factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="sklearn_transformer.html#sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol" title="sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol"><span class="pre">sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">require_all_handled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNormalisation.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rules</strong> – the set of rules; rules (i.e., their transformers) are always fitted and applied in the given order.
+A convenient way to obtain a set of rules in the <a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorModel" title="sensai.vector_model.VectorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorModel</span></code></a> context is from a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.FeatureCollector</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.featuregen.MultiFeatureGenerator</span></code>.
+Generally, it is often a good idea to associate rules (or a rule template) with a feature generator.
+Then the rules can be obtained from it using <cite>get_normalisation_rules</cite>.</p></li>
+<li><p><strong>default_transformer_factory</strong> – a factory for the creation of transformer instances (which implements the
+API used by sklearn.preprocessing, e.g. StandardScaler) that shall be used to create a transformer for all
+rules that do not specify a particular transformer.
+The default transformer will only be applied to columns matched by such rules, unmatched columns will
+not be transformed.
+Use <code class="xref py py-class docutils literal notranslate"><span class="pre">SkLearnTransformerFactoryFactory</span></code> to conveniently create a factory.</p></li>
+<li><p><strong>require_all_handled</strong> – whether to raise an exception if any column is not matched by a rule</p></li>
+<li><p><strong>inplace</strong> – whether to apply data frame transformations in-place</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNormalisation.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNormalisation.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTNormalisation.find_rule">
+<span class="sig-name descname"><span class="pre">find_rule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.data_transformation.dft.DFTNormalisation.Rule" title="sensai.data_transformation.dft.DFTNormalisation.Rule"><span class="pre">sensai.data_transformation.dft.DFTNormalisation.Rule</span></a></span></span><a class="headerlink" href="#sensai.data_transformation.dft.DFTNormalisation.find_rule" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTFromColumnGenerators">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTFromColumnGenerators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_generators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../columngen.html#sensai.columngen.ColumnGenerator" title="sensai.columngen.ColumnGenerator"><span class="pre">ColumnGenerator</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L801"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTFromColumnGenerators" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>Extends a data frame with columns generated from ColumnGenerator instances</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTFromColumnGenerators.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_generators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../columngen.html#sensai.columngen.ColumnGenerator" title="sensai.columngen.ColumnGenerator"><span class="pre">ColumnGenerator</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTFromColumnGenerators.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTFromColumnGenerators.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTFromColumnGenerators.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTCountEntries">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTCountEntries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_for_entry_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_name_for_resulting_counts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'counts'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L824"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTCountEntries" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>Transforms a data frame, based on one of its columns, into a new data frame containing two columns that indicate the counts
+of unique values in the input column. It is the “DataFrame output version” of pd.Series.value_counts.
+Each row of the output column holds a unique value of the input column and the number of times it appears in the input column.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTCountEntries.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_for_entry_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_name_for_resulting_counts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'counts'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTCountEntries.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTCountEntries.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTCountEntries.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTAggregationOnColumn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTAggregationOnColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_for_aggregation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L846"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTAggregationOnColumn" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTAggregationOnColumn.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_for_aggregation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTAggregationOnColumn.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTRoundFloats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTRoundFloats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">decimals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L856"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTRoundFloats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTRoundFloats.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">decimals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTRoundFloats.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTRoundFloats.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTRoundFloats.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTSkLearnTransformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTSkLearnTransformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sklearn_transformer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="sklearn_transformer.html#sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol" title="sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol"><span class="pre">sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array_valued</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L870"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTSkLearnTransformer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.InvertibleDataFrameTransformer" title="sensai.data_transformation.dft.InvertibleDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.InvertibleDataFrameTransformer</span></code></a></p>
+<p>Applies a transformer from sklearn.preprocessing to (a subset of) the columns of a data frame.
+If multiple columns are transformed, they are transformed independently (i.e. each column uses a separately trained transformation).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTSkLearnTransformer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sklearn_transformer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="sklearn_transformer.html#sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol" title="sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol"><span class="pre">sensai.data_transformation.sklearn_transformer.SkLearnTransformerProtocol</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array_valued</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTSkLearnTransformer.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sklearn_transformer</strong> – the transformer instance (from sklearn.preprocessing) to use (which will be fitted &amp; applied)</p></li>
+<li><p><strong>columns</strong> – the set of column names to which the transformation shall apply; if None, apply it to all columns</p></li>
+<li><p><strong>inplace</strong> – whether to apply the transformation in-place</p></li>
+<li><p><strong>array_valued</strong> – whether to apply transformation not to scalar-valued columns but to one or more array-valued columns,
+where the values of all arrays within a column (which may vary in length) are to be transformed in the same way.
+If multiple columns are transformed, then the arrays belonging to a single row must all have the same length.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTSkLearnTransformer.apply_inverse">
+<span class="sig-name descname"><span class="pre">apply_inverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTSkLearnTransformer.apply_inverse" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTSkLearnTransformer.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTSkLearnTransformer.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTSortColumns">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTSortColumns</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L950"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTSortColumns" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>Sorts a data frame’s columns in ascending order</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTFillNA">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTFillNA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fill_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L958"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTFillNA" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>Fills NA/NaN values with the given value</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTFillNA.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fill_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTFillNA.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTCastCategoricalColumns">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTCastCategoricalColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns:</span> <span class="pre">typing.Optional[typing.List[str]]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L975"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTCastCategoricalColumns" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>Casts columns with dtype category to the given type.
+This can be useful in cases where categorical columns are not accepted by the model but the column values are actually numeric,
+in which case the cast to a numeric value yields an acceptable label encoding.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTCastCategoricalColumns.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns:</span> <span class="pre">typing.Optional[typing.List[str]]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTCastCategoricalColumns.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>columns</strong> – the columns to convert; if None, convert all that have dtype category</p></li>
+<li><p><strong>dtype</strong> – the data type to which categorical columns are to be converted</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTDropNA">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DFTDropNA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/data_transformation/dft.py#L1000"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.data_transformation.dft.DFTDropNA" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.data_transformation.dft.RuleBasedDataFrameTransformer" title="sensai.data_transformation.dft.RuleBasedDataFrameTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.data_transformation.dft.RuleBasedDataFrameTransformer</span></code></a></p>
+<p>Drops rows or columns containing NA/NaN values</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.data_transformation.dft.DFTDropNA.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.data_transformation.dft.DFTDropNA.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axis</strong> – 0 to drop rows, 1 to drop columns containing an N/A value</p></li>
+<li><p><strong>inplace</strong> – whether to perform the operation in-place on the input data frame</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../data_transformation.html" class="btn btn-neutral float-left" title="data_transformation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sklearn_transformer.html" class="btn btn-neutral float-right" title="sklearn_transformer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

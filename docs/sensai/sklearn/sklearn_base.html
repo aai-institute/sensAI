@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sklearn_base &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="sklearn_classification" href="sklearn_classification.html" />
+    <link rel="prev" title="sklearn" href="../sklearn.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sklearn.html">sklearn</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">sklearn_base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sklearn_classification.html">sklearn_classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sklearn_regression.html">sklearn_regression</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../sklearn.html">sklearn</a></li>
+      <li class="breadcrumb-item active">sklearn_base</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sensai/sklearn/sklearn_base.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.sklearn.sklearn_base">
+<span id="sklearn-base"></span><h1>sklearn_base<a class="headerlink" href="#module-sensai.sklearn.sklearn_base" title="Permalink to this headline"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.create_sklearn_model">
+<span class="sig-name descname"><span class="pre">create_sklearn_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_constructor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_transformer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/sklearn/sklearn_base.py#L19"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.sklearn.sklearn_base.create_sklearn_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.str_sklearn_model">
+<span class="sig-name descname"><span class="pre">str_sklearn_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/sklearn/sklearn_base.py#L26"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.sklearn.sklearn_base.str_sklearn_model" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a cleaned string representation of the model with line breaks and indentations removed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> – the sklearn model for which to generate the cleaned string representation</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the string representation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AbstractSkLearnVectorRegressionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_constructor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">model_args</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/sklearn/sklearn_base.py#L52"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorRegressionModel" title="sensai.vector_model.VectorRegressionModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorRegressionModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base class for models built upon scikit-learn’s model implementations</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_constructor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">model_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_constructor</strong> – the sklearn model constructor</p></li>
+<li><p><strong>model_args</strong> – arguments to be passed to the sklearn model constructor</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel.with_sklearn_input_transformer">
+<span class="sig-name descname"><span class="pre">with_sklearn_input_transformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sklearn_input_transformer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel" title="sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel"><span class="pre">sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel</span></a></span></span><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel.with_sklearn_input_transformer" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sklearn_input_transformer</strong> – an optional sklearn preprocessor for normalising/scaling inputs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel.with_sklearn_output_transformer">
+<span class="sig-name descname"><span class="pre">with_sklearn_output_transformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sklearn_output_transformer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel.with_sklearn_output_transformer" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sklearn_output_transformer</strong> – an optional sklearn preprocessor for normalising/scaling outputs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnMultipleOneDimVectorRegressionModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AbstractSkLearnMultipleOneDimVectorRegressionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_constructor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">model_args</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/sklearn/sklearn_base.py#L130"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnMultipleOneDimVectorRegressionModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel" title="sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base class for models which use several sklearn models of the same type with a single
+output dimension to create a multi-dimensional model (for the case where there is more than one output dimension)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnMultipleOneDimVectorRegressionModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_constructor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">model_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnMultipleOneDimVectorRegressionModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_constructor</strong> – the sklearn model constructor</p></li>
+<li><p><strong>model_args</strong> – arguments to be passed to the sklearn model constructor</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnMultipleOneDimVectorRegressionModel.get_sklearn_model">
+<span class="sig-name descname"><span class="pre">get_sklearn_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_var_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnMultipleOneDimVectorRegressionModel.get_sklearn_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnMultiDimVectorRegressionModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AbstractSkLearnMultiDimVectorRegressionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_constructor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">model_args</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/sklearn/sklearn_base.py#L176"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnMultiDimVectorRegressionModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel" title="sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.sklearn.sklearn_base.AbstractSkLearnVectorRegressionModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base class for models which use a single sklearn model with multiple output dimensions to create the multi-dimensional model</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnMultiDimVectorRegressionModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_constructor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">model_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnMultiDimVectorRegressionModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_constructor</strong> – the sklearn model constructor</p></li>
+<li><p><strong>model_args</strong> – arguments to be passed to the sklearn model constructor</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnVectorClassificationModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AbstractSkLearnVectorClassificationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_constructor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_balanced_class_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_label_encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">model_args</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/sklearn/sklearn_base.py#L209"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnVectorClassificationModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../vector_model.html#sensai.vector_model.VectorClassificationModel" title="sensai.vector_model.VectorClassificationModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.vector_model.VectorClassificationModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnVectorClassificationModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_constructor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_balanced_class_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_label_encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">model_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnVectorClassificationModel.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_constructor</strong> – the sklearn model constructor</p></li>
+<li><p><strong>model_args</strong> – arguments to be passed to the sklearn model constructor</p></li>
+<li><p><strong>use_balanced_class_weights</strong> – whether to compute class weights from the training data and apply the corresponding weight to
+each data point such that the sum of weights for all classes is equal. This is achieved by applying a weight proportional
+to the reciprocal frequency of the class in the (training) data. We scale weights such that the smallest weight (of the
+largest class) is 1, ensuring that weight counts still reasonably correspond to data point counts.
+Note that weighted data points may not be supported for all types of models.</p></li>
+<li><p><strong>use_label_encoding</strong> – whether to replace original class labels with 0-based index in sorted list of labels (a.k.a. label
+encoding), which is required by some sklearn-compatible implementations (particularly xgboost)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnVectorClassificationModel.with_sklearn_input_transformer">
+<span class="sig-name descname"><span class="pre">with_sklearn_input_transformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sklearn_input_transformer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.sklearn.sklearn_base.AbstractSkLearnVectorClassificationModel" title="sensai.sklearn.sklearn_base.AbstractSkLearnVectorClassificationModel"><span class="pre">sensai.sklearn.sklearn_base.AbstractSkLearnVectorClassificationModel</span></a></span></span><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnVectorClassificationModel.with_sklearn_input_transformer" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sklearn_input_transformer</strong> – an optional sklearn preprocessor for transforming inputs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnVectorClassificationModel.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnVectorClassificationModel.get_params" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.AbstractSkLearnVectorClassificationModel.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.sklearn.sklearn_base.AbstractSkLearnVectorClassificationModel.set_params" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.FeatureImportanceProviderSkLearnRegressionMultipleOneDim">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureImportanceProviderSkLearnRegressionMultipleOneDim</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/sklearn/sklearn_base.py#L356"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.sklearn.sklearn_base.FeatureImportanceProviderSkLearnRegressionMultipleOneDim" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../feature_importance.html#sensai.feature_importance.FeatureImportanceProvider" title="sensai.feature_importance.FeatureImportanceProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.feature_importance.FeatureImportanceProvider</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.FeatureImportanceProviderSkLearnRegressionMultipleOneDim.get_feature_importance_dict">
+<span class="sig-name descname"><span class="pre">get_feature_importance_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.sklearn.sklearn_base.FeatureImportanceProviderSkLearnRegressionMultipleOneDim.get_feature_importance_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the feature importance values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>either a dictionary mapping feature names to importance values or (for models predicting multiple
+variables (independently)) a dictionary which maps predicted variable names to such dictionaries</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.FeatureImportanceProviderSkLearnRegressionMultiDim">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureImportanceProviderSkLearnRegressionMultiDim</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/sklearn/sklearn_base.py#L363"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.sklearn.sklearn_base.FeatureImportanceProviderSkLearnRegressionMultiDim" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../feature_importance.html#sensai.feature_importance.FeatureImportanceProvider" title="sensai.feature_importance.FeatureImportanceProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.feature_importance.FeatureImportanceProvider</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.FeatureImportanceProviderSkLearnRegressionMultiDim.get_feature_importance_dict">
+<span class="sig-name descname"><span class="pre">get_feature_importance_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.sklearn.sklearn_base.FeatureImportanceProviderSkLearnRegressionMultiDim.get_feature_importance_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the feature importance values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>either a dictionary mapping feature names to importance values or (for models predicting multiple
+variables (independently)) a dictionary which maps predicted variable names to such dictionaries</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.FeatureImportanceProviderSkLearnClassification">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FeatureImportanceProviderSkLearnClassification</span></span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/sklearn/sklearn_base.py#L369"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.sklearn.sklearn_base.FeatureImportanceProviderSkLearnClassification" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../feature_importance.html#sensai.feature_importance.FeatureImportanceProvider" title="sensai.feature_importance.FeatureImportanceProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.feature_importance.FeatureImportanceProvider</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.sklearn.sklearn_base.FeatureImportanceProviderSkLearnClassification.get_feature_importance_dict">
+<span class="sig-name descname"><span class="pre">get_feature_importance_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.sklearn.sklearn_base.FeatureImportanceProviderSkLearnClassification.get_feature_importance_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the feature importance values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>either a dictionary mapping feature names to importance values or (for models predicting multiple
+variables (independently)) a dictionary which maps predicted variable names to such dictionaries</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../sklearn.html" class="btn btn-neutral float-left" title="sklearn" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sklearn_classification.html" class="btn btn-neutral float-right" title="sklearn_classification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

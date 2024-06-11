@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eval_stats_clustering &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="eval_stats_regression" href="eval_stats_regression.html" />
+    <link rel="prev" title="eval_stats_classification" href="eval_stats_classification.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensemble.html">ensemble</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../evaluation.html">evaluation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../crossval.html">crossval</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../eval_stats.html">eval_stats</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="eval_stats_base.html">eval_stats_base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eval_stats_classification.html">eval_stats_classification</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">eval_stats_clustering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eval_stats_regression.html">eval_stats_regression</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../eval_util.html">eval_util</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../evaluator.html">evaluator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../evaluator_clustering.html">evaluator_clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../metric_computation.html">metric_computation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../featuregen.html">featuregen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../geoanalytics.html">geoanalytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../../evaluation.html">evaluation</a></li>
+          <li class="breadcrumb-item"><a href="../eval_stats.html">eval_stats</a></li>
+      <li class="breadcrumb-item active">eval_stats_clustering</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/sensai/evaluation/eval_stats/eval_stats_clustering.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.evaluation.eval_stats.eval_stats_clustering">
+<span id="eval-stats-clustering"></span><h1>eval_stats_clustering<a class="headerlink" href="#module-sensai.evaluation.eval_stats.eval_stats_clustering" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClusterLabelsEvalStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.TMetric</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.TMetric</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L10"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="eval_stats_base.html#sensai.evaluation.eval_stats.eval_stats_base.EvalStats" title="sensai.evaluation.eval_stats.eval_stats_base.EvalStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.EvalStats</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.TMetric</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.NUM_CLUSTERS">
+<span class="sig-name descname"><span class="pre">NUM_CLUSTERS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'numClusters'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.NUM_CLUSTERS" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.AV_SIZE">
+<span class="sig-name descname"><span class="pre">AV_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'averageClusterSize'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.AV_SIZE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.MEDIAN_SIZE">
+<span class="sig-name descname"><span class="pre">MEDIAN_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'medianClusterSize'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.MEDIAN_SIZE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.STDDEV_SIZE">
+<span class="sig-name descname"><span class="pre">STDDEV_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'clusterSizeStd'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.STDDEV_SIZE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.MIN_SIZE">
+<span class="sig-name descname"><span class="pre">MIN_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'minClusterSize'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.MIN_SIZE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.MAX_SIZE">
+<span class="sig-name descname"><span class="pre">MAX_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'maxClusterSize'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.MAX_SIZE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.NOISE_SIZE">
+<span class="sig-name descname"><span class="pre">NOISE_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noiseClusterSize'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.NOISE_SIZE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.TMetric</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.TMetric</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.get_distribution_summary">
+<span class="sig-name descname"><span class="pre">get_distribution_summary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.get_distribution_summary" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.metrics_dict">
+<span class="sig-name descname"><span class="pre">metrics_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats.metrics_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Computes all metrics</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a dictionary mapping metric names to values</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClusteringUnsupervisedMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L56"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="eval_stats_base.html#sensai.evaluation.eval_stats.eval_stats_base.Metric" title="sensai.evaluation.eval_stats.eval_stats_base.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.Metric</span></code></a>[<a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteringUnsupervisedEvalStats</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemovedNoiseUnsupervisedMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L60"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric.worstValue">
+<span class="sig-name descname"><span class="pre">worstValue</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric.worstValue" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric.compute_value_for_eval_stats">
+<span class="sig-name descname"><span class="pre">compute_value_for_eval_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric.compute_value_for_eval_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric.compute_value">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datapoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric.compute_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.CalinskiHarabaszScore">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CalinskiHarabaszScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L74"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.CalinskiHarabaszScore" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.CalinskiHarabaszScore.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'CalinskiHarabaszScore'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.CalinskiHarabaszScore.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.CalinskiHarabaszScore.compute_value">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datapoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.CalinskiHarabaszScore.compute_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.DaviesBouldinScore">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DaviesBouldinScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L82"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.DaviesBouldinScore" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.DaviesBouldinScore.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'DaviesBouldinScore'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.DaviesBouldinScore.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.DaviesBouldinScore.worstValue">
+<span class="sig-name descname"><span class="pre">worstValue</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.DaviesBouldinScore.worstValue" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.DaviesBouldinScore.compute_value">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datapoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.DaviesBouldinScore.compute_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.SilhouetteScore">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SilhouetteScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L93"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.SilhouetteScore" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.RemovedNoiseUnsupervisedMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.SilhouetteScore.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SilhouetteScore'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.SilhouetteScore.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.SilhouetteScore.worstValue">
+<span class="sig-name descname"><span class="pre">worstValue</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.SilhouetteScore.worstValue" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.SilhouetteScore.compute_value">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datapoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.SilhouetteScore.compute_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClusteringUnsupervisedEvalStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datapoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L102"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats</span></code></a>[<a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric</span></code></a>]</p>
+<p>Class containing methods to compute evaluation statistics of a clustering result</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datapoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>datapoints</strong> – datapoints that were clustered</p></li>
+<li><p><strong>labels</strong> – sequence of labels, usually the output of some clustering algorithm</p></li>
+<li><p><strong>metrics</strong> – the metrics to compute. If None, will compute default metrics</p></li>
+<li><p><strong>additional_metrics</strong> – the metrics to additionally compute</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats.from_model">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clustering_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../clustering/clustering_base.html#sensai.clustering.clustering_base.EuclideanClusterer" title="sensai.clustering.clustering_base.EuclideanClusterer"><span class="pre">sensai.clustering.clustering_base.EuclideanClusterer</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats.from_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats.clusterLabelsMask">
+<span class="sig-name descname"><span class="pre">clusterLabelsMask</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats.clusterLabelsMask" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats.noiseLabelsMask">
+<span class="sig-name descname"><span class="pre">noiseLabelsMask</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringUnsupervisedEvalStats.noiseLabelsMask" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClusteringSupervisedMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L131"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="eval_stats_base.html#sensai.evaluation.eval_stats.eval_stats_base.Metric" title="sensai.evaluation.eval_stats.eval_stats_base.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_base.Metric</span></code></a>[<a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteringSupervisedEvalStats</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemovedCommonNoiseSupervisedMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L135"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric.worstValue">
+<span class="sig-name descname"><span class="pre">worstValue</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric.worstValue" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric.compute_value_for_eval_stats">
+<span class="sig-name descname"><span class="pre">compute_value_for_eval_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric.compute_value_for_eval_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric.compute_value">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric.compute_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.VMeasureScore">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VMeasureScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L150"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.VMeasureScore" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.VMeasureScore.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'VMeasureScore'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.VMeasureScore.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.VMeasureScore.compute_value">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.VMeasureScore.compute_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedRandScore">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AdjustedRandScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L158"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedRandScore" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedRandScore.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AdjustedRandScore'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedRandScore.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedRandScore.worstValue">
+<span class="sig-name descname"><span class="pre">worstValue</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedRandScore.worstValue" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedRandScore.compute_value">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedRandScore.compute_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.FowlkesMallowsScore">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FowlkesMallowsScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L167"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.FowlkesMallowsScore" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.FowlkesMallowsScore.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'FowlkesMallowsScore'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.FowlkesMallowsScore.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.FowlkesMallowsScore.compute_value">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.FowlkesMallowsScore.compute_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedMutualInfoScore">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AdjustedMutualInfoScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L175"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedMutualInfoScore" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.RemovedCommonNoiseSupervisedMetric</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedMutualInfoScore.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AdjustedMutualInfoScore'</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedMutualInfoScore.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedMutualInfoScore.compute_value">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.AdjustedMutualInfoScore.compute_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ClusteringSupervisedEvalStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/evaluation/eval_stats/eval_stats_clustering.py#L183"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusterLabelsEvalStats</span></code></a>[<a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric</span></code></a>]</p>
+<p>Class containing methods to compute evaluation statistics a clustering result based on ground truth clusters</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric" title="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric"><span class="pre">sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedMetric</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> – sequence of labels, usually the output of some clustering algorithm</p></li>
+<li><p><strong>true_labels</strong> – sequence of labels that represent the ground truth clusters</p></li>
+<li><p><strong>metrics</strong> – the metrics to compute. If None, will compute default metrics</p></li>
+<li><p><strong>additional_metrics</strong> – the metrics to additionally compute</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats.from_model">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clustering_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../clustering/clustering_base.html#sensai.clustering.clustering_base.EuclideanClusterer" title="sensai.clustering.clustering_base.EuclideanClusterer"><span class="pre">sensai.clustering.clustering_base.EuclideanClusterer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats.from_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats.labels_with_removed_common_noise">
+<span class="sig-name descname"><span class="pre">labels_with_removed_common_noise</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats.labels_with_removed_common_noise" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>tuple (labels, true_labels) where points classified as noise in true and predicted data were removed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats.clusterLabelsMask">
+<span class="sig-name descname"><span class="pre">clusterLabelsMask</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats.clusterLabelsMask" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats.noiseLabelsMask">
+<span class="sig-name descname"><span class="pre">noiseLabelsMask</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#sensai.evaluation.eval_stats.eval_stats_clustering.ClusteringSupervisedEvalStats.noiseLabelsMask" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eval_stats_classification.html" class="btn btn-neutral float-left" title="eval_stats_classification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eval_stats_regression.html" class="btn btn-neutral float-right" title="eval_stats_regression" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

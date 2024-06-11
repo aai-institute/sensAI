@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>coordinate_clustering &mdash; sensAI  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="coordinate_clustering_ground_truth" href="coordinate_clustering_ground_truth.html" />
+    <link rel="prev" title="geopandas" href="../geopandas.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            sensAI
+          </a>
+              <div class="version">
+                1.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Introduction to sensAI: Supervised Learning with VectorModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../neural_networks.html">Neural Networks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../catboost.html">catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../clustering.html">clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../columngen.html">columngen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data_transformation.html">data_transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../distance_metric.html">distance_metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensemble.html">ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../evaluation.html">evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature_importance.html">feature_importance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature_selection.html">feature_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../featuregen.html">featuregen</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../geoanalytics.html">geoanalytics</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../geo_clustering.html">geo_clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../geo_coords.html">geo_coords</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../geopandas.html">geopandas</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">coordinate_clustering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coordinate_clustering_ground_truth.html">coordinate_clustering_ground_truth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coordinates.html">coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="geometry.html">geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="graph.html">graph</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../local_coords.html">local_coords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../map_tiles.html">map_tiles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperopt.html">hyperopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lightgbm.html">lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../local_search.html">local_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../minizinc.html">minizinc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../multi_model.html">multi_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nearest_neighbors.html">nearest_neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../normalisation.html">normalisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pytorch_lightning.html">pytorch_lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sklearn.html">sklearn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sklearn_quantile.html">sklearn_quantile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tensor_model.html">tensor_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tensorflow.html">tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../torch.html">torch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tracking.html">tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../util.html">util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vector_model.html">vector_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vectoriser.html">vectoriser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../xgboost.html">xgboost</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">sensAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Modules</a></li>
+          <li class="breadcrumb-item"><a href="../../geoanalytics.html">geoanalytics</a></li>
+          <li class="breadcrumb-item"><a href="../geopandas.html">geopandas</a></li>
+      <li class="breadcrumb-item active">coordinate_clustering</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/sensai/geoanalytics/geopandas/coordinate_clustering.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-sensai.geoanalytics.geopandas.coordinate_clustering">
+<span id="coordinate-clustering"></span><h1>coordinate_clustering<a class="headerlink" href="#module-sensai.geoanalytics.geopandas.coordinate_clustering" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CoordinateEuclideanClusterer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clusterer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../clustering/clustering_base.html#sensai.clustering.clustering_base.EuclideanClusterer" title="sensai.clustering.clustering_base.EuclideanClusterer"><span class="pre">sensai.clustering.clustering_base.EuclideanClusterer</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/geoanalytics/geopandas/coordinate_clustering.py#L19"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../clustering/clustering_base.html#sensai.clustering.clustering_base.EuclideanClusterer" title="sensai.clustering.clustering_base.EuclideanClusterer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.clustering.clustering_base.EuclideanClusterer</span></code></a>, <a class="reference internal" href="coordinates.html#sensai.geoanalytics.geopandas.coordinates.GeoDataFrameWrapper" title="sensai.geoanalytics.geopandas.coordinates.GeoDataFrameWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.geoanalytics.geopandas.coordinates.GeoDataFrameWrapper</span></code></a></p>
+<p>Wrapper around a clustering model. This class adds additional, geospatial-specific features to the provided
+clusterer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>clusterer</strong> – an instance of ClusteringModel</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clusterer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../clustering/clustering_base.html#sensai.clustering.clustering_base.EuclideanClusterer" title="sensai.clustering.clustering_base.EuclideanClusterer"><span class="pre">sensai.clustering.clustering_base.EuclideanClusterer</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../clustering/clustering_base.html#sensai.clustering.clustering_base.EuclideanClusterer.Cluster" title="sensai.clustering.clustering_base.EuclideanClusterer.Cluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.clustering.clustering_base.EuclideanClusterer.Cluster</span></code></a>, <a class="reference internal" href="coordinates.html#sensai.geoanalytics.geopandas.coordinates.GeoDataFrameWrapper" title="sensai.geoanalytics.geopandas.coordinates.GeoDataFrameWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.geoanalytics.geopandas.coordinates.GeoDataFrameWrapper</span></code></a>, <a class="reference internal" href="../../util/cache.html#sensai.util.cache.LoadSaveInterface" title="sensai.util.cache.LoadSaveInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.util.cache.LoadSaveInterface</span></code></a></p>
+<p>Wrapper around a coordinates array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coordinates</strong> – </p></li>
+<li><p><strong>identifier</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster.to_geodf">
+<span class="sig-name descname"><span class="pre">to_geodf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'epsg:3857'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster.to_geodf" title="Permalink to this definition"></a></dt>
+<dd><p>Export the cluster as a GeoDataFrame of length 1 with the cluster as an instance of
+MultiPoint and the identifier as index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>crs</strong> – projection. By default pseudo-mercator</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>GeoDataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster.as_multipoint">
+<span class="sig-name descname"><span class="pre">as_multipoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster.as_multipoint" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The cluster’s coordinates as a MultiPoint object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster.load" title="Permalink to this definition"></a></dt>
+<dd><p>Instantiate from a geopandas readable file containing a single row with an identifier and an instance
+of MultiPoint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>instance of CoordinateCluster</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EPSG:3857'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster.save" title="Permalink to this definition"></a></dt>
+<dd><p>Saves the cluster’s coordinates as shapefile</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>crs</strong> – </p></li>
+<li><p><strong>path</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">shapely.geometry.MultiPoint</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">geopandas.GeoDataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../clustering/clustering_base.html#sensai.clustering.clustering_base.EuclideanClusterer.Cluster" title="sensai.clustering.clustering_base.EuclideanClusterer.Cluster"><span class="pre">sensai.clustering.clustering_base.EuclideanClusterer.Cluster</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fitting to coordinates from a numpy array, a MultiPoint object or a GeoDataFrame with one Point per row</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>coordinates</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.to_geodf">
+<span class="sig-name descname"><span class="pre">to_geodf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster" title="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster"><span class="pre">sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'epsg:3857'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">geopandas.GeoDataFrame</span></span></span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.to_geodf" title="Permalink to this definition"></a></dt>
+<dd><p>GeoDataFrame containing all clusters found by the model.
+It is a concatenation of GeoDataFrames of individual clusters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>condition</strong> – if provided, only clusters fulfilling the condition will be included</p></li>
+<li><p><strong>crs</strong> – projection. By default pseudo-mercator</p></li>
+<li><p><strong>include_noise</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>GeoDataFrame with all clusters indexed by their identifier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.plot" title="Permalink to this definition"></a></dt>
+<dd><p>Plots the resulting clusters with random coloring</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>include_noise</strong> – Whether to include the noise cluster</p></li>
+<li><p><strong>condition</strong> – If provided, only clusters fulfilling this condition will be included</p></li>
+<li><p><strong>kwargs</strong> – passed to GeoDataFrame.plot</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.get_cluster">
+<span class="sig-name descname"><span class="pre">get_cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cluster_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster" title="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster"><span class="pre">sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster</span></a></span></span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.get_cluster" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.noise_cluster">
+<span class="sig-name descname"><span class="pre">noise_cluster</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster" title="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster"><span class="pre">sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster</span></a></span></span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.noise_cluster" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.clusters">
+<span class="sig-name descname"><span class="pre">clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster" title="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster"><span class="pre">sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster" title="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster"><span class="pre">sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.Cluster</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer.clusters" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>condition</strong> – if provided, only clusters fulfilling the condition will be included</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>generator of clusters</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.SkLearnCoordinateClustering">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SkLearnCoordinateClustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clusterer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../clustering/sklearn_clustering.html#sensai.clustering.sklearn_clustering.SkLearnClustererProtocol" title="sensai.clustering.sklearn_clustering.SkLearnClustererProtocol"><span class="pre">sensai.clustering.sklearn_clustering.SkLearnClustererProtocol</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cluster_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_cluster_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/jambit/sensAI/blob/master/src/sensai/geoanalytics/geopandas/coordinate_clustering.py#L150"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.SkLearnCoordinateClustering" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer" title="sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer"><code class="xref py py-class docutils literal notranslate"><span class="pre">sensai.geoanalytics.geopandas.coordinate_clustering.CoordinateEuclideanClusterer</span></code></a></p>
+<p>Wrapper around a sklearn clusterer. This class adds additional features like relabelling and convenient methods
+for handling geospatial data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clusterer</strong> – a clusterer object compatible the sklearn API</p></li>
+<li><p><strong>noise_label</strong> – label that is associated with the noise cluster or None</p></li>
+<li><p><strong>min_cluster_size</strong> – if not None, clusters below this size will be labeled as noise</p></li>
+<li><p><strong>max_cluster_size</strong> – if not None, clusters above this size will be labeled as noise</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensai.geoanalytics.geopandas.coordinate_clustering.SkLearnCoordinateClustering.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clusterer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../clustering/sklearn_clustering.html#sensai.clustering.sklearn_clustering.SkLearnClustererProtocol" title="sensai.clustering.sklearn_clustering.SkLearnClustererProtocol"><span class="pre">sensai.clustering.sklearn_clustering.SkLearnClustererProtocol</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cluster_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_cluster_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensai.geoanalytics.geopandas.coordinate_clustering.SkLearnCoordinateClustering.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../geopandas.html" class="btn btn-neutral float-left" title="geopandas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="coordinate_clustering_ground_truth.html" class="btn btn-neutral float-right" title="coordinate_clustering_ground_truth" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+residualffn
+===========
+
+.. automodule:: sensai.torch.torch_models.residualffn
+   :members:
+   :undoc-members:
+
+.. toctree::
+   :glob:
+
+   residualffn/*
